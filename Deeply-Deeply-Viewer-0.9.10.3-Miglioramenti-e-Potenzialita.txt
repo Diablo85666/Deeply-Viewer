@@ -1,0 +1,295 @@
+Deeply Deeply Viewer 0.9.10.3 Stable
+Novita, miglioramenti e potenzialita
+
+Autore della release: MrDiablo85
+Profilo GitHub: https://github.com/Diablo85666
+Repository ufficiale della build: https://github.com/Diablo85666/Deeply-Deeply-Viewer
+Community Discord: https://discord.gg/VgkrhRZka
+Eseguibile Windows: Deeply-Deeply-Viewer.exe
+
+======================================================================
+1. IDENTITA DELLA BUILD
+======================================================================
+
+Deeply Deeply Viewer 0.9.10.3 Stable e una build community indipendente
+preparata da MrDiablo85. Il progetto e distribuito con il nome Deeply
+Deeply Viewer e mantiene una chiara separazione dai progetti e dai servizi
+ufficiali di Linden Lab e da altri viewer.
+
+Il repository GitHub personale e il punto di riferimento per:
+
+- codice e documentazione della build;
+- pubblicazione delle release;
+- pacchetti Windows e futuri pacchetti Linux;
+- segnalazioni e discussioni;
+- informazioni sugli aggiornamenti.
+
+La build non dichiara affiliazione o approvazione da parte di Linden Lab.
+
+======================================================================
+2. INTERFACCIA ITALIANA E LOCALIZZAZIONE
+======================================================================
+
+- Interfaccia italiana disponibile per la build.
+- Possibilita di forzare la lingua italiana tramite:
+  DEEPLY_UI_LANGUAGE=it
+- Identificatori interni stabili per i pulsanti del mouse e le scorciatoie.
+- Messaggi localizzati per informazioni sulla build, licenze, privacy,
+  segnalazioni e prestazioni.
+- Nome della build, autore e collegamenti community visibili in modo
+  coerente nell'interfaccia.
+
+======================================================================
+3. COLLEGAMENTI COMMUNITY
+======================================================================
+
+I collegamenti operativi della build puntano al progetto Deeply Deeply Viewer:
+
+- Pulsante GitHub:
+  https://github.com/Diablo85666/Deeply-Deeply-Viewer
+- Pulsante Discord:
+  https://discord.gg/VgkrhRZka
+- Pulsante Sito/README:
+  https://github.com/Diablo85666/Deeply-Deeply-Viewer?tab=readme-ov-file
+- Pagina release:
+  https://github.com/Diablo85666/Deeply-Deeply-Viewer/releases
+- Profilo autore:
+  https://github.com/Diablo85666
+
+Questi riferimenti sono usati per supporto, comunicazioni, aggiornamenti,
+download e feedback della community.
+
+======================================================================
+4. AGGIORNAMENTI E DOWNLOAD
+======================================================================
+
+Il sistema di aggiornamento controlla il feed delle release di Deeply Deeply
+Viewer su GitHub.
+
+- Il download Windows ufficiale proviene dalla pagina release del repository
+  personale.
+- Il pacchetto atteso segue il formato:
+  Deeply-Deeply-Viewer-<versione>-windows-x64.zip
+- Gli aggiornamenti diventano disponibili dopo la pubblicazione di una nuova
+  release e dei relativi asset.
+- Il sistema non scarica aggiornamenti da repository non collegati al progetto.
+- Il pacchetto e portabile e puo essere estratto senza sostituire
+  necessariamente un'altra installazione.
+- Ogni release puo essere verificata tramite il relativo checksum SHA-256.
+
+Pacchetto della release 0.9.10.3:
+
+Deeply-Deeply-Viewer-0.9.10.3-windows-x64.zip
+
+SHA-256 del pacchetto preparato:
+
+48E54E15A76072D51795A6D92C4FD770EAC00E26F99CBF1BEF6CDCB3C874A65C
+
+======================================================================
+5. BROWSER INTERNO
+======================================================================
+
+La build dispone di un browser integrato nel viewer, basato sul componente
+web gia presente nell'architettura del viewer.
+
+Funzioni principali:
+
+- apertura di pagine web all'interno del viewer;
+- barra degli indirizzi;
+- navigazione indietro e avanti;
+- arresto e ricaricamento della pagina;
+- indicazione del caricamento;
+- indicazione delle connessioni HTTPS;
+- possibilita di aprire una pagina nel browser di sistema;
+- gestione della pagina iniziale;
+- supporto ai collegamenti HTTP e HTTPS;
+- gestione dei collegamenti SLURL e app link compatibili con il viewer.
+
+Il comportamento del browser puo essere configurato tramite le preferenze:
+
+- SystemForAll: usa il browser di sistema per tutti i collegamenti;
+- BuiltInForSecondLife: usa il browser integrato per i collegamenti del
+  mondo virtuale;
+- BuiltInForAll: forza l'uso del browser integrato per tutti i collegamenti
+  web compatibili.
+
+Per motivi di sicurezza, schemi non consentiti come javascript:, data: e
+altri collegamenti non web vengono rifiutati. Le pagine e i collegamenti
+devono essere verificati dall'utente prima di inserire credenziali o dati
+personali.
+
+======================================================================
+6. CONDIVISIONE OPZIONALE DEI LOG CHAT
+======================================================================
+
+La build mantiene il supporto alla condivisione opzionale dei transcript chat
+con cartelle compatibili con Firestorm.
+
+- Accesso bidirezionale alle conversazioni private e di gruppo supportate.
+- Cartelle separate per grid personalizzate.
+- Nessuna modifica ai transcript quando la condivisione e disabilitata.
+- La funzione e opzionale e deve essere attivata consapevolmente dall'utente.
+
+I log possono contenere informazioni personali. Prima di condividerli e
+necessario controllare il contenuto e rimuovere eventuali dati sensibili.
+
+======================================================================
+7. CONTROLLI PER SINGOLO AVATAR
+======================================================================
+
+La build aggiunge controlli persistenti e separati per gestire determinati
+eventi provenienti da uno specifico avatar.
+
+Teleport:
+
+- rifiuto persistente delle offerte di teleport da un avatar selezionato;
+- il rifiuto viene applicato prima dell'accettazione dell'offerta.
+
+Conference chat:
+
+- rifiuto persistente degli inviti a conference chat da un avatar selezionato;
+- l'invito viene rifiutato prima dell'apertura della sessione di conversazione;
+- il controllo e indipendente dal blocco totale dell'avatar.
+
+I controlli restano distinti:
+
+- blocco totale;
+- silenziamento voce;
+- rifiuto teleport;
+- rifiuto conference chat.
+
+======================================================================
+8. GRAFICA ADATTIVA E PROTEZIONE DAL SOVRACCARICO
+======================================================================
+
+Il monitoraggio grafico puo ridurre gradualmente il preset quando rileva una
+pressione hardware sostenuta, evitando di passare direttamente a una qualita
+minima o di arrivare subito al crash.
+
+Sequenza di riduzione:
+
+Deluxe -> High -> Medium -> Low -> Potato
+
+Il monitor considera:
+
+- memoria utilizzata dal processo;
+- tempi dei frame;
+- stalli e pressione della GPU;
+- campioni consecutivi di sovraccarico.
+
+Comportamento:
+
+- la qualita viene ridotta un livello alla volta;
+- sono richiesti campioni consecutivi per evitare reazioni a picchi isolati;
+- un periodo di cooldown evita cambiamenti troppo ravvicinati;
+- i profili Custom non vengono modificati automaticamente;
+- il safe graphics di emergenza resta separato per i problemi gravi del
+  dispositivo grafico.
+
+Questa funzione riduce il rischio di instabilita, ma non puo garantire che
+ogni problema hardware, driver o sistema operativo venga evitato.
+
+======================================================================
+9. SISTEMA DI REPORT E SEGNALAZIONI
+======================================================================
+
+Il sistema di report offre piu modalita di consegna:
+
+- salvataggio locale del report;
+- apertura di una bozza nel browser per una issue GitHub;
+- invio alla issue tracker GitHub di Deeply Deeply Viewer dopo
+  autorizzazione esplicita dell'utente;
+- copia del report negli appunti;
+- apertura del modulo ufficiale Linden Lab con revisione e invio manuale.
+
+Il percorso Linden Lab e volutamente manuale:
+
+- il viewer prepara e copia il contenuto del report;
+- l'utente controlla le informazioni;
+- l'utente incolla il contenuto nel modulo ufficiale;
+- l'utente decide se inviare il report.
+
+La build non usa endpoint Linden Lab non documentati e non invia
+automaticamente dati a Linden Lab.
+
+Dati come posizione, avatar, log, diagnostica e screenshot sono opzionali.
+L'utente deve verificare il contenuto prima di pubblicarlo online.
+
+======================================================================
+10. PRIVACY E SICUREZZA
+======================================================================
+
+- I report online richiedono un'azione esplicita dell'utente.
+- I dati diagnostici e gli screenshot non sono obbligatori.
+- I log chat possono contenere informazioni personali e devono essere
+  controllati prima della condivisione.
+- Il browser interno rifiuta schemi web non sicuri o non supportati.
+- Il browser integrato usa una cache separata e temporanea per la sessione;
+  la sessione web viene chiusa con la finestra, il logout o il riavvio.
+- Il browser di sistema puo essere scelto dall'utente quando necessario.
+
+======================================================================
+11. LICENZA E ATTRIBUZIONI
+======================================================================
+
+Deeply Deeply Viewer viene distribuito secondo i termini GNU GPLv3 applicabili
+al codice sorgente.
+
+Per il testo completo e le attribuzioni consultare i file LICENSE e NOTICE.md
+inclusi nel repository e nel pacchetto della release.
+
+La ridistribuzione e la modifica devono rispettare gli obblighi della GPLv3,
+incluse le informazioni sulla licenza e sull'origine del codice.
+
+======================================================================
+12. PACCHETTO WINDOWS DELLA RELEASE
+======================================================================
+
+Nome dell'eseguibile:
+
+Deeply-Deeply-Viewer.exe
+
+Versione visualizzata:
+
+Deeply Deeply Viewer 0.9.10.3
+
+Nome consigliato del pacchetto:
+
+Deeply-Deeply-Viewer-0.9.10.3-windows-x64.zip
+
+Prima dell'installazione o dell'estrazione:
+
+1. scaricare il pacchetto dalla pagina release ufficiale;
+2. verificare il nome del file;
+3. confrontare il checksum SHA-256 pubblicato;
+4. estrarre il contenuto in una cartella dedicata;
+5. avviare Deeply-Deeply-Viewer.exe.
+
+======================================================================
+13. SUPPORTO E PARTECIPAZIONE
+======================================================================
+
+Repository:
+https://github.com/Diablo85666/Deeply-Deeply-Viewer
+
+Release e download:
+https://github.com/Diablo85666/Deeply-Deeply-Viewer/releases
+
+Discord:
+https://discord.gg/VgkrhRZka
+
+Profilo dell'autore:
+https://github.com/Diablo85666
+
+Per segnalazioni tecniche, includere quando possibile:
+
+- versione del viewer;
+- sistema operativo;
+- descrizione riproducibile del problema;
+- impostazioni grafiche;
+- eventuali messaggi di errore;
+- report o log dopo aver rimosso i dati personali.
+
+======================================================================
+FINE DEL DOCUMENTO
+======================================================================

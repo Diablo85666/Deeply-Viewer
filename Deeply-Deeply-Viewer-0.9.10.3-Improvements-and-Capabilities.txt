@@ -1,0 +1,292 @@
+Deeply Deeply Viewer 0.9.10.3 Stable
+New features, improvements, and capabilities
+
+Release author: MrDiablo85
+GitHub profile: https://github.com/Diablo85666
+Official build repository: https://github.com/Diablo85666/Deeply-Deeply-Viewer
+Community Discord: https://discord.gg/VgkrhRZka
+Windows executable: Deeply-Deeply-Viewer.exe
+
+======================================================================
+1. BUILD IDENTITY
+======================================================================
+
+Deeply Deeply Viewer 0.9.10.3 Stable is an independent community build
+prepared by MrDiablo85. The project is distributed under the Deeply Deeply
+Viewer name and keeps a clear separation from the official Linden Lab
+services and projects from other viewers.
+
+The personal GitHub repository is the reference point for:
+
+- build source code and documentation;
+- release publication;
+- Windows packages and future Linux packages;
+- reports and discussions;
+- update information.
+
+The build does not claim affiliation with or endorsement by Linden Lab.
+
+======================================================================
+2. ITALIAN INTERFACE AND LOCALIZATION
+======================================================================
+
+- Italian interface support is included in the build.
+- Italian can be forced through:
+  DEEPLY_UI_LANGUAGE=it
+- Stable internal identifiers are used for mouse buttons and shortcuts.
+- Messages for build information, licenses, privacy, reports, and
+  performance are localized.
+- The build name, author, and community links are shown consistently in
+  the interface.
+
+======================================================================
+3. COMMUNITY LINKS
+======================================================================
+
+The build's operational links point to the Deeply Deeply Viewer project:
+
+- GitHub button:
+  https://github.com/Diablo85666/Deeply-Deeply-Viewer
+- Discord button:
+  https://discord.gg/VgkrhRZka
+- Website/README button:
+  https://github.com/Diablo85666/Deeply-Deeply-Viewer?tab=readme-ov-file
+- Releases page:
+  https://github.com/Diablo85666/Deeply-Deeply-Viewer/releases
+- Author profile:
+  https://github.com/Diablo85666
+
+These references are used for community support, communication, updates,
+downloads, and feedback.
+
+======================================================================
+4. UPDATES AND DOWNLOADS
+======================================================================
+
+The update system checks the Deeply Deeply Viewer release feed on GitHub.
+
+- The official Windows download comes from the personal repository's
+  releases page.
+- The expected package format is:
+  Deeply-Deeply-Viewer-<version>-windows-x64.zip
+- Updates become available after a new release and its assets have been
+  published.
+- The system does not download updates from unrelated repositories.
+- The package is portable and can be extracted without necessarily
+  replacing another installation.
+- Each release can be verified using its SHA-256 checksum.
+
+Package for release 0.9.10.3:
+
+Deeply-Deeply-Viewer-0.9.10.3-windows-x64.zip
+
+SHA-256 of the prepared package:
+
+48E54E15A76072D51795A6D92C4FD770EAC00E26F99CBF1BEF6CDCB3C874A65C
+
+======================================================================
+5. BUILT-IN BROWSER
+======================================================================
+
+The build includes a browser integrated into the viewer, based on the web
+component already present in the viewer architecture.
+
+Main features:
+
+- opening web pages inside the viewer;
+- address bar;
+- back and forward navigation;
+- stop and reload controls;
+- loading progress;
+- HTTPS connection indication;
+- option to open a page in the system browser;
+- configurable home page;
+- support for HTTP and HTTPS links;
+- handling of compatible SLURL and app links inside the viewer.
+
+Browser behavior can be configured through these preferences:
+
+- SystemForAll: use the system browser for every link;
+- BuiltInForSecondLife: use the built-in browser for virtual-world links;
+- BuiltInForAll: force the built-in browser for all compatible web links.
+
+For security reasons, unsupported schemes such as javascript:, data:, and
+other non-web links are refused. Users should verify pages before entering
+credentials or personal information.
+
+======================================================================
+6. OPTIONAL CHAT LOG SHARING
+======================================================================
+
+The build retains optional transcript sharing with folders compatible with
+Firestorm.
+
+- Bidirectional access to supported private and group conversations.
+- Separate folders for custom grids.
+- No transcript changes when sharing is disabled.
+- The feature is optional and must be enabled deliberately by the user.
+
+Chat logs may contain personal information. Review their contents and remove
+sensitive data before sharing them.
+
+======================================================================
+7. PER-AVATAR CONTROLS
+======================================================================
+
+The build adds persistent and separate controls for events from a specific
+avatar.
+
+Teleport:
+
+- persistent rejection of teleport offers from a selected avatar;
+- rejection is applied before the offer is accepted.
+
+Conference chat:
+
+- persistent rejection of conference chat invitations from a selected avatar;
+- the invitation is rejected before the conversation session is opened;
+- this control is independent from the avatar's total block.
+
+The controls remain separate:
+
+- total block;
+- voice mute;
+- teleport rejection;
+- conference chat rejection.
+
+======================================================================
+8. ADAPTIVE GRAPHICS AND OVERLOAD PROTECTION
+======================================================================
+
+Graphics monitoring can gradually reduce the preset when sustained hardware
+pressure is detected, avoiding an immediate jump to minimum quality or a
+crash.
+
+Reduction sequence:
+
+Deluxe -> High -> Medium -> Low -> Potato
+
+The monitor considers:
+
+- process memory usage;
+- frame times;
+- GPU stalls and pressure;
+- consecutive overload samples.
+
+Behavior:
+
+- quality is reduced one level at a time;
+- consecutive samples are required to avoid reacting to isolated spikes;
+- a cooldown prevents changes that are too close together;
+- Custom profiles are not changed automatically;
+- emergency safe graphics remains separate for serious graphics-device
+  failures.
+
+This feature reduces the risk of instability, but cannot guarantee that every
+hardware, driver, or operating-system problem will be avoided.
+
+======================================================================
+9. REPORT AND ISSUE SYSTEM
+======================================================================
+
+The report system provides several delivery modes:
+
+- save the report locally;
+- open a GitHub issue draft in the browser;
+- submit to the Deeply Deeply Viewer GitHub issue tracker after explicit
+  authorization;
+- copy the report to the clipboard;
+- open the official Linden Lab form for review and manual submission.
+
+The Linden Lab path is deliberately manual:
+
+- the viewer prepares and copies the report content;
+- the user reviews the information;
+- the user pastes the content into the official form;
+- the user decides whether to submit the report.
+
+The build does not use undocumented Linden Lab endpoints and does not
+automatically send data to Linden Lab.
+
+Data such as position, avatar information, logs, diagnostics, and screenshots
+is optional. Review the content before publishing it online.
+
+======================================================================
+10. PRIVACY AND SECURITY
+======================================================================
+
+- Online reports require an explicit user action.
+- Diagnostic data and screenshots are not mandatory.
+- Chat logs may contain personal information and must be reviewed before
+  sharing.
+- The built-in browser refuses unsafe or unsupported web schemes.
+- The built-in browser uses a separate temporary session cache; the web
+  session ends when the window closes, the user logs out, or the viewer
+  restarts.
+- The system browser can be selected by the user when needed.
+
+======================================================================
+11. LICENSE AND ATTRIBUTION
+======================================================================
+
+Deeply Deeply Viewer is distributed under the GNU GPLv3 terms applicable to
+the source code.
+
+For the complete text and attribution information, consult LICENSE and
+NOTICE.md included in the repository and in the release package.
+
+Redistribution and modification must comply with the GPLv3 requirements,
+including license and source-origin information.
+
+======================================================================
+12. WINDOWS RELEASE PACKAGE
+======================================================================
+
+Executable name:
+
+Deeply-Deeply-Viewer.exe
+
+Displayed version:
+
+Deeply Deeply Viewer 0.9.10.3
+
+Recommended package name:
+
+Deeply-Deeply-Viewer-0.9.10.3-windows-x64.zip
+
+Before installing or extracting:
+
+1. download the package from the official releases page;
+2. verify the file name;
+3. compare the published SHA-256 checksum;
+4. extract the contents into a dedicated folder;
+5. start Deeply-Deeply-Viewer.exe.
+
+======================================================================
+13. SUPPORT AND PARTICIPATION
+======================================================================
+
+Repository:
+https://github.com/Diablo85666/Deeply-Deeply-Viewer
+
+Releases and downloads:
+https://github.com/Diablo85666/Deeply-Deeply-Viewer/releases
+
+Discord:
+https://discord.gg/VgkrhRZka
+
+Author profile:
+https://github.com/Diablo85666
+
+For technical reports, include when possible:
+
+- viewer version;
+- operating system;
+- reproducible description of the problem;
+- graphics settings;
+- error messages;
+- report or logs after removing personal data.
+
+======================================================================
+END OF DOCUMENT
+======================================================================
