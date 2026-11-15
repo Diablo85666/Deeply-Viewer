@@ -12533,6 +12533,12 @@ impl App {
             .tick(&self.settings, &gfx.renderer, paced.as_secs_f32() * 1000.0)
         {
             next.apply(&mut self.settings);
+            // Rebuild texture slots after a pressure reduction. Lowering the
+            // preset changes texture demand while existing uploads may still
+            // reference the exhausted GPU state; rebuilding avoids black
+            // avatar bakes and stale world textures until the next restart.
+            self.scene.textures.gpu_reset(&mut gfx.renderer);
+            self.refresh_avatar_textures(self.world.agent_id);
             self.settings.save();
             self.snapshots.settings_changed = true;
             self.world
