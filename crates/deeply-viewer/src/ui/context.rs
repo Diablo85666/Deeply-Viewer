@@ -1068,6 +1068,7 @@ fn avatar_menu_reporting(
             offer_tp(ui);
             request_tp(ui);
             reject_teleport_offers(ui);
+            reject_conference(ui);
             if menu::item(ui, p, "coin-filled", deeply_i18n::tr!("common-pay")) {
                 act(CtxAction::PayResident(id));
             }
@@ -1114,6 +1115,7 @@ fn avatar_menu_reporting(
             }
             block(ui);
             reject_teleport_offers(ui);
+            reject_conference(ui);
             menu::separator(ui, p);
             copy(ui);
         }
