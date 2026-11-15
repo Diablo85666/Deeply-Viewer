@@ -60,6 +60,8 @@ pub struct AutoResponse {
     pub reject_teleports: bool,
     /// Residents whose teleport offers are refused individually.
     pub reject_teleport_offers_from: HashSet<Uuid>,
+    /// Residents whose ad-hoc text conference invitations are refused.
+    pub reject_conference_invites_from: HashSet<Uuid>,
     pub reject_group_invites: bool,
     pub reject_friendship: bool,
     pub ignore_adhoc: bool,
@@ -98,6 +100,7 @@ impl Default for AutoResponse {
             autorespond_nonfriends: false,
             reject_teleports: false,
             reject_teleport_offers_from: HashSet::new(),
+            reject_conference_invites_from: HashSet::new(),
             reject_group_invites: false,
             reject_friendship: false,
             ignore_adhoc: false,

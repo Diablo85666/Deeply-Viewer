@@ -676,6 +676,14 @@ impl App {
                 self.world.status.cfg = self.settings.autoresponse.clone();
                 self.settings.save();
             }
+            CtxAction::ToggleConferenceRejection(id) => {
+                let rejected = &mut self.settings.autoresponse.reject_conference_invites_from;
+                if !rejected.remove(&id) {
+                    rejected.insert(id);
+                }
+                self.world.status.cfg = self.settings.autoresponse.clone();
+                self.settings.save();
+            }
             // the volumes of the call's participants: applied live, saved
             // once the slider rests
             CtxAction::SetVoiceVolume(id, v) => {

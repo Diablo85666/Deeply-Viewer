@@ -315,6 +315,7 @@ fn action_key(action: &CtxAction) -> String {
         CtxAction::RefreshAttachments => "RefreshAttachments",
         CtxAction::ToggleBlock(..) => "ToggleBlock",
         CtxAction::ToggleTeleportOfferRejection(..) => "ToggleTeleportOfferRejection",
+        CtxAction::ToggleConferenceRejection(..) => "ToggleConferenceRejection",
         CtxAction::SetVoiceVolume(..) => "SetVoiceVolume",
         CtxAction::ToggleVoiceMute(..) => "ToggleVoiceMute",
         CtxAction::ModerateVoice(..) => "ModerateVoice",

@@ -834,6 +834,11 @@ impl World {
         if !in_group && self.friends_only_drops(&inv.from, &inv.from_name) {
             return;
         }
+        if !in_group && self.status.cfg.reject_conference_invites_from.contains(&inv.from) {
+            log::info!("ignoring conference invitation from {}", inv.from_name);
+            self.groups.im(inv.from, dialog::SESSION_LEAVE, session, String::new());
+            return;
+        }
         if !self.groups.sessions.contains_key(&session) || self.groups.restoring.contains(&session) {
             if in_group && !self.mutes.is_loaded() {
                 // FS: wait for the mute list before deciding
@@ -907,6 +912,13 @@ impl World {
             return false;
         }
         let session = im.session_id;
+        if !self.groups.sessions.contains_key(&session)
+            && !self.groups.groups.iter().any(|g| g.id == session)
+            && self.status.cfg.reject_conference_invites_from.contains(&im.from_agent_id)
+        {
+            self.groups.im(im.from_agent_id, dialog::SESSION_LEAVE, session, String::new());
+            return true;
+        }
         let mut reopened = false;
         if self.groups.restoring.contains(&session) {
             if !self.mutes.is_loaded() {

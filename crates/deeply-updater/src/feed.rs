@@ -8,9 +8,9 @@ use semver::Version;
 use serde::Deserialize;
 use std::time::Duration;
 
-pub const RELEASES: &str = "https://api.github.com/repos/Deeply-Viewer/Deeply-Viewer/releases?per_page=100";
-pub const RELEASE_PAGE: &str = "https://github.com/Deeply-Viewer/Deeply-Viewer/releases";
-const DOWNLOADS: &str = "https://github.com/Deeply-Viewer/Deeply-Viewer/releases/download";
+pub const RELEASES: &str = "https://api.github.com/repos/Diablo85666/Deeply-Deeply-Viewer/releases?per_page=100";
+pub const RELEASE_PAGE: &str = "https://github.com/Diablo85666/Deeply-Deeply-Viewer/releases";
+const DOWNLOADS: &str = "https://github.com/Diablo85666/Deeply-Deeply-Viewer/releases/download";
 pub const POLICY: &str = "deeply-update-policy.json";
 pub const MAX_ARCHIVE: u64 = 2 * 1024 * 1024 * 1024;
 /// How long an installation below a new minimum may still sign in, when
@@ -205,7 +205,7 @@ impl Source {
             return Ok(None);
         }
         self.validate_url(&r.html_url)?;
-        let expected = format!("Deeply-Viewer-{}-windows-x64.zip", r.tag_name);
+        let expected = format!("Deeply-Deeply-Viewer-{}-windows-x64.zip", r.tag_name.trim_start_matches('v'));
         let archive = r
             .assets
             .iter()
@@ -374,7 +374,7 @@ mod tests {
         let production = Source::default();
         assert!(
             production
-                .validate_url("https://github.com/Deeply-Viewer/Deeply-Viewer/releases")
+                .validate_url("https://github.com/Diablo85666/Deeply-Deeply-Viewer/releases")
                 .is_ok()
         );
         for url in [

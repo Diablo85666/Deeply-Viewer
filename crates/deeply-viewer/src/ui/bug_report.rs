@@ -17,6 +17,7 @@ const BUTTON: Vec2 = Vec2::new(0.0, 26.0);
 enum Delivery {
     Local,
     Browser,
+    LindenLab,
     #[default]
     Direct,
 }
@@ -199,18 +200,27 @@ impl BugReportUi {
                     if let Some((delivery, report, with_image)) = self.pending_delivery.take() {
                         if self.demo && delivery != Delivery::Local {
                             self.notice = Some("bug-demo-saved");
-                        } else if delivery == Delivery::Browser {
+                        } else if matches!(delivery, Delivery::Browser | Delivery::LindenLab) {
                             let body = report.markdown();
-                            let draft = github::browser_draft(&report.title, &body);
-                            if draft.paste_body {
+                            let url = if delivery == Delivery::LindenLab {
                                 ctx.copy_text(body);
-                            }
-                            self.notice = Some(if draft.paste_body {
-                                "bug-browser-paste"
+                                "https://support.secondlife.com/hc/en-us/requests/new".to_string()
                             } else {
-                                "bug-browser-opened"
-                            });
-                            ctx.open_url(egui::OpenUrl::new_tab(draft.url));
+                                let draft = github::browser_draft(&report.title, &body);
+                                if draft.paste_body {
+                                    ctx.copy_text(body);
+                                }
+                                self.notice = Some(if draft.paste_body {
+                                    "bug-browser-paste"
+                                } else {
+                                    "bug-browser-opened"
+                                });
+                                draft.url
+                            };
+                            if delivery == Delivery::LindenLab {
+                                self.notice = Some("bug-linden-lab-browser");
+                            }
+                            ctx.open_url(egui::OpenUrl::new_tab(url));
                             // Opening a draft URL is not confirmation of publication.
                             self.browser_opened = true;
                         } else if delivery == Delivery::Direct {
@@ -375,7 +385,8 @@ impl BugReportUi {
                         } else {
                             ("external-link-filled", deeply_i18n::tr!("bug-open-github"))
                         };
-                        let delivery_ready = self.delivery == Delivery::Browser || self.github.connected() || self.demo;
+                        let delivery_ready =
+                            matches!(self.delivery, Delivery::Browser | Delivery::LindenLab) || self.github.connected() || self.demo;
                         let ready = idle && self.report.ready() && delivery_ready && self.github.created.is_none();
                         if action_button_if(ui, p, icon, label, ActionKind::Primary, Vec2::new(0.0, 30.0), ready).clicked() {
                             self.save(self.delivery);
@@ -613,23 +624,33 @@ impl BugReportUi {
 
     fn delivery_options(&mut self, ui: &mut egui::Ui, p: &Palette) {
         // Only the current draft remembers the chosen delivery mode.
-        let mut mode = usize::from(self.delivery == Delivery::Browser);
+        let mut mode = match self.delivery {
+            Delivery::Direct => 0,
+            Delivery::Browser => 1,
+            Delivery::LindenLab => 2,
+            Delivery::Local => 0,
+        };
         let modes = [
             (deeply_i18n::tr!("bug-direct-mode"), true),
             (deeply_i18n::tr!("bug-browser-mode"), true),
+            (deeply_i18n::tr!("bug-linden-lab-mode"), true),
         ];
         if super::widgets::tabs(ui, p, &mut mode, &modes) {
-            self.delivery = if mode == 1 { Delivery::Browser } else { Delivery::Direct };
+            self.delivery = match mode {
+                1 => Delivery::Browser,
+                2 => Delivery::LindenLab,
+                _ => Delivery::Direct,
+            };
         }
         ui.label(
-            RichText::new(deeply_i18n::text(if self.delivery == Delivery::Browser {
-                "bug-browser-help"
-            } else {
-                "bug-direct-help"
+            RichText::new(deeply_i18n::text(match self.delivery {
+                Delivery::Browser => "bug-browser-help",
+                Delivery::LindenLab => "bug-linden-lab-help",
+                _ => "bug-direct-help",
             }))
             .color(p.muted),
         );
-        if self.delivery != Delivery::Direct {
+        if !matches!(self.delivery, Delivery::Direct) {
             return;
         }
         if self.demo {

@@ -381,6 +381,8 @@ pub enum CtxAction {
     ToggleBlock(Uuid),
     /// Refuse or allow teleport offers from one resident.
     ToggleTeleportOfferRejection(Uuid),
+    /// Refuse or allow ad-hoc text conference invitations from one resident.
+    ToggleConferenceRejection(Uuid),
     /// A resident's voice volume, 0..1 with 0.5 as sent (setUserVolume,
     /// LLSpeakerVolumeStorage).
     SetVoiceVolume(Uuid, f32),
@@ -783,6 +785,7 @@ fn avatar_menu_reporting(
     let friend = world.social.friends.iter().find(|f| f.id == id).cloned();
     let blocked = world.is_avatar_blocked(&id);
     let rejects_teleport_offers = world.status.cfg.reject_teleport_offers_from.contains(&id);
+    let rejects_conference = world.status.cfg.reject_conference_invites_from.contains(&id);
     let here = avatar_position(world, &id).is_some();
     let mappable = world.can_locate_avatar(id);
     let travel = !world.agent.is_sitting() && crate::autopilot::avatar_position(world, id).is_some();
@@ -824,6 +827,16 @@ fn avatar_menu_reporting(
             true,
         ) {
             act(CtxAction::ToggleTeleportOfferRejection(id));
+        }
+        if menu::check(
+            ui,
+            p,
+            "message-circle",
+            deeply_i18n::tr!("ui-context-reject-conference-invites-from"),
+            rejects_conference,
+            true,
+        ) {
+            act(CtxAction::ToggleConferenceRejection(id));
         }
         return;
     }
@@ -893,6 +906,18 @@ fn avatar_menu_reporting(
             true,
         ) {
             act(CtxAction::ToggleTeleportOfferRejection(id));
+        }
+    };
+    let reject_conference = |ui: &mut egui::Ui| {
+        if menu::check(
+            ui,
+            p,
+            "message-circle",
+            deeply_i18n::tr!("ui-context-reject-conference-invites-from"),
+            rejects_conference,
+            true,
+        ) {
+            act(CtxAction::ToggleConferenceRejection(id));
         }
     };
     let copy = |ui: &mut egui::Ui| {
@@ -972,6 +997,7 @@ fn avatar_menu_reporting(
             }
             block(ui);
             reject_teleport_offers(ui);
+            reject_conference(ui);
             // menu_fs_radar.xml / menu_mini_map.xml: Freeze, Parcel Eject,
             // then the estate's Teleport Home, Kick and Ban, each only where
             // we have the right (Avatar.VisibleFreezeEject,

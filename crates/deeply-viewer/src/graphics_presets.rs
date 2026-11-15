@@ -274,7 +274,7 @@ impl Preset {
         }
     }
 
-    fn lower(self) -> Preset {
+    pub(crate) fn lower(self) -> Preset {
         match self {
             Preset::Potato | Preset::Low => Preset::Potato,
             Preset::Medium => Preset::Low,

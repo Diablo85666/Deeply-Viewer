@@ -435,7 +435,7 @@ mod tests {
     fn release_notes_only_for_a_published_version() {
         assert_eq!(
             release_notes("0.7.0").as_deref(),
-            Some("https://github.com/Deeply-Viewer/Deeply-Viewer/releases/tag/v0.7.0")
+            Some("https://github.com/Diablo85666/Deeply-Deeply-Viewer/releases/tag/v0.7.0")
         );
         assert_eq!(release_notes("0.7.0+3.gabcdef123"), None);
         assert_eq!(release_notes("0.0.0"), None);

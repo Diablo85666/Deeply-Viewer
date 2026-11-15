@@ -160,7 +160,12 @@ fn components(name: &str) -> Result<Vec<&str>> {
 }
 
 pub fn extract(path: &Path, root: &Path, tag: &str, cancel: &Cancel) -> Result<PathBuf> {
-    unpack(path, root, &format!("Deeply-Viewer-{tag}-windows-x64"), cancel)?;
+    unpack(
+        path,
+        root,
+        &format!("Deeply-Deeply-Viewer-{}-windows-x64", tag.trim_start_matches('v')),
+        cancel,
+    )?;
     let manifest: InstallManifest = serde_json::from_slice(&fs::read(root.join("deeply-install.json"))?)?;
     ensure!(
         manifest.schema == 1 && manifest.version == tag.trim_start_matches('v'),

@@ -65,6 +65,7 @@ mod folders;
 mod hover_pick;
 mod texture_picker;
 use folders::chat_log_root;
+mod adaptive_graphics;
 mod admin_status;
 mod contents_drop_demo;
 mod contents_folder_drag_demo;
@@ -920,6 +921,7 @@ pub struct App {
     occluded: bool,
     /// The graphics card stopped finishing frames (app/gpu_stall.rs).
     gpu_stall: gpu_stall::GpuStall,
+    adaptive_graphics: adaptive_graphics::AdaptiveGraphics,
     /// The 3D paused behind on a busy card (app/busy_pause.rs).
     busy_pause: busy_pause::BusyPause,
     /// The other viewers on this PC (instances.rs).
@@ -1867,6 +1869,7 @@ impl App {
             crash_timeline: Default::default(),
             occluded: false,
             gpu_stall: Default::default(),
+            adaptive_graphics: Default::default(),
             busy_pause: Default::default(),
             instances: crate::instances::Instances::new(),
             crouch_toggle: Default::default(),
@@ -12525,6 +12528,16 @@ impl App {
         self.monitor_frame(&gfx.renderer);
         self.crash_state(&gfx.renderer, &gfx.window);
         self.gpu_stall_frame(&gfx.renderer);
+        if let Some(next) = self
+            .adaptive_graphics
+            .tick(&self.settings, &gfx.renderer, paced.as_secs_f32() * 1000.0)
+        {
+            next.apply(&mut self.settings);
+            self.settings.save();
+            self.snapshots.settings_changed = true;
+            self.world
+                .system_message(deeply_i18n::tr!("app-adaptive-graphics-reduced", value0 = next.label()));
+        }
         self.gfx = Some(gfx);
         if let Some(safe) = self.gpu_stall.recover.take() {
             if !self.recover_from_gpu_loss(event_loop, safe) {
