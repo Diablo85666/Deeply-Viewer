@@ -1,0 +1,30 @@
+Deeply Deeply Viewer 0.9.10.4 Stable
+Release notes
+
+The community Windows build integrates Deeply Deeply Viewer branding and
+retains the built-in browser, reports, avatar controls, adaptive graphics
+reduction and texture recovery.
+
+MAIN FIXES
+- Conference-chat rejection is available in the intended menus.
+- Rejection is applied before the session opens.
+- Black textures recover after hardware pressure, rebaking and reduction.
+- GPU slots are rebuilt and local bake textures are reloaded.
+- Cooldown prevents impulsive graphics changes.
+- Custom profiles are not changed automatically.
+
+FIRESTORM
+When enabled, sharing uses the same compatible local folder to read and write
+transcripts. Deeply and Firestorm can therefore view compatible files created
+by the other viewer. This is not cloud synchronization.
+
+SECURITY AND VERIFICATION
+SHA-256:
+6AE73A70D7D5EE419705DB744C214E26BFC230D543C73D185FB68C335789838A
+
+Signature:
+Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip.minisig
+
+An antivirus warning for a new executable can be caused by low reputation,
+missing Authenticode signing or heuristic detection. Do not dismiss it:
+verify provenance, checksum, signature and available scans before running.

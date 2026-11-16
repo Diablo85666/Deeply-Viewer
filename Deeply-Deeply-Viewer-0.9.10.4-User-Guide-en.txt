@@ -1,0 +1,37 @@
+Deeply Deeply Viewer 0.9.10.4
+User guide
+
+INSTALLATION
+1. Download the ZIP from the official GitHub release.
+2. Compare the .sha256 file.
+3. Verify the .minisig file with the README public key.
+4. Extract the complete ZIP into a dedicated folder.
+5. Start Deeply-Deeply-Viewer.exe.
+
+Do not remove the assets folder: the package is portable.
+
+LANGUAGE AND UPDATES
+Set DEEPLY_UI_LANGUAGE=it for Italian. Use the update check: the updater
+follows the community repository and Deeply-Deeply-Update-policy.json.
+
+BROWSER
+Use the built-in browser for HTTP/HTTPS URLs, navigation, reload and opening
+pages in the system browser. javascript: and data: schemes are rejected.
+
+AVATARS
+Context menus allow separate teleport and conference-chat rejection.
+Preferences persist and conference rejection is applied before opening.
+
+LOGS AND FIRESTORM
+Enable Firestorm sharing only when you want the same local transcript folder.
+Deeply imports existing transcripts and can read/write the compatible folder.
+Data is not synchronized over the Internet.
+
+GRAPHICS AND REPORTS
+Adaptive reduction protects the system without changing Custom profiles.
+Reports can be reviewed, copied or submitted through a GitHub draft only
+after authorization. Logs, position and screenshots are optional.
+
+SECURITY
+Do not dismiss operating-system warnings automatically. Check provenance,
+SHA-256, Minisign and available scan results before running the file.

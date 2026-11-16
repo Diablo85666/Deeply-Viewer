@@ -1,0 +1,44 @@
+Deeply Deeply Viewer 0.9.10.4
+Miglioramenti, funzionalita e correzioni
+
+Questo riepilogo copre le funzioni community verificabili dalla prima serie
+0.9.6 fino alla 0.9.10.4. Non esistono tag pubblici separati verificabili
+per 0.9.6 e 0.9.7, quindi non vengono attribuite correzioni a quei tag.
+
+IDENTITA E LOCALIZZAZIONE
+- Nome build: Deeply Deeply Viewer.
+- Autore community: MrDiablo85.
+- Interfaccia italiana e DEEPLY_UI_LANGUAGE=it.
+- Branding coerente in eseguibile, login, splash, icona e notifiche.
+
+FUNZIONI E CORREZIONI
+- Browser interno con navigazione, HTTPS e apertura nel browser di sistema.
+- Rifiuto persistente di teleport e conference chat per avatar.
+- Menu completi per avatar, amici e mittenti della chat.
+- Riduzione grafica Deluxe -> High -> Medium -> Low -> Potato.
+- Monitoraggio memoria, frame e stalli GPU con campioni e cooldown.
+- Profili Custom protetti dalle modifiche automatiche.
+- Ricostruzione slot texture GPU e reload delle bake texture.
+- Recupero delle texture nere di avatar e mondo senza riavvio.
+- Report locali, bozze GitHub e invio solo autorizzato.
+- Importazione e condivisione bilaterale locale dei transcript Firestorm.
+- Policy updater Deeply-Deeply-Update-policy.json.
+- Nomi asset community, SHA-256 e firma Minisign.
+
+La condivisione Firestorm usa la stessa cartella locale compatibile quando
+disponibile. Deeply puo leggere e scrivere transcript consultabili da
+Firestorm; Firestorm puo produrre transcript importabili in Deeply. Non e
+una sincronizzazione Internet e non trasferisce dati tra computer.
+
+VERIFICA 0.9.10.4
+Pacchetto: Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip
+SHA-256: 6AE73A70D7D5EE419705DB744C214E26BFC230D543C73D185FB68C335789838A
+Firma: Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip.minisig
+Chiave pubblica:
+RWQtAyq9dTabBnUU+7nX6IESxLp36DK5GK8BDcI6Mj5jveHqB7qvMJoh
+
+La firma verifica integrita e possesso della chiave. Non dimostra da sola
+l'assenza assoluta di malware.
+
+ROADMAP
+E prevista una build Linux community con pacchetti .deb per Debian e Ubuntu.

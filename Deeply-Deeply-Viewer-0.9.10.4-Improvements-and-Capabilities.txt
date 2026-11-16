@@ -1,0 +1,43 @@
+Deeply Deeply Viewer 0.9.10.4
+Improvements, capabilities and fixes
+
+This summary covers verifiable community features from the first 0.9.6
+series through 0.9.10.4. Separate public tags for 0.9.6 and 0.9.7 are not
+available, so fixes are not assigned to unavailable tags.
+
+IDENTITY AND LOCALIZATION
+- Deeply Deeply Viewer community build maintained by MrDiablo85.
+- Italian interface and DEEPLY_UI_LANGUAGE=it.
+- Consistent branding in executable, login, splash, icon and notifications.
+
+FEATURES AND FIXES
+- Built-in browser with navigation, HTTPS and system-browser opening.
+- Persistent per-avatar teleport and conference-chat rejection.
+- Complete avatar, friend and chat-sender menus.
+- Deluxe -> High -> Medium -> Low -> Potato adaptive graphics reduction.
+- Memory, frame-time and GPU-stall monitoring with samples and cooldown.
+- Custom profiles protected from automatic changes.
+- GPU texture-slot reconstruction and avatar-bake reload.
+- Black avatar and world texture recovery without restarting.
+- Local reports, GitHub drafts and authorized submission.
+- Firestorm transcript import and bilateral local sharing.
+- Deeply-Deeply-Update-policy.json updater policy.
+- Community asset names, SHA-256 and Minisign verification.
+
+Firestorm sharing uses the same compatible local folder when available.
+Deeply can read and write transcripts that Firestorm can view; Firestorm
+transcripts can be imported into Deeply. This is not Internet synchronization
+and does not transfer data between computers.
+
+0.9.10.4 VERIFICATION
+Package: Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip
+SHA-256: 6AE73A70D7D5EE419705DB744C214E26BFC230D543C73D185FB68C335789838A
+Signature: Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip.minisig
+Public key:
+RWQtAyq9dTabBnUU+7nX6IESxLp36DK5GK8BDcI6Mj5jveHqB7qvMJoh
+
+The signature verifies integrity and possession of the signing key. It does
+not, by itself, prove the absolute absence of malware.
+
+ROADMAP
+A community Linux build with .deb packages for Debian and Ubuntu is planned.

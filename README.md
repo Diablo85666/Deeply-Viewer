@@ -40,6 +40,12 @@ Il pacchetto è portable: estrai tutti i file e avvia
 `Deeply-Deeply-Viewer.exe`. Verifica sempre il checksum pubblicato nella
 release prima dell'uso.
 
+Documentazione dettagliata:
+
+- [Miglioramenti e potenzialità 0.9.10.4](Deeply-Deeply-Viewer-0.9.10.4-Miglioramenti-e-Potenzialita.txt)
+- [Note di rilascio 0.9.10.4](Deeply-Deeply-Viewer-0.9.10.4-Release-Notes-it.txt)
+- [Guida all'utilizzo](Deeply-Deeply-Viewer-0.9.10.4-Guida-uso-it.txt)
+
 ### Miglioramenti cumulativi dalla serie 0.9.6 alla 0.9.10.4
 
 Il checkout pubblico corrente non contiene tag separati verificabili per le
@@ -190,6 +196,12 @@ The package is portable: extract all files and start
 `Deeply-Deeply-Viewer.exe`. Always verify the checksum published with the
 release before using the package. The release also includes a Minisign
 signature for the package.
+
+Detailed documentation:
+
+- [0.9.10.4 improvements and capabilities](Deeply-Deeply-Viewer-0.9.10.4-Improvements-and-Capabilities.txt)
+- [0.9.10.4 release notes](Deeply-Deeply-Viewer-0.9.10.4-Release-Notes-en.txt)
+- [User guide](Deeply-Deeply-Viewer-0.9.10.4-User-Guide-en.txt)
 
 ### Cumulative improvements from 0.9.6 through 0.9.10.4
 
