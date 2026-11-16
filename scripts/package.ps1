@@ -37,6 +37,9 @@ Get-ChildItem -LiteralPath $dictionaries -Directory -ErrorAction Stop | ForEach-
 }
 $docs = 'LICENSE', 'NOTICE.md', 'README.md' | ForEach-Object { Join-Path $Source $_ }
 Copy-Item -LiteralPath $docs -Destination $Out -ErrorAction Stop
+$branding = Join-Path $Out 'assets/branding'
+New-Item -ItemType Directory -Force -Path $branding -ErrorAction Stop | Out-Null
+Copy-Item -LiteralPath (Join-Path $Source 'assets/branding/deeply-deeply-viewer.jpg') -Destination $branding -ErrorAction Stop
 # Linux (an executable without extension): the desktop entry and its icon,
 # named after the viewer's Wayland app_id / X11 WM_CLASS (cli.rs DESKTOP_ID)
 # so the desktop matches the window to them. docs/LINUX.md installs them.
