@@ -9,6 +9,10 @@
   Community Windows build prepared by MrDiablo85
 </p>
 
+> **LEGGERE BENE FINO ALLA FINE.** Questo README descrive identità,
+> funzionalità, miglioramenti, verifiche, avvisi antivirus e responsabilità
+> della build Deeply Deeply Viewer.
+
 <p align="center">
   <a href="https://github.com/Diablo85666/Deeply-Deeply-Viewer">GitHub</a> ·
   <a href="https://discord.gg/VgkrhRZka">Discord</a> ·
@@ -435,3 +439,122 @@ the source code. See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).
 - GitHub: <https://github.com/Diablo85666/Deeply-Deeply-Viewer>
 - Discord: <https://discord.gg/VgkrhRZka>
 - Author: <https://github.com/Diablo85666>
+
+---
+
+<p align="center">
+  <img src="assets/branding/deeply-deeply-viewer.jpg" alt="Logo Deeply Deeply Viewer" width="220">
+</p>
+
+<h2 align="center">Deeply Deeply Viewer 0.9.10.4</h2>
+
+## Riepilogo finale: leggere fino alla fine
+
+Questa sezione raccoglie in un unico punto le potenzialità e i miglioramenti
+community presenti nella release Windows 0.9.10.4 rispetto alla base pubblica
+dalla serie 0.9.6. I tag separati 0.9.6 e 0.9.7 non sono disponibili nel
+checkout pubblico; per questo la cronologia è descritta come riepilogo
+cumulativo verificabile e non attribuisce singole modifiche a tag mancanti.
+
+### Potenzialità e miglioramenti
+
+- Identità Deeply Deeply Viewer, logo community e localizzazione italiana.
+- Branding coerente nell'eseguibile, login, splash, icona, notifiche e
+  documentazione.
+- Feed aggiornamenti personale con policy
+  `Deeply-Deeply-Update-policy.json`, manifest e nomi asset community.
+- Pacchetto Windows portable con verifica SHA-256 e firma Minisign.
+- Browser interno con indirizzo, navigazione indietro/avanti, arresto,
+  ricaricamento, stato HTTPS e apertura nel browser di sistema.
+- Supporto ai comportamenti `SystemForAll`, `BuiltInForSecondLife` e
+  `BuiltInForAll`, oltre a HTTP, HTTPS, SLURL e app link compatibili.
+- Blocco degli schemi non consentiti come `javascript:` e `data:`.
+- Rifiuto persistente per singolo avatar di teleport e conference chat.
+- Applicazione del rifiuto conference prima dell'apertura della sessione.
+- Controlli separati per blocco, voce, teleport e conference chat nei menu di
+  avatar, amici e mittenti della chat.
+- Monitoraggio di memoria, tempi frame e stalli GPU.
+- Riduzione grafica progressiva `Deluxe -> High -> Medium -> Low -> Potato`.
+- Campioni consecutivi e cooldown per evitare riduzioni causate da picchi
+  isolati.
+- Profili Custom protetti dalle modifiche automatiche.
+- Ricostruzione degli slot texture GPU dopo pressione grafica.
+- Ricaricamento delle texture bake dell'avatar locale e recupero delle
+  texture nere di volto, mento, occhi e mondo senza riavvio.
+- Separazione tra recupero grafico ordinario e safe graphics di emergenza.
+- Importazione dei transcript Firestorm esistenti, con ricerca automatica
+  delle cartelle compatibili o selezione manuale.
+- Condivisione **bilaterale locale** dei log tra Deeply e Firestorm: Deeply
+  può leggere e scrivere nella cartella compatibile, Firestorm può consultare
+  le conversazioni registrate da Deeply e Deeply può importare quelle
+  registrate da Firestorm.
+- Supporto a conversazioni private e di gruppo compatibili e cartelle
+  separate per grid personalizzate.
+- Nessuna sincronizzazione cloud e nessun trasferimento automatico dei log tra
+  computer.
+- Report locali, copia negli appunti, bozze GitHub e invio solo dopo
+  autorizzazione esplicita.
+- Log, diagnostica, posizione e screenshot opzionali.
+- Branding e packaging uniformati per evitare la selezione di asset upstream.
+
+### Risoluzioni e stabilità
+
+- Risolto il problema dei comandi conference chat disponibili solo in alcuni
+  menu.
+- Risolto il problema dell'apertura della conference prima dell'applicazione
+  della preferenza di rifiuto.
+- Risolti i casi di texture nere persistenti dopo pressione hardware, rebake o
+  riduzione della qualità grafica.
+- Risolto il riutilizzo di slot texture GPU corrotti fino al riavvio.
+- Risolto il mancato reload di texture bake locali e texture del mondo dopo il
+  recupero.
+- Ridotti i cambi grafici impulsivi causati da campioni isolati.
+- Impedite modifiche automatiche ai profili Custom.
+- Separato il recupero ordinario dalla modalità safe graphics.
+- Reso l'updater coerente con il repository community, la nuova policy e gli
+  asset Deeply Deeply Viewer.
+- Centralizzati logo, nome e branding per evitare incoerenze nell'interfaccia.
+
+### Responsabilità del creatore e del pubblicatore
+
+Deeply Deeply Viewer 0.9.10.4 è una build community creata e pubblicata da
+**MrDiablo85** tramite l'account GitHub `Diablo85666`. Il responsabile e
+creatore della build dichiara di utilizzare un account GitHub verificato e si
+assume la responsabilità della build pubblicata e delle informazioni fornite
+con questa release. L'eventuale badge o stato di verifica è quello assegnato
+e mostrato ufficialmente da GitHub.
+
+### SHA-256, Minisign e avvisi antivirus
+
+- **SHA-256** è un'impronta matematica del file: confrontando il valore
+  pubblicato con quello del download si rilevano alterazioni o danneggiamenti.
+  Non identifica da solo il creatore e non prova l'assenza di virus.
+- **Minisign** è una firma crittografica: la verifica con la chiave pubblica
+  conferma che il pacchetto corrisponde a quello firmato dalla chiave privata
+  del responsabile e non è stato modificato dopo la firma. La chiave privata
+  non è pubblicata, caricata o distribuita. Minisign non è un antivirus.
+- Windows Defender o altri antivirus possono segnalare anche file senza virus
+  per reputazione bassa, scarsa prevalenza, assenza di Authenticode o
+  rilevazioni euristiche. Avvisi simili possono apparire al primo download di
+  viewer conosciuti come Firestorm o Deeply, ma non devono essere ignorati:
+  occorre verificare origine, SHA-256, Minisign e scansioni disponibili.
+
+### Final summary: read to the end
+
+This final section identifies the Windows 0.9.10.4 community build as Deeply
+Deeply Viewer and summarizes its cumulative browser, avatar-control, adaptive
+graphics, texture-recovery, reporting, updater, branding, packaging and
+bilateral local Firestorm transcript-sharing improvements. The build creator
+and publisher is MrDiablo85, using the GitHub account `Diablo85666`; the
+creator states that this is a verified GitHub account and assumes
+responsibility for the published build and release information. Any official
+verification badge or status is determined and displayed by GitHub.
+
+SHA-256 is the package fingerprint used to detect changes or corruption.
+Minisign is the cryptographic signature checked with the public key and does
+not expose the private key. Neither one is an antivirus scan or proof of the
+absolute absence of malware. Windows Defender and other antivirus products
+may warn about files without viruses because of reputation, prevalence,
+missing Authenticode signing or heuristic detection; similar first-download
+warnings may occur with viewers such as Firestorm or Deeply. Always verify
+the source, checksum, signature and available scans.
