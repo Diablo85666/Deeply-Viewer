@@ -74,7 +74,7 @@ jobs:
         run: |
           dump_syms target/release/deeply-viewer.exe --store symbols
           if ($LASTEXITCODE -ne 0) { throw 'dump_syms failed' }
-          $zip = "Deeply-Viewer-$env:TAG-windows-x64-symbols.zip"
+          $zip = "Deeply-Deeply-Viewer-$env:TAG-windows-x64-symbols.zip"
           & 7z a -tzip -mx=9 $zip ./symbols/* | Out-Null
           if ($LASTEXITCODE -ne 0) { throw '7z failed' }
           $hash = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -87,7 +87,7 @@ jobs:
         shell: pwsh
         run: |
           $v = $env:TAG
-          $dir = "Deeply-Viewer-$v-windows-x64"
+          $dir = "Deeply-Deeply-Viewer-$v-windows-x64"
           ./scripts/package.ps1 -Exe target/release/deeply-viewer.exe -Out $dir
           Compress-Archive -Path $dir -DestinationPath "$dir.zip"
           $hash = (Get-FileHash -LiteralPath "$dir.zip" -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -103,7 +103,7 @@ jobs:
           $v = $env:TAG
           # The header (Linden Lab disclaimer, support, privacy: Third-Party
           # Viewer Policy §1.c) comes before the generated notes.
-          $ghArgs = @($v, $env:ZIP, "$($env:ZIP).sha256", $env:SYMBOLS, "$($env:SYMBOLS).sha256", 'deeply-update-policy.json', '--title', "Deeply Viewer $v", '--notes-file', '.github/release-notes-header.md', '--generate-notes', '--verify-tag')
+          $ghArgs = @($v, $env:ZIP, "$($env:ZIP).sha256", $env:SYMBOLS, "$($env:SYMBOLS).sha256", 'deeply-update-policy.json', '--title', "Deeply Deeply Viewer $v", '--notes-file', '.github/release-notes-header.md', '--generate-notes', '--verify-tag')
           if ($v -match '-') { $ghArgs += '--prerelease' }   # v0.3.0-beta.1
           gh release create @ghArgs
       - name: Dry-run symbols
@@ -158,7 +158,7 @@ jobs:
         shell: pwsh
         run: |
           $v = $env:TAG
-          $dir = "Deeply-Viewer-$v-linux-x64"
+          $dir = "Deeply-Deeply-Viewer-$v-linux-x64"
           ./scripts/package.ps1 -Exe target/release/deeply-viewer -Out $dir
           & tar -czf "$dir.tar.gz" $dir
           if ($LASTEXITCODE -ne 0) { throw 'tar failed' }
@@ -268,7 +268,7 @@ jobs:
       # signature (and its stapled ticket)
       - name: Disk image
         run: |
-          dmg="Deeply-Viewer-$TAG-macos-arm64.dmg"
+          dmg="Deeply-Deeply-Viewer-$TAG-macos-arm64.dmg"
           stage="$RUNNER_TEMP/dmg"
           mkdir -p "$stage"
           ditto "$APP" "$stage/$APP"
