@@ -40,6 +40,26 @@ Il pacchetto Windows attuale è:
 
 `Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip`
 
+#### Quale file scaricare per utilizzare il viewer
+
+Per utilizzare il programma e avviare l'eseguibile `.exe`, scarica
+**esclusivamente** questo file:
+
+`Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip`
+
+Dopo il download:
+
+1. verifica il file con il relativo `.sha256` e, se possibile, con il file
+   `.minisig`;
+2. fai clic destro sullo ZIP e scegli **Estrai tutto**;
+3. estrai tutti i contenuti in una cartella dedicata;
+4. avvia `Deeply-Deeply-Viewer.exe` dalla cartella estratta.
+
+Non devi aprire o estrarre i file `.sha256`, `.minisig` o
+`Deeply-Deeply-Update-policy.json`: sono file di verifica e configurazione.
+Gli archivi **Source code (zip)** e **Source code (tar.gz)** contengono il
+codice sorgente e non sono la build Windows pronta da avviare.
+
 Il pacchetto è portable: estrai tutti i file e avvia
 `Deeply-Deeply-Viewer.exe`. Verifica sempre il checksum pubblicato nella
 release prima dell'uso.
@@ -250,6 +270,25 @@ packages for Debian and Ubuntu distributions.
 The current Windows package is:
 
 `Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip`
+
+#### Which file to download to use the viewer
+
+To use the program and start the `.exe`, download **only** this file:
+
+`Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip`
+
+After downloading:
+
+1. verify the file with its `.sha256` file and, when possible, its
+   `.minisig` file;
+2. right-click the ZIP and choose **Extract All**;
+3. extract all contents into a dedicated folder;
+4. start `Deeply-Deeply-Viewer.exe` from the extracted folder.
+
+Do not open or extract the `.sha256`, `.minisig`, or
+`Deeply-Deeply-Update-policy.json` files: they are verification and
+configuration files. The **Source code (zip)** and **Source code (tar.gz)**
+archives contain source code and are not the ready-to-run Windows build.
 
 The package is portable: extract all files and start
 `Deeply-Deeply-Viewer.exe`. Always verify the checksum published with the
