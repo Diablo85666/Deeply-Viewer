@@ -103,6 +103,29 @@ senza attribuire singole modifiche a tag che non sono disponibili.
 - Recupero da texture nere su volto, mento, occhi e mondo senza riavvio.
 - Safe graphics di emergenza mantenuto separato.
 
+#### Bug risolti e stabilità
+
+- Risolto il problema per cui il rifiuto delle conference chat era disponibile
+  solo in alcuni menu: il comando è ora esposto nei menu degli avatar, amici
+  e mittenti della chat.
+- Risolto il problema per cui una conference chat poteva aprirsi prima che
+  la preferenza di rifiuto venisse applicata.
+- Risolto il problema delle texture nere persistenti dopo pressione hardware,
+  rebake o riduzione della qualità grafica.
+- Risolto il problema per cui gli slot texture GPU corrotti restavano in uso
+  fino al riavvio del viewer.
+- Risolto il problema per cui le texture bake dell'avatar locale e alcune
+  texture del mondo non venivano ricaricate dopo il recupero.
+- Ridotti i cambi di qualità causati da picchi isolati tramite campioni
+  consecutivi e cooldown.
+- Impedita la modifica automatica dei profili grafici Custom.
+- Separato il recupero grafico ordinario dalla modalità safe graphics di
+  emergenza.
+- Reso verificabile il pacchetto con manifest, nome asset, SHA-256 e firma
+  Minisign, evitando che l'updater scelga pacchetti upstream.
+- Centralizzato il branding community in login, splash, icona finestra e
+  notifiche per evitare nomi e loghi incoerenti.
+
 #### Log e report
 
 - Condivisione bilaterale opzionale dei transcript con Firestorm.
@@ -225,6 +248,27 @@ assigning individual changes to unavailable tags.
 - Local avatar bake textures are refreshed.
 - Black face, chin, eye, and world textures can recover without a restart.
 - Emergency safe graphics remains separate.
+
+#### Fixed bugs and stability improvements
+
+- Fixed conference-chat rejection being exposed in only some menus: the
+  command is now available from avatar, friend, and chat-sender menus.
+- Fixed conference sessions opening before the per-avatar rejection
+  preference was applied.
+- Fixed persistent black textures after hardware pressure, rebaking, or
+  graphics-quality reduction.
+- Fixed corrupted GPU texture slots remaining active until the viewer
+  restarted.
+- Fixed local avatar bake textures and some world textures not being
+  reloaded after recovery.
+- Reduced quality changes caused by isolated spikes through consecutive
+  samples and a cooldown.
+- Prevented Custom graphics profiles from being changed automatically.
+- Kept ordinary graphics recovery separate from emergency safe graphics.
+- Made packages verifiable through the manifest, asset name, SHA-256, and
+  Minisign signature so the updater does not select upstream packages.
+- Centralized community branding across login, splash, window icon, and
+  notifications to prevent inconsistent names and logos.
 
 #### Logs and reports
 
