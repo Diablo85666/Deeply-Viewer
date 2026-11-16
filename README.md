@@ -5,7 +5,7 @@
 <h1 align="center">Deeply Deeply Viewer</h1>
 
 <p align="center">
-  <strong>0.9.10.3 Stable</strong><br>
+  <strong>0.9.10.4 Stable</strong><br>
   Community Windows build prepared by MrDiablo85
 </p>
 
@@ -31,18 +31,31 @@ release](https://github.com/Diablo85666/Deeply-Deeply-Viewer/releases/latest).
 
 Il pacchetto Windows attuale è:
 
-`Deeply-Deeply-Viewer-0.9.10.3-windows-x64.zip`
+`Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip`
 
 Il pacchetto è portable: estrai tutti i file e avvia
 `Deeply-Deeply-Viewer.exe`. Verifica sempre il checksum pubblicato nella
 release prima dell'uso.
 
-### Miglioramenti verificabili dalla cronologia disponibile
+### Miglioramenti cumulativi dalla serie 0.9.6 alla 0.9.10.4
 
 Il checkout pubblico corrente non contiene tag separati verificabili per le
-versioni 0.9.6 e 0.9.7. Per evitare attribuzioni non documentate, questa
-sezione riporta le funzionalità verificabili nel codice e nelle release
-community disponibili da 0.9.10.1 a 0.9.10.3.
+versioni 0.9.6 e 0.9.7. La lista seguente è quindi una panoramica cumulativa
+delle funzionalità community presenti e verificabili nel ramo pubblico,
+senza attribuire singole modifiche a tag che non sono disponibili.
+
+#### Percorso delle release
+
+- **0.9.6–0.9.7**: base community, localizzazione italiana, identità
+  Deeply Deeply Viewer e consolidamento delle funzioni di compatibilità.
+- **0.9.10.1–0.9.10.2**: aggiornamenti community, feed personale,
+  pacchetto portable, browser interno, report, condivisione log e controlli
+  per avatar.
+- **0.9.10.3**: rifiuto delle conference chat per avatar e recupero delle
+  texture dopo la riduzione grafica adattiva.
+- **0.9.10.4**: branding community integrato nell'eseguibile, schermata
+  iniziale, login, icona finestra e notifiche; pacchetto firmato con
+  Minisign.
 
 #### Identità e localizzazione
 
@@ -92,7 +105,16 @@ community disponibili da 0.9.10.1 a 0.9.10.3.
 
 #### Log e report
 
-- Condivisione opzionale dei transcript compatibili con Firestorm.
+- Condivisione bilaterale opzionale dei transcript con Firestorm.
+- Importazione dei transcript Firestorm già presenti, con selezione delle
+  cartelle trovate o scelta manuale di una cartella.
+- Quando la condivisione è attiva e la cartella dell'account viene trovata,
+  Deeply legge e scrive nella stessa cartella locale compatibile con
+  Firestorm: le conversazioni registrate da Deeply possono quindi essere
+  consultate da Firestorm e quelle registrate da Firestorm possono essere
+  importate e visualizzate da Deeply.
+- La condivisione è locale e bilaterale sui file: non sincronizza i dati via
+  Internet e non trasferisce transcript tra computer.
 - Supporto a conversazioni private e di gruppo compatibili.
 - Cartelle separate per grid personalizzate.
 - Salvataggio locale dei report.
@@ -100,6 +122,15 @@ community disponibili da 0.9.10.1 a 0.9.10.3.
 - Copia del report e revisione nel modulo ufficiale Linden Lab.
 - Nessun invio automatico a endpoint Linden Lab non documentati.
 - Log, diagnostica, posizione e screenshot restano opzionali.
+
+#### Verifica della release 0.9.10.4
+
+- SHA-256 del pacchetto Windows:
+  `6AE73A70D7D5EE419705DB744C214E26BFC230D543C73D185FB68C335789838A`
+- Firma: `Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip.minisig`
+- Chiave pubblica Minisign:
+  `RWQtAyq9dTabBnUU+7nX6IESxLp36DK5GK8BDcI6Mj5jveHqB7qvMJoh`
+- La chiave privata Minisign non è inclusa nel repository o nel pacchetto.
 
 ### Privacy, licenza e attribuzioni
 
@@ -124,18 +155,30 @@ releases page](https://github.com/Diablo85666/Deeply-Deeply-Viewer/releases/late
 
 The current Windows package is:
 
-`Deeply-Deeply-Viewer-0.9.10.3-windows-x64.zip`
+`Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip`
 
 The package is portable: extract all files and start
 `Deeply-Deeply-Viewer.exe`. Always verify the checksum published with the
-release before using the package.
+release before using the package. The release also includes a Minisign
+signature for the package.
 
-### Improvements verifiable from the available history
+### Cumulative improvements from 0.9.6 through 0.9.10.4
 
 The current public checkout does not contain separate verifiable tags for
-versions 0.9.6 and 0.9.7. To avoid undocumented claims, this section lists
-features verifiable in the code and community releases available from
-0.9.10.1 through 0.9.10.3.
+versions 0.9.6 and 0.9.7. The following is therefore a cumulative overview
+of community features present and verifiable in the public branch, without
+assigning individual changes to unavailable tags.
+
+#### Release path
+
+- **0.9.6–0.9.7**: community foundation, Italian localization, Deeply
+  Deeply Viewer identity, and compatibility work.
+- **0.9.10.1–0.9.10.2**: community updates, personal update feed, portable
+  package, built-in browser, reports, log sharing, and per-avatar controls.
+- **0.9.10.3**: per-avatar conference-chat rejection and texture recovery
+  after adaptive graphics reduction.
+- **0.9.10.4**: community branding integrated into the executable, startup
+  screen, login, window icon, and notifications; Minisign-signed package.
 
 #### Identity and localization
 
@@ -185,7 +228,15 @@ features verifiable in the code and community releases available from
 
 #### Logs and reports
 
-- Optional transcript sharing with compatible Firestorm folders.
+- Optional bilateral transcript sharing with Firestorm.
+- Import of existing Firestorm transcripts, with discovered folders or a
+  manually selected folder.
+- When sharing is enabled and the account folder is found, Deeply reads and
+  writes the same local Firestorm-compatible folder: conversations recorded
+  by Deeply can be viewed by Firestorm, and conversations recorded by
+  Firestorm can be imported and viewed by Deeply.
+- This is local, bilateral file sharing. It does not synchronize data over
+  the Internet or transfer transcripts between computers.
 - Support for compatible private and group conversations.
 - Separate folders for custom grids.
 - Local report saving.
@@ -193,6 +244,15 @@ features verifiable in the code and community releases available from
 - Clipboard copy and review in the official Linden Lab form.
 - No automatic submission to undocumented Linden Lab endpoints.
 - Logs, diagnostics, position, and screenshots remain optional.
+
+#### 0.9.10.4 release verification
+
+- Windows package SHA-256:
+  `6AE73A70D7D5EE419705DB744C214E26BFC230D543C73D185FB68C335789838A`
+- Signature: `Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip.minisig`
+- Minisign public key:
+  `RWQtAyq9dTabBnUU+7nX6IESxLp36DK5GK8BDcI6Mj5jveHqB7qvMJoh`
+- The Minisign private key is not included in the repository or package.
 
 ### Privacy, license, and attribution
 
