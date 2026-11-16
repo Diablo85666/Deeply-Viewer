@@ -35,7 +35,17 @@ Get-ChildItem -LiteralPath $dictionaries -Directory -ErrorAction Stop | ForEach-
         Copy-Item -LiteralPath $license -Destination (Join-Path $dictionariesOut "$($_.Name)-LICENSE.txt") -ErrorAction Stop
     }
 }
-$docs = 'LICENSE', 'NOTICE.md', 'README.md' | ForEach-Object { Join-Path $Source $_ }
+$docs = @(
+    'LICENSE',
+    'NOTICE.md',
+    'README.md',
+    'Deeply-Deeply-Viewer-0.9.10.4-Miglioramenti-e-Potenzialita.txt',
+    'Deeply-Deeply-Viewer-0.9.10.4-Improvements-and-Capabilities.txt',
+    'Deeply-Deeply-Viewer-0.9.10.4-Release-Notes-it.txt',
+    'Deeply-Deeply-Viewer-0.9.10.4-Release-Notes-en.txt',
+    'Deeply-Deeply-Viewer-0.9.10.4-Guida-uso-it.txt',
+    'Deeply-Deeply-Viewer-0.9.10.4-User-Guide-en.txt'
+) | ForEach-Object { Join-Path $Source $_ }
 Copy-Item -LiteralPath $docs -Destination $Out -ErrorAction Stop
 $branding = Join-Path $Out 'assets/branding'
 New-Item -ItemType Directory -Force -Path $branding -ErrorAction Stop | Out-Null

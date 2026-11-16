@@ -190,8 +190,8 @@ senza attribuire singole modifiche a tag che non sono disponibili.
 
 #### Verifica della release 0.9.10.4
 
-- SHA-256 del pacchetto Windows:
-  `6AE73A70D7D5EE419705DB744C214E26BFC230D543C73D185FB68C335789838A`
+- SHA-256 del pacchetto Windows: vedere il file `.sha256` allegato alla
+  release; il valore lì riportato è la fonte autorevole per il download.
 - Firma: `Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip.minisig`
 - Chiave pubblica Minisign:
   `RWQtAyq9dTabBnUU+7nX6IESxLp36DK5GK8BDcI6Mj5jveHqB7qvMJoh`
@@ -395,8 +395,8 @@ assigning individual changes to unavailable tags.
 
 #### 0.9.10.4 release verification
 
-- Windows package SHA-256:
-  `6AE73A70D7D5EE419705DB744C214E26BFC230D543C73D185FB68C335789838A`
+- Windows package SHA-256: see the `.sha256` file attached to the release;
+  its value is authoritative for the download.
 - Signature: `Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip.minisig`
 - Minisign public key:
   `RWQtAyq9dTabBnUU+7nX6IESxLp36DK5GK8BDcI6Mj5jveHqB7qvMJoh`
