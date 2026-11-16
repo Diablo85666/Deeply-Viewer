@@ -164,6 +164,32 @@ senza attribuire singole modifiche a tag che non sono disponibili.
   `RWQtAyq9dTabBnUU+7nX6IESxLp36DK5GK8BDcI6Mj5jveHqB7qvMJoh`
 - La chiave privata Minisign non è inclusa nel repository o nel pacchetto.
 
+#### Significato delle verifiche e degli avvisi antivirus
+
+- **SHA-256** è un'impronta matematica del file. Dopo il download, il
+  confronto con il valore pubblicato permette di verificare che il pacchetto
+  sia identico a quello pubblicato e non sia stato alterato. SHA-256 non
+  identifica da solo l'autore e non certifica l'assenza di malware.
+- **Minisign** è una firma crittografica del file. La verifica con la chiave
+  pubblica conferma che il file corrisponde a quello firmato con la chiave
+  privata Deeply Deeply Viewer e che non è stato modificato dopo la firma.
+  La chiave privata non viene pubblicata né distribuita. Anche Minisign non
+  è una scansione antivirus e non dimostra da solo l'assenza assoluta di
+  codice dannoso.
+- Windows Defender o altri antivirus possono mostrare avvisi di reputazione,
+  prevalenza ridotta, firma Authenticode assente o rilevazione euristica
+  anche quando un file non contiene virus. Avvisi analoghi possono comparire
+  al primo download di viewer conosciuti come Firestorm o Deeply, ma ogni
+  avviso deve comunque essere verificato e non ignorato automaticamente.
+  Controllare sempre origine, checksum, firma e risultati delle scansioni
+  disponibili.
+- La build è pubblicata tramite l'account GitHub `Diablo85666`, indicato come
+  account del responsabile della community. Il responsabile e creatore della
+  build, MrDiablo85, si assume la responsabilità della build pubblicata e
+  delle informazioni di rilascio. Il badge o lo stato di verifica
+  dell'account è determinato esclusivamente da GitHub e non viene sostituito
+  da SHA-256 o Minisign.
+
 ### Privacy, licenza e attribuzioni
 
 Il pacchetto distribuito non contiene i log personali dell'utente, transcript,
@@ -315,6 +341,29 @@ assigning individual changes to unavailable tags.
 - Minisign public key:
   `RWQtAyq9dTabBnUU+7nX6IESxLp36DK5GK8BDcI6Mj5jveHqB7qvMJoh`
 - The Minisign private key is not included in the repository or package.
+
+#### What the checks and antivirus warnings mean
+
+- **SHA-256** is a mathematical file fingerprint. Comparing the downloaded
+  file with the published value verifies that the package is identical to the
+  published package and was not altered. SHA-256 alone does not identify the
+  author or certify the absence of malware.
+- **Minisign** is a cryptographic file signature. Verification with the
+  public key confirms that the file matches the file signed with the Deeply
+  Deeply Viewer private key and was not modified after signing. The private
+  key is never published or distributed. Minisign is not an antivirus scan
+  and does not, by itself, prove the absolute absence of malicious code.
+- Windows Defender and other antivirus products can show reputation,
+  low-prevalence, missing-Authenticode, or heuristic warnings even when a
+  file contains no virus. Similar warnings may appear on the first download
+  of established viewers such as Firestorm or Deeply, but every warning must
+  still be investigated rather than dismissed automatically. Always check
+  provenance, checksum, signature, and available scan results.
+- The build is published through the GitHub account `Diablo85666`, identified
+  as the community maintainer account. The responsible build creator,
+  MrDiablo85, assumes responsibility for the published build and release
+  information. Any account verification badge or status is determined only
+  by GitHub and is not replaced by SHA-256 or Minisign.
 
 ### Privacy, license, and attribution
 
