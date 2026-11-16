@@ -11,7 +11,7 @@ use std::time::Duration;
 pub const RELEASES: &str = "https://api.github.com/repos/Diablo85666/Deeply-Deeply-Viewer/releases?per_page=100";
 pub const RELEASE_PAGE: &str = "https://github.com/Diablo85666/Deeply-Deeply-Viewer/releases";
 const DOWNLOADS: &str = "https://github.com/Diablo85666/Deeply-Deeply-Viewer/releases/download";
-pub const POLICY: &str = "deeply-update-policy.json";
+pub const POLICY: &str = "Deeply-Deeply-Update-policy.json";
 pub const MAX_ARCHIVE: u64 = 2 * 1024 * 1024 * 1024;
 /// How long an installation below a new minimum may still sign in, when
 /// the policy does not say (#3014): a show or a DJ set under way ends

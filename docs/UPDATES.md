@@ -92,7 +92,7 @@ The Release workflow publishes together:
 
 - `Deeply-Viewer-vX.Y.Z-windows-x64.zip`, with a single root folder of that name;
 - its `.zip.sha256` file, in the format `hash  zip-name`;
-- `deeply-update-policy.json`: `schema: 1`, `version: X.Y.Z`,
+- `Deeply-Deeply-Update-policy.json`: `schema: 1`, `version: X.Y.Z`,
   `minimum_supported_version`, `cache_invalidation_before` and
   `settings_reset_before`: `null` or a stable SemVer version ≤ X.Y.Z;
   optionally `grace_hours`, 0 to 72 (absent: 12, above);

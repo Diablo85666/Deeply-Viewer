@@ -103,7 +103,7 @@ jobs:
           $v = $env:TAG
           # The header (Linden Lab disclaimer, support, privacy: Third-Party
           # Viewer Policy §1.c) comes before the generated notes.
-          $ghArgs = @($v, $env:ZIP, "$($env:ZIP).sha256", $env:SYMBOLS, "$($env:SYMBOLS).sha256", 'deeply-update-policy.json', '--title', "Deeply Deeply Viewer $v", '--notes-file', '.github/release-notes-header.md', '--generate-notes', '--verify-tag')
+          $ghArgs = @($v, $env:ZIP, "$($env:ZIP).sha256", $env:SYMBOLS, "$($env:SYMBOLS).sha256", 'Deeply-Deeply-Update-policy.json', '--title', "Deeply Deeply Viewer $v", '--notes-file', '.github/release-notes-header.md', '--generate-notes', '--verify-tag')
           if ($v -match '-') { $ghArgs += '--prerelease' }   # v0.3.0-beta.1
           gh release create @ghArgs
       - name: Dry-run symbols

@@ -553,7 +553,7 @@ fn release_filter_ignores_assets_drafts_prereleases_and_retrieves_minimum_versio
         {"tag_name":"assets-1","html_url":format!("{base}/assets")},
         {"tag_name":"v1.0.0-beta.1","prerelease":true,"html_url":format!("{base}/beta")},
         {"tag_name":"v9.0.0","draft":true,"html_url":format!("{base}/draft")},
-        {"tag_name":"v0.3.0","html_url":format!("{base}/release"),"body":"Real notes","assets":[{"name":"deeply-update-policy.json","size":100,"browser_download_url":format!("{base}/policy")}]},
+        {"tag_name":"v0.3.0","html_url":format!("{base}/release"),"body":"Real notes","assets":[{"name":"Deeply-Deeply-Update-policy.json","size":100,"browser_download_url":format!("{base}/policy")}]},
         {"tag_name":"v0.2.0","html_url":format!("{base}/old")}
     ]).to_string();
     let thread = std::thread::spawn(move || {
@@ -591,7 +591,7 @@ fn the_policy_sets_the_grace_period_below_a_new_minimum() {
         let listener = TcpListener::bind("127.0.0.1:0").expect("loopback");
         let base = format!("http://{}", listener.local_addr().expect("address"));
         let list = serde_json::json!([
-            {"tag_name":"v0.3.0","html_url":format!("{base}/release"),"assets":[{"name":"deeply-update-policy.json","size":100,"browser_download_url":format!("{base}/policy")}]}
+            {"tag_name":"v0.3.0","html_url":format!("{base}/release"),"assets":[{"name":"Deeply-Deeply-Update-policy.json","size":100,"browser_download_url":format!("{base}/policy")}]}
         ])
         .to_string();
         let policy = format!("{{\"schema\":1,\"version\":\"0.3.0\",\"minimum_supported_version\":\"0.3.0\"{grace}}}");

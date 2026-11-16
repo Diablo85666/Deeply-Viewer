@@ -1,5 +1,5 @@
 ﻿<# Publishes the tag metadata in the release package, without changing the repository. #>
-param([Parameter(Mandatory)][string]$Tag, [string]$Out = 'deeply-update-policy.json')
+param([Parameter(Mandatory)][string]$Tag, [string]$Out = 'Deeply-Deeply-Update-policy.json')
 $ErrorActionPreference = 'Stop'
 . "$PSScriptRoot/tools/update-policy.ps1"
 $taskRepo = (git rev-parse --show-toplevel).Trim()

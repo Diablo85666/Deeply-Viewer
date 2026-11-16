@@ -59,7 +59,7 @@ $listener = [Net.Sockets.TcpListener]::new([Net.IPAddress]::Loopback, 0)
 $listener.Start(); $port = $listener.LocalEndpoint.Port; $listener.Stop()
 $base = "http://127.0.0.1:$port"
 @{ schema = 1; feed = "$base/releases.json" } | ConvertTo-Json | Write-Utf8 -LiteralPath (Join-Path $taskRoot 'deeply-update-test.json')
-$taskPolicyPath = Join-Path $taskFeed 'deeply-update-policy.json'
+$taskPolicyPath = Join-Path $taskFeed 'Deeply-Deeply-Update-policy.json'
 # A real $null, not an empty `$(if …)`, which ConvertTo-Json of Windows
 # PowerShell 5.1 writes as {} (the viewer then refuses the whole policy).
 $taskMinimum = if ($Required) { '0.2.101' } else { $null }
@@ -73,7 +73,7 @@ New-Item -ItemType Directory -Path (Join-Path $taskRoot 'profile'), (Join-Path $
 $assets = @(
     @{ name = $name; size = (Get-Item -LiteralPath $zip).Length; browser_download_url = "$base/$name" },
     @{ name = "$name.sha256"; size = (Get-Item -LiteralPath "$zip.sha256").Length; browser_download_url = "$base/$name.sha256" },
-    @{ name = 'deeply-update-policy.json'; size = (Get-Item -LiteralPath $taskPolicyPath).Length; browser_download_url = "$base/deeply-update-policy.json" }
+    @{ name = 'Deeply-Deeply-Update-policy.json'; size = (Get-Item -LiteralPath $taskPolicyPath).Length; browser_download_url = "$base/Deeply-Deeply-Update-policy.json" }
 )
 ConvertTo-Json -InputObject @(@{ tag_name = "v$next"; draft = $false; prerelease = [bool]$Beta; html_url = "$base/release.html"; body = "Trial of the real installation in an isolated folder.`nMaintenance policy announced before the restart."; assets = $assets }) -Depth 6 | Write-Utf8 -LiteralPath (Join-Path $taskFeed 'releases.json')
 "<!doctype html><meta charset=`"utf-8`"><title>Test release</title><p>Local test release of Deeply $next.</p>" | Write-Utf8 -LiteralPath (Join-Path $taskFeed 'release.html')
