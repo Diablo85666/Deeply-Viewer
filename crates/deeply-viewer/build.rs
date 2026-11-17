@@ -1,5 +1,5 @@
 //! Build script: tells the viewer which cargo profile built it, for the
-//! window title ("Deeply Deeply Viewer <version> (Dev)"): cargo only exposes `debug` /
+//! window title ("Deeply Viewer <version> (Dev)"): cargo only exposes `debug` /
 //! `release` (PROFILE), while the profile's target directory names the
 //! custom ones (`debugging`, `ci`). On Windows it also embeds the resources
 //! of deeply-viewer.exe: its icon and its version block.
@@ -74,7 +74,7 @@ fn dictionaries() {
 /// release must not ship without its icon again.
 fn windows_resources() {
     let manifest = std::env::var("CARGO_MANIFEST_DIR").expect("Cargo supplies CARGO_MANIFEST_DIR");
-    let icon = Path::new(&manifest).join("../../assets/branding/deeply.ico");
+    let icon = Path::new(&manifest).join("../../assets/deeply/deeply-viewer.ico");
     println!("cargo:rerun-if-changed={}", icon.display());
 
     let display = std::env::var("DEP_DEEPLY_VERSION_DISPLAY").expect("deeply-version's build script supplies the version");
@@ -88,8 +88,8 @@ fn windows_resources() {
 
     let mut res = winresource::WindowsResource::new();
     res.set_icon(&icon.to_string_lossy())
-        .set("ProductName", "Deeply Deeply Viewer")
-        .set("FileDescription", "Deeply Deeply Viewer")
+        .set("ProductName", "Deeply Viewer")
+        .set("FileDescription", "Deeply Viewer")
         .set("OriginalFilename", "deeply-viewer.exe")
         .set("ProductVersion", &display)
         .set("FileVersion", &display)

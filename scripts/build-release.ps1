@@ -96,7 +96,7 @@ Push-Location $src
 $previousVersionTag = [Environment]::GetEnvironmentVariable('DEEPLY_VERSION_TAG', 'Process')
 try {
     [Environment]::SetEnvironmentVariable('DEEPLY_VERSION_TAG', $null, 'Process')
-    Invoke-Checked 'cargo build' { cargo build --release --locked -p deeply-viewer }
+    Invoke-Checked 'cargo build' { cargo build --release --locked -p deeply-viewer --bin deeply-viewer }
 } finally {
     [Environment]::SetEnvironmentVariable('DEEPLY_VERSION_TAG', $previousVersionTag, 'Process')
     Pop-Location
@@ -129,5 +129,5 @@ if (Test-Path -LiteralPath $out) { Remove-Item -LiteralPath $out -Recurse -Force
 ) | Set-Content -LiteralPath (Join-Path $out 'version.txt') -Encoding UTF8 -ErrorAction Stop
 
 Write-Host ""
-Write-Host "Ready in $([math]::Floor($sw.Elapsed.TotalMinutes)) min $($sw.Elapsed.Seconds) s: $out\deeply-viewer.exe" -ForegroundColor Green
+Write-Host "Ready in $([Math]::Floor($sw.Elapsed.TotalMinutes)) min $($sw.Elapsed.Seconds) s: $out\deeply-viewer.exe" -ForegroundColor Green
 Write-Host "Double-click $bat to rebuild (build-release.bat 42: PR 42)."

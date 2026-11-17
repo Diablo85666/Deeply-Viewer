@@ -328,9 +328,9 @@ const FOV_SEND_EPSILON: f32 = 1e-3;
 /// targets of a 3840 x 2054 window at 240 x 128; texture_budget::Background).
 const PAUSED_RESOLUTION_DIVISOR: u32 = 16;
 
-/// The Deeply Deeply Viewer logo (window icon, login and loading screens,
+/// The Deeply Viewer logo (window icon, login and loading screens,
 /// About, system notifications), read from the community branding asset.
-pub(crate) const LOGO_PNG: &[u8] = include_bytes!("../../../assets/branding/deeply-deeply-viewer.jpg");
+pub(crate) const LOGO_PNG: &[u8] = include_bytes!("../../../assets/deeply/deeply-logo.png");
 
 struct LogoData {
     ui: egui::ColorImage,

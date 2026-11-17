@@ -18,7 +18,7 @@ param(
 )
 
 New-Item -ItemType Directory -Force -Path (Join-Path $Out 'assets/emoji') -ErrorAction Stop | Out-Null
-Copy-Item -LiteralPath $Exe -Destination (Join-Path $Out 'Deeply-Deeply-Viewer.exe') -ErrorAction Stop
+Copy-Item -LiteralPath $Exe -Destination (Join-Path $Out 'deeply-viewer.exe') -ErrorAction Stop
 # The emoji font is inside the exe; its licence ships, and the assets folder
 # stays: the updater of the published versions refuses a package without it.
 Copy-Item -LiteralPath (Join-Path $Source 'assets/emoji/LICENSE-OFL.txt') -Destination (Join-Path $Out 'assets/emoji') -ErrorAction Stop
@@ -47,9 +47,11 @@ $docs = @(
     'Deeply-Deeply-Viewer-0.9.10.4-User-Guide-en.txt'
 ) | ForEach-Object { Join-Path $Source $_ }
 Copy-Item -LiteralPath $docs -Destination $Out -ErrorAction Stop
-$branding = Join-Path $Out 'assets/branding'
+$branding = Join-Path $Out 'assets/deeply'
 New-Item -ItemType Directory -Force -Path $branding -ErrorAction Stop | Out-Null
-Copy-Item -LiteralPath (Join-Path $Source 'assets/branding/deeply-deeply-viewer.jpg') -Destination $branding -ErrorAction Stop
+Copy-Item -LiteralPath (Join-Path $Source 'assets/deeply/deeply-logo.png') -Destination $branding -ErrorAction Stop
+Copy-Item -LiteralPath (Join-Path $Source 'assets/deeply/deeply-splash.png') -Destination $branding -ErrorAction Stop
+Copy-Item -LiteralPath (Join-Path $Source 'assets/deeply/deeply-viewer.ico') -Destination $branding -ErrorAction Stop
 # Linux (an executable without extension): the desktop entry and its icon,
 # named after the viewer's Wayland app_id / X11 WM_CLASS (cli.rs DESKTOP_ID)
 # so the desktop matches the window to them. docs/LINUX.md installs them.
@@ -60,7 +62,7 @@ if (-not [IO.Path]::GetExtension($Exe) -and -not $IsMacOS) {
     Copy-Item -LiteralPath (Join-Path $Source 'assets/branding/deeply-logo.svg') -Destination (Join-Path $Out 'deeply-viewer.svg') -ErrorAction Stop
 }
 $taskExePath = (Resolve-Path -LiteralPath $Exe).Path
-$taskVersion = (& $taskExePath --language=en --version | Out-String).Trim() -replace '^Deeply Deeply Viewer ', ''
+$taskVersion = (& $taskExePath --language=en --version | Out-String).Trim() -replace '^Deeply Viewer ', ''
 if ($LASTEXITCODE -ne 0 -or $taskVersion -notmatch '^\d+\.\d+\.\d+(\.\d+)?([+-][0-9A-Za-z.+-]+)?$') { throw 'Invalid package version.' }
 $taskJson = @{ schema = 1; version = $taskVersion } | ConvertTo-Json
 $taskMetadataPath = Join-Path (Resolve-Path -LiteralPath $Out -ErrorAction Stop).Path 'deeply-install.json'
