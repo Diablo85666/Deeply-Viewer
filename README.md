@@ -24,6 +24,21 @@ with or endorsed by Linden Lab or any other viewer project.
 
 ## Italiano
 
+### Novità principali
+
+Questa release consolida il branding Deeply Deeply Viewer, la localizzazione
+italiana, il browser interno, i controlli per avatar, la grafica adattiva con
+recupero texture, i report locali e gli aggiornamenti dal repository community.
+Include la condivisione **bilaterale locale** dei transcript tra Deeply e
+Firestorm: Deeply può leggere e scrivere nella cartella compatibile, Firestorm
+può consultare i log creati da Deeply e Deeply può importare quelli creati da
+Firestorm. Non è sincronizzazione cloud e non trasferisce log tra computer.
+
+Sono stati risolti i problemi di conference chat applicata troppo tardi,
+texture nere persistenti, slot GPU non ricostruiti, texture bake non
+ricaricate e cambi grafici causati da picchi isolati. I profili Custom non
+vengono modificati automaticamente.
+
 ### Download e aggiornamenti
 
 Scarica la versione stabile dalla [pagina ufficiale delle
@@ -63,35 +78,6 @@ codice sorgente e non sono la build Windows pronta da avviare.
 Il pacchetto è portable: estrai tutti i file e avvia
 `Deeply-Deeply-Viewer.exe`. Verifica sempre il checksum pubblicato nella
 release prima dell'uso.
-
-### Verifica del file, avvisi antivirus e responsabilità
-
-Queste informazioni sono riportate qui in modo esplicito prima dell'elenco
-delle funzionalità:
-
-- **SHA-256** è un'impronta matematica del pacchetto. Il valore pubblicato
-  consente di confrontare il file scaricato con quello rilasciato e di
-  rilevare modifiche o danneggiamenti. SHA-256 non identifica da solo
-  l'autore e non dimostra che un file sia privo di virus.
-- **Minisign** è una firma crittografica. La verifica con la chiave pubblica
-  pubblicata nel README conferma che il pacchetto corrisponde a quello
-  firmato dalla chiave privata del responsabile della build e che non è stato
-  modificato dopo la firma. La chiave privata non viene pubblicata, caricata
-  o distribuita. Minisign non è un antivirus e non certifica da solo l'assenza
-  assoluta di malware.
-- Anche un file che non contiene virus può generare segnalazioni di Windows
-  Defender o di altri antivirus per reputazione bassa, scarsa prevalenza,
-  assenza di firma Authenticode o rilevazioni euristiche. Segnalazioni simili
-  possono comparire anche al primo download di viewer conosciuti come
-  Firestorm o Deeply. Questo non dimostra automaticamente che il file sia
-  sicuro: ogni avviso deve essere controllato verificando origine, SHA-256,
-  Minisign e scansioni disponibili.
-- Deeply Deeply Viewer è una build community pubblicata dal responsabile e
-  creatore **MrDiablo85**, che si assume la responsabilità della build
-  pubblicata e delle relative informazioni di rilascio. La pubblicazione
-  avviene tramite l'account GitHub `Diablo85666`. Un eventuale badge o stato
-  di account verificato è assegnato e visualizzato esclusivamente da GitHub:
-  SHA-256 e Minisign non sostituiscono tale verifica.
 
 Documentazione dettagliata:
 
@@ -255,6 +241,22 @@ codice sorgente. Consultare [LICENSE](LICENSE) e [NOTICE.md](NOTICE.md).
 
 ## English
 
+### Main new features
+
+This release consolidates Deeply Deeply Viewer branding, Italian
+localization, the built-in browser, avatar controls, adaptive graphics with
+texture recovery, local reports, and updates from the community repository.
+It includes **bilateral local** transcript sharing between Deeply and
+Firestorm: Deeply can read and write the compatible folder, Firestorm can
+view logs created by Deeply, and Deeply can import logs created by Firestorm.
+This is not cloud synchronization and does not transfer logs between
+computers.
+
+Fixes include conference-chat rejection being applied too late, persistent
+black textures, unreconstructed GPU slots, missing bake-texture reloads, and
+graphics changes caused by isolated spikes. Custom profiles are not changed
+automatically.
+
 ### Download and updates
 
 Download the stable build from the [official
@@ -294,33 +296,6 @@ The package is portable: extract all files and start
 `Deeply-Deeply-Viewer.exe`. Always verify the checksum published with the
 release before using the package. The release also includes a Minisign
 signature for the package.
-
-### File verification, antivirus warnings, and responsibility
-
-This information is stated explicitly here before the feature list:
-
-- **SHA-256** is a mathematical fingerprint of the package. The published
-  value lets users compare the downloaded file with the released file and
-  detect changes or corruption. SHA-256 does not identify the author by
-  itself and does not prove that a file is virus-free.
-- **Minisign** is a cryptographic signature. Verification with the public key
-  published in this README confirms that the package matches the package
-  signed by the build maintainer's private key and was not modified after
-  signing. The private key is never published, uploaded, or distributed.
-  Minisign is not an antivirus and does not, by itself, certify the absolute
-  absence of malware.
-- A file that contains no virus can still trigger Windows Defender or another
-  antivirus because of low reputation, low prevalence, missing Authenticode
-  signing, or heuristic detection. Similar warnings can also appear on the
-  first download of established viewers such as Firestorm or Deeply. This
-  does not automatically prove that a file is safe: investigate every warning
-  by checking provenance, SHA-256, Minisign, and available scans.
-- Deeply Deeply Viewer is a community build published by its responsible
-  maintainer and creator, **MrDiablo85**, who assumes responsibility for the
-  published build and its release information. Publication uses the GitHub
-  account `Diablo85666`. Any verified-account badge or status is assigned and
-  displayed exclusively by GitHub; SHA-256 and Minisign do not replace that
-  verification.
 
 Detailed documentation:
 
@@ -487,7 +462,7 @@ the source code. See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).
 
 <h2 align="center">Deeply Deeply Viewer 0.9.10.4</h2>
 
-## Riepilogo finale: leggere fino alla fine
+## Disclaimer finale: responsabilità e verifiche
 
 Questa sezione raccoglie in un unico punto le potenzialità e i miglioramenti
 community presenti nella release Windows 0.9.10.4 rispetto alla base pubblica
@@ -578,7 +553,7 @@ e mostrato ufficialmente da GitHub.
   viewer conosciuti come Firestorm o Deeply, ma non devono essere ignorati:
   occorre verificare origine, SHA-256, Minisign e scansioni disponibili.
 
-### Final summary: read to the end
+### Final disclaimer: responsibility and verification
 
 This final section identifies the Windows 0.9.10.4 community build as Deeply
 Deeply Viewer and summarizes its cumulative browser, avatar-control, adaptive
