@@ -39,6 +39,41 @@ texture nere persistenti, slot GPU non ricostruiti, texture bake non
 ricaricate e cambi grafici causati da picchi isolati. I profili Custom non
 vengono modificati automaticamente.
 
+#### Inventario completo delle potenzialità e delle correzioni
+
+- Branding community coerente in eseguibile, login, splash, icona, notifiche
+  e documentazione, con manifest e nomi degli asset Deeply Deeply Viewer.
+- Interfaccia italiana, override `DEEPLY_UI_LANGUAGE=it`, identificatori
+  tradotti per mouse e scorciatoie, informazioni su build, licenze, privacy,
+  report e prestazioni.
+- Browser interno con barra indirizzi, indietro, avanti, arresto, ricarica,
+  stato HTTPS e apertura nel browser di sistema; supporto HTTP, HTTPS, SLURL
+  e app link compatibili; rifiuto di `javascript:` e `data:`.
+- Comportamenti browser `SystemForAll`, `BuiltInForSecondLife` e
+  `BuiltInForAll`.
+- Rifiuto persistente per avatar di teleport e conference chat, applicato
+  prima dell'apertura; comandi separati per blocco, voce, teleport e
+  conference nei menu di avatar, amici e mittenti.
+- Monitoraggio memoria, frame time e stalli GPU; riduzione
+  `Deluxe -> High -> Medium -> Low -> Potato`, campioni consecutivi e
+  cooldown; profili Custom protetti.
+- Ricostruzione degli slot texture GPU, reload delle bake texture dell'avatar
+  e recupero delle texture nere di volto, mento, occhi e mondo senza riavvio;
+  safe graphics di emergenza separato dal recupero ordinario.
+- Importazione dei transcript Firestorm con ricerca automatica o selezione
+  manuale delle cartelle; condivisione bilaterale locale dei file tra Deeply
+  e Firestorm per conversazioni private e di gruppo compatibili.
+- Cartelle separate per grid personalizzate; nessuna sincronizzazione cloud e
+  nessun trasferimento automatico dei log tra computer.
+- Report locali, copia negli appunti, bozze GitHub e invio solo dopo
+  autorizzazione; log, diagnostica, posizione e screenshot opzionali.
+- Feed aggiornamenti personale, `Deeply-Deeply-Update-policy.json`,
+  validazione di `deeply-install.json`, pacchetto portable, SHA-256 e
+  firma Minisign.
+- Correzioni a menu e ordine di rifiuto conference, texture persistenti,
+  slot GPU corrotti, bake non ricaricate, cambi grafici impulsivi, profili
+  Custom modificati automaticamente e branding incoerente.
+
 ### Download e aggiornamenti
 
 Scarica la versione stabile dalla [pagina ufficiale delle
@@ -256,6 +291,39 @@ Fixes include conference-chat rejection being applied too late, persistent
 black textures, unreconstructed GPU slots, missing bake-texture reloads, and
 graphics changes caused by isolated spikes. Custom profiles are not changed
 automatically.
+
+#### Complete capabilities and fixes inventory
+
+- Consistent community branding in the executable, login, splash, icon,
+  notifications and documentation, with Deeply Deeply Viewer asset names and
+  manifest.
+- Italian UI, `DEEPLY_UI_LANGUAGE=it`, translated mouse and shortcut
+  identifiers, and build, license, privacy, report and performance details.
+- Built-in browser with address bar, back, forward, stop, reload, HTTPS status
+  and system-browser opening; HTTP, HTTPS, SLURL and compatible app links;
+  `javascript:` and `data:` are rejected.
+- `SystemForAll`, `BuiltInForSecondLife` and `BuiltInForAll` browser behavior.
+- Persistent per-avatar teleport and conference-chat rejection, applied
+  before opening; separate block, voice, teleport and conference controls in
+  avatar, friend and sender menus.
+- Memory, frame-time and GPU-stall monitoring; progressive
+  `Deluxe -> High -> Medium -> Low -> Potato` reduction, consecutive samples
+  and cooldown; Custom profiles are protected.
+- GPU texture-slot reconstruction, local avatar-bake reload and black face,
+  chin, eye and world texture recovery without restarting; emergency safe
+  graphics remains separate from ordinary recovery.
+- Firestorm transcript import with automatic discovery or manual folder
+  selection; bilateral local file sharing for compatible private and group
+  conversations.
+- Separate folders for custom grids; no cloud synchronization and no
+  automatic transfer of logs between computers.
+- Local reports, clipboard copy, GitHub drafts and submission only after
+  authorization; logs, diagnostics, position and screenshots are optional.
+- Personal update feed, `Deeply-Deeply-Update-policy.json`,
+  `deeply-install.json` validation, portable package, SHA-256 and Minisign.
+- Fixes to conference menus and rejection order, persistent textures,
+  corrupted GPU slots, missing bake reloads, impulsive graphics changes,
+  automatic Custom-profile changes and inconsistent branding.
 
 ### Download and updates
 
