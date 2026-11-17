@@ -1,8 +1,8 @@
 //! Build script: tells the viewer which cargo profile built it, for the
-//! window title ("Aurora Deeply Viewer <version> (Dev)"): cargo only exposes `debug` /
+//! window title ("Deeply Viewer <version> (Dev)"): cargo only exposes `debug` /
 //! `release` (PROFILE), while the profile's target directory names the
 //! custom ones (`debugging`, `ci`). On Windows it also embeds the resources
-//! of aurora-viewer.exe: its icon and its version block.
+//! of deeply-viewer.exe: its icon and its version block.
 
 use std::path::Path;
 
@@ -30,7 +30,7 @@ fn main() {
         // executable exports nothing on its own
         if std::env::var("CARGO_CFG_TARGET_ENV").as_deref() == Ok("msvc") {
             for symbol in ["NvOptimusEnablement", "AmdPowerXpressRequestHighPerformance"] {
-                println!("cargo:rustc-link-arg-bin=aurora-viewer=/EXPORT:{symbol},DATA");
+                println!("cargo:rustc-link-arg-bin=deeply-viewer=/EXPORT:{symbol},DATA");
             }
         }
     }
@@ -74,7 +74,7 @@ fn dictionaries() {
 /// release must not ship without its icon again.
 fn windows_resources() {
     let manifest = std::env::var("CARGO_MANIFEST_DIR").expect("Cargo supplies CARGO_MANIFEST_DIR");
-    let icon = Path::new(&manifest).join("../../assets/branding/aurora.ico");
+    let icon = Path::new(&manifest).join("../../assets/deeply/deeply-viewer.ico");
     println!("cargo:rerun-if-changed={}", icon.display());
 
     let display = std::env::var("DEP_AURORA_VERSION_DISPLAY").expect("aurora-version's build script supplies the version");
@@ -88,15 +88,15 @@ fn windows_resources() {
 
     let mut res = winresource::WindowsResource::new();
     res.set_icon(&icon.to_string_lossy())
-        .set("ProductName", "Aurora Deeply Viewer")
-        .set("FileDescription", "Aurora Deeply Viewer")
-        .set("OriginalFilename", "aurora-viewer.exe")
+        .set("ProductName", "Deeply Viewer")
+        .set("FileDescription", "Deeply Viewer")
+        .set("OriginalFilename", "deeply-viewer.exe")
         .set("ProductVersion", &display)
         .set("FileVersion", &display)
         .set_version_info(winresource::VersionInfo::PRODUCTVERSION, packed)
         .set_version_info(winresource::VersionInfo::FILEVERSION, packed);
     // the viewer only: the test binaries of this crate need no resources
-    if let Err(error) = res.compile_for("aurora-viewer") {
-        panic!("Cannot embed the icon and version of aurora-viewer.exe (rc.exe of the Windows SDK): {error}");
+    if let Err(error) = res.compile_for("deeply-viewer") {
+        panic!("Cannot embed the icon and version of deeply-viewer.exe (rc.exe of the Windows SDK): {error}");
     }
 }

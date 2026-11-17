@@ -6,7 +6,7 @@
     runs it too (PowerShell 7), with the executable without extension.
 
 .EXAMPLE
-    ./scripts/package.ps1 -Exe target/release/aurora-viewer.exe -Out Aurora-Viewer
+    ./scripts/package.ps1 -Exe target/release/deeply-viewer.exe -Out Deeply-Viewer
 .EXAMPLE
     ./scripts/package.ps1 -Exe target/release/aurora-viewer -Out Aurora-Viewer-v0.8.0-linux-x64
 #>
@@ -18,7 +18,7 @@ param(
 )
 
 New-Item -ItemType Directory -Force -Path (Join-Path $Out 'assets/emoji') -ErrorAction Stop | Out-Null
-Copy-Item -LiteralPath $Exe -Destination (Join-Path $Out 'Aurora-Deeply-Viewer.exe') -ErrorAction Stop
+Copy-Item -LiteralPath $Exe -Destination (Join-Path $Out 'deeply-viewer.exe') -ErrorAction Stop
 # The emoji font is inside the exe; its licence ships, and the assets folder
 # stays: the updater of the published versions refuses a package without it.
 Copy-Item -LiteralPath (Join-Path $Source 'assets/emoji/LICENSE-OFL.txt') -Destination (Join-Path $Out 'assets/emoji') -ErrorAction Stop
@@ -47,9 +47,11 @@ $docs = @(
     'Aurora-Deeply-Viewer-0.9.10.4-User-Guide-en.txt'
 ) | ForEach-Object { Join-Path $Source $_ }
 Copy-Item -LiteralPath $docs -Destination $Out -ErrorAction Stop
-$branding = Join-Path $Out 'assets/branding'
+$branding = Join-Path $Out 'assets/deeply'
 New-Item -ItemType Directory -Force -Path $branding -ErrorAction Stop | Out-Null
-Copy-Item -LiteralPath (Join-Path $Source 'assets/branding/aurora-deeply-viewer.jpg') -Destination $branding -ErrorAction Stop
+Copy-Item -LiteralPath (Join-Path $Source 'assets/deeply/deeply-logo.png') -Destination $branding -ErrorAction Stop
+Copy-Item -LiteralPath (Join-Path $Source 'assets/deeply/deeply-splash.png') -Destination $branding -ErrorAction Stop
+Copy-Item -LiteralPath (Join-Path $Source 'assets/deeply/deeply-viewer.ico') -Destination $branding -ErrorAction Stop
 # Linux (an executable without extension): the desktop entry and its icon,
 # named after the viewer's Wayland app_id / X11 WM_CLASS (cli.rs DESKTOP_ID)
 # so the desktop matches the window to them. docs/LINUX.md installs them.
@@ -60,9 +62,9 @@ if (-not [IO.Path]::GetExtension($Exe) -and -not $IsMacOS) {
     Copy-Item -LiteralPath (Join-Path $Source 'assets/branding/aurora-logo.svg') -Destination (Join-Path $Out 'aurora-viewer.svg') -ErrorAction Stop
 }
 $taskExePath = (Resolve-Path -LiteralPath $Exe).Path
-$taskVersion = (& $taskExePath --language=en --version | Out-String).Trim() -replace '^Aurora Deeply Viewer ', ''
+$taskVersion = (& $taskExePath --language=en --version | Out-String).Trim() -replace '^Deeply Viewer ', ''
 if ($LASTEXITCODE -ne 0 -or $taskVersion -notmatch '^\d+\.\d+\.\d+(\.\d+)?([+-][0-9A-Za-z.+-]+)?$') { throw 'Invalid package version.' }
 $taskJson = @{ schema = 1; version = $taskVersion } | ConvertTo-Json
-$taskMetadataPath = Join-Path (Resolve-Path -LiteralPath $Out -ErrorAction Stop).Path 'aurora-install.json'
+$taskMetadataPath = Join-Path (Resolve-Path -LiteralPath $Out -ErrorAction Stop).Path 'deeply-install.json'
 # Windows PowerShell 5.1 does not support Set-Content -Encoding utf8NoBOM.
 [IO.File]::WriteAllText($taskMetadataPath, $taskJson, [Text.UTF8Encoding]::new($false))
