@@ -91,6 +91,7 @@ fn windows_resources() {
         .set("ProductName", "Deeply Viewer")
         .set("FileDescription", "Deeply Viewer")
         .set("OriginalFilename", "deeply-viewer.exe")
+        .set("LegalCopyright", "Copyright © Deeply Viewer")
         .set("ProductVersion", &display)
         .set("FileVersion", &display)
         .set_version_info(winresource::VersionInfo::PRODUCTVERSION, packed)
