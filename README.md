@@ -51,8 +51,11 @@ documentazione necessaria. Estrarlo in una cartella dedicata e avviare
 
 Prima dell'avvio, confronta il checksum del file con
 [`Deeply-Viewer-v0.9.10.4-windows-x64.zip.sha256`](https://github.com/Diablo85666/Deeply-Viewer/releases/download/v0.9.10.4/Deeply-Viewer-v0.9.10.4-windows-x64.zip.sha256).
-Il checksum conferma l'integrità del file, ma non sostituisce una scansione
-antivirus.
+Puoi verificare anche la firma
+[`Deeply-Viewer-v0.9.10.4-windows-x64.zip.minisig`](https://github.com/Diablo85666/Deeply-Viewer/releases/download/v0.9.10.4/Deeply-Viewer-v0.9.10.4-windows-x64.zip.minisig)
+con la chiave pubblica Minisign distribuita dal maintainer. Il checksum e la
+firma confermano integrità e provenienza della build, ma non sostituiscono una
+scansione antivirus.
 
 ## English
 
@@ -76,7 +79,8 @@ Deeply Viewer 0.9.10.4 includes:
 Download the Windows package from the [Deeply Viewer 0.9.10.4
 release](https://github.com/Diablo85666/Deeply-Viewer/releases/tag/v0.9.10.4).
 Extract `Deeply-Viewer-v0.9.10.4-windows-x64.zip` and start
-`deeply-viewer.exe`.
+`deeply-viewer.exe`. The release also includes a SHA-256 checksum and a
+Minisign signature for the ZIP.
 
 ## Documentazione
 
