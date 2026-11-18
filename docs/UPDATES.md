@@ -16,7 +16,7 @@ a grey veil. A required offer shows only Quit and Update; neither Esc nor a
 click outside can close it. The login button stays disabled as long as this
 update is required.
 
-**Grace period** ([#3014](https://github.com/Deeply-Viewer/Deeply-Viewer/issues/3014)).
+**Grace period** ([#3014](https://github.com/Diablo85666/Deeply-Viewer/issues/3014)).
 Below a new minimum version, the viewer may still log in for the release's
 grace period: 12 hours unless the policy says otherwise (`grace_hours`).
 It counts from the first time this installation sees that minimum (saved in
@@ -92,7 +92,7 @@ The Release workflow publishes together:
 
 - `Deeply-Viewer-vX.Y.Z-windows-x64.zip`, with a single root folder of that name;
 - its `.zip.sha256` file, in the format `hash  zip-name`;
-- `Deeply-Deeply-Update-policy.json`: `schema: 1`, `version: X.Y.Z`,
+- `Deeply-Update-policy.json`: `schema: 1`, `version: X.Y.Z`,
   `minimum_supported_version`, `cache_invalidation_before` and
   `settings_reset_before`: `null` or a stable SemVer version ≤ X.Y.Z;
   optionally `grace_hours`, 0 to 72 (absent: 12, above);

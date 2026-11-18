@@ -28,7 +28,7 @@ shadows or ambient occlusion, FXAA, manual reflection probes), shown as
 
 ## 1. Download and install
 
-1. On the [latest release](https://github.com/Deeply-Viewer/Deeply-Viewer/releases/latest),
+1. On the [latest release](https://github.com/Diablo85666/Deeply-Viewer/releases/latest),
    download `Deeply-Viewer-<version>-macos-arm64.dmg`.
 2. Open it (a double click in the Finder): a window shows **Deeply Viewer**
    next to your **Applications** folder.
@@ -145,7 +145,7 @@ Install Apple's command line tools and Rust, then build:
 ```bash
 xcode-select --install
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-git clone https://github.com/Deeply-Viewer/Deeply-Viewer deeply-viewer
+git clone https://github.com/Diablo85666/Deeply-Viewer deeply-viewer
 cd deeply-viewer
 cargo build --release --locked -p deeply-viewer
 ./target/release/deeply-viewer

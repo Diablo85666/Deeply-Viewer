@@ -1,4 +1,4 @@
-﻿# Deeply Tools: colours, layout and keyboard (dot-sourced by deeply-tools.ps1).
+# Deeply Tools: colours, layout and keyboard (dot-sourced by deeply-tools.ps1).
 
 # True colours when the terminal understands them, the 16 console colours
 # otherwise, plain text when the output is redirected. Interactive: keys are

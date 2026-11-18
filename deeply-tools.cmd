@@ -9,7 +9,7 @@ title Deeply Tools
 cd /d "%~dp0"
 if exist "%~dp0scripts\tools\deeply-tools.ps1" goto repo
 if exist "%~dp0deeply-viewer\scripts\tools\deeply-tools.ps1" goto project
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$f = Join-Path $env:TEMP 'deeply-setup.ps1'; irm https://raw.githubusercontent.com/Deeply-Viewer/Deeply-Viewer/main/scripts/setup.ps1 -OutFile $f; & $f"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$f = Join-Path $env:TEMP 'deeply-setup.ps1'; irm https://raw.githubusercontent.com/Diablo85666/Deeply-Viewer/main/scripts/setup.ps1 -OutFile $f; & $f"
 set "DeeplyToolsExitCode=%errorlevel%"
 pause
 exit /b %DeeplyToolsExitCode%

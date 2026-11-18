@@ -45,6 +45,28 @@ pub enum TranslationLanguage {
     Es,
     De,
     Fr,
+    Pt,
+    Ru,
+    Ja,
+    Zh,
+}
+
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
+#[serde(rename_all = "lowercase")]
+pub enum TextureCompression {
+    #[default]
+    Auto,
+    Bc7,
+    Bc3,
+    Rgba8,
+}
+
+fn default_translation_model_path() -> String {
+    "models/nllb-200-600M-int8".into()
+}
+
+fn default_true() -> bool {
+    true
 }
 
 impl TranslationLanguage {
@@ -55,6 +77,24 @@ impl TranslationLanguage {
             Self::Es => "es",
             Self::De => "de",
             Self::Fr => "fr",
+            Self::Pt => "pt",
+            Self::Ru => "ru",
+            Self::Ja => "ja",
+            Self::Zh => "zh",
+        }
+    }
+
+    pub fn flores_code(self) -> &'static str {
+        match self {
+            Self::It => "ita_Latn",
+            Self::En => "eng_Latn",
+            Self::Es => "spa_Latn",
+            Self::De => "deu_Latn",
+            Self::Fr => "fra_Latn",
+            Self::Pt => "por_Latn",
+            Self::Ru => "rus_Cyrl",
+            Self::Ja => "jpn_Jpan",
+            Self::Zh => "zho_Hans",
         }
     }
 }
@@ -678,6 +718,12 @@ pub struct Settings {
     /// Texture memory sized from the detected video memory (else `texture_budget_mb`).
     pub texture_budget_auto: bool,
     pub texture_budget_mb: u32,
+    /// Texture upload format. `Auto` uses BC7 when the adapter supports it.
+    #[serde(default)]
+    pub texture_compression: TextureCompression,
+    /// Keep lower mip levels available to the streamer.
+    #[serde(default = "default_true")]
+    pub mipmap_streaming: bool,
     /// The largest side, in pixels, ordinary world textures are loaded at
     /// (the Legacy Viewer's RenderMaxTextureResolution: 512, 1024 or 2048,
     /// 2048 by default): `TextureStreamer::max_resolution`.
@@ -1276,7 +1322,9 @@ pub struct Settings {
     /// The lines of the Conversations window (`ui/chat/bubbles.rs` or the
     /// legacy lines).
     pub chat_style: ChatStyle,
-    pub translation_endpoint: String,
+    /// Local CTranslate2/NLLB model directory. No network translation is used.
+    #[serde(default = "default_translation_model_path")]
+    pub translation_model_path: String,
     pub translation_language: TranslationLanguage,
     pub translation_automatic: bool,
     /// The column of the conversations' workspace stays a rail at any
@@ -2092,6 +2140,8 @@ impl Default for Settings {
             tree_lod_factor: 0.5,
             texture_budget_auto: true,
             texture_budget_mb: 1536,
+            texture_compression: TextureCompression::Auto,
+            mipmap_streaming: true,
             max_texture_resolution: MAX_TEXTURE_RESOLUTION,
             ui_scale: 1.0,
             use_pie_menu: false,
@@ -2322,7 +2372,7 @@ impl Default for Settings {
             plate_shift_click: PlateClick::Nothing,
             plate_ctrl_click: PlateClick::Nothing,
             chat_style: ChatStyle::Deeply,
-            translation_endpoint: "https://libretranslate.com/translate".into(),
+            translation_model_path: default_translation_model_path(),
             translation_language: TranslationLanguage::It,
             translation_automatic: false,
             chat_column_collapsed: false,

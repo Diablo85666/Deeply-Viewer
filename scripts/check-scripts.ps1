@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Parses every PowerShell script of scripts/ with the parser of Windows
     PowerShell 5.1, the one deeply-tools.cmd and the humans run. A syntax

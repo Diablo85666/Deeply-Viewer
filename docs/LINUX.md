@@ -43,7 +43,7 @@ Plus the Vulkan driver of your graphics card if it is not there yet:
 
 ## 2. Download and extract
 
-From the [latest release](https://github.com/Deeply-Viewer/Deeply-Viewer/releases/latest),
+From the [latest release](https://github.com/Diablo85666/Deeply-Viewer/releases/latest),
 download `Deeply-Viewer-vX.Y.Z-linux-x64.tar.gz` and its `.sha256` file into
 the same folder, then:
 
@@ -154,7 +154,7 @@ your desktop (GNOME, KDE and other GLib desktops read such paths).
 ```bash
 sudo pacman -S --needed git base-devel rustup cmake clang pkgconf alsa-lib libxkbcommon wayland libx11 libxcursor libxrandr libxi vulkan-icd-loader
 rustup default stable
-git clone https://github.com/Deeply-Viewer/Deeply-Viewer deeply-viewer
+git clone https://github.com/Diablo85666/Deeply-Viewer deeply-viewer
 cd deeply-viewer
 cargo build --release -p deeply-viewer
 ./target/release/deeply-viewer

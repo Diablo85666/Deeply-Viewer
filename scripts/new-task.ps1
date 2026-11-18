@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Creates the work folder of a task: a git worktree on its own branch,
     next to the repository (..\work\<task>), with its own target\. Its

@@ -57,8 +57,8 @@ foreach ($name in $PrRequiredSections) {
 # the issue line
 Assert-Complete ($good -replace 'Refs #2089', 'No issue (follows #2063)') 'No issue with a note'
 Assert-Complete ($good -replace 'Refs #2089', 'Closes #12') 'Closes'
-Assert-Complete ($good -replace 'Refs #2089', 'Fixes Deeply-Viewer/Deeply-Viewer#12') 'a cross-repository reference'
-Assert-Complete ($good -replace 'Refs #2089', 'Refs https://github.com/Deeply-Viewer/Deeply-Viewer/issues/12') 'an issue link'
+Assert-Complete ($good -replace 'Refs #2089', 'Fixes Diablo85666/Deeply-Viewer#12') 'a cross-repository reference'
+Assert-Complete ($good -replace 'Refs #2089', 'Refs https://github.com/Diablo85666/Deeply-Viewer/issues/12') 'an issue link'
 Assert-Misses ($good -replace 'Refs #2089', 'Closes #') 'the template issue line left as is' @('still the template''s `Closes #`')
 Assert-Misses ($good -replace 'Refs #2089', 'Follow-up to #2620.') 'a follow-up sentence' @('put `Refs #2620` on the first line')
 Assert-Misses ($good -replace 'Refs #2089', '<!-- Refs #1 -->') 'an issue line in a comment' @('`No issue` is perfectly fine')

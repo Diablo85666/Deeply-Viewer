@@ -10550,6 +10550,8 @@ impl App {
                 gfx.renderer.info.integrated,
             );
             self.scene
+                .apply_texture_settings(&gfx.renderer, self.settings.texture_compression, self.settings.mipmap_streaming);
+            self.scene
                 .stream(&mut gfx.renderer, &self.net, &self.world, texture_budget * 1024 * 1024, frame_time);
         }
         self.perf.update_ms = t_up.elapsed().as_secs_f32() * 1000.0;
@@ -16939,7 +16941,7 @@ impl App {
                 let mut contact_actions = Vec::new();
                 self.chat_ui.set_style(self.settings.chat_style);
                 self.chat_ui.translation.configure(
-                    &self.settings.translation_endpoint,
+                    &self.settings.translation_model_path,
                     self.settings.translation_language,
                     self.settings.translation_automatic,
                 );

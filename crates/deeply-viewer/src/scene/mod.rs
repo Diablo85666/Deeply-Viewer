@@ -2368,6 +2368,23 @@ impl Scene {
         self.take_staging(new);
     }
 
+    /// Applies texture upload preferences to the live streamer. The renderer
+    /// remains on the render thread; only the producer's compression policy is
+    /// changed here, so the next uploads use the new setting without restart.
+    pub fn apply_texture_settings(
+        &mut self,
+        renderer: &Renderer,
+        compression: crate::settings::TextureCompression,
+        mipmap_streaming: bool,
+    ) {
+        let bc7 = !matches!(
+            compression,
+            crate::settings::TextureCompression::Bc3 | crate::settings::TextureCompression::Rgba8
+        );
+        self.textures.bc7 = bc7 && renderer.textures.bc7();
+        self.textures.bc7_cache = self.textures.bc7 && mipmap_streaming;
+    }
+
     /// The nearest avatar the ray `(origin, dir)` meets before `far`, and
     /// where: the hover search leaves avatars out (the cursor's actions are
     /// the objects'), the world's hover tips name them. Each avatar is the

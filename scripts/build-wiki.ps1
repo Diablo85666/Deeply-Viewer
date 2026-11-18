@@ -19,7 +19,7 @@
 param(
     [Parameter(Mandatory)][string]$Out,
     # owner/name on GitHub, for the links back to the repository
-    [string]$Repository = $(if ($env:GITHUB_REPOSITORY) { $env:GITHUB_REPOSITORY } else { 'Deeply-Viewer/Deeply-Viewer' }),
+    [string]$Repository = $(if ($env:GITHUB_REPOSITORY) { $env:GITHUB_REPOSITORY } else { 'Diablo85666/Deeply-Viewer' }),
     [string]$Branch = 'main'
 )
 $ErrorActionPreference = 'Stop'

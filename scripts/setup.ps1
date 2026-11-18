@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Entry point of the one-line installation command: downloads the Deeply
     tools (scripts/tools) from GitHub, all at main's current commit, and
@@ -8,7 +8,7 @@
 .DESCRIPTION
     The command, in a command prompt opened in the project folder:
 
-      powershell -NoProfile -ExecutionPolicy Bypass -Command "$f = Join-Path $env:TEMP 'deeply-setup.ps1'; irm https://raw.githubusercontent.com/Deeply-Viewer/Deeply-Viewer/main/scripts/setup.ps1 -OutFile $f; & $f"
+      powershell -NoProfile -ExecutionPolicy Bypass -Command "$f = Join-Path $env:TEMP 'deeply-setup.ps1'; irm https://raw.githubusercontent.com/Diablo85666/Deeply-Viewer/main/scripts/setup.ps1 -OutFile $f; & $f"
 
 .EXAMPLE
     ./scripts/setup.ps1 -Path D:\Dev\Deeply-Viewer -Yes   # no questions
@@ -31,7 +31,7 @@ if (Test-Path $local) {
 # into a fresh folder, then run the installation. main's commit is read
 # once, here, and every file comes from that commit: a push to main during
 # the download cannot mix two versions of the tools.
-$repo = 'Deeply-Viewer/Deeply-Viewer'
+$repo = 'Diablo85666/Deeply-Viewer'
 $commit = (Invoke-RestMethod "https://api.github.com/repos/$repo/commits/main").sha
 if ($commit -notmatch '^[0-9a-f]{40}$') { throw "Could not read the commit of main ($commit)." }
 $dir = Join-Path $env:TEMP 'deeply-tools'

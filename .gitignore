@@ -39,6 +39,9 @@
 .env
 .env.*
 
+# Large offline translation model: shipped in release archives, not Git.
+/models/
+
 # Editors and OS
 .vscode/
 .idea/

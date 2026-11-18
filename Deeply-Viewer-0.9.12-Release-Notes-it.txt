@@ -1,4 +1,4 @@
-Deeply Deeply Viewer 0.9.10.4 Stable
+Deeply Deeply Viewer 0.9.12 Stable
 Note di rilascio
 
 La build Windows community integra il logo Deeply Deeply Viewer e mantiene
@@ -22,8 +22,9 @@ SICUREZZA E VERIFICA
 SHA-256: consultare il file .sha256 allegato alla release.
 
 Firma:
-Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip.minisig
+Deeply-Viewer-0.9.12-windows-x64.zip.minisig
 
 Un avviso antivirus su un eseguibile nuovo puo dipendere da reputazione bassa,
 firma Authenticode assente o rilevazione euristica. Non va ignorato:
 verificare origine, checksum, firma e scansioni prima dell'esecuzione.
+

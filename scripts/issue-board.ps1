@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Reads or moves an issue on the team's GitHub project (Deeply Team
     Planning), and lists the issues still to take, highest priority first.

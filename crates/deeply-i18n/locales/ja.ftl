@@ -955,7 +955,7 @@ notecard-markdown-demo =
 
     > 埋め込まれたアイテムはノートカードの一部のままです。
 
-    { "[" }Deeplyビューア](https://deeply-viewer.org)
+    { "[" }Deeply Viewer](https://deeply-viewer.org)
 
     ```text
     プレーンなコードブロック
@@ -13959,6 +13959,6 @@ ui-chat-translation-error = 翻訳に失敗しました
 ui-options-translation-automatic = 受信メッセージを自動翻訳
 ui-options-translation-automatic-hint = まだ有効ではありません。メッセージメニューから手動翻訳できます。
 ui-options-translation-language = 翻訳先の言語
-ui-options-translation-language-hint = LibreTranslateで使用する言語。
-ui-options-translation-endpoint = LibreTranslateエンドポイント
-ui-options-translation-endpoint-hint = 翻訳リクエストに使用するHTTPエンドポイント。
+ui-options-translation-language-hint = オフラインモデルで使用する言語。
+ui-options-translation-model = オフライン翻訳モデル
+ui-options-translation-model-hint = ローカルモデルのフォルダー (models/nllb-200-600M-int8)。ネットワークサービスは使用しません。

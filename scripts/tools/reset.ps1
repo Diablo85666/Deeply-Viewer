@@ -1,4 +1,4 @@
-﻿# Deeply Tools: reset the repository to the state of a fresh clone of
+# Deeply Tools: reset the repository to the state of a fresh clone of
 # GitHub's main (dot-sourced by deeply-tools.ps1). What would be lost is
 # listed first; nothing happens without typing the confirmation word.
 # $DryRun (deeply-tools.ps1 -DryRun) stops after the list.

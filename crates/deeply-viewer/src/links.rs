@@ -2,7 +2,7 @@
 //! button is shown disabled and nothing is fetched. The README header carries
 //! the same Discord and website links: change them there too.
 
-/// Deeply Deeply Viewer community repository.
+/// Deeply Viewer community repository.
 pub const GITHUB: &str = "https://github.com/Diablo85666/Deeply-Viewer";
 /// Issue template chooser, opened in the browser by "Report a bug" (login
 /// screen, top bar, Help menu) and by the crash window.

@@ -1,8 +1,8 @@
-Deeply Deeply Viewer 0.9.10.4
+Deeply Deeply Viewer 0.9.12
 Miglioramenti, funzionalita e correzioni
 
 Questo riepilogo copre le funzioni community verificabili dalla prima serie
-0.9.6 fino alla 0.9.10.4. Non esistono tag pubblici separati verificabili
+0.9.6 fino alla 0.9.12. Non esistono tag pubblici separati verificabili
 per 0.9.6 e 0.9.7, quindi non vengono attribuite correzioni a quei tag.
 
 IDENTITA E LOCALIZZAZIONE
@@ -22,7 +22,7 @@ FUNZIONI E CORREZIONI
 - Recupero delle texture nere di avatar e mondo senza riavvio.
 - Report locali, bozze GitHub e invio solo autorizzato.
 - Importazione e condivisione bilaterale locale dei transcript Firestorm.
-- Policy updater Deeply-Deeply-Update-policy.json.
+- Policy updater Deeply-Update-policy.json.
 - Nomi asset community, SHA-256 e firma Minisign.
 
 La condivisione Firestorm usa la stessa cartella locale compatibile quando
@@ -30,11 +30,11 @@ disponibile. Deeply puo leggere e scrivere transcript consultabili da
 Firestorm; Firestorm puo produrre transcript importabili in Deeply. Non e
 una sincronizzazione Internet e non trasferisce dati tra computer.
 
-VERIFICA 0.9.10.4
-Pacchetto: Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip
+VERIFICA 0.9.12
+Pacchetto: Deeply-Viewer-0.9.12-windows-x64.zip
 SHA-256: consultare il file .sha256 allegato alla release; è la fonte
 autorevole per il pacchetto scaricato.
-Firma: Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip.minisig
+Firma: Deeply-Viewer-0.9.12-windows-x64.zip.minisig
 Chiave pubblica:
 RWQtAyq9dTabBnUU+7nX6IESxLp36DK5GK8BDcI6Mj5jveHqB7qvMJoh
 
@@ -43,3 +43,4 @@ l'assenza assoluta di malware.
 
 ROADMAP
 E prevista una build Linux community con pacchetti .deb per Debian e Ubuntu.
+

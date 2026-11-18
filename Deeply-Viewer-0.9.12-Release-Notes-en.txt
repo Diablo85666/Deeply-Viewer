@@ -1,4 +1,4 @@
-Deeply Deeply Viewer 0.9.10.4 Stable
+Deeply Deeply Viewer 0.9.12 Stable
 Release notes
 
 The community Windows build integrates Deeply Deeply Viewer branding and
@@ -22,8 +22,9 @@ SECURITY AND VERIFICATION
 SHA-256: see the .sha256 file attached to the release.
 
 Signature:
-Deeply-Deeply-Viewer-0.9.10.4-windows-x64.zip.minisig
+Deeply-Viewer-0.9.12-windows-x64.zip.minisig
 
 An antivirus warning for a new executable can be caused by low reputation,
 missing Authenticode signing or heuristic detection. Do not dismiss it:
 verify provenance, checksum, signature and available scans before running.
+

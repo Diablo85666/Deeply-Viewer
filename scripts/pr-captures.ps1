@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Publishes screenshots for a PR on the `captures` branch (never on main)
     and prints the Markdown to paste into the PR or the review.

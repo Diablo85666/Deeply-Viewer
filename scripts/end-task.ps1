@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Deletes the work folder of a finished task (worktree, local branch,
     target\). Refuses if the PR is not merged or if uncommitted changes

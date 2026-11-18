@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Builds the latest main of GitHub (or a PR) in --release, next to the
     repository: ..\RELEASE\Deeply-Viewer\deeply-viewer.exe, ready to launch.

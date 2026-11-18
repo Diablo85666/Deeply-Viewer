@@ -1,4 +1,4 @@
-﻿# Deeply Tools: the menu actions — viewers, demo, agents' tasks, disk, logs,
+# Deeply Tools: the menu actions — viewers, demo, agents' tasks, disk, logs,
 # shortcut (dot-sourced by deeply-tools.ps1).
 
 # Starts a viewer in its own window; the console stays on the tools.

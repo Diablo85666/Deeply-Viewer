@@ -764,7 +764,7 @@ pub fn show(
                     super::deeply_bg::radial_glow(&painter, r.center(), 150.0, p.violet, 0.42);
                 }
                 ui.add_space(2.0);
-                ui.label(RichText::new("Deeply Deeply Viewer").size(34.0).strong().color(p.ink));
+                ui.label(RichText::new("Deeply Viewer").size(34.0).strong().color(p.ink));
                 ui.label(RichText::new(client_tagline()).size(13.0).color(p.violet_pale));
                 ui.add_space(18.0);
             });

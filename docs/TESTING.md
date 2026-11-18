@@ -2384,7 +2384,7 @@ the base, deformed outline, translucent straight box and size handles.
 `stretch,object:90000,fz,100,0` pulls the face opposite the base; the
 flexible keeps its curvature during the change of size.
 
-To check the pacing ([#172](https://github.com/Deeply-Viewer/Deeply-Viewer/issues/172)),
+To check the pacing ([#172](https://github.com/Diablo85666/Deeply-Viewer/issues/172)),
 use `DEEPLY_DEMO_FLEXIBLE=1`, `DEEPLY_NOVSYNC=1`, then the caps
 `DEEPLY_FPS_LIMIT=30|59|60|61|144|500` in separate launches. Gravity, wind,
 force and the reaction of the last prim to the moving parent must keep the
@@ -7756,7 +7756,7 @@ Human grid validation: remember MFA for account A and B, restart the viewer, the
   a server on this machine (`http://127.0.0.1:<port>/`, `localhost` or
   `[::1]`), for example `python -m http.server 8123 --bind 127.0.0.1` run
   in the `news/` folder of the worktree; or another branch of the repository
-  (`https://raw.githubusercontent.com/Deeply-Viewer/Deeply-Viewer/<branch>/news/`),
+  (`https://raw.githubusercontent.com/Diablo85666/Deeply-Viewer/<branch>/news/`),
   to review a news item before merging its PR. What is downloaded
   this way is not kept in the cache. The panel first shows the news
   already known, then that of the file as soon as it is received; changing

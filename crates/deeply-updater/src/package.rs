@@ -163,7 +163,7 @@ pub fn extract(path: &Path, root: &Path, tag: &str, cancel: &Cancel) -> Result<P
     unpack(
         path,
         root,
-        &format!("Deeply-Deeply-Viewer-{}-windows-x64", tag.trim_start_matches('v')),
+        &format!("Deeply-Viewer-{}-windows-x64", tag.trim_start_matches('v')),
         cancel,
     )?;
     let manifest: InstallManifest = serde_json::from_slice(&fs::read(root.join("deeply-install.json"))?)?;

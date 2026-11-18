@@ -460,6 +460,43 @@ fn quality(cx: &mut Cx) {
                 );
             }
         });
+        cx.combo(
+            "Hardware texture compression",
+            "Select the upload format used by the texture streamer.",
+            &field!(texture_compression),
+            &[
+                (crate::settings::TextureCompression::Auto, "Auto"),
+                (crate::settings::TextureCompression::Bc7, "BC7"),
+                (crate::settings::TextureCompression::Bc3, "BC3"),
+                (crate::settings::TextureCompression::Rgba8, "RGBA8"),
+            ],
+        );
+        cx.toggle(
+            "Mipmap streaming",
+            "Stream the required mip levels instead of uploading the complete chain.",
+            &field!(mipmap_streaming),
+        );
+        cx.toggle(
+            "Offline translation (NLLB-200)",
+            "Use the bundled CPU translation model for chat and instant messages.",
+            &field!(translation_automatic),
+        );
+        cx.combo(
+            "Translation language",
+            "Target language used by offline chat translation.",
+            &field!(translation_language),
+            &[
+                (crate::settings::TranslationLanguage::It, "Italiano"),
+                (crate::settings::TranslationLanguage::En, "English"),
+                (crate::settings::TranslationLanguage::Es, "Español"),
+                (crate::settings::TranslationLanguage::De, "Deutsch"),
+                (crate::settings::TranslationLanguage::Fr, "Français"),
+                (crate::settings::TranslationLanguage::Pt, "Português"),
+                (crate::settings::TranslationLanguage::Ru, "Русский"),
+                (crate::settings::TranslationLanguage::Ja, "日本語"),
+                (crate::settings::TranslationLanguage::Zh, "简体中文"),
+            ],
+        );
         let label = |v: u16| {
             if v <= 1 {
                 tr!("common-disabled").to_owned()

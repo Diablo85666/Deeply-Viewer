@@ -8,8 +8,8 @@ that people always know which builds come from the Deeply Viewer team.
 
 ## The marks
 
-- the name **Deeply Viewer**, and **Deeply** when it names this viewer;
-- the Deeply wolf logo and silhouette, in every colour and size
+- the name **Deeply Viewer**;
+- the Deeply Viewer logo and silhouette, in every colour and size
   (`assets/branding/`).
 
 The logo files stay under the GPLv3 like the rest of the repository; this page
@@ -28,7 +28,7 @@ only covers their use as the mark of a product.
 ## Needs our written agreement
 
 - Distributing a modified version under the name Deeply Viewer, or with the
-  Deeply logo as its icon, splash screen or brand.
+  Deeply Viewer logo as its icon, splash screen or brand.
 - A name or logo close enough to Deeply Viewer's to be mistaken for it.
 - Presenting a project, a build or a service as official, endorsed by or
   affiliated with Deeply Viewer when it is not.
@@ -43,8 +43,8 @@ and when (section 5(a)).
 ## Official downloads
 
 The only official builds are those linked from
-[deeply-viewer.org](https://deeply-viewer.org) and the
-[releases of this repository](https://github.com/Deeply-Viewer/Deeply-Viewer/releases).
+[Deeply Viewer repository](https://github.com/Diablo85666/Deeply-Viewer) and the
+[releases of this repository](https://github.com/Diablo85666/Deeply-Viewer/releases).
 
 ## Questions
 

@@ -501,7 +501,7 @@ pub fn init() {
         drain(DRAIN_WAIT);
     }));
     log::info!(
-        "Deeply Deeply Viewer {} starting ({} {}, {} allocator), log: {}",
+        "Deeply Viewer {} starting ({} {}, {} allocator), log: {}",
         deeply_version::version(),
         std::env::consts::OS,
         std::env::consts::ARCH,

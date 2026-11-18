@@ -1,4 +1,4 @@
-﻿# Deeply Tools: Claude Code permissions for the agents' PR and issue workflow
+# Deeply Tools: Claude Code permissions for the agents' PR and issue workflow
 # (dot-sourced by deeply-tools.ps1).
 #
 # AGENTS.md has the agent post its review on its own PR, merge it with

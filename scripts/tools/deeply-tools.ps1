@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     The development tools of Deeply Viewer, as a keyboard menu
     (arrows, Enter, Esc): diagnosis and repair of the environment,

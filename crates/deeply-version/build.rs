@@ -17,6 +17,7 @@ fn git(root: &Path, args: &[&str]) -> Option<String> {
 fn main() {
     println!("cargo:rerun-if-changed=build.rs");
     println!("cargo:rerun-if-changed=build_support.rs");
+    println!("cargo:rerun-if-changed=../../VERSION");
     println!("cargo:rerun-if-env-changed=DEEPLY_VERSION_TAG");
     println!("cargo:rerun-if-env-changed=DEEPLY_UPDATE_TEST_VERSION");
     let manifest = std::env::var_os("CARGO_MANIFEST_DIR").expect("Cargo supplies CARGO_MANIFEST_DIR");
@@ -42,7 +43,11 @@ fn main() {
         }
     }
 
-    let tag = std::env::var("DEEPLY_VERSION_TAG").ok();
+    let explicit_tag = std::env::var("DEEPLY_VERSION_TAG").ok();
+    let file_tag = std::fs::read_to_string(root.join("VERSION"))
+        .ok()
+        .map(|text| format!("v{}", text.trim()));
+    let tag = explicit_tag.clone().or(file_tag);
     let description = git(
         &root,
         &["describe", "--tags", "--match", "v[0-9]*.[0-9]*.[0-9]*", "--long", "--abbrev=9"],
@@ -52,7 +57,7 @@ fn main() {
         .and_then(|text| text.parse().ok())
         .unwrap_or(0);
     let fixture = std::env::var("DEEPLY_UPDATE_TEST_VERSION").ok();
-    if fixture.is_some() && (std::env::var("PROFILE").as_deref() != Ok("debug") || tag.is_some()) {
+    if fixture.is_some() && (std::env::var("PROFILE").as_deref() != Ok("debug") || explicit_tag.is_some()) {
         panic!("Update fixtures require a dev build without DEEPLY_VERSION_TAG");
     }
     // Two disposable installations exercise real version-to-version replacement
@@ -60,7 +65,11 @@ fn main() {
     // normal startup; deeply-updater requires an isolated loopback fixture.
     let version = build_support::resolve(
         fixture.as_deref().or(tag.as_deref()),
-        if fixture.is_some() { None } else { description.as_deref() },
+        if fixture.is_some() || explicit_tag.is_none() {
+            None
+        } else {
+            description.as_deref()
+        },
         count,
         commit.as_deref(),
     )
@@ -73,7 +82,8 @@ fn main() {
     println!("cargo:rustc-env=DEEPLY_LOGIN_VERSION={}", version.login);
     println!("cargo:rustc-env=DEEPLY_BUILD_COMMIT={}", commit.as_deref().unwrap_or("unknown"));
     // `links` metadata, read by deeply-viewer's build script as
-    // DEP_DEEPLY_VERSION_DISPLAY / _NUMERIC (version block of the exe).
+    // DEP_DEEPLY_VERSION_DISPLAY / _NUMERIC (Cargo derives this prefix from
+    // the crate's `links` value; it is not an application environment name).
     println!("cargo:display={}", version.display);
     println!("cargo:numeric={}", version.login);
 }

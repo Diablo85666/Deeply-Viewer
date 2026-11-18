@@ -10,13 +10,13 @@ use crossbeam_channel::{Receiver, Sender};
 use serde_json::Value;
 use std::time::{Duration, Instant};
 
-const API: &str = "https://api.github.com/repos/Diablo85666/Deeply-Deeply-Viewer/issues";
-pub const ISSUES: &str = "https://github.com/Diablo85666/Deeply-Deeply-Viewer/issues";
+const API: &str = "https://api.github.com/repos/Diablo85666/Deeply-Viewer/issues";
+pub const ISSUES: &str = "https://github.com/Diablo85666/Deeply-Viewer/issues";
 pub const VERIFY: &str = "https://github.com/login/device";
 const TOKEN: &str = "https://github.com/login/oauth/access_token";
 // Public identifier of the project's GitHub App (Device Flow enabled).
 const CLIENT_ID: &str = "Iv23liT7PLWClMLztI1W";
-const SERVICE: &str = "Deeply Deeply Viewer GitHub";
+const SERVICE: &str = "Deeply Viewer GitHub";
 const ACCOUNT: &str = "crash-reports";
 /// The credential store's entry of the authorization (service, account),
 /// for the removal from this computer (`uninstall.rs`).

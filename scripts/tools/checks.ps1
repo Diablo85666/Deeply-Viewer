@@ -1,7 +1,7 @@
-﻿# Deeply Tools: what the development environment needs, what is missing or
+# Deeply Tools: what the development environment needs, what is missing or
 # out of date, and how to fix it (dot-sourced by deeply-tools.ps1).
 
-$RepoUrl = 'https://github.com/Deeply-Viewer/Deeply-Viewer'
+$RepoUrl = 'https://github.com/Diablo85666/Deeply-Viewer'
 $FirestormUrl = 'https://github.com/FirestormViewer/phoenix-firestorm'
 
 function Get-Paths([string]$Root) {

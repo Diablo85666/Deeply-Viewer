@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     The CI checks, locally: syntax of the PowerShell scripts, formatting,
     clippy (warnings = errors) and tests. Run it before each PR.

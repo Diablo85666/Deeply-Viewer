@@ -569,7 +569,7 @@ mod tests {
             "https://casperlet.com/",
             "https://deeply-viewer.org",
             "https://www.deeply-viewer.org/downloads",
-            "https://github.com/Deeply-Viewer/Deeply-Viewer/pulls",
+            "https://github.com/Diablo85666/Deeply-Viewer/pulls",
             "https://gist.github.com/x",
             "https://secondlife.com./x",
             "https://www.youtube.com/watch?v=x",

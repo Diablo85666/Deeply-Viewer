@@ -1,4 +1,4 @@
-﻿# Deeply Tools: pull requests followed live — background refresh from GitHub,
+# Deeply Tools: pull requests followed live — background refresh from GitHub,
 # footer summary, Windows notifications, full panel (dot-sourced by
 # deeply-tools.ps1).
 

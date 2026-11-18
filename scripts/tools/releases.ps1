@@ -1,4 +1,4 @@
-﻿# Deeply Tools: manage the GitHub releases — create one (a SemVer tag on the
+# Deeply Tools: manage the GitHub releases — create one (a SemVer tag on the
 # latest main: the Release workflow builds and publishes it) or delete one
 # (dot-sourced by deeply-tools.ps1). Needs write access to the repository.
 # $DryRun (deeply-tools.ps1 -DryRun) prints the GitHub writes instead.
