@@ -39,12 +39,12 @@ $docs = @(
     'LICENSE',
     'NOTICE.md',
     'README.md',
-    'Deeply-Deeply-Viewer-0.9.10.4-Miglioramenti-e-Potenzialita.txt',
-    'Deeply-Deeply-Viewer-0.9.10.4-Improvements-and-Capabilities.txt',
-    'Deeply-Deeply-Viewer-0.9.10.4-Release-Notes-it.txt',
-    'Deeply-Deeply-Viewer-0.9.10.4-Release-Notes-en.txt',
-    'Deeply-Deeply-Viewer-0.9.10.4-Guida-uso-it.txt',
-    'Deeply-Deeply-Viewer-0.9.10.4-User-Guide-en.txt'
+    'Deeply-Viewer-0.9.10.4-Miglioramenti-e-Potenzialita.txt',
+    'Deeply-Viewer-0.9.10.4-Improvements-and-Capabilities.txt',
+    'Deeply-Viewer-0.9.10.4-Release-Notes-it.txt',
+    'Deeply-Viewer-0.9.10.4-Release-Notes-en.txt',
+    'Deeply-Viewer-0.9.10.4-Guida-uso-it.txt',
+    'Deeply-Viewer-0.9.10.4-User-Guide-en.txt'
 ) | ForEach-Object { Join-Path $Source $_ }
 Copy-Item -LiteralPath $docs -Destination $Out -ErrorAction Stop
 $branding = Join-Path $Out 'assets/deeply'
