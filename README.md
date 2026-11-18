@@ -1,642 +1,101 @@
 <p align="center">
-  <img src="assets/branding/aurora-deeply-viewer.jpg" alt="Aurora Deeply Viewer logo" width="220">
+  <img src="assets/deeply/deeply-logo.png" alt="Deeply Viewer logo" width="220">
 </p>
 
-<h1 align="center">Aurora Deeply Viewer</h1>
+<h1 align="center">Deeply Viewer</h1>
 
 <p align="center">
   <strong>0.9.10.4 Stable</strong><br>
-  Community Windows build prepared by MrDiablo85
+  Independent community viewer for Second Life and compatible grids
 </p>
 
-> **LEGGERE BENE FINO ALLA FINE.** Questo README descrive identità,
-> funzionalità, miglioramenti, verifiche, avvisi antivirus e responsabilità
-> della build Aurora Deeply Viewer.
-
 <p align="center">
-  <a href="https://github.com/Diablo85666/Aurora-Deeply-Viewer">GitHub</a> ·
-  <a href="https://discord.gg/VgkrhRZka">Discord</a> ·
+  <a href="https://github.com/Diablo85666/Deeply-Viewer/releases/latest">Download</a> ·
+  <a href="https://github.com/Diablo85666/Deeply-Viewer/releases">Releases</a> ·
+  <a href="https://github.com/Diablo85666/Deeply-Viewer/issues">Issues</a> ·
   <a href="https://github.com/Diablo85666">Author profile</a>
 </p>
 
-Aurora Deeply Viewer is an independent community build. It is not affiliated
-with or endorsed by Linden Lab or any other viewer project.
+Deeply Viewer is an independent community fork derived from Aurora Viewer.
+It is not affiliated with or endorsed by Linden Lab or any other viewer
+project.
 
-## Italiano
+## Novità
 
-### Novità principali
+La release 0.9.10.4 include:
 
-Questa release consolida il branding Aurora Deeply Viewer, la localizzazione
-italiana, il browser interno, i controlli per avatar, la grafica adattiva con
-recupero texture, i report locali e gli aggiornamenti dal repository community.
-Include la condivisione **bilaterale locale** dei transcript tra Aurora e
-Firestorm: Aurora può leggere e scrivere nella cartella compatibile, Firestorm
-può consultare i log creati da Aurora e Aurora può importare quelli creati da
-Firestorm. Non è sincronizzazione cloud e non trasferisce log tra computer.
+- branding Deeply Viewer nell'eseguibile, login, splash, icona e notifiche;
+- logo, splash e icona Windows nella cartella
+  [`assets/deeply/`](assets/deeply/);
+- interfaccia italiana e localizzazioni inglese, francese e giapponese;
+- browser integrato con supporto HTTP, HTTPS, SLURL e app link compatibili;
+- controlli per avatar, teleport, voce e conference chat;
+- grafica adattiva con recupero delle texture e profili Custom protetti;
+- importazione e condivisione locale opzionale dei transcript compatibili;
+- report locali, copia negli appunti e bozze GitHub senza invio automatico;
+- traduzione LibreTranslate manuale dai messaggi, attivata solo dopo il clic;
+- pacchetto portable verificabile con SHA-256.
 
-Sono stati risolti i problemi di conference chat applicata troppo tardi,
-texture nere persistenti, slot GPU non ricostruiti, texture bake non
-ricaricate e cambi grafici causati da picchi isolati. I profili Custom non
-vengono modificati automaticamente.
+## Download Windows
 
-#### Inventario completo delle potenzialità e delle correzioni
+Scarica il pacchetto dalla [release Deeply Viewer
+0.9.10.4](https://github.com/Diablo85666/Deeply-Viewer/releases/tag/v0.9.10.4).
 
-- Branding community coerente in eseguibile, login, splash, icona, notifiche
-  e documentazione, con manifest e nomi degli asset Aurora Deeply Viewer.
-- Interfaccia italiana, override `AURORA_UI_LANGUAGE=it`, identificatori
-  tradotti per mouse e scorciatoie, informazioni su build, licenze, privacy,
-  report e prestazioni.
-- Browser interno con barra indirizzi, indietro, avanti, arresto, ricarica,
-  stato HTTPS e apertura nel browser di sistema; supporto HTTP, HTTPS, SLURL
-  e app link compatibili; rifiuto di `javascript:` e `data:`.
-- Comportamenti browser `SystemForAll`, `BuiltInForSecondLife` e
-  `BuiltInForAll`.
-- Rifiuto persistente per avatar di teleport e conference chat, applicato
-  prima dell'apertura; comandi separati per blocco, voce, teleport e
-  conference nei menu di avatar, amici e mittenti.
-- Monitoraggio memoria, frame time e stalli GPU; riduzione
-  `Deluxe -> High -> Medium -> Low -> Potato`, campioni consecutivi e
-  cooldown; profili Custom protetti.
-- Ricostruzione degli slot texture GPU, reload delle bake texture dell'avatar
-  e recupero delle texture nere di volto, mento, occhi e mondo senza riavvio;
-  safe graphics di emergenza separato dal recupero ordinario.
-- Importazione dei transcript Firestorm con ricerca automatica o selezione
-  manuale delle cartelle; condivisione bilaterale locale dei file tra Aurora
-  e Firestorm per conversazioni private e di gruppo compatibili.
-- Cartelle separate per grid personalizzate; nessuna sincronizzazione cloud e
-  nessun trasferimento automatico dei log tra computer.
-- Report locali, copia negli appunti, bozze GitHub e invio solo dopo
-  autorizzazione; log, diagnostica, posizione e screenshot opzionali.
-- Feed aggiornamenti personale, `Aurora-Deeply-Update-policy.json`,
-  validazione di `aurora-install.json`, pacchetto portable, SHA-256 e
-  firma Minisign.
-- Correzioni a menu e ordine di rifiuto conference, texture persistenti,
-  slot GPU corrotti, bake non ricaricate, cambi grafici impulsivi, profili
-  Custom modificati automaticamente e branding incoerente.
+File principale:
 
-### Download e aggiornamenti
+`Deeply-Viewer-v0.9.10.4-windows-x64.zip`
 
-Scarica la versione stabile dalla [pagina ufficiale delle
-release](https://github.com/Diablo85666/Aurora-Deeply-Viewer/releases/latest).
+Il pacchetto contiene `deeply-viewer.exe`, gli asset Deeply, le licenze e la
+documentazione necessaria. Estrarlo in una cartella dedicata e avviare
+`deeply-viewer.exe`.
 
-- [Download Aurora Deeply Viewer](https://github.com/Diablo85666/Aurora-Deeply-Viewer/releases/latest)
-- [Download per Linux](https://github.com/Diablo85666/Aurora-Deeply-Viewer/releases/latest)
-- [Tutte le release](https://github.com/Diablo85666/Aurora-Deeply-Viewer/releases)
-
-È in preparazione una build Linux community di Aurora Deeply Viewer con
-pacchetti `.deb` per distribuzioni Debian e Ubuntu.
-
-Il pacchetto Windows attuale è:
-
-`Aurora-Deeply-Viewer-0.9.10.4-windows-x64.zip`
-
-#### Quale file scaricare per utilizzare il viewer
-
-Per utilizzare il programma e avviare l'eseguibile `.exe`, scarica
-**esclusivamente** questo file:
-
-`Aurora-Deeply-Viewer-0.9.10.4-windows-x64.zip`
-
-Dopo il download:
-
-1. verifica il file con il relativo `.sha256` e, se possibile, con il file
-   `.minisig`;
-2. fai clic destro sullo ZIP e scegli **Estrai tutto**;
-3. estrai tutti i contenuti in una cartella dedicata;
-4. avvia `Aurora-Deeply-Viewer.exe` dalla cartella estratta.
-
-Non devi aprire o estrarre i file `.sha256`, `.minisig` o
-`Aurora-Deeply-Update-policy.json`: sono file di verifica e configurazione.
-Gli archivi **Source code (zip)** e **Source code (tar.gz)** contengono il
-codice sorgente e non sono la build Windows pronta da avviare.
-
-Il pacchetto è portable: estrai tutti i file e avvia
-`Aurora-Deeply-Viewer.exe`. Verifica sempre il checksum pubblicato nella
-release prima dell'uso.
-
-Documentazione dettagliata:
-
-- [Miglioramenti e potenzialità 0.9.10.4](Aurora-Deeply-Viewer-0.9.10.4-Miglioramenti-e-Potenzialita.txt)
-- [Note di rilascio 0.9.10.4](Aurora-Deeply-Viewer-0.9.10.4-Release-Notes-it.txt)
-- [Guida all'utilizzo](Aurora-Deeply-Viewer-0.9.10.4-Guida-uso-it.txt)
-
-### Miglioramenti cumulativi dalla serie 0.9.6 alla 0.9.10.4
-
-Il checkout pubblico corrente non contiene tag separati verificabili per le
-versioni 0.9.6 e 0.9.7. La lista seguente è quindi una panoramica cumulativa
-delle funzionalità community presenti e verificabili nel ramo pubblico,
-senza attribuire singole modifiche a tag che non sono disponibili.
-
-#### Percorso delle release
-
-- **0.9.6–0.9.7**: base community, localizzazione italiana, identità
-  Aurora Deeply Viewer e consolidamento delle funzioni di compatibilità.
-- **0.9.10.1–0.9.10.2**: aggiornamenti community, feed personale,
-  pacchetto portable, browser interno, report, condivisione log e controlli
-  per avatar.
-- **0.9.10.3**: rifiuto delle conference chat per avatar e recupero delle
-  texture dopo la riduzione grafica adattiva.
-- **0.9.10.4**: branding community integrato nell'eseguibile, schermata
-  iniziale, login, icona finestra e notifiche; pacchetto firmato con
-  Minisign.
-
-#### Identità e localizzazione
-
-- Interfaccia italiana con override `AURORA_UI_LANGUAGE=it`.
-- Identificatori stabili per pulsanti del mouse e scorciatoie tradotte.
-- Informazioni su build, autore, licenze, privacy, report e prestazioni.
-- Nome eseguibile `Aurora-Deeply-Viewer.exe`.
-- Autore della release: MrDiablo85.
-
-#### Collegamenti e aggiornamenti community
-
-- Repository operativo: <https://github.com/Diablo85666/Aurora-Deeply-Viewer>
-- Discord community: <https://discord.gg/VgkrhRZka>
-- Profilo autore: <https://github.com/Diablo85666>
-- Feed aggiornamenti collegato al repository personale.
-- Verifica del formato degli asset e del manifest `aurora-install.json`.
-- Pacchetti Windows verificabili con SHA-256.
-
-#### Browser interno
-
-- Browser integrato con barra degli indirizzi.
-- Navigazione indietro, avanti, arresto e ricaricamento.
-- Indicatore di caricamento e stato HTTPS.
-- Possibilità di aprire una pagina nel browser di sistema.
-- Comportamenti `SystemForAll`, `BuiltInForSecondLife` e `BuiltInForAll`.
-- Supporto a HTTP, HTTPS, SLURL e app link compatibili.
-- Rifiuto di schemi non consentiti come `javascript:` e `data:`.
-
-#### Controlli per avatar
-
-- Rifiuto persistente delle offerte di teleport per singolo avatar.
-- Rifiuto persistente delle conference chat per singolo avatar.
-- Rifiuto conference applicato prima dell'apertura della conversazione.
-- Controlli separati per blocco totale, voce, teleport e conference chat.
-- Comandi disponibili nei menu contestuali degli avatar, amici e mittenti.
-
-#### Grafica adattiva e recupero texture
-
-- Monitoraggio di memoria del processo, tempi frame e stalli GPU.
-- Riduzione progressiva `Deluxe -> High -> Medium -> Low -> Potato`.
-- Campioni consecutivi e cooldown per evitare cambiamenti impulsivi.
-- Profili Custom non modificati automaticamente.
-- Ricostruzione degli slot texture GPU dopo una riduzione sotto pressione.
-- Ricaricamento delle texture bake dell'avatar locale.
-- Recupero da texture nere su volto, mento, occhi e mondo senza riavvio.
-- Safe graphics di emergenza mantenuto separato.
-
-#### Bug risolti e stabilità
-
-- Risolto il problema per cui il rifiuto delle conference chat era disponibile
-  solo in alcuni menu: il comando è ora esposto nei menu degli avatar, amici
-  e mittenti della chat.
-- Risolto il problema per cui una conference chat poteva aprirsi prima che
-  la preferenza di rifiuto venisse applicata.
-- Risolto il problema delle texture nere persistenti dopo pressione hardware,
-  rebake o riduzione della qualità grafica.
-- Risolto il problema per cui gli slot texture GPU corrotti restavano in uso
-  fino al riavvio del viewer.
-- Risolto il problema per cui le texture bake dell'avatar locale e alcune
-  texture del mondo non venivano ricaricate dopo il recupero.
-- Ridotti i cambi di qualità causati da picchi isolati tramite campioni
-  consecutivi e cooldown.
-- Impedita la modifica automatica dei profili grafici Custom.
-- Separato il recupero grafico ordinario dalla modalità safe graphics di
-  emergenza.
-- Reso verificabile il pacchetto con manifest, nome asset, SHA-256 e firma
-  Minisign, evitando che l'updater scelga pacchetti upstream.
-- Centralizzato il branding community in login, splash, icona finestra e
-  notifiche per evitare nomi e loghi incoerenti.
-
-#### Log e report
-
-- Condivisione bilaterale opzionale dei transcript con Firestorm.
-- Importazione dei transcript Firestorm già presenti, con selezione delle
-  cartelle trovate o scelta manuale di una cartella.
-- Quando la condivisione è attiva e la cartella dell'account viene trovata,
-  Aurora legge e scrive nella stessa cartella locale compatibile con
-  Firestorm: le conversazioni registrate da Aurora possono quindi essere
-  consultate da Firestorm e quelle registrate da Firestorm possono essere
-  importate e visualizzate da Aurora.
-- La condivisione è locale e bilaterale sui file: non sincronizza i dati via
-  Internet e non trasferisce transcript tra computer.
-- Supporto a conversazioni private e di gruppo compatibili.
-- Cartelle separate per grid personalizzate.
-- Salvataggio locale dei report.
-- Bozze GitHub e invio dopo autorizzazione esplicita.
-- Copia del report e revisione nel modulo ufficiale Linden Lab.
-- Nessun invio automatico a endpoint Linden Lab non documentati.
-- Log, diagnostica, posizione e screenshot restano opzionali.
-
-#### Verifica della release 0.9.10.4
-
-- SHA-256 del pacchetto Windows: vedere il file `.sha256` allegato alla
-  release; il valore lì riportato è la fonte autorevole per il download.
-- Firma: `Aurora-Deeply-Viewer-0.9.10.4-windows-x64.zip.minisig`
-- Chiave pubblica Minisign:
-  `RWQtAyq9dTabBnUU+7nX6IESxLp36DK5GK8BDcI6Mj5jveHqB7qvMJoh`
-- La chiave privata Minisign non è inclusa nel repository o nel pacchetto.
-
-#### Significato delle verifiche e degli avvisi antivirus
-
-- **SHA-256** è un'impronta matematica del file. Dopo il download, il
-  confronto con il valore pubblicato permette di verificare che il pacchetto
-  sia identico a quello pubblicato e non sia stato alterato. SHA-256 non
-  identifica da solo l'autore e non certifica l'assenza di malware.
-- **Minisign** è una firma crittografica del file. La verifica con la chiave
-  pubblica conferma che il file corrisponde a quello firmato con la chiave
-  privata Aurora Deeply Viewer e che non è stato modificato dopo la firma.
-  La chiave privata non viene pubblicata né distribuita. Anche Minisign non
-  è una scansione antivirus e non dimostra da solo l'assenza assoluta di
-  codice dannoso.
-- Windows Defender o altri antivirus possono mostrare avvisi di reputazione,
-  prevalenza ridotta, firma Authenticode assente o rilevazione euristica
-  anche quando un file non contiene virus. Avvisi analoghi possono comparire
-  al primo download di viewer conosciuti come Firestorm o Aurora, ma ogni
-  avviso deve comunque essere verificato e non ignorato automaticamente.
-  Controllare sempre origine, checksum, firma e risultati delle scansioni
-  disponibili.
-- La build è pubblicata tramite l'account GitHub `Diablo85666`, indicato come
-  account del responsabile della community. Il responsabile e creatore della
-  build, MrDiablo85, si assume la responsabilità della build pubblicata e
-  delle informazioni di rilascio. Il badge o lo stato di verifica
-  dell'account è determinato esclusivamente da GitHub e non viene sostituito
-  da SHA-256 o Minisign.
-
-### Privacy, licenza e attribuzioni
-
-Il pacchetto distribuito non contiene i log personali dell'utente, transcript,
-credenziali, token o password. I dati generati durante l'utilizzo restano
-nella cartella dati locale del viewer e non vengono aggiunti automaticamente
-alle release.
-
-Aurora Deeply Viewer è distribuito secondo i termini GNU GPLv3 applicabili al
-codice sorgente. Consultare [LICENSE](LICENSE) e [NOTICE.md](NOTICE.md).
+Prima dell'avvio, confronta il checksum del file con
+[`Deeply-Viewer-v0.9.10.4-windows-x64.zip.sha256`](https://github.com/Diablo85666/Deeply-Viewer/releases/download/v0.9.10.4/Deeply-Viewer-v0.9.10.4-windows-x64.zip.sha256).
+Il checksum conferma l'integrità del file, ma non sostituisce una scansione
+antivirus.
 
 ## English
 
-### Main new features
+Deeply Viewer 0.9.10.4 includes:
 
-This release consolidates Aurora Deeply Viewer branding, Italian
-localization, the built-in browser, avatar controls, adaptive graphics with
-texture recovery, local reports, and updates from the community repository.
-It includes **bilateral local** transcript sharing between Aurora and
-Firestorm: Aurora can read and write the compatible folder, Firestorm can
-view logs created by Aurora, and Aurora can import logs created by Firestorm.
-This is not cloud synchronization and does not transfer logs between
-computers.
+- Deeply Viewer branding in the executable, login screen, splash, icon and
+  notifications;
+- the Deeply logo, splash and Windows icon in
+  [`assets/deeply/`](assets/deeply/);
+- Italian, English, French and Japanese localization;
+- an integrated browser with HTTP, HTTPS, SLURL and compatible app-link
+  support;
+- avatar, teleport, voice and conference-chat controls;
+- adaptive graphics with texture recovery and protected Custom profiles;
+- optional local transcript import and sharing;
+- local reports, clipboard copy and GitHub drafts without automatic
+  submission;
+- manual LibreTranslate support started only after the user clicks Translate;
+- a portable package with a published SHA-256 checksum.
 
-Fixes include conference-chat rejection being applied too late, persistent
-black textures, unreconstructed GPU slots, missing bake-texture reloads, and
-graphics changes caused by isolated spikes. Custom profiles are not changed
-automatically.
+Download the Windows package from the [Deeply Viewer 0.9.10.4
+release](https://github.com/Diablo85666/Deeply-Viewer/releases/tag/v0.9.10.4).
+Extract `Deeply-Viewer-v0.9.10.4-windows-x64.zip` and start
+`deeply-viewer.exe`.
 
-#### Complete capabilities and fixes inventory
+## Documentazione
 
-- Consistent community branding in the executable, login, splash, icon,
-  notifications and documentation, with Aurora Deeply Viewer asset names and
-  manifest.
-- Italian UI, `AURORA_UI_LANGUAGE=it`, translated mouse and shortcut
-  identifiers, and build, license, privacy, report and performance details.
-- Built-in browser with address bar, back, forward, stop, reload, HTTPS status
-  and system-browser opening; HTTP, HTTPS, SLURL and compatible app links;
-  `javascript:` and `data:` are rejected.
-- `SystemForAll`, `BuiltInForSecondLife` and `BuiltInForAll` browser behavior.
-- Persistent per-avatar teleport and conference-chat rejection, applied
-  before opening; separate block, voice, teleport and conference controls in
-  avatar, friend and sender menus.
-- Memory, frame-time and GPU-stall monitoring; progressive
-  `Deluxe -> High -> Medium -> Low -> Potato` reduction, consecutive samples
-  and cooldown; Custom profiles are protected.
-- GPU texture-slot reconstruction, local avatar-bake reload and black face,
-  chin, eye and world texture recovery without restarting; emergency safe
-  graphics remains separate from ordinary recovery.
-- Firestorm transcript import with automatic discovery or manual folder
-  selection; bilateral local file sharing for compatible private and group
-  conversations.
-- Separate folders for custom grids; no cloud synchronization and no
-  automatic transfer of logs between computers.
-- Local reports, clipboard copy, GitHub drafts and submission only after
-  authorization; logs, diagnostics, position and screenshots are optional.
-- Personal update feed, `Aurora-Deeply-Update-policy.json`,
-  `aurora-install.json` validation, portable package, SHA-256 and Minisign.
-- Fixes to conference menus and rejection order, persistent textures,
-  corrupted GPU slots, missing bake reloads, impulsive graphics changes,
-  automatic Custom-profile changes and inconsistent branding.
+- [Note di rilascio italiane](Deeply-Viewer-0.9.10.4-Release-Notes-it.txt)
+- [Release notes in English](Deeply-Viewer-0.9.10.4-Release-Notes-en.txt)
+- [Guida italiana](Deeply-Viewer-0.9.10.4-Guida-uso-it.txt)
+- [English user guide](Deeply-Viewer-0.9.10.4-User-Guide-en.txt)
+- [Licenza GPLv3](LICENSE)
+- [Attribuzioni e responsabilità](NOTICE.md)
 
-### Download and updates
+## Licenza e attribuzioni
 
-Download the stable build from the [official
-releases page](https://github.com/Diablo85666/Aurora-Deeply-Viewer/releases/latest).
-
-- [Download Aurora Deeply Viewer](https://github.com/Diablo85666/Aurora-Deeply-Viewer/releases/latest)
-- [Download for Linux](https://github.com/Diablo85666/Aurora-Deeply-Viewer/releases/latest)
-- [All releases](https://github.com/Diablo85666/Aurora-Deeply-Viewer/releases)
-
-A community Linux build of Aurora Deeply Viewer is planned, with `.deb`
-packages for Debian and Ubuntu distributions.
-
-The current Windows package is:
-
-`Aurora-Deeply-Viewer-0.9.10.4-windows-x64.zip`
-
-#### Which file to download to use the viewer
-
-To use the program and start the `.exe`, download **only** this file:
-
-`Aurora-Deeply-Viewer-0.9.10.4-windows-x64.zip`
-
-After downloading:
-
-1. verify the file with its `.sha256` file and, when possible, its
-   `.minisig` file;
-2. right-click the ZIP and choose **Extract All**;
-3. extract all contents into a dedicated folder;
-4. start `Aurora-Deeply-Viewer.exe` from the extracted folder.
-
-Do not open or extract the `.sha256`, `.minisig`, or
-`Aurora-Deeply-Update-policy.json` files: they are verification and
-configuration files. The **Source code (zip)** and **Source code (tar.gz)**
-archives contain source code and are not the ready-to-run Windows build.
-
-The package is portable: extract all files and start
-`Aurora-Deeply-Viewer.exe`. Always verify the checksum published with the
-release before using the package. The release also includes a Minisign
-signature for the package.
-
-Detailed documentation:
-
-- [0.9.10.4 improvements and capabilities](Aurora-Deeply-Viewer-0.9.10.4-Improvements-and-Capabilities.txt)
-- [0.9.10.4 release notes](Aurora-Deeply-Viewer-0.9.10.4-Release-Notes-en.txt)
-- [User guide](Aurora-Deeply-Viewer-0.9.10.4-User-Guide-en.txt)
-
-### Cumulative improvements from 0.9.6 through 0.9.10.4
-
-The current public checkout does not contain separate verifiable tags for
-versions 0.9.6 and 0.9.7. The following is therefore a cumulative overview
-of community features present and verifiable in the public branch, without
-assigning individual changes to unavailable tags.
-
-#### Release path
-
-- **0.9.6–0.9.7**: community foundation, Italian localization, Aurora
-  Deeply Viewer identity, and compatibility work.
-- **0.9.10.1–0.9.10.2**: community updates, personal update feed, portable
-  package, built-in browser, reports, log sharing, and per-avatar controls.
-- **0.9.10.3**: per-avatar conference-chat rejection and texture recovery
-  after adaptive graphics reduction.
-- **0.9.10.4**: community branding integrated into the executable, startup
-  screen, login, window icon, and notifications; Minisign-signed package.
-
-#### Identity and localization
-
-- Italian interface with the `AURORA_UI_LANGUAGE=it` override.
-- Stable identifiers for translated mouse buttons and shortcuts.
-- Build, author, license, privacy, report, and performance information.
-- Executable name `Aurora-Deeply-Viewer.exe`.
-- Release author: MrDiablo85.
-
-#### Community links and updates
-
-- Operational repository: <https://github.com/Diablo85666/Aurora-Deeply-Viewer>
-- Community Discord: <https://discord.gg/VgkrhRZka>
-- Author profile: <https://github.com/Diablo85666>
-- Update feed connected to the personal repository.
-- Asset naming and `aurora-install.json` manifest validation.
-- Windows packages verifiable with SHA-256.
-
-#### Built-in browser
-
-- Integrated browser with an address bar.
-- Back, forward, stop, and reload navigation.
-- Loading progress and HTTPS status.
-- Option to open a page in the system browser.
-- `SystemForAll`, `BuiltInForSecondLife`, and `BuiltInForAll` behaviors.
-- Support for compatible HTTP, HTTPS, SLURL, and app links.
-- Refusal of unsupported schemes such as `javascript:` and `data:`.
-
-#### Avatar controls
-
-- Persistent per-avatar rejection of teleport offers.
-- Persistent per-avatar rejection of conference chats.
-- Conference rejection is applied before the conversation opens.
-- Separate controls for total block, voice, teleport, and conference chat.
-- Commands available in avatar, friend, and chat-sender context menus.
-
-#### Adaptive graphics and texture recovery
-
-- Monitoring of process memory, frame times, and GPU stalls.
-- Progressive reduction `Deluxe -> High -> Medium -> Low -> Potato`.
-- Consecutive samples and cooldown to avoid impulsive changes.
-- Custom profiles are not changed automatically.
-- GPU texture slots are rebuilt after a pressure reduction.
-- Local avatar bake textures are refreshed.
-- Black face, chin, eye, and world textures can recover without a restart.
-- Emergency safe graphics remains separate.
-
-#### Fixed bugs and stability improvements
-
-- Fixed conference-chat rejection being exposed in only some menus: the
-  command is now available from avatar, friend, and chat-sender menus.
-- Fixed conference sessions opening before the per-avatar rejection
-  preference was applied.
-- Fixed persistent black textures after hardware pressure, rebaking, or
-  graphics-quality reduction.
-- Fixed corrupted GPU texture slots remaining active until the viewer
-  restarted.
-- Fixed local avatar bake textures and some world textures not being
-  reloaded after recovery.
-- Reduced quality changes caused by isolated spikes through consecutive
-  samples and a cooldown.
-- Prevented Custom graphics profiles from being changed automatically.
-- Kept ordinary graphics recovery separate from emergency safe graphics.
-- Made packages verifiable through the manifest, asset name, SHA-256, and
-  Minisign signature so the updater does not select upstream packages.
-- Centralized community branding across login, splash, window icon, and
-  notifications to prevent inconsistent names and logos.
-
-#### Logs and reports
-
-- Optional bilateral transcript sharing with Firestorm.
-- Import of existing Firestorm transcripts, with discovered folders or a
-  manually selected folder.
-- When sharing is enabled and the account folder is found, Aurora reads and
-  writes the same local Firestorm-compatible folder: conversations recorded
-  by Aurora can be viewed by Firestorm, and conversations recorded by
-  Firestorm can be imported and viewed by Aurora.
-- This is local, bilateral file sharing. It does not synchronize data over
-  the Internet or transfer transcripts between computers.
-- Support for compatible private and group conversations.
-- Separate folders for custom grids.
-- Local report saving.
-- GitHub drafts and submission after explicit authorization.
-- Clipboard copy and review in the official Linden Lab form.
-- No automatic submission to undocumented Linden Lab endpoints.
-- Logs, diagnostics, position, and screenshots remain optional.
-
-#### 0.9.10.4 release verification
-
-- Windows package SHA-256: see the `.sha256` file attached to the release;
-  its value is authoritative for the download.
-- Signature: `Aurora-Deeply-Viewer-0.9.10.4-windows-x64.zip.minisig`
-- Minisign public key:
-  `RWQtAyq9dTabBnUU+7nX6IESxLp36DK5GK8BDcI6Mj5jveHqB7qvMJoh`
-- The Minisign private key is not included in the repository or package.
-
-#### What the checks and antivirus warnings mean
-
-- **SHA-256** is a mathematical file fingerprint. Comparing the downloaded
-  file with the published value verifies that the package is identical to the
-  published package and was not altered. SHA-256 alone does not identify the
-  author or certify the absence of malware.
-- **Minisign** is a cryptographic file signature. Verification with the
-  public key confirms that the file matches the file signed with the Aurora
-  Deeply Viewer private key and was not modified after signing. The private
-  key is never published or distributed. Minisign is not an antivirus scan
-  and does not, by itself, prove the absolute absence of malicious code.
-- Windows Defender and other antivirus products can show reputation,
-  low-prevalence, missing-Authenticode, or heuristic warnings even when a
-  file contains no virus. Similar warnings may appear on the first download
-  of established viewers such as Firestorm or Aurora, but every warning must
-  still be investigated rather than dismissed automatically. Always check
-  provenance, checksum, signature, and available scan results.
-- The build is published through the GitHub account `Diablo85666`, identified
-  as the community maintainer account. The responsible build creator,
-  MrDiablo85, assumes responsibility for the published build and release
-  information. Any account verification badge or status is determined only
-  by GitHub and is not replaced by SHA-256 or Minisign.
-
-### Privacy, license, and attribution
-
-The distributed package does not contain the user's personal logs, transcripts,
-credentials, tokens, or passwords. Data generated during use remains in the
-viewer's local data directory and is not automatically added to releases.
-
-Aurora Deeply Viewer is distributed under the GNU GPLv3 terms applicable to
-the source code. See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).
+Deeply Viewer is distributed under the GNU GPLv3 terms applicable to the
+source code. The upstream attribution and the statement that this is an
+independent community fork are retained in [`NOTICE.md`](NOTICE.md).
 
 ## Community
 
-- GitHub: <https://github.com/Diablo85666/Aurora-Deeply-Viewer>
-- Discord: <https://discord.gg/VgkrhRZka>
-- Author: <https://github.com/Diablo85666>
-
----
-
-<p align="center">
-  <img src="assets/branding/aurora-deeply-viewer.jpg" alt="Logo Aurora Deeply Viewer" width="220">
-</p>
-
-<h2 align="center">Aurora Deeply Viewer 0.9.10.4</h2>
-
-## Disclaimer finale: responsabilità e verifiche
-
-Questa sezione raccoglie in un unico punto le potenzialità e i miglioramenti
-community presenti nella release Windows 0.9.10.4 rispetto alla base pubblica
-dalla serie 0.9.6. I tag separati 0.9.6 e 0.9.7 non sono disponibili nel
-checkout pubblico; per questo la cronologia è descritta come riepilogo
-cumulativo verificabile e non attribuisce singole modifiche a tag mancanti.
-
-### Potenzialità e miglioramenti
-
-- Identità Aurora Deeply Viewer, logo community e localizzazione italiana.
-- Branding coerente nell'eseguibile, login, splash, icona, notifiche e
-  documentazione.
-- Feed aggiornamenti personale con policy
-  `Aurora-Deeply-Update-policy.json`, manifest e nomi asset community.
-- Pacchetto Windows portable con verifica SHA-256 e firma Minisign.
-- Browser interno con indirizzo, navigazione indietro/avanti, arresto,
-  ricaricamento, stato HTTPS e apertura nel browser di sistema.
-- Supporto ai comportamenti `SystemForAll`, `BuiltInForSecondLife` e
-  `BuiltInForAll`, oltre a HTTP, HTTPS, SLURL e app link compatibili.
-- Blocco degli schemi non consentiti come `javascript:` e `data:`.
-- Rifiuto persistente per singolo avatar di teleport e conference chat.
-- Applicazione del rifiuto conference prima dell'apertura della sessione.
-- Controlli separati per blocco, voce, teleport e conference chat nei menu di
-  avatar, amici e mittenti della chat.
-- Monitoraggio di memoria, tempi frame e stalli GPU.
-- Riduzione grafica progressiva `Deluxe -> High -> Medium -> Low -> Potato`.
-- Campioni consecutivi e cooldown per evitare riduzioni causate da picchi
-  isolati.
-- Profili Custom protetti dalle modifiche automatiche.
-- Ricostruzione degli slot texture GPU dopo pressione grafica.
-- Ricaricamento delle texture bake dell'avatar locale e recupero delle
-  texture nere di volto, mento, occhi e mondo senza riavvio.
-- Separazione tra recupero grafico ordinario e safe graphics di emergenza.
-- Importazione dei transcript Firestorm esistenti, con ricerca automatica
-  delle cartelle compatibili o selezione manuale.
-- Condivisione **bilaterale locale** dei log tra Aurora e Firestorm: Aurora
-  può leggere e scrivere nella cartella compatibile, Firestorm può consultare
-  le conversazioni registrate da Aurora e Aurora può importare quelle
-  registrate da Firestorm.
-- Supporto a conversazioni private e di gruppo compatibili e cartelle
-  separate per grid personalizzate.
-- Nessuna sincronizzazione cloud e nessun trasferimento automatico dei log tra
-  computer.
-- Report locali, copia negli appunti, bozze GitHub e invio solo dopo
-  autorizzazione esplicita.
-- Log, diagnostica, posizione e screenshot opzionali.
-- Branding e packaging uniformati per evitare la selezione di asset upstream.
-
-### Risoluzioni e stabilità
-
-- Risolto il problema dei comandi conference chat disponibili solo in alcuni
-  menu.
-- Risolto il problema dell'apertura della conference prima dell'applicazione
-  della preferenza di rifiuto.
-- Risolti i casi di texture nere persistenti dopo pressione hardware, rebake o
-  riduzione della qualità grafica.
-- Risolto il riutilizzo di slot texture GPU corrotti fino al riavvio.
-- Risolto il mancato reload di texture bake locali e texture del mondo dopo il
-  recupero.
-- Ridotti i cambi grafici impulsivi causati da campioni isolati.
-- Impedite modifiche automatiche ai profili Custom.
-- Separato il recupero ordinario dalla modalità safe graphics.
-- Reso l'updater coerente con il repository community, la nuova policy e gli
-  asset Aurora Deeply Viewer.
-- Centralizzati logo, nome e branding per evitare incoerenze nell'interfaccia.
-
-### Responsabilità del creatore e del pubblicatore
-
-Aurora Deeply Viewer 0.9.10.4 è una build community creata e pubblicata da
-**MrDiablo85** tramite l'account GitHub `Diablo85666`. Il responsabile e
-creatore della build dichiara di utilizzare un account GitHub verificato e si
-assume la responsabilità della build pubblicata e delle informazioni fornite
-con questa release. L'eventuale badge o stato di verifica è quello assegnato
-e mostrato ufficialmente da GitHub.
-
-### SHA-256, Minisign e avvisi antivirus
-
-- **SHA-256** è un'impronta matematica del file: confrontando il valore
-  pubblicato con quello del download si rilevano alterazioni o danneggiamenti.
-  Non identifica da solo il creatore e non prova l'assenza di virus.
-- **Minisign** è una firma crittografica: la verifica con la chiave pubblica
-  conferma che il pacchetto corrisponde a quello firmato dalla chiave privata
-  del responsabile e non è stato modificato dopo la firma. La chiave privata
-  non è pubblicata, caricata o distribuita. Minisign non è un antivirus.
-- Windows Defender o altri antivirus possono segnalare anche file senza virus
-  per reputazione bassa, scarsa prevalenza, assenza di Authenticode o
-  rilevazioni euristiche. Avvisi simili possono apparire al primo download di
-  viewer conosciuti come Firestorm o Aurora, ma non devono essere ignorati:
-  occorre verificare origine, SHA-256, Minisign e scansioni disponibili.
-
-### Final disclaimer: responsibility and verification
-
-This final section identifies the Windows 0.9.10.4 community build as Aurora
-Deeply Viewer and summarizes its cumulative browser, avatar-control, adaptive
-graphics, texture-recovery, reporting, updater, branding, packaging and
-bilateral local Firestorm transcript-sharing improvements. The build creator
-and publisher is MrDiablo85, using the GitHub account `Diablo85666`; the
-creator states that this is a verified GitHub account and assumes
-responsibility for the published build and release information. Any official
-verification badge or status is determined and displayed by GitHub.
-
-SHA-256 is the package fingerprint used to detect changes or corruption.
-Minisign is the cryptographic signature checked with the public key and does
-not expose the private key. Neither one is an antivirus scan or proof of the
-absolute absence of malware. Windows Defender and other antivirus products
-may warn about files without viruses because of reputation, prevalence,
-missing Authenticode signing or heuristic detection; similar first-download
-warnings may occur with viewers such as Firestorm or Aurora. Always verify
-the source, checksum, signature and available scans.
+- [Repository](https://github.com/Diablo85666/Deeply-Viewer)
+- [Releases](https://github.com/Diablo85666/Deeply-Viewer/releases)
+- [Issues](https://github.com/Diablo85666/Deeply-Viewer/issues)
+- [Author](https://github.com/Diablo85666)
