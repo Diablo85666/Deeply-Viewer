@@ -22,7 +22,7 @@ impl App {
         let mut fields = vec![
             Field::new("bug-version", "Viewer version", aurora_version::version(), true),
             Field::new("bug-commit", "Build commit", aurora_version::commit(), true),
-            Field::new("bug-build", "Build profile", env!("AURORA_BUILD_PROFILE"), true),
+            Field::new("bug-build", "Build profile", env!("DEEPLY_BUILD_PROFILE"), true),
             Field::new("bug-gpu", "Graphics card", format!("{} ({})", gpu.name, gpu.backend), true),
             Field::new("bug-driver", "Graphics driver", &gpu.driver, true),
             Field::new(

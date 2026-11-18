@@ -31,7 +31,7 @@ const POSE_LEAD: f32 = 0.05;
 /// half the skeletons posed at KB), and the anchors of all they wear with
 /// them. Now an impostor keeps its last pose until its picture is nearly
 /// due ([`Impostors::pose_can_wait`]); its animations still start and stop
-/// on time. AURORA_IMPOSTOR_POSES=every poses them at every frame as
+/// on time. DEEPLY_IMPOSTOR_POSES=every poses them at every frame as
 /// before; `alt` alternates the two ways by the second (one second in three
 /// the old way).
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -43,7 +43,7 @@ pub enum PoseMode {
 
 pub fn pose_mode() -> PoseMode {
     static MODE: std::sync::OnceLock<PoseMode> = std::sync::OnceLock::new();
-    *MODE.get_or_init(|| match std::env::var("AURORA_IMPOSTOR_POSES").as_deref() {
+    *MODE.get_or_init(|| match std::env::var("DEEPLY_IMPOSTOR_POSES").as_deref() {
         Ok("every") => PoseMode::Every,
         Ok("alt") => PoseMode::Alternate,
         _ => PoseMode::Picture,
@@ -61,8 +61,8 @@ pub fn pose_every_frame() -> bool {
     }
 }
 
-/// `AURORA_IMPOSTOR_POSES=alt`: the way of second `n` (true: the old way),
-/// the same seconds as `AURORA_MATERIAL_REBUILD=alt`. None without `alt`.
+/// `DEEPLY_IMPOSTOR_POSES=alt`: the way of second `n` (true: the old way),
+/// the same seconds as `DEEPLY_MATERIAL_REBUILD=alt`. None without `alt`.
 pub fn alternate_poses(n: u64) -> Option<bool> {
     (pose_mode() == PoseMode::Alternate).then(|| {
         let old = n.is_multiple_of(3);

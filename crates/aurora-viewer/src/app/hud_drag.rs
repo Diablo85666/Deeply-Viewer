@@ -190,7 +190,7 @@ impl App {
 
     fn demo_hud_drag_binding(&self) -> Option<crate::keybinds::Binding> {
         let slot =
-            usize::from(std::env::var("AURORA_DEMO_HUDS").is_ok_and(|mode| matches!(mode.as_str(), "drag-secondary" | "scale-secondary")));
+            usize::from(std::env::var("DEEPLY_DEMO_HUDS").is_ok_and(|mode| matches!(mode.as_str(), "drag-secondary" | "scale-secondary")));
         self.settings.keybinds.get(Action::HudDrag)[slot].clone()
     }
 
@@ -231,10 +231,10 @@ impl App {
     pub(super) fn demo_hud_drag_steps(&mut self) {
         self.demo_hud_view_zoom_steps();
         self.demo_hud_scale_steps();
-        if !self.demo || !std::env::var("AURORA_DEMO_HUDS").is_ok_and(|mode| mode.starts_with("drag")) {
+        if !self.demo || !std::env::var("DEEPLY_DEMO_HUDS").is_ok_and(|mode| mode.starts_with("drag")) {
             return;
         }
-        let mode = std::env::var("AURORA_DEMO_HUDS").unwrap_or_default();
+        let mode = std::env::var("DEEPLY_DEMO_HUDS").unwrap_or_default();
         if (self.frame_count == 680 && mode.starts_with("drag-lock")) || (self.frame_count == 700 && mode == "drag-lock-unlock") {
             self.on_ctx_action(ui::context::CtxAction::SetHudMoveLock(
                 crate::world::objects::ObjKey {
@@ -313,7 +313,7 @@ impl App {
     }
 
     fn demo_hud_view_zoom_steps(&mut self) {
-        if !self.demo || !std::env::var("AURORA_DEMO_HUDS").is_ok_and(|mode| mode == "edit-scroll") {
+        if !self.demo || !std::env::var("DEEPLY_DEMO_HUDS").is_ok_and(|mode| mode == "edit-scroll") {
             return;
         }
         let Some(root) = self.world.objects.index_of_uuid(&crate::demo::hud::object(31, false).full_id) else {
@@ -410,10 +410,10 @@ impl App {
     }
 
     fn demo_hud_scale_steps(&mut self) {
-        if !self.demo || !std::env::var("AURORA_DEMO_HUDS").is_ok_and(|mode| mode.starts_with("scale")) {
+        if !self.demo || !std::env::var("DEEPLY_DEMO_HUDS").is_ok_and(|mode| mode.starts_with("scale")) {
             return;
         }
-        let mode = std::env::var("AURORA_DEMO_HUDS").unwrap_or_default();
+        let mode = std::env::var("DEEPLY_DEMO_HUDS").unwrap_or_default();
         let root = self.world.objects.index_of_uuid(&crate::demo::hud::object(31, false).full_id);
         if self.frame_count == 720
             && let (Some(root), Some(view)) = (root, self.scene.lists.hud_view)

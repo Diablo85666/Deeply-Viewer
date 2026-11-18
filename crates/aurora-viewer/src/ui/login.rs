@@ -370,7 +370,7 @@ fn favorite_place(favorite: &crate::login_favorites::Favorite) -> String {
     format!("{} ({}, {}, {})", favorite.region, x.round(), y.round(), z.round())
 }
 
-/// AURORA_DEMO_LOGIN_FAVORITES=open: the first start menu with favourites
+/// DEEPLY_DEMO_LOGIN_FAVORITES=open: the first start menu with favourites
 /// (the combo `salt` of `ui`) opens once, after the login screen's first
 /// frames, for captures.
 pub(super) fn demo_open_start_menu(ui: &egui::Ui, salt: &str, favorites: &StartFavorites) {
@@ -764,7 +764,7 @@ pub fn show(
                     super::aurora_bg::radial_glow(&painter, r.center(), 150.0, p.violet, 0.42);
                 }
                 ui.add_space(2.0);
-                ui.label(RichText::new("Aurora Deeply Viewer").size(34.0).strong().color(p.ink));
+                ui.label(RichText::new("Deeply Viewer").size(34.0).strong().color(p.ink));
                 ui.label(RichText::new(client_tagline()).size(13.0).color(p.violet_pale));
                 ui.add_space(18.0);
             });

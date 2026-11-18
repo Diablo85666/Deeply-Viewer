@@ -105,7 +105,7 @@ pub fn reply(command: &NetCommand) -> Vec<NetEvent> {
         && (fields[2] == RIDER.to_string() || fields[2] == DEMO_AGENT.to_string())
     {
         use base64::{Engine, engine::general_purpose::STANDARD};
-        let separate = matches!(std::env::var("AURORA_DEMO_HAND_IK").as_deref(), Ok("objects" | "observer-objects"));
+        let separate = matches!(std::env::var("DEEPLY_DEMO_HAND_IK").as_deref(), Ok("objects" | "observer-objects"));
         let bindings = [
             ("mWristLeft", "mShoulderLeft", LEFT, 0.055),
             ("mWristRight", "mShoulderRight", RIGHT, -0.055),
@@ -121,7 +121,7 @@ pub fn reply(command: &NetCommand) -> Vec<NetEvent> {
         });
         let mut rig = serde_json::json!({"nodes":[],"bindings":bindings});
         let profiles = matches!(
-            std::env::var("AURORA_DEMO_HAND_IK").as_deref(),
+            std::env::var("DEEPLY_DEMO_HAND_IK").as_deref(),
             Ok("profiles" | "observer-profiles")
         );
         if profiles {
@@ -350,7 +350,7 @@ pub fn editor_reply(command: &NetCommand, frame: u64, mode: &str) -> Vec<NetEven
     }
     let mut events = reply(command);
     if matches!(
-        std::env::var("AURORA_DEMO_HAND_IK").as_deref(),
+        std::env::var("DEEPLY_DEMO_HAND_IK").as_deref(),
         Ok("profiles" | "observer-profiles")
     ) {
         for event in &mut events {

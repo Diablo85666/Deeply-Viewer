@@ -300,11 +300,11 @@ fn read_picture(path: &Path) -> Option<egui::ColorImage> {
     Some(egui::ColorImage::from_rgba_unmultiplied(size, rgba.as_raw()))
 }
 
-/// AURORA_DEMO_CROSSHAIR=dot|cross|circle|legacy|off|image:<file>: the
+/// DEEPLY_DEMO_CROSSHAIR=dot|cross|circle|legacy|off|image:<file>: the
 /// crosshair of that shape for the session (nothing saved); `cross` and
 /// `circle` with their centre dot.
 pub fn demo(s: &Settings) -> Option<Settings> {
-    let spec = std::env::var("AURORA_DEMO_CROSSHAIR").ok()?;
+    let spec = std::env::var("DEEPLY_DEMO_CROSSHAIR").ok()?;
     let mut shown = s.clone();
     match spec.as_str() {
         "dot" => shown.shape = Shape::Dot,

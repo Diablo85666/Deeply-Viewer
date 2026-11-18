@@ -243,7 +243,7 @@ pub struct Rez {
     /// When the counts last went to the log.
     logged_at: Option<Instant>,
     /// A look for some objects or avatars by id, whatever the frame's
-    /// (the demo's side-by-side comparison, `AURORA_DEMO_REZ_EFFECT=styles`).
+    /// (the demo's side-by-side comparison, `DEEPLY_DEMO_REZ_EFFECT=styles`).
     pub styles: HashMap<Uuid, u32>,
     /// Those of them followed, by slot (a derez finds its look there).
     styled: HashMap<usize, u32>,
@@ -257,7 +257,7 @@ pub fn record_value(mode: u32, start_ms: u32, sweep: Duration, bottom: f32, heig
     [start_ms, mode | ms << 8, bottom.to_bits(), height.to_bits()]
 }
 
-/// `value` with a look of its own (`AURORA_REZ_STYLE`'s numbers; 0 keeps
+/// `value` with a look of its own (`DEEPLY_REZ_STYLE`'s numbers; 0 keeps
 /// the frame's).
 fn with_style(mut value: [u32; 4], style: u32) -> [u32; 4] {
     value[1] = value[1] & !(0xF << 20) | (style & 0xF) << 20;

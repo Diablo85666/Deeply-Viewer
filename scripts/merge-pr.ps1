@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Puts a ready PR in the merge queue and waits for the outcome: merged, or
     out of the queue (red CI on the code combined with the latest main,

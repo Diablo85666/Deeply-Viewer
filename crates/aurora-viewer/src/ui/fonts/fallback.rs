@@ -185,14 +185,14 @@ pub fn wait() -> &'static [SystemFace] {
     FACES.get_or_init(scan)
 }
 
-/// `AURORA_FONT_FALLBACK=0`: embedded fonts only (comparisons, diagnostics).
+/// `DEEPLY_FONT_FALLBACK=0`: embedded fonts only (comparisons, diagnostics).
 fn enabled() -> bool {
-    std::env::var("AURORA_FONT_FALLBACK").map_or(true, |v| v.trim() != "0")
+    std::env::var("DEEPLY_FONT_FALLBACK").map_or(true, |v| v.trim() != "0")
 }
 
 fn scan() -> Vec<SystemFace> {
     if !enabled() {
-        log::info!("system fallback fonts: off (AURORA_FONT_FALLBACK=0)");
+        log::info!("system fallback fonts: off (DEEPLY_FONT_FALLBACK=0)");
         return Vec::new();
     }
     let start = std::time::Instant::now();

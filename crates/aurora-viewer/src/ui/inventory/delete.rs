@@ -144,7 +144,7 @@ pub(super) fn button(
 fn demo_mode() -> Option<&'static str> {
     static MODE: std::sync::OnceLock<Option<String>> = std::sync::OnceLock::new();
     MODE.get_or_init(|| {
-        std::env::var("AURORA_DEMO_INVENTORY")
+        std::env::var("DEEPLY_DEMO_INVENTORY")
             .ok()
             .filter(|mode| mode.starts_with("delete-") || mode.starts_with("aurora-delete-"))
     })

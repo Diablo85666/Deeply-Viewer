@@ -1,4 +1,4 @@
-//! The classifieds of the demo residents and ours (AURORA_DEMO_PROFILE):
+//! The classifieds of the demo residents and ours (DEEPLY_DEMO_PROFILE):
 //! the simulator's side of avatarclassifiedsrequest, ClassifiedInfoRequest,
 //! ClassifiedInfoUpdate, ClassifiedDelete and the click statistics. Ours are
 //! kept for the run; a new one is published as on the grid, its price taken

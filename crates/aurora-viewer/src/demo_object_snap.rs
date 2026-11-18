@@ -1,4 +1,4 @@
-//! AURORA_DEMO_OBJECT_SNAP: boxes to snap together with the build tools' "Snap to
+//! DEEPLY_DEMO_OBJECT_SNAP: boxes to snap together with the build tools' "Snap to
 //! objects" (build/object_snap.rs), 6 m along the start view.
 //!
 //! - a 4 x 4 m slab on the ground (`object:87700`);
@@ -14,8 +14,8 @@
 //!   round side, not its box's corners.
 //!
 //! `1` adds the boxes; `on` also chooses Snap › Objects when
-//! AURORA_DEMO_BUILD opens the tools (`build::demo::apply_object_snap`).
-//! From the start position, or AURORA_DEMO_POS="x,y" (open land: "80,100").
+//! DEEPLY_DEMO_BUILD opens the tools (`build::demo::apply_object_snap`).
+//! From the start position, or DEEPLY_DEMO_POS="x,y" (open land: "80,100").
 
 use super::{HANDLE, height, prim, shape, te};
 use aurora_net::NetEvent;
@@ -25,14 +25,14 @@ use glam::{Quat, Vec3};
 pub const FIRST_ID: u32 = 87_700;
 
 pub fn enabled() -> bool {
-    std::env::var("AURORA_DEMO_OBJECT_SNAP").is_ok_and(|v| matches!(v.trim(), "1" | "on"))
+    std::env::var("DEEPLY_DEMO_OBJECT_SNAP").is_ok_and(|v| matches!(v.trim(), "1" | "on"))
 }
 
 pub fn events() -> Vec<NetEvent> {
     if !enabled() {
         return Vec::new();
     }
-    let eye = std::env::var("AURORA_DEMO_POS")
+    let eye = std::env::var("DEEPLY_DEMO_POS")
         .ok()
         .map(|v| v.split(',').filter_map(|s| s.trim().parse::<f32>().ok()).collect::<Vec<_>>())
         .filter(|p| p.len() >= 2)

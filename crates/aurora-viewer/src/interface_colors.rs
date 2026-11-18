@@ -82,10 +82,10 @@ pub fn skin() -> Option<Palette> {
     SKIN.lock().ok().and_then(|s| *s)
 }
 
-/// `AURORA_DEMO_COLORS=accent:#14B8A6,surface:#3A2433,text:#FCE7F3`
+/// `DEEPLY_DEMO_COLORS=accent:#14B8A6,surface:#3A2433,text:#FCE7F3`
 /// (demo mode only, any of the three): this run's choice, never saved.
 pub fn demo_override() -> Option<InterfaceColors> {
-    std::env::var("AURORA_DEMO_COLORS").ok().map(|raw| parse(&raw))
+    std::env::var("DEEPLY_DEMO_COLORS").ok().map(|raw| parse(&raw))
 }
 
 fn parse(raw: &str) -> InterfaceColors {

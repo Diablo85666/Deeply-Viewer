@@ -1,4 +1,4 @@
-//! AURORA_DEMO_ATTENTION: the window goes to the taskbar, then a message, a
+//! DEEPLY_DEMO_ATTENTION: the window goes to the taskbar, then a message, a
 //! mention in nearby chat, a mention in a group chat, an object's message,
 //! a teleport offer and a script dialog arrive one second apart: each
 //! flashes the taskbar button and, with the system notifications (turned on
@@ -11,7 +11,7 @@ use uuid::Uuid;
 
 /// The scenario, if asked: `1`, `front` or `capture`.
 pub fn mode() -> Option<String> {
-    std::env::var("AURORA_DEMO_ATTENTION").ok()
+    std::env::var("DEEPLY_DEMO_ATTENTION").ok()
 }
 
 /// Frame at which the window goes to the taskbar (`1`).

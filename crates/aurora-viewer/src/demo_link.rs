@@ -1,4 +1,4 @@
-//! AURORA_DEMO_LINK: a simulated link between the offline demo and a
+//! DEEPLY_DEMO_LINK: a simulated link between the offline demo and a
 //! stand-in simulator for our avatar, to try Aurora's movement (own_motion.rs)
 //! against Firestorm's without a grid.
 //!
@@ -10,7 +10,7 @@
 //! like the network's. The viewer then runs the grid's path: extrapolation,
 //! smoothing and, with Aurora's movement, the prediction.
 //!
-//! `AURORA_DEMO_LINK=<ping ms>[,jitter=<ms>][,aurora|firestorm][,vehicle]`:
+//! `DEEPLY_DEMO_LINK=<ping ms>[,jitter=<ms>][,aurora|firestorm][,vehicle]`:
 //! `jitter` delays each message by up to that much more (order kept);
 //! `aurora` / `firestorm` force the movement for the session without
 //! touching the saved choice; `vehicle` seats our avatar on a vehicle that
@@ -50,7 +50,7 @@ pub struct Config {
 
 impl Config {
     pub fn from_env() -> Option<Config> {
-        Config::parse(&std::env::var("AURORA_DEMO_LINK").ok()?)
+        Config::parse(&std::env::var("DEEPLY_DEMO_LINK").ok()?)
     }
 
     fn parse(value: &str) -> Option<Config> {
@@ -85,7 +85,7 @@ impl Config {
                     } else if let Some(ms) = ms("stoplag=") {
                         cfg.stop_lag = (ms / 1000.0).min(5.0);
                     } else {
-                        log::warn!("AURORA_DEMO_LINK: unknown part {part:?}");
+                        log::warn!("DEEPLY_DEMO_LINK: unknown part {part:?}");
                     }
                 }
             }

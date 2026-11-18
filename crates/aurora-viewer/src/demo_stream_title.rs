@@ -1,4 +1,4 @@
-//! AURORA_DEMO_STREAM_TITLE=[window|history|text][,stop]: the parcel's
+//! DEEPLY_DEMO_STREAM_TITLE=[window|history|text][,stop]: the parcel's
 //! radio changes title every few seconds (one title too long for the
 //! window, which scrolls), with four titles already in the history, and the
 //! stream title window opens: alone, with its history, or as its text
@@ -14,7 +14,7 @@ pub struct Scenario {
 }
 
 pub fn scenario() -> Option<Scenario> {
-    let mode = std::env::var("AURORA_DEMO_STREAM_TITLE").ok()?;
+    let mode = std::env::var("DEEPLY_DEMO_STREAM_TITLE").ok()?;
     let words: Vec<String> = mode.split(',').map(|w| w.trim().to_ascii_lowercase()).collect();
     let has = |w: &str| words.iter().any(|x| x == w);
     Some(Scenario {

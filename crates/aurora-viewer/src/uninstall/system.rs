@@ -8,7 +8,7 @@ use std::path::PathBuf;
 /// The system of this run: the dry run in demo mode and in unit tests,
 /// never the computer.
 pub fn for_run() -> Box<dyn System> {
-    if cfg!(test) || std::env::var_os("AURORA_DEMO").is_some() {
+    if cfg!(test) || std::env::var_os("DEEPLY_DEMO").is_some() {
         Box::new(DryRun)
     } else {
         Box::new(Computer)

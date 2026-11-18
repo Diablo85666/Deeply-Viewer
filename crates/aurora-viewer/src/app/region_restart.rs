@@ -3,7 +3,7 @@
 //! of `ui/region_restart.rs` (or Firestorm's box), the sound, the shakes,
 //! the taskbar, the bell's pinned card, the nearby chat line and the channel
 //! announcement (llviewermessage.cpp, llfloaterregionrestarting.cpp,
-//! originally LGPL 2.1), and the `AURORA_DEMO_RESTART` scenario.
+//! originally LGPL 2.1), and the `DEEPLY_DEMO_RESTART` scenario.
 
 use super::App;
 use crate::ui::region_restart::{self as alert, Action, BellInfo, Destinations, Landmark};
@@ -33,11 +33,11 @@ pub struct State {
     /// Firestorm's box: the landmark chosen in its list, and whether it is open.
     legacy_pick: Option<Uuid>,
     legacy_open: bool,
-    /// AURORA_DEMO_RESTART.
+    /// DEEPLY_DEMO_RESTART.
     demo: Option<Demo>,
 }
 
-/// `AURORA_DEMO_RESTART=<seconds>[:manager][:fast][:still][:min][:lm][:bell][:toast][:dnd][:opensim][:legacy][:closed]`.
+/// `DEEPLY_DEMO_RESTART=<seconds>[:manager][:fast][:still][:min][:lm][:bell][:toast][:dnd][:opensim][:legacy][:closed]`.
 #[derive(Debug, Clone, Default, PartialEq)]
 pub struct Demo {
     pub seconds: i32,
@@ -78,7 +78,7 @@ impl Demo {
                 "opensim" => d.opensim = true,
                 "legacy" => d.legacy = true,
                 "closed" => d.closed = true,
-                other => log::warn!("AURORA_DEMO_RESTART: unknown option {other:?}"),
+                other => log::warn!("DEEPLY_DEMO_RESTART: unknown option {other:?}"),
             }
         }
         Some(d)
@@ -579,10 +579,10 @@ impl App {
         });
     }
 
-    /// AURORA_DEMO_RESTART: the demo region announces its restart.
+    /// DEEPLY_DEMO_RESTART: the demo region announces its restart.
     fn demo_region_restart(&mut self) {
         if self.region_restart.demo.is_none() {
-            let Some(d) = std::env::var("AURORA_DEMO_RESTART").ok().and_then(|v| Demo::parse(&v)) else {
+            let Some(d) = std::env::var("DEEPLY_DEMO_RESTART").ok().and_then(|v| Demo::parse(&v)) else {
                 return;
             };
             self.region_restart.demo = Some(d);

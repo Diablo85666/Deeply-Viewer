@@ -114,11 +114,11 @@ fn the_store_entries_are_the_ones_the_viewer_writes() {
     let [password, mfa] = crate::credentials::store_entries(AGNI, "Jane Resident");
     assert_eq!(Secret::Password(jane.clone()).entry(), password);
     assert_eq!(Secret::SecondFactor(jane).entry(), mfa);
-    assert_eq!(password.0, "Aurora Viewer");
-    assert_eq!(mfa.0, "Aurora Viewer MFA");
+    assert_eq!(password.0, "Deeply Viewer");
+    assert_eq!(mfa.0, "Deeply Viewer MFA");
     assert_eq!(password.1, format!("{AGNI}|jane resident"));
-    assert_eq!(Secret::CacheKey.entry(), ("Aurora Viewer cache", "disk cache key v1".to_owned()));
-    assert_eq!(Secret::CrashReports.entry(), ("Aurora Viewer GitHub", "crash-reports".to_owned()));
+    assert_eq!(Secret::CacheKey.entry(), ("Deeply Viewer cache", "disk cache key v1".to_owned()));
+    assert_eq!(Secret::CrashReports.entry(), ("Deeply Viewer GitHub", "crash-reports".to_owned()));
 }
 
 #[test]
@@ -230,21 +230,21 @@ fn the_remaining_places_exist_and_nest_once() {
 fn a_file_opens_the_folder_that_holds_it() {
     let place = Remaining {
         kinds: vec![Kind::Viewer],
-        path: PathBuf::from("viewers/aurora-viewer.exe"),
+        path: PathBuf::from("viewers/deeply-viewer.exe"),
     };
     assert_eq!(place.folder(|_| false), PathBuf::from("viewers"));
-    assert_eq!(place.folder(|_| true), PathBuf::from("viewers/aurora-viewer.exe"));
+    assert_eq!(place.folder(|_| true), PathBuf::from("viewers/deeply-viewer.exe"));
 }
 
 #[test]
 fn the_viewer_is_its_bundle_on_macos() {
     assert_eq!(
-        viewer_location(Path::new("/Applications/Aurora Viewer.app/Contents/MacOS/aurora-viewer")),
-        PathBuf::from("/Applications/Aurora Viewer.app")
+        viewer_location(Path::new("/Applications/Deeply Viewer.app/Contents/MacOS/aurora-viewer")),
+        PathBuf::from("/Applications/Deeply Viewer.app")
     );
     assert_eq!(
-        viewer_location(Path::new("viewers/aurora-viewer.exe")),
-        PathBuf::from("viewers/aurora-viewer.exe")
+        viewer_location(Path::new("viewers/deeply-viewer.exe")),
+        PathBuf::from("viewers/deeply-viewer.exe")
     );
 }
 

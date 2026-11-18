@@ -95,7 +95,7 @@ impl Demo {
                     cpu_seconds: 0.00125,
                     character_seconds: 0.0002,
                 };
-                let result = if std::env::var("AURORA_DEMO_BRIDGE_QUERY").is_ok_and(|m| m == "error") {
+                let result = if std::env::var("DEEPLY_DEMO_BRIDGE_QUERY").is_ok_and(|m| m == "error") {
                     Err(aurora_i18n::tr!("bridge-script-info-missing").into())
                 } else {
                     Ok(match query {

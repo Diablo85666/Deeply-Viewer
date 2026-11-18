@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Puts the built viewer and its files in a folder ready to launch (or to
     zip): exe, assets, licences. The GitHub release and build-release.ps1
@@ -8,17 +8,31 @@
 .EXAMPLE
     ./scripts/package.ps1 -Exe target/release/deeply-viewer.exe -Out Deeply-Viewer
 .EXAMPLE
-    ./scripts/package.ps1 -Exe target/release/aurora-viewer -Out Aurora-Viewer-v0.8.0-linux-x64
+    ./scripts/package.ps1 -Exe target/release/deeply-viewer -Out Deeply-Viewer-v0.9.11-linux-x64
 #>
 param(
     [Parameter(Mandatory)][string]$Exe,
     [Parameter(Mandatory)][string]$Out,
     # repository whose assets go with the exe (default: this script's)
-    [string]$Source = (Split-Path $PSScriptRoot -Parent)
+    [string]$Source = (Split-Path $PSScriptRoot -Parent),
+    [string]$ModelPath
 )
 
 New-Item -ItemType Directory -Force -Path (Join-Path $Out 'assets/emoji') -ErrorAction Stop | Out-Null
 Copy-Item -LiteralPath $Exe -Destination (Join-Path $Out 'deeply-viewer.exe') -ErrorAction Stop
+# Reserved location for the optional offline NLLB model. The viewer reports
+# an explicit unavailable state until the model and a compatible native
+# CTranslate2/ct2rs runtime are supplied; it never falls back to the network.
+$modelOut = Join-Path $Out 'models/nllb-200-600M-int8'
+New-Item -ItemType Directory -Force -Path $modelOut -ErrorAction Stop | Out-Null
+if ($ModelPath) {
+    if (-not (Test-Path -LiteralPath $ModelPath -PathType Container)) {
+        throw "Offline translation model directory was not found: $ModelPath"
+    }
+    Copy-Item -Path (Join-Path $ModelPath '*') -Destination $modelOut -Recurse -Force -ErrorAction Stop
+} else {
+    Set-Content -LiteralPath (Join-Path $modelOut 'README.txt') -Value 'Optional offline NLLB-200 600M int8 model files go here.' -Encoding UTF8
+}
 # The emoji font is inside the exe; its licence ships, and the assets folder
 # stays: the updater of the published versions refuses a package without it.
 Copy-Item -LiteralPath (Join-Path $Source 'assets/emoji/LICENSE-OFL.txt') -Destination (Join-Path $Out 'assets/emoji') -ErrorAction Stop
@@ -38,15 +52,32 @@ Get-ChildItem -LiteralPath $dictionaries -Directory -ErrorAction Stop | ForEach-
 $docs = @(
     'LICENSE',
     'NOTICE.md',
+    'TRADEMARKS.md',
     'README.md',
-    'Deeply-Viewer-0.9.10.4-Miglioramenti-e-Potenzialita.txt',
-    'Deeply-Viewer-0.9.10.4-Improvements-and-Capabilities.txt',
-    'Deeply-Viewer-0.9.10.4-Release-Notes-it.txt',
-    'Deeply-Viewer-0.9.10.4-Release-Notes-en.txt',
-    'Deeply-Viewer-0.9.10.4-Guida-uso-it.txt',
-    'Deeply-Viewer-0.9.10.4-User-Guide-en.txt'
+    'Deeply-Viewer-0.9.12-Miglioramenti-e-Potenzialita.txt',
+    'Deeply-Viewer-0.9.12-Improvements-and-Capabilities.txt',
+    'Deeply-Viewer-0.9.12-Release-Notes-it.txt',
+    'Deeply-Viewer-0.9.12-Release-Notes-en.txt',
+    'Deeply-Viewer-0.9.12-Guida-uso-it.txt',
+    'Deeply-Viewer-0.9.12-User-Guide-en.txt'
 ) | ForEach-Object { Join-Path $Source $_ }
 Copy-Item -LiteralPath $docs -Destination $Out -ErrorAction Stop
+# Every bundled third-party component keeps its complete license text in a
+# package-relative directory. Flattening the repository path makes names
+# stable while avoiding collisions between similarly named component files.
+$licensesOut = Join-Path $Out 'licenses'
+New-Item -ItemType Directory -Force -Path $licensesOut -ErrorAction Stop | Out-Null
+$licenseRoots = @(
+    (Join-Path $Source 'assets'),
+    (Join-Path $Source 'crates')
+)
+Get-ChildItem -LiteralPath $licenseRoots -Recurse -File -ErrorAction Stop |
+    Where-Object { $_.Name -match '^(LICENSE|COPYING|NOTICE)([-_.].*)?$' } |
+    ForEach-Object {
+        $relative = $_.FullName.Substring($Source.Length).TrimStart('\')
+        $name = ($relative -replace '[\\/]', '-') -replace '[^A-Za-z0-9._-]', '_'
+        Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $licensesOut $name) -ErrorAction Stop
+    }
 $branding = Join-Path $Out 'assets/deeply'
 New-Item -ItemType Directory -Force -Path $branding -ErrorAction Stop | Out-Null
 Copy-Item -LiteralPath (Join-Path $Source 'assets/deeply/deeply-logo.png') -Destination $branding -ErrorAction Stop

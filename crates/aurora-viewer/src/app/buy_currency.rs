@@ -158,14 +158,14 @@ impl App {
         }
     }
 
-    /// AURORA_DEMO_BUY_CURRENCY: a balance, and the window in the state its
+    /// DEEPLY_DEMO_BUY_CURRENCY: a balance, and the window in the state its
     /// mode names (docs/TESTING.md).
     pub(super) fn demo_buy_currency(&mut self) {
-        // AURORA_DEMO_CURRENCY=<symbol>: an OpenSim grid's own money symbol
-        if let Ok(symbol) = std::env::var("AURORA_DEMO_CURRENCY") {
+        // DEEPLY_DEMO_CURRENCY=<symbol>: an OpenSim grid's own money symbol
+        if let Ok(symbol) = std::env::var("DEEPLY_DEMO_CURRENCY") {
             self.world.grid_currency = symbol;
         }
-        let Ok(mode) = std::env::var("AURORA_DEMO_BUY_CURRENCY") else {
+        let Ok(mode) = std::env::var("DEEPLY_DEMO_BUY_CURRENCY") else {
             return;
         };
         self.world.apply(NetEvent::Balance(479));
@@ -180,7 +180,7 @@ impl App {
     pub(super) fn demo_currency_command(&mut self, cmd: &NetCommand) -> bool {
         match cmd {
             NetCommand::CurrencyQuote { amount, .. } => {
-                let mode = std::env::var("AURORA_DEMO_BUY_CURRENCY").unwrap_or_default();
+                let mode = std::env::var("DEEPLY_DEMO_BUY_CURRENCY").unwrap_or_default();
                 let result = if mode == "error" {
                     Err(CurrencyError {
                         message: aurora_i18n::tr!("demo-currency-refused").into(),

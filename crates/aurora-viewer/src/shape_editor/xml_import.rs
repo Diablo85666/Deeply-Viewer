@@ -121,7 +121,7 @@ impl Import {
         self.spawn(ctx, draft, None);
     }
 
-    /// Read `path` without the dialog (`AURORA_DEMO_SHAPE_XML`).
+    /// Read `path` without the dialog (`DEEPLY_DEMO_SHAPE_XML`).
     pub fn start_file(&mut self, ctx: &egui::Context, draft: &Draft, path: std::path::PathBuf) {
         self.spawn(ctx, draft, Some(path));
     }

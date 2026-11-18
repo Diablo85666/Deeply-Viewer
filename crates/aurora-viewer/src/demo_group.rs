@@ -3,7 +3,7 @@
 //! GroupTitlesRequest, GroupNoticesListRequest, JoinGroupRequest), so that
 //! the group profile shows a full group offline. "Aurora Builders" has its
 //! named members (the founder, an officer, a builder…) among 1248; our own
-//! place in it follows `AURORA_DEMO_GROUP_PROFILE`:
+//! place in it follows `DEEPLY_DEMO_GROUP_PROFILE`:
 //! - `1` or `member`: a builder (the default);
 //! - `officer`: an officer, who may invite and sees the roles and donations;
 //! - `owner`: an owner, every ability;
@@ -43,7 +43,7 @@ pub enum Scenario {
 }
 
 pub fn scenario() -> Scenario {
-    let v = std::env::var("AURORA_DEMO_GROUP_PROFILE").unwrap_or_default();
+    let v = std::env::var("DEEPLY_DEMO_GROUP_PROFILE").unwrap_or_default();
     match v.split(':').next().unwrap_or_default() {
         "officer" | "officier" => Scenario::Officer,
         "owner" | "proprietaire" | "propriétaire" => Scenario::Owner,
@@ -55,17 +55,17 @@ pub fn scenario() -> Scenario {
 /// `<scenario>:admin`: the window opens on the Administration tab
 /// (`:identity` on its Group identity section).
 pub fn admin_tab() -> bool {
-    std::env::var("AURORA_DEMO_GROUP_PROFILE").is_ok_and(|v| matches!(v.split(':').nth(1), Some("admin" | "identity")))
+    std::env::var("DEEPLY_DEMO_GROUP_PROFILE").is_ok_and(|v| matches!(v.split(':').nth(1), Some("admin" | "identity")))
 }
 
 pub fn identity_section() -> bool {
-    std::env::var("AURORA_DEMO_GROUP_PROFILE").is_ok_and(|v| v.split(':').nth(1) == Some("identity"))
+    std::env::var("DEEPLY_DEMO_GROUP_PROFILE").is_ok_and(|v| v.split(':').nth(1) == Some("identity"))
 }
 
 /// `<scenario>:land`: the window opens on the "Land and L$" tab, on the
 /// planning page (`:land-details`, `:land-sales` on the others).
 pub fn land_tab() -> Option<Ledger> {
-    let v = std::env::var("AURORA_DEMO_GROUP_PROFILE").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_GROUP_PROFILE").ok()?;
     match v.split(':').nth(1)? {
         "land" => Some(Ledger::Planning),
         "land-details" => Some(Ledger::Details),
@@ -76,7 +76,7 @@ pub fn land_tab() -> Option<Ledger> {
 
 /// `<scenario>:experiences`: the window opens on the Experiences tab.
 pub fn experiences_tab() -> bool {
-    std::env::var("AURORA_DEMO_GROUP_PROFILE").is_ok_and(|v| v.split(':').nth(1) == Some("experiences"))
+    std::env::var("DEEPLY_DEMO_GROUP_PROFILE").is_ok_and(|v| v.split(':').nth(1) == Some("experiences"))
 }
 
 /// The experience "Aurora Builders" owns: the sandbox's doors, land-scope.
@@ -101,14 +101,14 @@ fn group_experience() -> ExperienceDetails {
 /// `<scenario>:members`: the window opens on the Members tab, a builder
 /// selected.
 pub fn members_tab() -> Option<Uuid> {
-    let v = std::env::var("AURORA_DEMO_GROUP_PROFILE").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_GROUP_PROFILE").ok()?;
     (v.split(':').nth(1) == Some("members")).then_some(DEMO_NOVA)
 }
 
 /// `<scenario>:invite`: the invitation window, with two residents who are
 /// not in the group and one who is ("already in the group" once sent).
 pub fn invitees() -> Option<Vec<Uuid>> {
-    let v = std::env::var("AURORA_DEMO_GROUP_PROFILE").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_GROUP_PROFILE").ok()?;
     (v.split(':').nth(1) == Some("invite")).then(|| vec![super::DEMO_FRIEND, Uuid::from_u128(MEMBER | 5000), DEMO_NOVA])
 }
 
@@ -148,7 +148,7 @@ pub fn my_powers() -> u64 {
     match scenario() {
         Scenario::Owner => u64::MAX,
         Scenario::Officer => DEFAULT_OFFICER,
-        // AURORA_DEMO_SOCIAL_MENU: someone to invite into it
+        // DEEPLY_DEMO_SOCIAL_MENU: someone to invite into it
         _ if super::social_menu::step().is_some() => DEFAULT_OFFICER,
         _ => DEFAULT_MEMBER,
     }
@@ -457,7 +457,7 @@ fn notice_im(notice: &Uuid) -> Option<NetEvent> {
 /// `<scenario>:notices`: the Notices tab, the two latest notices unread;
 /// `:compose` on a new notice.
 pub fn notices_tab() -> Option<(Uuid, Vec<Uuid>, bool)> {
-    let v = std::env::var("AURORA_DEMO_GROUP_PROFILE").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_GROUP_PROFILE").ok()?;
     let mode = v.split(':').nth(1)?;
     matches!(mode, "notices" | "compose").then(|| (DEMO_GROUP1, read_but_two(), mode == "compose"))
 }
@@ -659,7 +659,7 @@ fn charter() -> String {
     )
 }
 
-/// `AURORA_DEMO_GROUP_CREATE=<mode>[:classic]`: the "Create a group" window
+/// `DEEPLY_DEMO_GROUP_CREATE=<mode>[:classic]`: the "Create a group" window
 /// - `form`: empty, as opened from People › Groups;
 /// - `cost`: filled, "Create" clicked: the fee to confirm;
 /// - `refused`: sent with the name of a demo group: the server refuses it;
@@ -675,7 +675,7 @@ pub enum CreateScenario {
 }
 
 pub fn create_scenario() -> Option<CreateScenario> {
-    let v = std::env::var("AURORA_DEMO_GROUP_CREATE").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_GROUP_CREATE").ok()?;
     Some(match v.split(':').next().unwrap_or_default() {
         "cost" | "cout" | "coût" => CreateScenario::Cost,
         "refused" | "refuse" | "refusé" => CreateScenario::Refused,
@@ -688,7 +688,7 @@ pub fn create_scenario() -> Option<CreateScenario> {
 /// `<mode>:classic`: the classic look (Firestorm's creation panel, and the
 /// classic profile of the new group).
 pub fn create_classic() -> bool {
-    std::env::var("AURORA_DEMO_GROUP_CREATE").is_ok_and(|v| v.split(':').any(|p| p == "classic"))
+    std::env::var("DEEPLY_DEMO_GROUP_CREATE").is_ok_and(|v| v.split(':').any(|p| p == "classic"))
 }
 
 /// The fee of a new group by membership in the creation scenarios (the

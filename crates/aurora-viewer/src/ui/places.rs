@@ -44,7 +44,7 @@ pub(crate) const FOLDER_LANDMARKS: i32 = 3;
 /// AT_LANDMARK.
 const ASSET_LANDMARK: i32 = 3;
 
-/// AURORA_DEMO_PLACES and the like: a tab by its name or index (the former
+/// DEEPLY_DEMO_PLACES and the like: a tab by its name or index (the former
 /// French names are still accepted).
 pub fn tab_from_name(name: &str) -> Option<usize> {
     match name.trim().to_lowercase().as_str() {
@@ -287,7 +287,7 @@ pub struct PlacesUi {
     /// show its three equal buttons whole, as measured last frame (0 before
     /// it is drawn). The window's minimum width follows it.
     legacy_bar_width: f32,
-    /// AURORA_DEMO_PLACES=…:classic: the Legacy Viewer's tabs for this run,
+    /// DEEPLY_DEMO_PLACES=…:classic: the Legacy Viewer's tabs for this run,
     /// whatever Preferences › Aurora › Places says (not saved).
     pub demo_classic: bool,
 }

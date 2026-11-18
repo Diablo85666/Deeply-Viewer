@@ -22,7 +22,7 @@ pub struct DemoSim {
     pending_running: HashMap<(Uuid, Uuid), bool>,
     physics: HashMap<Uuid, PhysicsParams>,
     /// The reports of transform edits held for a round trip
-    /// (`AURORA_DEMO_BUILD_ECHO`), with when they arrive.
+    /// (`DEEPLY_DEMO_BUILD_ECHO`), with when they arrive.
     late_echoes: VecDeque<(Instant, NetEvent)>,
     /// The simulator's undo history of the edited objects (Ctrl+Z /
     /// Ctrl+Y): their placements before each edit, and those undone.
@@ -48,12 +48,12 @@ struct History {
     last: Option<Instant>,
 }
 
-/// `AURORA_DEMO_BUILD_ECHO=<ms>`: the demo answers a transform edit that
+/// `DEEPLY_DEMO_BUILD_ECHO=<ms>`: the demo answers a transform edit that
 /// long after it was sent, like a simulator a round trip away (issue #1193).
 fn echo_delay() -> Option<Duration> {
     static DELAY: std::sync::OnceLock<Option<Duration>> = std::sync::OnceLock::new();
     *DELAY.get_or_init(|| {
-        std::env::var("AURORA_DEMO_BUILD_ECHO")
+        std::env::var("DEEPLY_DEMO_BUILD_ECHO")
             .ok()
             .and_then(|ms| ms.trim().parse::<u64>().ok())
             .filter(|&ms| ms > 0)
@@ -92,7 +92,7 @@ fn demo_item(object: Uuid, n: u128, name: &str, asset_type: i8, inv_type: i8) ->
 }
 
 fn script_copy_demo() -> bool {
-    std::env::var("AURORA_DEMO_REPLACE_PRIM").is_ok_and(|mode| mode == "script")
+    std::env::var("DEEPLY_DEMO_REPLACE_PRIM").is_ok_and(|mode| mode == "script")
 }
 
 impl DemoSim {
@@ -195,11 +195,11 @@ impl DemoSim {
                 demo_item(id, 2, aurora_i18n::tr!("build-demo-sim-instructions"), 7, 7),
                 demo_item(id, 3, aurora_i18n::tr!("build-demo-sim-light-wood"), 0, 0),
             ];
-            if std::env::var("AURORA_DEMO_BUILD").is_ok_and(|v| v.starts_with("contents-move-plain,")) {
+            if std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|v| v.starts_with("contents-move-plain,")) {
                 items.retain(|i| i.asset_type != 10);
             }
             // a second no-copy item, for the shared move warning
-            if std::env::var("AURORA_DEMO_BUILD").is_ok_and(|v| v.starts_with("contents-move-many,")) {
+            if std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|v| v.starts_with("contents-move-many,")) {
                 items[1].owner_mask &= !perm::COPY;
             }
             (1, items)
@@ -439,7 +439,7 @@ impl DemoSim {
                 };
                 // Offline copy-feedback fixture: retain the no-copy cube so
                 // the real observer sees a partial result and times out.
-                if task.asset_type == 6 && std::env::var("AURORA_DEMO_ACTIONS").as_deref() == Ok("open-copy-timeout-yes") {
+                if task.asset_type == 6 && std::env::var("DEEPLY_DEMO_ACTIONS").as_deref() == Ok("open-copy-timeout-yes") {
                     return Vec::new();
                 }
                 let Ok(kind) = super::task_inventory::kind(world, id, &task, true) else {
@@ -703,7 +703,7 @@ impl DemoSim {
                 west,
                 south,
                 ..
-            } if *sequence >= 1_000_000 && std::env::var_os("AURORA_DEMO_PARCEL_VISIBILITY").is_some() => {
+            } if *sequence >= 1_000_000 && std::env::var_os("DEEPLY_DEMO_PARCEL_VISIBILITY").is_some() => {
                 vec![NetEvent::SelectedParcel {
                     handle: *handle,
                     sequence: *sequence,
@@ -714,7 +714,7 @@ impl DemoSim {
                 handle,
                 sequence,
                 local_id,
-            } if std::env::var_os("AURORA_DEMO_PARCEL_VISIBILITY").is_some() => crate::demo::parcel_visibility::parcel_by_id(*local_id)
+            } if std::env::var_os("DEEPLY_DEMO_PARCEL_VISIBILITY").is_some() => crate::demo::parcel_visibility::parcel_by_id(*local_id)
                 .map(|parcel| NetEvent::SelectedParcel {
                     handle: *handle,
                     sequence: *sequence,
@@ -735,7 +735,7 @@ impl DemoSim {
                     // Explicit offline aggregate fixture: no unique owner, and
                     // an area matching the rectangle must not disable Join.
                     if *sequence >= aurora_net::build::BUILD_PARCEL_SEQ + 1000
-                        && std::env::var("AURORA_DEMO_BUILD").is_ok_and(|v| v.starts_with("select-join,"))
+                        && std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|v| v.starts_with("select-join,"))
                         && (east - west) * (north - south) > 16.0
                     {
                         let p = std::sync::Arc::make_mut(&mut p);

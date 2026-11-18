@@ -162,7 +162,7 @@ impl App {
             self.camera.set_view(eye, focus, &mut self.world.agent, &self.settings.camera);
         }
     }
-    /// AURORA_DEMO_POSER=compact-crowd: five residents around you (400),
+    /// DEEPLY_DEMO_POSER=compact-crowd: five residents around you (400),
     /// their names (kept over the demo's own reply), asked at 450, all
     /// accepting at 480, and the subject menu open at 500.
     fn poser_crowd_demo(&mut self) {
@@ -213,7 +213,7 @@ impl App {
             consent.preferences.clone_from(&self.settings.pose_requests);
         }
         consent.sync(&self.world, Instant::now());
-        let bridge = match self.demo.then(|| std::env::var("AURORA_DEMO_POSER").ok()).flatten() {
+        let bridge = match self.demo.then(|| std::env::var("DEEPLY_DEMO_POSER").ok()).flatten() {
             // The demo has no worn bridge: its poser fixtures stand for a
             // ready one, unless a bridge-* mode shows a waiting state.
             Some(mode) => match mode.as_str() {

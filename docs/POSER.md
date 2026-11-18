@@ -1,6 +1,6 @@
 # Local photo poser
 
-Local trial for [issue #727](https://github.com/Aurora-Viewer/Aurora-Viewer/issues/727),
+Local trial for [issue #727](https://github.com/Diablo85666/Deeply-Viewer/issues/727),
 based on the merged IK workbench (PR #893) and the supplied Poser
 handoff and mockup. Issue #727 remains open while grid validation is pending.
 The human validated the local demo on 2026-10-23 and authorized main integration on 2026-10-24. Two-client grid validation remains required.
@@ -316,7 +316,7 @@ marker sets. Seventeen native poser scenarios and a
 separate IK bindings regression were inspected, with zero runtime errors.
 This does not validate real two-client LSL delivery.
 
-Offline demos use `AURORA_DEMO=1` and `AURORA_DEMO_POSER=` with `self`,
+Offline demos use `DEEPLY_DEMO=1` and `DEEPLY_DEMO_POSER=` with `self`,
 `connected`, `camera`, `scale`, `hands`, `face`, `misc`, `physics`, `library`, `settings`, `animesh`,
 `consent-accept`, `consent-refuse`, `consent-timeout`, `consent-withdraw`,
 `consent-request` or `consent-reminder`. Capture frame 620. The synthetic

@@ -1,5 +1,5 @@
 //! Name plates in every state and at the three distance levels
-//! (AURORA_DEMO_TAGS=voice|status|cycle|wall|height|render, docs/TESTING.md): five
+//! (DEEPLY_DEMO_TAGS=voice|status|cycle|wall|height|render, docs/TESTING.md): five
 //! residents in a row in front of the start position, two farther (compact
 //! pills) and two beyond (the name alone). A white wall stands behind the
 //! two on the left, to see the glass over a bright background too.
@@ -35,7 +35,7 @@ const CYCLE: f64 = 6.0;
 
 /// Explicit offline overrides; the demo keeps its own preferences.
 pub fn apply_name_tag_preferences(settings: &mut crate::settings::Settings) -> bool {
-    let Ok(mode) = std::env::var("AURORA_DEMO_NAME_TAGS") else {
+    let Ok(mode) = std::env::var("DEEPLY_DEMO_NAME_TAGS") else {
         return false;
     };
     settings.show_own_name_tag = mode != "self-off" && mode != "off";
@@ -50,7 +50,7 @@ pub fn apply_name_tag_preferences(settings: &mut crate::settings::Settings) -> b
 
 pub fn mode() -> Option<Mode> {
     static MODE: std::sync::OnceLock<Option<Mode>> = std::sync::OnceLock::new();
-    *MODE.get_or_init(|| match std::env::var("AURORA_DEMO_TAGS").ok()?.trim() {
+    *MODE.get_or_init(|| match std::env::var("DEEPLY_DEMO_TAGS").ok()?.trim() {
         "status" => Some(Mode::Status),
         "cycle" => Some(Mode::Cycle),
         "wall" => Some(Mode::Wall),
@@ -74,7 +74,7 @@ const fn id(n: u128) -> Uuid {
     Uuid::from_u128(0xA0E0_7A65_0000_0000_0000_0000_0000_0000 | n)
 }
 
-/// AURORA_DEMO_CONTACT_MARKERS: who joins its contact sets.
+/// DEEPLY_DEMO_CONTACT_MARKERS: who joins its contact sets.
 pub const MARKER_RESIDENTS: [Uuid; 3] = [NOVA, ORION, VEGA];
 
 const NOVA: Uuid = id(1);
@@ -195,7 +195,7 @@ pub fn profile_picture(agent: Uuid) -> Uuid {
 }
 
 /// Profile picture of the residents of the profile scenarios
-/// (AURORA_DEMO_PROFILE): ours, the friend and the wolf, in the colors of
+/// (DEEPLY_DEMO_PROFILE): ours, the friend and the wolf, in the colors of
 /// the profile mock-up's banners.
 pub fn scenario_picture(agent: Uuid) -> Uuid {
     match agent {
@@ -260,9 +260,9 @@ pub fn apply_render_preferences(settings: &mut crate::settings::Settings) {
     }
 }
 
-/// Where the scenario stands: the demo's start position (AURORA_DEMO_POS).
+/// Where the scenario stands: the demo's start position (DEEPLY_DEMO_POS).
 fn start() -> (f32, f32) {
-    let pos: Vec<f32> = std::env::var("AURORA_DEMO_POS")
+    let pos: Vec<f32> = std::env::var("DEEPLY_DEMO_POS")
         .ok()
         .map(|v| v.split(',').filter_map(|s| s.trim().parse().ok()).collect())
         .unwrap_or_default();
@@ -390,12 +390,12 @@ pub fn state_events(time: f64, shown: &mut Option<bool>) -> Vec<NetEvent> {
         .collect()
 }
 
-/// AURORA_DEMO_CHAT_BUBBLES=1|typing|talk (with AURORA_DEMO_TAGS): the
+/// DEEPLY_DEMO_CHAT_BUBBLES=1|typing|talk (with DEEPLY_DEMO_TAGS): the
 /// residents talk; the chat bubbles on for the run, the typing ones too with
 /// `typing`; `talk` leaves both to Preferences.
 fn chat_bubbles_mode() -> Option<&'static str> {
     static MODE: std::sync::OnceLock<Option<String>> = std::sync::OnceLock::new();
-    MODE.get_or_init(|| std::env::var("AURORA_DEMO_CHAT_BUBBLES").ok().map(|v| v.trim().to_owned()))
+    MODE.get_or_init(|| std::env::var("DEEPLY_DEMO_CHAT_BUBBLES").ok().map(|v| v.trim().to_owned()))
         .as_deref()
 }
 
@@ -409,7 +409,7 @@ pub fn chat_bubbles() -> Option<bool> {
 const CHAT_ROUND: f64 = 30.0;
 const CHAT_START: f64 = 2.0;
 
-/// AURORA_DEMO_CHAT_BUBBLES: what the residents say, every `CHAT_ROUND`
+/// DEEPLY_DEMO_CHAT_BUBBLES: what the residents say, every `CHAT_ROUND`
 /// seconds: a line, a whisper, a shout, an emote, a long line that wraps,
 /// ours, a far resident's, and the blocked one's (no bubble). Nova speaks
 /// again later, her first lines greyed by then. Sends what is due since
@@ -482,7 +482,7 @@ pub fn voice(levels: &mut HashMap<Uuid, (f32, bool)>, time: f64) {
     levels.insert(SOL, talk(1.3));
     levels.insert(VEGA, (0.0, false));
     if !status_set(mode, time) {
-        // AURORA_DEMO_VOICE=sweep: Tess speaks too, over the white wall,
+        // DEEPLY_DEMO_VOICE=sweep: Tess speaks too, over the white wall,
         // from a whisper to a shout and back
         let tess = if sweep() { (voice_sweep(time), true) } else { (0.0, false) };
         levels.insert(TESS, tess);
@@ -490,11 +490,11 @@ pub fn voice(levels: &mut HashMap<Uuid, (f32, bool)>, time: f64) {
     }
 }
 
-/// AURORA_DEMO_VOICE=sweep: Tess's voice goes over the whole range of the
+/// DEEPLY_DEMO_VOICE=sweep: Tess's voice goes over the whole range of the
 /// speaking ring (`voice_sweep`); our own plate follows the microphone.
 fn sweep() -> bool {
     static SWEEP: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    *SWEEP.get_or_init(|| std::env::var("AURORA_DEMO_VOICE").is_ok_and(|v| v.trim() == "sweep"))
+    *SWEEP.get_or_init(|| std::env::var("DEEPLY_DEMO_VOICE").is_ok_and(|v| v.trim() == "sweep"))
 }
 
 /// Raw levels of a whisper (just above the speaking level), a normal voice

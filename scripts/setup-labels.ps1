@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Creates (or updates) the labels on GitHub: types, for PRs only, areas,
     for PRs and issues, on-hold, needs-description and waiting-for-slot

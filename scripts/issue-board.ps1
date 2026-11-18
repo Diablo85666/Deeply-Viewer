@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Reads or moves an issue on the team's GitHub project (Aurora Team
     Planning), and lists the issues still to take, highest priority first.

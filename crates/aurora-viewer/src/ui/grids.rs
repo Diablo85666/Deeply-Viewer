@@ -81,7 +81,7 @@ impl Manager {
             self.draft = grid.clone();
             let _ = grids::store(settings, grid, None);
         }
-        self.tab = usize::from(std::env::var("AURORA_DEMO_GRIDS").is_ok_and(|mode| mode == "pages"));
+        self.tab = usize::from(std::env::var("DEEPLY_DEMO_GRIDS").is_ok_and(|mode| mode == "pages"));
         self.open = true;
     }
 

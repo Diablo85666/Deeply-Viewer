@@ -116,7 +116,7 @@ impl FaceDepth {
 /// Keep the previous object-centre ordering for a controlled A/B launch.
 pub fn face_sort_enabled() -> bool {
     static ENABLED: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    *ENABLED.get_or_init(|| std::env::var("AURORA_ALPHA_FACE_SORT").as_deref() != Ok("0"))
+    *ENABLED.get_or_init(|| std::env::var("DEEPLY_ALPHA_FACE_SORT").as_deref() != Ok("0"))
 }
 
 /// Where the blended faces of a rigged mesh come among those of its
@@ -240,7 +240,7 @@ pub struct BlendEntry {
     pub rig: Option<RigOrder>,
 }
 
-/// AURORA_RIGGED_BLEND: by default the rigged faces apart, object by object
+/// DEEPLY_RIGGED_BLEND: by default the rigged faces apart, object by object
 /// in their order what is at least half covered writing its depth as it is
 /// drawn, then the fainter texels, then their depth from 1/255, into a copy
 /// of the scene depth (`RiggedBlendDepth::Layers`, #1300); `split`, as
@@ -269,7 +269,7 @@ pub enum Mode {
 
 pub fn mode() -> Mode {
     static MODE: std::sync::OnceLock<Mode> = std::sync::OnceLock::new();
-    *MODE.get_or_init(|| match std::env::var("AURORA_RIGGED_BLEND").as_deref().map(str::trim) {
+    *MODE.get_or_init(|| match std::env::var("DEEPLY_RIGGED_BLEND").as_deref().map(str::trim) {
         Ok("split") => Mode::Split,
         Ok("runs") => Mode::Runs,
         Ok("copy") => Mode::Copy,

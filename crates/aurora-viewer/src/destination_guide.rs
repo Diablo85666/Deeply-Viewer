@@ -115,7 +115,7 @@ pub enum Load {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Source {
     Live,
-    /// The offline fixture of `AURORA_DEMO_DESTINATIONS`.
+    /// The offline fixture of `DEEPLY_DEMO_DESTINATIONS`.
     Demo(demo::Fixture),
 }
 

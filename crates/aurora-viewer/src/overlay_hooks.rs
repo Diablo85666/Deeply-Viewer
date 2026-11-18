@@ -48,7 +48,7 @@ pub const KNOWN: &[Hook] = &[
     Hook {
         file: "RTSSHooks64.dll",
         program: "RivaTuner Statistics Server (MSI Afterburner's on-screen display)",
-        advice: "if the image is lost, add aurora-viewer.exe to RivaTuner with Application detection level None",
+        advice: "if the image is lost, add deeply-viewer.exe to RivaTuner with Application detection level None",
     },
     Hook {
         file: "we-graphics-hook64.dll",
@@ -82,7 +82,7 @@ pub fn arrived(seen: &mut Vec<&'static str>, loaded: &[String]) -> Vec<&'static 
     new
 }
 
-/// `AURORA_DEMO_OVERLAY_HOOK=<file>`, with `AURORA_DEMO` only: that module
+/// `DEEPLY_DEMO_OVERLAY_HOOK=<file>`, with `DEEPLY_DEMO` only: that module
 /// counts as loaded, to show what the log and the crash report say of it.
 #[cfg_attr(not(windows), allow(dead_code))]
 fn demo_hook(demo: bool, var: Option<&str>) -> Option<String> {
@@ -95,8 +95,8 @@ pub fn start() {
     #[cfg(windows)]
     {
         let demo = demo_hook(
-            std::env::var_os("AURORA_DEMO").is_some(),
-            std::env::var("AURORA_DEMO_OVERLAY_HOOK").ok().as_deref(),
+            std::env::var_os("DEEPLY_DEMO").is_some(),
+            std::env::var("DEEPLY_DEMO_OVERLAY_HOOK").ok().as_deref(),
         );
         let spawned = std::thread::Builder::new().name("aurora-overlay-hooks".into()).spawn(move || {
             let mut seen = Vec::new();
@@ -193,7 +193,7 @@ mod tests {
     #[test]
     fn each_hook_is_reported_once_when_it_arrives() {
         let mut seen = Vec::new();
-        let before: Vec<String> = ["aurora-viewer.exe", "ntdll.dll"].map(String::from).into();
+        let before: Vec<String> = ["deeply-viewer.exe", "ntdll.dll"].map(String::from).into();
         assert!(arrived(&mut seen, &before).is_empty());
         let mut later = before.clone();
         later.push("DiscordHook64.dll".into());

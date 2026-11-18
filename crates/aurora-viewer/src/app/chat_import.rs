@@ -11,7 +11,7 @@ pub(super) struct ChatImport {
     /// The searches under way: a folder chosen does not stop the first one.
     /// Their folders, and whether to tick them.
     looking: Vec<Receiver<(Vec<Found>, bool)>>,
-    /// AURORA_DEMO_CHATLOG=import:again: its second run started.
+    /// DEEPLY_DEMO_CHATLOG=import:again: its second run started.
     again: bool,
 }
 
@@ -120,7 +120,7 @@ impl App {
         self.demo_chat_import_done();
     }
 
-    /// AURORA_DEMO_CHATLOG=import:<stage>: the window's Import button.
+    /// DEEPLY_DEMO_CHATLOG=import:<stage>: the window's Import button.
     fn demo_chat_import_found(&mut self) {
         use crate::demo::chatlog::{ImportStage, Mode, mode};
         if self.demo
@@ -131,7 +131,7 @@ impl App {
         }
     }
 
-    /// AURORA_DEMO_CHATLOG=import:<stage>: a second run, then the History
+    /// DEEPLY_DEMO_CHATLOG=import:<stage>: a second run, then the History
     /// window on the merged file.
     fn demo_chat_import_done(&mut self) {
         use crate::demo::chatlog::{ImportStage, Mode, mode, peer_name};

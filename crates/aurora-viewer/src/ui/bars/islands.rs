@@ -234,7 +234,7 @@ fn readout_width(text_w: f32) -> f32 {
     SLOT_PAD + SYSTEM_ICON + SLOT_PAD + text_w + SLOT_PAD
 }
 
-/// Demo captures (`AURORA_DEMO_BARS`): the menu to open once, at frame 300.
+/// Demo captures (`DEEPLY_DEMO_BARS`): the menu to open once, at frame 300.
 pub(super) fn demo_open(ctx: &egui::Context, resp: &egui::Response, which: super::demo::Open) {
     if super::demo::get().open == Some(which) && ctx.cumulative_frame_nr() == 300 {
         egui::Popup::open_id(ctx, egui::Popup::default_response_id(resp));

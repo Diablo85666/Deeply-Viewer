@@ -50,11 +50,11 @@ impl App {
         }
     }
 
-    /// AURORA_DEMO_PAY=resident|short|confirm|sent|group (docs/TESTING.md):
+    /// DEEPLY_DEMO_PAY=resident|short|confirm|sent|group (docs/TESTING.md):
     /// the Pay window in that state, Nova as the payee. An object's payment
-    /// is AURORA_DEMO_ACTIONS=pay.
+    /// is DEEPLY_DEMO_ACTIONS=pay.
     pub(super) fn demo_pay(&mut self) {
-        let Ok(mode) = std::env::var("AURORA_DEMO_PAY") else {
+        let Ok(mode) = std::env::var("DEEPLY_DEMO_PAY") else {
             return;
         };
         self.world.apply(NetEvent::Balance(1000));

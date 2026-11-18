@@ -176,7 +176,7 @@ impl App {
         if !self.demo {
             return;
         }
-        let Ok(mode) = std::env::var("AURORA_DEMO_RLVA") else {
+        let Ok(mode) = std::env::var("DEEPLY_DEMO_RLVA") else {
             return;
         };
         // Native updates may run twice before the next rendered frame.

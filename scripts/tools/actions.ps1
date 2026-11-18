@@ -1,4 +1,4 @@
-﻿# Aurora Tools: the menu actions — viewers, demo, agents' tasks, disk, logs,
+# Aurora Tools: the menu actions — viewers, demo, agents' tasks, disk, logs,
 # shortcut (dot-sourced by aurora-tools.ps1).
 
 # Starts a viewer in its own window; the console stays on the tools.
@@ -35,14 +35,14 @@ function Invoke-ReleaseViewer {
     Write-Color '  Built in RELEASE\; your local changes are not included.' muted
     & (Join-Path $Paths.Repo 'scripts\build-release.ps1')
     if ($LASTEXITCODE -eq 0 -and (Read-YesNo 'Start this viewer?')) {
-        Start-Viewer (Join-Path $Paths.Release 'Aurora-Viewer\aurora-viewer.exe') 'Release'
+        Start-Viewer (Join-Path $Paths.Release 'Deeply-Viewer\deeply-viewer.exe') 'Release'
     }
 }
 
 function Invoke-DevViewer {
     Write-Title 'Dev viewer: your local repository, default profile'
     if (Invoke-Cargo @('build', '-p', 'aurora-viewer')) {
-        if (Read-YesNo 'Start this viewer?') { Start-Viewer (Join-Path $Paths.Repo 'target\debug\aurora-viewer.exe') 'Dev' }
+        if (Read-YesNo 'Start this viewer?') { Start-Viewer (Join-Path $Paths.Repo 'target\debug\deeply-viewer.exe') 'Dev' }
     }
 }
 
@@ -51,7 +51,7 @@ function Invoke-DebugViewer {
     Write-Color '  Profile "debugging" (Cargo.toml): its own target\debugging folder, a few more GB.' muted
     if (Invoke-Cargo @('build', '--profile', 'debugging', '-p', 'aurora-viewer')) {
         if (Read-YesNo 'Start this viewer (with its console)?') {
-            Start-Viewer (Join-Path $Paths.Repo 'target\debugging\aurora-viewer.exe') 'Debug' @{ RUST_BACKTRACE = '1' }
+            Start-Viewer (Join-Path $Paths.Repo 'target\debugging\deeply-viewer.exe') 'Debug' @{ RUST_BACKTRACE = '1' }
         }
     }
 }
@@ -61,7 +61,7 @@ function Get-DemoScenarios {
     $switches = Join-Path $Paths.Repo 'docs\TESTING.md'
     if (-not (Test-Path $switches)) { return @() }
     Get-Content $switches -Encoding UTF8 | ForEach-Object {
-        if ($_ -match '^\| `(AURORA_DEMO_[A-Z_]+)=1`[^|]*\| ([^|]+)\|') {
+        if ($_ -match '^\| `(DEEPLY_DEMO_[A-Z_]+)=1`[^|]*\| ([^|]+)\|') {
             [pscustomobject]@{ Var = $Matches[1]; Label = $Matches[2].Trim() }
         }
     }
@@ -80,9 +80,9 @@ function Invoke-Demo {
     if (-not $pick) { return $false }
     Write-Title "Demo: $($pick.Label)"
     if (Invoke-Cargo @('build', '-p', 'aurora-viewer')) {
-        $vars = @{ AURORA_DEMO = '1' }
+        $vars = @{ DEEPLY_DEMO = '1' }
         if ($pick.Var) { $vars[$pick.Var] = '1' }
-        Start-Viewer (Join-Path $Paths.Repo 'target\debug\aurora-viewer.exe') "Demo $($pick.Label)" $vars
+        Start-Viewer (Join-Path $Paths.Repo 'target\debug\deeply-viewer.exe') "Demo $($pick.Label)" $vars
     }
     $true
 }
@@ -187,8 +187,8 @@ function Invoke-Shortcut {
     )
     # "Aurora PR" opens the PR panel straight away (to keep in a corner)
     $links = @(
-        @{ Name = 'Aurora Tools'; Arguments = ''; Description = 'Aurora Viewer development tools' }
-        @{ Name = 'Aurora PR'; Arguments = '-Action prs'; Description = 'Aurora Viewer PR tracking, live' }
+        @{ Name = 'Aurora Tools'; Arguments = ''; Description = 'Deeply Viewer development tools' }
+        @{ Name = 'Aurora PR'; Arguments = '-Action prs'; Description = 'Deeply Viewer PR tracking, live' }
     )
     if (-not (Read-YesNo 'Create "Aurora Tools" and "Aurora PR" on the Desktop and in the Start menu?')) { return }
     $shell = New-Object -ComObject WScript.Shell

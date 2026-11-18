@@ -1,4 +1,4 @@
-//! AURORA_DEMO_KEYWORDS: keyword alerts on for the run (never saved), with
+//! DEEPLY_DEMO_KEYWORDS: keyword alerts on for the run (never saved), with
 //! two keywords, their colour and their sound; then a line of nearby chat,
 //! a private message, a group chat line and an object's message holding a
 //! keyword arrive one second apart, and a line without one. Each keyword
@@ -15,7 +15,7 @@ use uuid::Uuid;
 const PERIOD: u64 = 1200;
 
 fn mode() -> Option<String> {
-    std::env::var("AURORA_DEMO_KEYWORDS").ok()
+    std::env::var("DEEPLY_DEMO_KEYWORDS").ok()
 }
 
 /// The scenario is asked.

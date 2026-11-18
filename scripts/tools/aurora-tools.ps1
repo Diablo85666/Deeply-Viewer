@@ -1,6 +1,6 @@
-﻿<#
+<#
 .SYNOPSIS
-    The development tools of Aurora Viewer, as a keyboard menu
+    The development tools of Deeply Viewer, as a keyboard menu
     (arrows, Enter, Esc): diagnosis and repair of the environment,
     release / dev / debug viewers, demo, agent tasks, disk, logs,
     live PR tracking (bottom bar, notifications), release
@@ -96,7 +96,7 @@ function Start-Install {
         Show-Checks (Get-Checks (Get-Paths $root)) "Proposed project folder: $root"
         if (-not $Yes -and -not (Read-YesNo "Install everything in ${root}?")) {
             do {
-                $answer = Read-Text 'Path of the Aurora-Viewer folder (created if missing), for example D:\Dev\Aurora-Viewer; empty: cancel'
+                $answer = Read-Text 'Path of the Deeply-Viewer folder (created if missing), for example D:\Dev\Deeply-Viewer; empty: cancel'
                 if (-not $answer) { Write-Color '  Nothing was installed.' muted; exit 0 }
                 $root = [IO.Path]::GetFullPath($answer)
                 if (Test-Path -LiteralPath $root -PathType Leaf) { Write-Color "  $root is a file, not a folder." warn; $root = $null }

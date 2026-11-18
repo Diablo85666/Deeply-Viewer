@@ -434,7 +434,7 @@ impl MoneyTrackerUi {
         }
     }
 
-    /// AURORA_DEMO_MONEY_TRACKER: a session of payments, the most recent
+    /// DEEPLY_DEMO_MONEY_TRACKER: a session of payments, the most recent
     /// one a few seconds old.
     pub fn demo(&mut self, rows: &[(u64, Party, bool, i32, i32, &str)]) {
         let now = SystemTime::now();

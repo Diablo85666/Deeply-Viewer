@@ -1,4 +1,4 @@
-﻿# Aurora Tools: pull requests followed live — background refresh from GitHub,
+# Aurora Tools: pull requests followed live — background refresh from GitHub,
 # footer summary, Windows notifications, full panel (dot-sourced by
 # aurora-tools.ps1).
 

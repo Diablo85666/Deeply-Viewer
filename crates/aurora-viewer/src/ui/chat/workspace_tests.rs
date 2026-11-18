@@ -386,7 +386,7 @@ fn option_left_right_stay_in_the_composer_on_mac() {
     }
     let mut h = Harness::new(ChatStyle::Legacy);
     h.st.conv_focus_request = true;
-    h.st.draft_mut(None).push_str("Aurora Viewer");
+    h.st.draft_mut(None).push_str("Deeply Viewer");
     h.settle();
     let field = egui::Id::unique(("conv_input", None::<Uuid>));
     let ctx = h.frames.ctx.clone();
@@ -1117,7 +1117,7 @@ fn the_members_panel_lists_a_conference() {
 
 /// The style chosen in Preferences › Aurora switches the window at once,
 /// over a demo scenario's style too (the human's report of 2026-10-15:
-/// the choice did nothing while `AURORA_DEMO_CONV=aurora` held its own).
+/// the choice did nothing while `DEEPLY_DEMO_CONV=aurora` held its own).
 #[test]
 fn the_style_of_the_preferences_switches_the_window_live() {
     let mut h = Harness::new(ChatStyle::Aurora);
@@ -1376,7 +1376,7 @@ fn the_buttons_choice_lives_in_the_settings() {
     resize(&mut relog, 700.0);
     assert!(!shows_rail(&relog), "the setting does not collapse it again");
 
-    // demo mode (AURORA_DEMO_CONV=aurora:collapsed): the session's own
+    // demo mode (DEEPLY_DEMO_CONV=aurora:collapsed): the session's own
     // state, never the settings, even when they say collapsed
     let mut demo = Harness::new(ChatStyle::Aurora);
     demo.demo = true;
@@ -1405,7 +1405,7 @@ fn the_least_window_shows_two_entries_above_the_call() {
         h.show_contacts = contacts;
         h.world.start_call(JANE);
         h.settle();
-        // Nearby chat shown, as in AURORA_DEMO_CONV=aurora:call-away
+        // Nearby chat shown, as in DEEPLY_DEMO_CONV=aurora:call-away
         h.st.selected = None;
         for width in [460.0, 700.0] {
             // asked smaller than the least: the floater keeps its least size

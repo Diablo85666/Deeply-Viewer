@@ -59,7 +59,7 @@ pub(super) struct Ghost {
     pub out: bool,
 }
 
-/// `AURORA_DEMO_CONV_REORDER`: what the synthetic drag does.
+/// `DEEPLY_DEMO_CONV_REORDER`: what the synthetic drag does.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Demo {
     /// `1`: the first conversation dropped after the next of its category.

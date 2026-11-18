@@ -66,7 +66,7 @@ impl App {
                 );
             }
         }
-        if self.demo && self.frame_count == 360 && std::env::var_os("AURORA_DEMO_MOVEMENT").is_some() {
+        if self.demo && self.frame_count == 360 && std::env::var_os("DEEPLY_DEMO_MOVEMENT").is_some() {
             let prefs = self.settings.movements.entry(self.world.agent_id).or_default();
             prefs.running = true;
             prefs.fly_assist = true;
@@ -74,7 +74,7 @@ impl App {
             self.open_movement();
             self.movelock_ui.open = false;
             self.panels.perf = false;
-            let mode = std::env::var("AURORA_DEMO_MOVEMENT").unwrap_or_default();
+            let mode = std::env::var("DEEPLY_DEMO_MOVEMENT").unwrap_or_default();
             let prefs = self.settings.movements.entry(self.world.agent_id).or_default();
             match mode.as_str() {
                 "independent" => {
@@ -178,7 +178,7 @@ impl App {
             if let Some(region) = self.world.main_region.and_then(|h| self.world.regions.get_mut(&h))
                 && let Some(info) = &mut region.info
             {
-                let mode = std::env::var("AURORA_DEMO_MOVEMENT").unwrap_or_default();
+                let mode = std::env::var("DEEPLY_DEMO_MOVEMENT").unwrap_or_default();
                 if !mode.starts_with("run-") && !mode.starts_with("passage-") {
                     Arc::make_mut(info).water_height = self.world.agent.position.z + if mode == "underwater" { 2.0 } else { 0.25 };
                 }
@@ -332,7 +332,7 @@ impl App {
         }
         if self.demo
             && self.frame_count >= 360
-            && let Ok(mode) = std::env::var("AURORA_DEMO_MOVEMENT")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_MOVEMENT")
             && matches!(mode.as_str(), "run-fall" | "run-ao" | "run-drop")
         {
             let phase = (self.frame_count - 360) % 120;
@@ -369,7 +369,7 @@ impl App {
         let mut input = water_demo.as_ref().map_or(self.input, |s| s.input);
         if self.demo
             && self.frame_count >= 360
-            && std::env::var("AURORA_DEMO_MOVEMENT").is_ok_and(|m| {
+            && std::env::var("DEEPLY_DEMO_MOVEMENT").is_ok_and(|m| {
                 matches!(
                     m.as_str(),
                     "breaststroke" | "backstroke" | "crawl" | "run-fall" | "run-ao" | "run-drop"

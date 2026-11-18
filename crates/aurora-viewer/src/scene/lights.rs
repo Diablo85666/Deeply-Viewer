@@ -310,7 +310,7 @@ impl Scene {
             let limit = usize::from(view.projector_shadow_limit).min(MAX_PROJECTOR_SHADOWS);
             let targets = self.spot_shadows.targets(&mut ranked, limit);
             self.spot_shadows.update(&targets[..limit], eye, view.dt);
-            if std::env::var_os("AURORA_PROJECTOR_TRACE").is_some() {
+            if std::env::var_os("DEEPLY_PROJECTOR_TRACE").is_some() {
                 log::info!(
                     "projector trace: eye={eye:?} targets={targets:?} slots={:?} fade={:?} ranked={ranked:?}",
                     self.spot_shadows.lights,

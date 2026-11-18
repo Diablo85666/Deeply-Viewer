@@ -10,8 +10,8 @@ use std::{
     time::{Duration, Instant},
 };
 
-const EXE: &str = "aurora-viewer.exe";
-const ACK_ENV: &str = "AURORA_UPDATE_ACK";
+const EXE: &str = "deeply-viewer.exe";
+const ACK_ENV: &str = "DEEPLY_UPDATE_ACK";
 /// Written by the new viewer once its startup splash is on screen: the
 /// helper's own update window can then go without a gap.
 const SPLASH_SHOWN: &str = "splash-shown";
@@ -41,7 +41,7 @@ const ALLOWED: &[&str] = &[
     "NOTICE.md",
     "README.md",
     "version.txt",
-    "aurora-install.json",
+    "deeply-install.json",
 ];
 
 pub struct Workspace {
@@ -321,7 +321,7 @@ pub fn run_helper(stage: &mut dyn FnMut(&str, HelperStage)) -> Result<bool> {
             let mut command = Command::new(plan.install.join(EXE));
             command
                 .args(&plan.args)
-                .env("AURORA_UPDATE_ROLLBACK", "1")
+                .env("DEEPLY_UPDATE_ROLLBACK", "1")
                 .env_remove(ACK_ENV)
                 .current_dir(&plan.install);
             hidden(&mut command);

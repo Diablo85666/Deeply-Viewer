@@ -461,7 +461,7 @@ pub struct App {
     // Bug report form (disabled, see main.rs):
     // bug_report: ui::bug_report::BugReportUi,
     login_progress: Option<(String, f32)>,
-    /// `AURORA_DEMO_LOGIN=add-mfa`: when the offline login server asks for
+    /// `DEEPLY_DEMO_LOGIN=add-mfa`: when the offline login server asks for
     /// the second factor, after the request has been pending a moment.
     demo_mfa_challenge: Option<std::time::Instant>,
     /// The wait for a previous session still on the grid (#956).
@@ -492,23 +492,23 @@ pub struct App {
     monitor_feed: monitor::MonitorFeed,
     /// The interface hidden (Alt+Shift+U) and the bars in mouselook.
     interface: ui::interface::Interface,
-    /// AURORA_PROFILE: frame laps and the summary line in the log.
+    /// DEEPLY_PROFILE: frame laps and the summary line in the log.
     frame_profile: FrameProfile,
     /// What the network did each second: Performance window, and the
-    /// "net summary" line in the log with AURORA_PROFILE.
+    /// "net summary" line in the log with DEEPLY_PROFILE.
     net_profile: crate::net_profile::NetProfile,
-    /// AURORA_PROFILE: the lines of every 10 s (messages, HTTP, assets,
+    /// DEEPLY_PROFILE: the lines of every 10 s (messages, HTTP, assets,
     /// avatars, memory; deep_profile.rs).
     deep_profile: crate::deep_profile::DeepProfile,
-    /// `AURORA_SYNC_SLICE=alt`: seconds of the frame profile so far.
+    /// `DEEPLY_SYNC_SLICE=alt`: seconds of the frame profile so far.
     sync_alt: u64,
-    /// AURORA_NAME_TAGS=alt: this second draws the classic tags.
+    /// DEEPLY_NAME_TAGS=alt: this second draws the classic tags.
     name_tags_alt_classic: bool,
-    /// AURORA_DEMO_TAGS: the set of states its residents show.
+    /// DEEPLY_DEMO_TAGS: the set of states its residents show.
     demo_tag_states: Option<bool>,
-    /// AURORA_DEMO_CHAT_BUBBLES: when its residents' chat was last sent.
+    /// DEEPLY_DEMO_CHAT_BUBBLES: when its residents' chat was last sent.
     demo_bubble_chat: f64,
-    /// AURORA_DEMO_PEOPLE: the states of its residents were sent.
+    /// DEEPLY_DEMO_PEOPLE: the states of its residents were sent.
     demo_people_states: bool,
     /// Interface parts of the frame's profile (`u_*`).
     ui_parts: Parts,
@@ -599,7 +599,7 @@ pub struct App {
     autopilot_stop_pending: bool,
     /// Microphone switched on (toggle mode).
     mic_on: bool,
-    /// AURORA_DEMO_CALL: the simulated voice server of the calls.
+    /// DEEPLY_DEMO_CALL: the simulated voice server of the calls.
     call_demo: crate::demo::calls::CallDemo,
     /// The call whose conversation was last brought up.
     call_shown: Option<uuid::Uuid>,
@@ -636,21 +636,21 @@ pub struct App {
     contact_markers: crate::world::contact_markers::Tracker,
     /// Offline demo: eye tracking on without touching the saved settings.
     demo_look_at: bool,
-    /// AURORA_DEMO_LOOKAT=ahead: "no look-at target, even for me" turned
+    /// DEEPLY_DEMO_LOOKAT=ahead: "no look-at target, even for me" turned
     /// on (in memory) from frame 500.
     demo_look_ahead: bool,
-    /// AURORA_DEMO_LOOKAT=targets: the crosshairs shown, every avatar
+    /// DEEPLY_DEMO_LOOKAT=targets: the crosshairs shown, every avatar
     /// looking somewhere.
     demo_look_at_targets: bool,
     /// The L$ gained and spent, under the balance.
     balance_gains: ui::balance_gains::BalanceGains,
     /// Which of them show: the settings', or the demo's.
     balance_rows: ui::balance_gains::Shown,
-    /// `AURORA_DEMO_PAYMENT=balance`: the payments still to come.
+    /// `DEEPLY_DEMO_PAYMENT=balance`: the payments still to come.
     demo_gains: std::collections::VecDeque<(Instant, NetEvent)>,
-    /// `AURORA_DEMO_PAYMENT=earning`: when the next payment comes.
+    /// `DEEPLY_DEMO_PAYMENT=earning`: when the next payment comes.
     demo_earning: Option<Instant>,
-    /// `AURORA_DEMO_PAYMENT`: the toasts (direct, others) for this run,
+    /// `DEEPLY_DEMO_PAYMENT`: the toasts (direct, others) for this run,
     /// with both rows under the balance, whatever is saved (the demo's
     /// settings are saved like the user's).
     demo_money_notices: Option<(bool, bool)>,
@@ -745,7 +745,7 @@ pub struct App {
     /// Offline demo teleport: started at.
     demo_tp_start: Option<Instant>,
     demo_tp_triggered: bool,
-    /// AURORA_DEMO_MMO: frame its script starts at (world shown).
+    /// DEEPLY_DEMO_MMO: frame its script starts at (world shown).
     demo_mmo_start: Option<u64>,
     /// Where the offline demo teleport lands (the asked position).
     demo_tp_dest: Option<Vec3>,
@@ -754,9 +754,9 @@ pub struct App {
     demo_friend_join_target: Option<(Instant, Vec3)>,
     /// Delayed flight signal, then the landing parcel for join-fly-late.
     demo_friend_join_flight: Option<(Instant, bool)>,
-    /// AURORA_DEMO_RADAR=tp: the radar starts in another region.
+    /// DEEPLY_DEMO_RADAR=tp: the radar starts in another region.
     demo_radar_tp: bool,
-    /// AURORA_DEMO_RADAR=walk: a resident comes and goes.
+    /// DEEPLY_DEMO_RADAR=walk: a resident comes and goes.
     demo_radar_walk: bool,
     /// Destination of the teleport being started (teleport screen).
     tp_dest: Option<String>,
@@ -850,7 +850,7 @@ pub struct App {
     destinations_ui: ui::destinations::DestinationsUi,
     /// Me › Marketplace listings (LLFloaterMarketplaceListings).
     listings_ui: ui::marketplace_listings::ListingsUi,
-    /// The demo's SLM server (AURORA_DEMO_MARKETPLACE_LISTINGS).
+    /// The demo's SLM server (DEEPLY_DEMO_MARKETPLACE_LISTINGS).
     demo_slm: Option<crate::world::marketplace::demo::DemoSlm>,
     people_map_ui: ui::minimap::MiniMap,
     worldmap_ui: ui::worldmap::WorldMapUi,
@@ -878,10 +878,10 @@ pub struct App {
     friends_only_account: uuid::Uuid,
     /// SLURLs from outside and the command line's login (app/external_links.rs).
     external: external_links::ExternalLinks,
-    /// AURORA_DEMO_LINK: a silence of the region to show, or a lost link.
+    /// DEEPLY_DEMO_LINK: a silence of the region to show, or a lost link.
     demo_link_health: Option<link_health::LinkHealthDemo>,
     demo_legacy_bump: Option<crate::demo::legacy_bump::LegacyBumpDemo>,
-    /// AURORA_DEMO_SLURLS: region lookups the demo server answers late.
+    /// DEEPLY_DEMO_SLURLS: region lookups the demo server answers late.
     demo_lookups: Vec<(Instant, NetCommand)>,
     /// The object of an `objectim` link clicked (LLInspectRemoteObject).
     remote_object: Option<crate::slapp::RemoteObject>,
@@ -991,37 +991,37 @@ pub struct App {
     places_ui: ui::places::PlacesUi,
     /// "Search".
     search_ui: ui::search::SearchUi,
-    /// AURORA_DEMO_PLACE=repere|historique, opened once logged in.
+    /// DEEPLY_DEMO_PLACE=repere|historique, opened once logged in.
     demo_place: Option<crate::world::place_details::Source>,
-    /// AURORA_DEMO_STREAM: objects and textures arriving in waves.
+    /// DEEPLY_DEMO_STREAM: objects and textures arriving in waves.
     stream_demo: Option<crate::demo::stream::StreamDemo>,
-    /// AURORA_DEMO_REZ_EFFECT: objects and an avatar appearing with the rez effect.
+    /// DEEPLY_DEMO_REZ_EFFECT: objects and an avatar appearing with the rez effect.
     rez_demo: Option<crate::demo::rez::RezDemo>,
     arrival_demo: Option<crate::demo::arrival::ArrivalDemo>,
     outfit_restore_demo: Option<crate::demo::outfit_restore::OutfitRestoreDemo>,
-    /// AURORA_DEMO_TEXREFRESH: "Refresh textures" on a stale cached texture.
+    /// DEEPLY_DEMO_TEXREFRESH: "Refresh textures" on a stale cached texture.
     tex_refresh_demo: Option<crate::demo::tex_refresh::TexRefreshDemo>,
-    /// AURORA_DEMO_MASK_255: a Mask of cutoff 255 over an alpha under opaque.
+    /// DEEPLY_DEMO_MASK_255: a Mask of cutoff 255 over an alpha under opaque.
     mask_255_demo: Option<crate::demo::mask_255::Mask255Demo>,
     texture_res_demo: Option<crate::demo::texture_res::TextureResDemo>,
-    /// AURORA_DEMO_AA_SWITCH: the anti-aliasing changes still to come.
+    /// DEEPLY_DEMO_AA_SWITCH: the anti-aliasing changes still to come.
     aa_switch_demo: Vec<(u64, u8)>,
-    /// AURORA_DEMO_SCULPT_MISSING: a sculpt whose map is missing.
+    /// DEEPLY_DEMO_SCULPT_MISSING: a sculpt whose map is missing.
     sculpt_missing_demo: Option<crate::demo::sculpt::MissingMapDemo>,
-    /// AURORA_DEMO_TEXTURE_MISSING: boxes whose texture is missing.
+    /// DEEPLY_DEMO_TEXTURE_MISSING: boxes whose texture is missing.
     texture_missing_demo: Option<crate::demo::missing_texture::MissingTextureDemo>,
-    /// AURORA_DEMO_SLIDESHOW: a panel whose texture changes every few seconds.
+    /// DEEPLY_DEMO_SLIDESHOW: a panel whose texture changes every few seconds.
     slideshow_demo: Option<crate::demo::slideshow::SlideshowDemo>,
-    /// AURORA_DEMO_EXPERIENCE: experiences asking (door, pad, greeter).
+    /// DEEPLY_DEMO_EXPERIENCE: experiences asking (door, pad, greeter).
     experience_demo: Option<crate::demo::experience::ExperienceDemo>,
-    /// AURORA_DEMO_TP_AWAY: the demo region's coarse locations while away.
+    /// DEEPLY_DEMO_TP_AWAY: the demo region's coarse locations while away.
     away_coarse: Vec<(uuid::Uuid, Vec3)>,
-    /// AURORA_DEMO_GEOMETRY: meshes filling the geometry arena.
+    /// DEEPLY_DEMO_GEOMETRY: meshes filling the geometry arena.
     geometry_demo: Option<crate::demo::geometry::GeometryDemo>,
     /// Geometry each region needed at its last visit: the arena grows to
     /// it behind the loading screen.
     geometry_needs: crate::scene::geometry_need::GeometryNeeds,
-    /// AURORA_DEMO_TURN: fast camera turns.
+    /// DEEPLY_DEMO_TURN: fast camera turns.
     turn_demo: Option<crate::demo::turn::TurnDemo>,
     /// Detail levels of the objects around the camera, while the debug
     /// overlay shows them.
@@ -1070,7 +1070,7 @@ pub struct App {
     /// Inventory edits asked by the world (`World::take_inventory_edits`),
     /// awaiting their reply.
     world_edits: std::collections::HashSet<uuid::Uuid>,
-    /// AURORA_DEMO_INVENTORY=offer: folder the offered item was last shown in.
+    /// DEEPLY_DEMO_INVENTORY=offer: folder the offered item was last shown in.
     demo_offer_shown: Option<uuid::Uuid>,
     ao_ui: ui::ao::AoUi,
     ao_catalog: crate::ao::inventory::Catalog,
@@ -1083,7 +1083,7 @@ pub struct App {
     ao_missing: HashSet<uuid::Uuid>,
     ao_demo: Option<String>,
     ao_default_applied: bool,
-    /// AURORA_DEMO_LINK: the demo's simulated link for our avatar
+    /// DEEPLY_DEMO_LINK: the demo's simulated link for our avatar
     /// (demo_link.rs), created at the first frame in the world.
     demo_link_cfg: Option<crate::demo::link::Config>,
     demo_link: Option<crate::demo::link::DemoLink>,
@@ -1130,27 +1130,27 @@ pub struct App {
     settings_backup: settings_backup::Job,
     /// The stream list being exported or imported (app/stream_list.rs).
     stream_list: stream_list::Job,
-    /// AURORA_CAPTURE: file, frames to capture (several: one file each,
+    /// DEEPLY_CAPTURE: file, frames to capture (several: one file each,
     /// `<name>-<frame>.png`), quit after the last one.
     capture: Option<(Vec<(u64, std::path::PathBuf)>, bool)>,
 }
 
-/// The bandwidth setting, or AURORA_BANDWIDTH_KBPS for this launch: a value
+/// The bandwidth setting, or DEEPLY_BANDWIDTH_KBPS for this launch: a value
 /// beyond the range of the Preferences, to measure what a simulator sends
 /// when asked for more (the setting itself is not changed).
 fn bandwidth_kbps(settings: &Settings) -> f32 {
-    std::env::var("AURORA_BANDWIDTH_KBPS")
+    std::env::var("DEEPLY_BANDWIDTH_KBPS")
         .ok()
         .and_then(|v| v.trim().parse::<f32>().ok())
         .filter(|kbps| kbps.is_finite())
         .unwrap_or(settings.bandwidth_kbps as f32)
 }
 
-/// The interface font, or AURORA_UI_FONT for this launch (a built-in name
+/// The interface font, or DEEPLY_UI_FONT for this launch (a built-in name
 /// or `system:<path>`): every font compared in one run of captures,
 /// Preferences left alone.
 fn ui_font(settings: &Settings) -> String {
-    std::env::var("AURORA_UI_FONT")
+    std::env::var("DEEPLY_UI_FONT")
         .ok()
         .map(|v| v.trim().to_owned())
         .filter(|v| !v.is_empty())
@@ -1235,20 +1235,20 @@ fn script_editor_keeps(logical: &winit::keyboard::Key, shift: bool, alt: bool) -
         if c.eq_ignore_ascii_case("k") || (["s", "g", "o"].iter().any(|l| c.eq_ignore_ascii_case(l)) && !shift && !alt))
 }
 
-/// The interface scale, or AURORA_UI_SCALE for this launch (brought into
+/// The interface scale, or DEEPLY_UI_SCALE for this launch (brought into
 /// the range of the Preferences, 0.75–2).
 fn ui_scale(settings: &Settings) -> f32 {
-    std::env::var("AURORA_UI_SCALE")
+    std::env::var("DEEPLY_UI_SCALE")
         .ok()
         .and_then(|v| v.trim().parse::<f32>().ok())
         .filter(|s| s.is_finite())
         .map_or(settings.ui_scale, |s| s.clamp(0.75, 2.0))
 }
 
-/// The text size, or AURORA_TEXT_SIZE for this launch (brought into the
+/// The text size, or DEEPLY_TEXT_SIZE for this launch (brought into the
 /// range of the Preferences, never saved).
 fn text_scale(settings: &Settings) -> f32 {
-    std::env::var("AURORA_TEXT_SIZE")
+    std::env::var("DEEPLY_TEXT_SIZE")
         .ok()
         .and_then(|v| v.trim().parse::<f32>().ok())
         .filter(|s| s.is_finite())
@@ -1257,11 +1257,11 @@ fn text_scale(settings: &Settings) -> f32 {
         })
 }
 
-/// The conversations' text size, or AURORA_CHAT_TEXT_SIZE for this launch
+/// The conversations' text size, or DEEPLY_CHAT_TEXT_SIZE for this launch
 /// (brought into the range of the Preferences, never saved), handed to the
 /// fonts with the interface's text size it replaces.
 fn apply_chat_text_scale(ctx: &egui::Context, settings: &Settings) {
-    let chat = std::env::var("AURORA_CHAT_TEXT_SIZE")
+    let chat = std::env::var("DEEPLY_CHAT_TEXT_SIZE")
         .ok()
         .and_then(|v| v.trim().parse::<f32>().ok())
         .filter(|s| s.is_finite())
@@ -1272,9 +1272,9 @@ fn apply_chat_text_scale(ctx: &egui::Context, settings: &Settings) {
 }
 
 /// The colour vision the interface adapts to: the preferences', or in demo
-/// mode `AURORA_DEMO_COLORBLIND` (a capture's, never saved).
+/// mode `DEEPLY_DEMO_COLORBLIND` (a capture's, never saved).
 fn wanted_vision(settings: &Settings) -> crate::colorblind::Vision {
-    if std::env::var_os("AURORA_DEMO").is_some()
+    if std::env::var_os("DEEPLY_DEMO").is_some()
         && let Some(v) = crate::colorblind::demo_override()
     {
         return v;
@@ -1283,10 +1283,10 @@ fn wanted_vision(settings: &Settings) -> crate::colorblind::Vision {
 }
 
 /// Whether the interface takes the high contrast palette: the
-/// preferences', or in demo mode `AURORA_DEMO_CONTRAST` (a capture's, never
+/// preferences', or in demo mode `DEEPLY_DEMO_CONTRAST` (a capture's, never
 /// saved).
 fn wanted_high_contrast(settings: &Settings) -> bool {
-    if std::env::var_os("AURORA_DEMO").is_some()
+    if std::env::var_os("DEEPLY_DEMO").is_some()
         && let Some(on) = crate::high_contrast::demo_override()
     {
         return on;
@@ -1295,9 +1295,9 @@ fn wanted_high_contrast(settings: &Settings) -> bool {
 }
 
 /// The interface colours: the preferences', or in demo mode
-/// `AURORA_DEMO_COLORS` (a capture's, never saved).
+/// `DEEPLY_DEMO_COLORS` (a capture's, never saved).
 fn wanted_interface_colors(settings: &Settings) -> crate::interface_colors::InterfaceColors {
-    if std::env::var_os("AURORA_DEMO").is_some()
+    if std::env::var_os("DEEPLY_DEMO").is_some()
         && let Some(colors) = crate::interface_colors::demo_override()
     {
         return colors;
@@ -1309,56 +1309,56 @@ fn wanted_interface_colors(settings: &Settings) -> crate::interface_colors::Inte
 /// graphics level first, so that the single settings after it still change
 /// it. Applied at start, and again after a new profile's level is chosen.
 fn apply_test_overrides(settings: &mut Settings) {
-    if std::env::var_os("AURORA_DEMO").is_some() && ui::bars::demo::get().graphics_profiles {
+    if std::env::var_os("DEEPLY_DEMO").is_some() && ui::bars::demo::get().graphics_profiles {
         crate::graphics_presets::saved::demo(settings);
     }
-    if let Some(level) = std::env::var("AURORA_GRAPHICS_PRESET")
+    if let Some(level) = std::env::var("DEEPLY_GRAPHICS_PRESET")
         .ok()
         .and_then(|v| crate::graphics_presets::Preset::from_name(&v))
     {
         level.apply(settings);
     }
-    if let Ok(value) = std::env::var("AURORA_FPS_LIMIT") {
+    if let Ok(value) = std::env::var("DEEPLY_FPS_LIMIT") {
         apply_test_fps_limit(settings, &value);
     }
-    if let Some(v) = std::env::var("AURORA_AA").ok().and_then(|v| v.parse().ok()) {
+    if let Some(v) = std::env::var("DEEPLY_AA").ok().and_then(|v| v.parse().ok()) {
         settings.antialiasing = v;
     }
-    if let Some(v) = std::env::var("AURORA_FSR_QUALITY").ok().and_then(|v| v.parse::<u8>().ok()) {
+    if let Some(v) = std::env::var("DEEPLY_FSR_QUALITY").ok().and_then(|v| v.parse::<u8>().ok()) {
         settings.fsr_quality = v.min(4);
     }
-    if let Some(v) = std::env::var("AURORA_RENDER_SCALE").ok().and_then(|v| v.parse::<u32>().ok()) {
+    if let Some(v) = std::env::var("DEEPLY_RENDER_SCALE").ok().and_then(|v| v.parse::<u32>().ok()) {
         settings.render_scale_auto = false;
         settings.render_scale_percent = v.clamp(50, 100);
     }
-    if let Some(v) = std::env::var("AURORA_TEXTURE_BUDGET_MB").ok().and_then(|v| v.parse::<u32>().ok()) {
+    if let Some(v) = std::env::var("DEEPLY_TEXTURE_BUDGET_MB").ok().and_then(|v| v.parse::<u32>().ok()) {
         settings.texture_budget_auto = false;
         settings.texture_budget_mb = v.clamp(256, 32768);
     }
-    if let Some(v) = std::env::var("AURORA_MAX_TEXTURE_RES").ok().and_then(|v| v.parse::<u32>().ok()) {
+    if let Some(v) = std::env::var("DEEPLY_MAX_TEXTURE_RES").ok().and_then(|v| v.parse::<u32>().ok()) {
         settings.max_texture_resolution = crate::settings::max_texture_resolution_choice(v);
     }
-    if let Some(v) = std::env::var("AURORA_MAX_COMPLEXITY").ok().and_then(|v| v.parse().ok()) {
+    if let Some(v) = std::env::var("DEEPLY_MAX_COMPLEXITY").ok().and_then(|v| v.parse().ok()) {
         settings.max_complexity = v;
     }
-    if let Some(v) = std::env::var("AURORA_MAX_AVATARS").ok().and_then(|v| v.parse().ok()) {
+    if let Some(v) = std::env::var("DEEPLY_MAX_AVATARS").ok().and_then(|v| v.parse().ok()) {
         settings.max_avatars = v;
     }
-    if let Some(v) = std::env::var("AURORA_SHADOWS").ok().and_then(|v| v.parse().ok()) {
+    if let Some(v) = std::env::var("DEEPLY_SHADOWS").ok().and_then(|v| v.parse().ok()) {
         settings.shadow_quality = v;
     }
-    if let Ok(v) = std::env::var("AURORA_PROJECTOR_SHADOWS") {
+    if let Ok(v) = std::env::var("DEEPLY_PROJECTOR_SHADOWS") {
         settings.projector_shadows = v != "0";
     }
-    if let Ok(value) = std::env::var("AURORA_PROJECTOR_SHADOW_LIMIT")
+    if let Ok(value) = std::env::var("DEEPLY_PROJECTOR_SHADOW_LIMIT")
         && let Ok(limit) = value.parse::<u8>()
     {
         settings.projector_shadow_limit = limit.clamp(1, aurora_render::projector_shadows::MAX_PROJECTOR_SHADOWS as u8);
     }
-    if let Ok(v) = std::env::var("AURORA_HDR") {
+    if let Ok(v) = std::env::var("DEEPLY_HDR") {
         settings.hdr_emissive = v != "0";
     }
-    if let Ok(v) = std::env::var("AURORA_OCCLUSION") {
+    if let Ok(v) = std::env::var("DEEPLY_OCCLUSION") {
         settings.occlusion_culling = v != "0";
     }
 }
@@ -1421,27 +1421,27 @@ impl App {
         // the regional 12 / 24 hours and time zone of the bars' clock, read once
         ui::bars::clock::read_system_clock();
         let mut settings = Settings::load();
-        if std::env::var("AURORA_DEMO").as_deref() == Ok("1")
-            && std::env::var("AURORA_DEMO_INVENTORY")
+        if std::env::var("DEEPLY_DEMO").as_deref() == Ok("1")
+            && std::env::var("DEEPLY_DEMO_INVENTORY")
                 .is_ok_and(|mode| matches!(mode.as_str(), "delete-confirm" | "delete-tab") || mode.starts_with("aurora-delete-confirm"))
         {
             settings.inventory.confirm_delete = true;
         }
-        if std::env::var("AURORA_DEMO").as_deref() == Ok("1")
-            && let Ok(mode) = std::env::var("AURORA_DEMO_MINIMIZED_MUTE")
+        if std::env::var("DEEPLY_DEMO").as_deref() == Ok("1")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_MINIMIZED_MUTE")
         {
             settings.audio.mute_when_minimized = mode != "off";
         }
         aurora_i18n::select(&settings.language, crate::cli::get().language.as_deref());
-        if std::env::var_os("AURORA_DEMO").is_some() && std::env::var_os("AURORA_DEMO_KEYBOARD").is_some() {
+        if std::env::var_os("DEEPLY_DEMO").is_some() && std::env::var_os("DEEPLY_DEMO_KEYBOARD").is_some() {
             // Exercise a first launch without changing the user's bindings.
             settings.keybinds = Default::default();
         }
         apply_test_overrides(&mut settings);
         external_links::apply_grid(&mut settings);
-        if std::env::var("AURORA_DEMO").as_deref() == Ok("1")
-            && std::env::var_os("AURORA_DEMO_TEXTURE_LIBRARY").is_some()
-            && std::env::var_os("AURORA_DEMO_AO").is_none()
+        if std::env::var("DEEPLY_DEMO").as_deref() == Ok("1")
+            && std::env::var_os("DEEPLY_DEMO_TEXTURE_LIBRARY").is_some()
+            && std::env::var_os("DEEPLY_DEMO_AO").is_none()
         {
             settings.show_ao = false;
         }
@@ -1465,7 +1465,7 @@ impl App {
         aurora_net::objcache::seal_with(crate::cache::key().clone());
         // (not the demo's: its folder is shared by the demo runs of every
         // build, and holds nothing from the grid)
-        if std::env::var_os("AURORA_DEMO").is_none() {
+        if std::env::var_os("DEEPLY_DEMO").is_none() {
             aurora_net::objcache::name_with(crate::cache::key().names());
             crate::cache::remove_unsealed(crate::settings::cache_dir());
             crate::cache::rename_to_keyed_names(crate::settings::asset_cache_dir());
@@ -1486,7 +1486,7 @@ impl App {
         let egui_ctx = egui::Context::default();
         // Restore window state before the theme and fonts: loading egui's
         // memory drops pending font definitions and the transient text scale.
-        if std::env::var_os("AURORA_CAPTURE").is_none() || std::env::var_os("AURORA_CAPTURE_LAYOUT").is_some() {
+        if std::env::var_os("DEEPLY_CAPTURE").is_none() || std::env::var_os("DEEPLY_CAPTURE_LAYOUT").is_some() {
             ui::layout::load(&egui_ctx);
         }
         ui::colors::set(&settings.colors);
@@ -1507,7 +1507,7 @@ impl App {
         egui_ctx.set_zoom_factor(ui_scale(&settings));
         // last view of the previous session for the loading screen
         let mut backdrop = ui::backdrop::Backdrop::default();
-        if settings.loading_backdrop && std::env::var_os("AURORA_CAPTURE").is_none() {
+        if settings.loading_backdrop && std::env::var_os("DEEPLY_CAPTURE").is_none() {
             backdrop.load_saved();
         }
         let system_fonts_pending = !ui::fonts::apply(&egui_ctx, &ui_font(&settings));
@@ -1735,7 +1735,7 @@ impl App {
             loading_target: 0.0,
             frame_count: 0,
             demo_rlva_frame: None,
-            rlva_login: if std::env::var("AURORA_DEMO").as_deref() == Ok("1") {
+            rlva_login: if std::env::var("DEEPLY_DEMO").as_deref() == Ok("1") {
                 Default::default()
             } else {
                 crate::world::rlva::login::State::load(crate::settings::config_dir().join("rlva-login.json"))
@@ -1917,7 +1917,7 @@ impl App {
             tex_refresh_demo: None,
             mask_255_demo: None,
             texture_res_demo: None,
-            aa_switch_demo: if std::env::var_os("AURORA_DEMO").is_some() {
+            aa_switch_demo: if std::env::var_os("DEEPLY_DEMO").is_some() {
                 crate::demo::aa_switch::from_env()
             } else {
                 Vec::new()
@@ -1965,7 +1965,7 @@ impl App {
             ao_held_changes: Vec::new(),
             ao_agent: uuid::Uuid::nil(),
             ao_missing: Default::default(),
-            ao_demo: std::env::var("AURORA_DEMO_AO").ok(),
+            ao_demo: std::env::var("DEEPLY_DEMO_AO").ok(),
             ao_default_applied: false,
             demo_link_cfg: crate::demo::link::Config::from_env(),
             demo_link: None,
@@ -1996,11 +1996,11 @@ impl App {
             folders: Default::default(),
             settings_backup: Default::default(),
             stream_list: Default::default(),
-            capture: std::env::var_os("AURORA_CAPTURE").map(|p| {
-                let frames = std::env::var("AURORA_CAPTURE_FRAMES").unwrap_or_default();
+            capture: std::env::var_os("DEEPLY_CAPTURE").map(|p| {
+                let frames = std::env::var("DEEPLY_CAPTURE_FRAMES").unwrap_or_default();
                 (
                     capture_files(std::path::Path::new(&p), &frames),
-                    std::env::var_os("AURORA_CAPTURE_EXIT").is_some(),
+                    std::env::var_os("DEEPLY_CAPTURE_EXIT").is_some(),
                 )
             }),
         }))
@@ -2139,14 +2139,14 @@ impl App {
             self.world.maturity.hold(cmd, actor);
             return;
         }
-        // AURORA_DEMO_EXPERIENCE: the simulator and the capabilities
+        // DEEPLY_DEMO_EXPERIENCE: the simulator and the capabilities
         if self.demo
             && let Some(reply) = self.experience_demo.as_mut().and_then(|demo| demo.reply(&cmd))
         {
             self.apply_experience_demo(reply);
             return;
         }
-        // AURORA_DEMO_HOME / AURORA_DEMO_USERINFO: the region's answers
+        // DEEPLY_DEMO_HOME / DEEPLY_DEMO_USERINFO: the region's answers
         if self.demo
             && let NetCommand::SetHomeLocation { position, .. } = cmd
         {
@@ -2163,7 +2163,7 @@ impl App {
             }
             return;
         }
-        // AURORA_DEMO_SIM_CONSOLE / AURORA_DEMO_VOICE_MODERATION: the
+        // DEEPLY_DEMO_SIM_CONSOLE / DEEPLY_DEMO_VOICE_MODERATION: the
         // region's answers
         if self.demo
             && let NetCommand::SimConsole(command) = &cmd
@@ -2178,7 +2178,7 @@ impl App {
             crate::demo::sim_extras::moderate(target, mute, &peers);
             return;
         }
-        // AURORA_DEMO_MATURITY: the server agrees, keeps its value or fails
+        // DEEPLY_DEMO_MATURITY: the server agrees, keeps its value or fails
         if self.demo
             && let NetCommand::SetMaturityPreference(maturity) = cmd
         {
@@ -2190,7 +2190,7 @@ impl App {
         if self.demo && self.gesture_demo_command(&cmd) {
             return;
         }
-        // AURORA_DEMO_SLURLS: a region lookup answered a little later
+        // DEEPLY_DEMO_SLURLS: a region lookup answered a little later
         if self.demo && crate::demo::slurls_scene() && matches!(cmd, NetCommand::MapNameRequest { .. }) {
             self.demo_lookups.push((Instant::now() + crate::demo::SLURLS_LOOKUP_DELAY, cmd));
             return;
@@ -2198,7 +2198,7 @@ impl App {
         if self.demo
             && let NetCommand::SetHoverHeight { region, request, value } = &cmd
         {
-            let success = !std::env::var("AURORA_DEMO_HOVER_HEIGHT").is_ok_and(|mode| mode == "failure");
+            let success = !std::env::var("DEEPLY_DEMO_HOVER_HEIGHT").is_ok_and(|mode| mode == "failure");
             log::info!("demo hover height: committed {value:.3}, success {success}");
             self.world.hover_height.reply(*request, *region, success);
             return;
@@ -2349,7 +2349,7 @@ impl App {
             }
             if matches!(&cmd, NetCommand::OneShotControl(f) if f & control::STAND_UP != 0)
                 && !seated_on_demo_prim
-                && std::env::var_os("AURORA_DEMO_ACTIONS").is_some()
+                && std::env::var_os("DEEPLY_DEMO_ACTIONS").is_some()
             {
                 self.world.apply(NetEvent::ObjectUpdates {
                     handle: self.world.main_region.unwrap_or_default(),
@@ -2545,7 +2545,7 @@ impl App {
                 return;
             }
             if let NetCommand::SaveInventoryContent { request, item, data, .. } = &cmd {
-                if std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|v| v == "note-error") {
+                if std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|v| v == "note-error") {
                     self.on_app_event(NetEvent::InventoryContentSaved {
                         request: *request,
                         item: *item,
@@ -2638,7 +2638,7 @@ impl App {
             if let NetCommand::PreviewTaskNotecard { object, item, .. } = &cmd {
                 let data = self.demo_documents.get(&item.id).cloned().unwrap_or_else(|| {
                     crate::world::inventory::demo::note_asset(
-                        std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|v| v == "note-task-embedded"),
+                        std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|v| v == "note-task-embedded"),
                     )
                 });
                 self.task_notecard_preview(*object, item.id, item.asset_id, Ok(data));
@@ -2652,7 +2652,7 @@ impl App {
                 ..
             } = &cmd
             {
-                let result = if std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|v| v == "note-task-error") {
+                let result = if std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|v| v == "note-task-error") {
                     Err(aurora_i18n::tr!("notecard-demo-save-error").into())
                 } else {
                     self.demo_documents.insert(*item, data.clone());
@@ -2720,7 +2720,7 @@ impl App {
                         &aurora_llsd::llsd_map! { "version" => "1.1", "type" => "GLTF 2.0", "data" => "{\"asset\":{\"version\":\"2.0\"},\"materials\":[{}]}" },
                     ),
                     7 => crate::world::inventory::demo::note_asset(
-                        std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|v| matches!(v.as_str(), "note-embedded" | "note-image" | "note-landmark" | "note-copy" | "note-menu-right")),
+                        std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|v| matches!(v.as_str(), "note-embedded" | "note-image" | "note-landmark" | "note-copy" | "note-menu-right")),
                     ),
                     _ => aurora_i18n::tr!("app-demo-content", value0 = it.name.to_string()).into_bytes(),
                 });
@@ -2877,14 +2877,14 @@ impl App {
         matches!(self.screen, Screen::World | Screen::Loading { .. })
     }
 
-    /// Nearby chat in bubbles above the heads (#673); AURORA_DEMO_CHAT_BUBBLES
+    /// Nearby chat in bubbles above the heads (#673); DEEPLY_DEMO_CHAT_BUBBLES
     /// turns them on for the run, without saving it.
     fn chat_bubbles(&self) -> bool {
         self.settings.chat_bubbles || (self.demo && crate::demo::tags::chat_bubbles().is_some())
     }
 
     /// The avatar name tags are the classic ones, not the name plates: the
-    /// setting, unless AURORA_NAME_TAGS forces a style.
+    /// setting, unless DEEPLY_NAME_TAGS forces a style.
     fn classic_name_tags(&self) -> bool {
         match name_tags_env() {
             Some(NameTagsEnv::Classic) => true,
@@ -2946,7 +2946,7 @@ impl App {
             return;
         }
         if self.demo {
-            let mode = std::env::var("AURORA_DEMO_LOGIN").unwrap_or_default();
+            let mode = std::env::var("DEEPLY_DEMO_LOGIN").unwrap_or_default();
             // Which identity the offline server received: the account being
             // added, or a saved card (never the name itself).
             let saved = self
@@ -3914,7 +3914,7 @@ impl App {
                 self.script_recovery_login(l.agent_id);
                 self.chat_ui.recent_emojis = if self.demo {
                     let mut recent = ui::emoji::recent::Recent::demo(&crate::demo::recent_emojis());
-                    if let Ok(favorites) = std::env::var("AURORA_DEMO_FAVORITE_EMOJIS") {
+                    if let Ok(favorites) = std::env::var("DEEPLY_DEMO_FAVORITE_EMOJIS") {
                         recent.demo_favorites(&favorites);
                         self.emoji.tab = ui::emoji::FAVORITES_TAB;
                     }
@@ -3963,7 +3963,7 @@ impl App {
                 // the demo's teleport history: several days, never saved
                 if self.demo {
                     let mut visits = crate::demo::place::history();
-                    // AURORA_DEMO_DESTINATIONS: two of the guide's places visited
+                    // DEEPLY_DEMO_DESTINATIONS: two of the guide's places visited
                     if crate::demo::destinations::mode().is_some() {
                         visits.extend(crate::demo::destinations::history());
                         visits.sort_by(|a, b| a.date.total_cmp(&b.date));
@@ -4331,7 +4331,7 @@ impl App {
         }
     }
 
-    /// AURORA_DEMO_CAMERA: scripted camera input (camera/demo.rs).
+    /// DEEPLY_DEMO_CAMERA: scripted camera input (camera/demo.rs).
     fn demo_camera_steps(&mut self, spec: &str) {
         use crate::camera::demo::Step;
         if spec.ends_with("-body-on") || spec.ends_with("-body-off") {
@@ -4448,7 +4448,7 @@ impl App {
                 }
                 Step::ZoomUnloadedResident => match crate::demo::people::drawn_late() {
                     Some((id, _)) => self.on_ctx_action(ui::context::CtxAction::ZoomAvatar(id)),
-                    None => log::warn!("demo camera: zoom-unloaded needs AURORA_DEMO_PEOPLE=rows"),
+                    None => log::warn!("demo camera: zoom-unloaded needs DEEPLY_DEMO_PEOPLE=rows"),
                 },
                 Step::DrawUnloadedResident => {
                     for ev in crate::demo::people::drawn_late().map(|(_, events)| events).unwrap_or_default() {
@@ -4469,7 +4469,7 @@ impl App {
         }
     }
 
-    /// One scripted step of AURORA_DEMO_ENV_SELECT, through the same calls
+    /// One scripted step of DEEPLY_DEMO_ENV_SELECT, through the same calls
     /// as the environment window.
     fn demo_env_step(&mut self, step: crate::demo::env::Step) {
         use crate::demo::env::Step;
@@ -4635,9 +4635,9 @@ impl App {
     /// Master × media channel volume, 0 when either is muted or disabled
     /// (LLViewerMedia::getVolume): the media on faces and the videos of the
     /// conversations' cards. Demo captures stay silent unless
-    /// AURORA_DEMO_SOUND is set.
+    /// DEEPLY_DEMO_SOUND is set.
     fn media_volume(&self) -> f32 {
-        if self.demo && std::env::var_os("AURORA_DEMO_SOUND").is_none() {
+        if self.demo && std::env::var_os("DEEPLY_DEMO_SOUND").is_none() {
             return 0.0;
         }
         audio_mute::media_volume(&self.settings.audio, self.minimized_mute.active)
@@ -5055,7 +5055,7 @@ impl App {
         }
         let now = Instant::now();
         let own_idx = self.world.objects.index_of_uuid(&self.world.agent_id);
-        if self.demo && std::env::var_os("AURORA_DEMO_ACTIONS").is_some() {
+        if self.demo && std::env::var_os("DEEPLY_DEMO_ACTIONS").is_some() {
             log::info!(
                 "demo action pick: hit={hit:?}, avatar={on_avatar}, picked={:?}",
                 hit.zip(ray)
@@ -5338,7 +5338,7 @@ impl App {
         }
     }
 
-    /// AURORA_DEMO_LOOKAT=targets: every other avatar sends a look-at, of a
+    /// DEEPLY_DEMO_LOOKAT=targets: every other avatar sends a look-at, of a
     /// type and toward a target that change from one round to the next: a
     /// point, another avatar, the cursor, mouselook.
     fn demo_look_at_everyone(&mut self) {
@@ -5397,7 +5397,7 @@ impl App {
         }
     }
 
-    /// AURORA_DEMO_LOOKAT=leave (issue #482): at frame 230 Violet Wolf looks
+    /// DEEPLY_DEMO_LOOKAT=leave (issue #482): at frame 230 Violet Wolf looks
     /// at us (his mark on our head), at frame 800 he logs off (the
     /// simulator kills his avatar): his mark must go with him.
     fn demo_look_at_leave(&mut self) {
@@ -5580,7 +5580,7 @@ impl App {
     }
 
     /// Aurora's notification center (Preferences › Aurora › Notifications),
-    /// or Firestorm's toasts; AURORA_DEMO_NOTIFS=legacy shows the latter for
+    /// or Firestorm's toasts; DEEPLY_DEMO_NOTIFS=legacy shows the latter for
     /// the session without saving it.
     fn notifications_aurora(&self) -> bool {
         if self.demo && crate::demo::notifs::mode().is_some_and(|m| m.starts_with("legacy")) {
@@ -5643,17 +5643,17 @@ impl App {
         // conversations by their IM mode (LLIMMgr::addMessage), never in
         // do not disturb; "in front" = shown in the focused window
         let dnd = w.status.dnd;
-        // only people's lines count and alert (#741; AURORA_DEMO_OBJECT_CHAT=…:on
+        // only people's lines count and alert (#741; DEEPLY_DEMO_OBJECT_CHAT=…:on
         // for the run)
         w.quiet_automated_chat = self.settings.compact_automated_chat || (self.demo && crate::demo::object_chat::on());
-        // FSAnnounceIncomingIM (AURORA_DEMO_IM_ANNOUNCE=1: on for the run)
+        // FSAnnounceIncomingIM (DEEPLY_DEMO_IM_ANNOUNCE=1: on for the run)
         w.announce_incoming_im = self.settings.announce_incoming_im || (self.demo && crate::demo::im_announce::forced());
         w.set_script_dialog_limit(self.settings.script_dialog_limit);
         w.notifications.toasts = crate::world::notifications::ToastPrefs {
             presence: self.settings.toast_friends_online,
             presence_in_chat: self.settings.friends_online_in_chat,
             im: self.settings.toast_im,
-            // AURORA_DEMO_TOASTS shows a group message too (off by default)
+            // DEEPLY_DEMO_TOASTS shows a group message too (off by default)
             group_im: self.settings.toast_group_im || (self.demo && crate::demo::toasts::mode().is_some()),
             // and keeps the messages under the bell for its modes that list
             // or click them
@@ -5833,8 +5833,8 @@ impl App {
             .world
             .main()
             .map_or(Vec3::ZERO, |r| r.wind.velocity(agent.position, r.heightmap.size_x as f32));
-        // demo runs stay silent unless AURORA_DEMO_SOUND or AURORA_DEMO_WIND
-        let demo_silent = self.demo && std::env::var_os("AURORA_DEMO_SOUND").is_none() && crate::scene::wind_sound::demo_spec().is_none();
+        // demo runs stay silent unless DEEPLY_DEMO_SOUND or DEEPLY_DEMO_WIND
+        let demo_silent = self.demo && std::env::var_os("DEEPLY_DEMO_SOUND").is_none() && crate::scene::wind_sound::demo_spec().is_none();
         let input = crate::scene::wind_sound::WindInput {
             region_wind,
             velocity: agent.velocity,
@@ -5890,14 +5890,14 @@ impl App {
 
     /// The demo's media filter stays in memory: the demo account's file
     /// would carry one run's answers into the next.
-    /// AURORA_DEMO_MEDIA_FILTER: `ask` (or `1`) starts a parcel media on a
+    /// DEEPLY_DEMO_MEDIA_FILTER: `ask` (or `1`) starts a parcel media on a
     /// site the list does not know, `first` the same with the first use's
     /// explanation, `music` the parcel music on such a site, `list` puts a
     /// few sites in the list (Preferences › Sound and voice › Media).
     fn demo_media_filter(&mut self) {
         use crate::media::filter::{Action, Edit, MediaFilter};
         self.world.media_filter = MediaFilter::default();
-        let Ok(mode) = std::env::var("AURORA_DEMO_MEDIA_FILTER") else {
+        let Ok(mode) = std::env::var("DEEPLY_DEMO_MEDIA_FILTER") else {
             return;
         };
         // the scenario shows the filter whatever the demo profile says
@@ -5950,7 +5950,7 @@ impl App {
                     // a HUD's AttachItemID is its own id in the demo
                     self.demo_hud_media(url)
                 } else {
-                    if std::env::var_os("AURORA_DEMO_WORN").is_none() {
+                    if std::env::var_os("DEEPLY_DEMO_WORN").is_none() {
                         for ev in crate::demo::worn::events() {
                             self.world.apply(ev);
                         }
@@ -5965,11 +5965,11 @@ impl App {
                 };
                 self.demo_worn_item(item, creator);
             }
-            _ => log::warn!("AURORA_DEMO_MEDIA_FILTER: unknown mode {mode}"),
+            _ => log::warn!("DEEPLY_DEMO_MEDIA_FILTER: unknown mode {mode}"),
         }
     }
 
-    /// AURORA_DEMO_HUDS=media (and the media filter's `hud` modes): a worn
+    /// DEEPLY_DEMO_HUDS=media (and the media filter's `hud` modes): a worn
     /// HUD screen with media on `url`, playing at once.
     /// The inventory item a demo attachment is worn from, made by
     /// `creator`: the media filter trusts the media of what we made.
@@ -6547,7 +6547,7 @@ impl App {
 
     /// Demo mode keeps the question to its own scenario.
     fn demo_suitcase_off(&self) -> bool {
-        self.demo && std::env::var_os("AURORA_DEMO_SUITCASE").is_none()
+        self.demo && std::env::var_os("DEEPLY_DEMO_SUITCASE").is_none()
     }
 
     /// Teleport to a position of a region given by name: the current region
@@ -6649,7 +6649,7 @@ impl App {
             self.send(command);
         }
         let gaps = crate::world::radar::region_gaps(&self.world);
-        // AURORA_DEMO_RADAR=tp: for the first ten seconds (at 60 images a
+        // DEEPLY_DEMO_RADAR=tp: for the first ten seconds (at 60 images a
         // second) we are still in the region the demo "teleports" from
         let my_region = if self.demo_radar_tp && self.frame_count < 600 {
             Some(crate::demo::RADAR_LEFT_REGION)
@@ -6659,7 +6659,7 @@ impl App {
         let mut events = self
             .radar
             .sweep(seen, self.world.agent.position, my_region, &gaps, self.settings.draw_distance, now);
-        // AURORA_DEMO_PEOPLE: its residents arrived before the session
+        // DEEPLY_DEMO_PEOPLE: its residents arrived before the session
         if self.demo {
             for (id, ago) in crate::demo::people::arrivals() {
                 self.radar.backdate(&id, now - ago);
@@ -6794,7 +6794,7 @@ impl App {
         // voice server and simulates them)
         let server_type = main.map(|r| r.voice_server.clone()).unwrap_or_default();
         // nearby voice moderation: who a moderator muted, and us (the demo
-        // simulates it, AURORA_DEMO_VOICE_MODERATION)
+        // simulates it, DEEPLY_DEMO_VOICE_MODERATION)
         let moderated = if self.demo {
             let peers = self.world.calls.voice_peers.iter().copied();
             crate::demo::sim_extras::nearby_moderated(self.frame_count, self.world.agent_id, peers)
@@ -6963,7 +6963,7 @@ impl App {
         if !self.demo {
             return;
         }
-        // AURORA_DEMO_BUILD_ECHO: transform reports a round trip late
+        // DEEPLY_DEMO_BUILD_ECHO: transform reports a round trip late
         for ev in self.build_demo.arrived(Instant::now()) {
             if let Some(e) = self.world.apply(ev) {
                 self.on_app_event(e);
@@ -6975,7 +6975,7 @@ impl App {
         self.object_menu_demo_steps();
         self.release_keys_demo_steps();
         if self.frame_count == 400
-            && let Ok(mode) = std::env::var("AURORA_DEMO_BEACONS")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_BEACONS")
         {
             if let Some(handle) = self.world.main_region {
                 let local_ids = self
@@ -6996,17 +6996,17 @@ impl App {
             let (eye, target) = crate::demo::beacons::view(&mode);
             self.camera.set_view(eye, target, &mut self.world.agent, &self.settings.camera);
         }
-        // AURORA_DEMO_MATERIAL_ARRIVALS: a material nobody uses arrives
+        // DEEPLY_DEMO_MATERIAL_ARRIVALS: a material nobody uses arrives
         if let Some((id, m)) = crate::demo::material_arrival_due() {
             self.scene.legacy_mats.insert(id, m);
         }
-        // AURORA_DEMO_HOVER=1: the cursor swept over the scene, then still
+        // DEEPLY_DEMO_HOVER=1: the cursor swept over the scene, then still
         if let Some(g) = &self.gfx
             && let Some(cursor) = crate::demo::hover_sweep(self.frame_count, g.renderer.size())
         {
             self.cursor_pos = cursor;
         }
-        let Ok(mode) = std::env::var("AURORA_DEMO_ACTIONS") else {
+        let Ok(mode) = std::env::var("DEEPLY_DEMO_ACTIONS") else {
             return;
         };
         let probe = mode.starts_with("probe-");
@@ -7856,7 +7856,7 @@ impl App {
     /// The Snooze of a group chat (FSFloaterIM::onSnooze, confirmSnooze):
     /// asks its duration first when the settings say so
     /// (FSEnablePerGroupSnoozeDuration), else snoozes it for the setting's
-    /// (GroupSnoozeTime; `AURORA_DEMO_SNOOZE` in demo).
+    /// (GroupSnoozeTime; `DEEPLY_DEMO_SNOOZE` in demo).
     /// (Fields rather than `self`: it runs while the frame's UI borrows it.)
     fn ask_or_snooze(
         settings: &crate::settings::Settings,
@@ -8727,7 +8727,7 @@ impl App {
                 self.show_place_profile(source);
             }
         }
-        // AURORA_DEMO_LANDMARK: World › Landmark this place, or a landmark of
+        // DEEPLY_DEMO_LANDMARK: World › Landmark this place, or a landmark of
         // the plaza already made, once the agent stands on a parcel
         let folder_ready = |kind: i32| {
             let inv = &self.world.inventory;
@@ -8855,7 +8855,7 @@ impl App {
             self.map_tiles.configure(url, self.net.runtime(), self.net.caps_http());
         }
         self.map_tiles.update(&self.egui_ctx);
-        if self.demo && std::env::var_os("AURORA_DEMO_BAN").is_some() {
+        if self.demo && std::env::var_os("DEEPLY_DEMO_BAN").is_some() {
             // offline check of the ban lines: kept shown as if just pushed back
             if let Some(e) = self.world.apply(crate::demo::ban_collision()) {
                 self.on_app_event(e);
@@ -8903,7 +8903,7 @@ impl App {
         // About Land requests (selection and its refresh, lists, covenant...)
         self.world.land.tick(Instant::now());
         if self.demo
-            && let Ok(mode) = std::env::var("AURORA_DEMO_PARCEL_VISIBILITY")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_PARCEL_VISIBILITY")
         {
             crate::demo::parcel_visibility::update_agent_parcel(&mut self.world, &mode, self.frame_count);
         }
@@ -8913,7 +8913,7 @@ impl App {
         {
             self.send(command);
         }
-        if self.demo && std::env::var("AURORA_DEMO_PARCEL_VISIBILITY").is_ok_and(|mode| mode == "crossings") {
+        if self.demo && std::env::var("DEEPLY_DEMO_PARCEL_VISIBILITY").is_ok_and(|mode| mode == "crossings") {
             crate::demo::parcel_visibility::check_crossings(&self.world, self.frame_count);
         }
         for c in self.world.land.take_commands() {
@@ -9052,7 +9052,7 @@ impl App {
         aurora_render::frame_priority::apply();
         self.world.anti_spam.configure(self.settings.anti_spam);
         self.update_rlva();
-        if self.demo && self.frame_count == 700 && std::env::var_os("AURORA_DEMO_ANTI_SPAM").is_some() {
+        if self.demo && self.frame_count == 700 && std::env::var_os("DEEPLY_DEMO_ANTI_SPAM").is_some() {
             for event in crate::demo::anti_spam::events(self.world.agent_id) {
                 if let Some(event) = self.world.apply(event) {
                     self.on_app_event(event);
@@ -9071,10 +9071,10 @@ impl App {
             self.shutdown(event_loop);
             return;
         }
-        if self.demo && self.frame_count == 650 && std::env::var_os("AURORA_DEMO_EXIT").is_some() {
+        if self.demo && self.frame_count == 650 && std::env::var_os("DEEPLY_DEMO_EXIT").is_some() {
             self.request_exit();
         }
-        // AURORA_DEMO_HOME=<outcome>:set: World › Set Home to Here, once settled
+        // DEEPLY_DEMO_HOME=<outcome>:set: World › Set Home to Here, once settled
         if self.demo
             && self.frame_count == 700
             && crate::demo::home::scene().1
@@ -9084,7 +9084,7 @@ impl App {
         }
         if self.demo
             && self.frame_count == 650
-            && let Ok(mode) = std::env::var("AURORA_DEMO_APPEARANCE")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_APPEARANCE")
             && matches!(mode.as_str(), "xml" | "xml-unavailable")
         {
             self.world.apply(NetEvent::Appearance(aurora_net::AvatarAppearance {
@@ -9102,26 +9102,26 @@ impl App {
             self.egui_ctx
                 .data_mut(|data| data.insert_temp(egui::Id::unique("appearance_xml_demo"), true));
         }
-        // AURORA_DEMO_APPEARANCE=take-off-folder: the inventory's Remove from
+        // DEEPLY_DEMO_APPEARANCE=take-off-folder: the inventory's Remove from
         // current outfit on an ordinary folder (#1849)
-        if self.demo && self.frame_count == 600 && std::env::var("AURORA_DEMO_APPEARANCE").as_deref() == Ok("take-off-folder") {
+        if self.demo && self.frame_count == 600 && std::env::var("DEEPLY_DEMO_APPEARANCE").as_deref() == Ok("take-off-folder") {
             self.apply_appearance_action(crate::world::appearance::Action::RemoveOutfit(
                 crate::world::appearance::DEMO_TAKE_OFF_FOLDER,
             ));
         }
         self.outfit_portrait_demo();
         self.outfit_batch_demo();
-        // AURORA_DEMO_GROUP_REGION: the Group titles window
+        // DEEPLY_DEMO_GROUP_REGION: the Group titles window
         if self.demo && self.frame_count == 600 && crate::demo::group_region::on() {
             self.panels.group_titles = true;
         }
-        // AURORA_DEMO_SIM_CONSOLE=open: the console and two commands
+        // DEEPLY_DEMO_SIM_CONSOLE=open: the console and two commands
         if self.demo && self.frame_count == 600 && crate::demo::sim_extras::console_open() {
             self.panels.sim_console = true;
             self.world.sim_console.send("help");
             self.world.sim_console.send("stats");
         }
-        // AURORA_DEMO_FREEZE: frozen by Nova, released later
+        // DEEPLY_DEMO_FREEZE: frozen by Nova, released later
         if self.demo {
             for ev in crate::demo::sim_extras::freeze_events(self.frame_count) {
                 if let Some(e) = self.world.apply(ev) {
@@ -9129,15 +9129,15 @@ impl App {
                 }
             }
         }
-        // AURORA_DEMO_EMOJI_CODES: the keyboard given to the input again once
+        // DEEPLY_DEMO_EMOJI_CODES: the keyboard given to the input again once
         // the demo's start has settled (it takes it back at the start)
         if self.demo
             && self.frame_count == 700
-            && (std::env::var_os("AURORA_DEMO_EMOJI_CODES").is_some() || std::env::var_os("AURORA_DEMO_CHAT_INPUT").is_some())
+            && (std::env::var_os("DEEPLY_DEMO_EMOJI_CODES").is_some() || std::env::var_os("DEEPLY_DEMO_CHAT_INPUT").is_some())
         {
             self.chat_ui.conv_focus_request = true;
         }
-        // AURORA_DEMO_SPELLING=menu|replace: the chat bar takes the keyboard,
+        // DEEPLY_DEMO_SPELLING=menu|replace: the chat bar takes the keyboard,
         // its caret at the end
         if self.demo
             && self.frame_count == 700
@@ -9150,7 +9150,7 @@ impl App {
         }
         if self.demo
             && self.frame_count == 800
-            && let Ok(mode) = std::env::var("AURORA_DEMO_EXIT")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_EXIT")
         {
             match mode.as_str() {
                 "cancel" => self.confirm_exit(ui::exit::Action::Cancel),
@@ -9301,7 +9301,7 @@ impl App {
         self.world.received_items.enabled_since = self.settings.received_items_since;
         if self.demo
             && self.frame_count == 700
-            && std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|mode| mode.ends_with("received-filing"))
+            && std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|mode| mode.ends_with("received-filing"))
         {
             self.inventory_ui.expand_all = Some(true);
         }
@@ -9361,11 +9361,11 @@ impl App {
             if let Some(e) = crate::demo::conference::tick().and_then(|ev| self.world.apply(ev)) {
                 self.on_app_event(e);
             }
-            // AURORA_DEMO_SOUND_HRTF: the sounds around the listener
+            // DEEPLY_DEMO_SOUND_HRTF: the sounds around the listener
             if let Some(e) = crate::demo::sound_hrtf::tick(self.camera.position).and_then(|ev| self.world.apply(ev)) {
                 self.on_app_event(e);
             }
-            // AURORA_DEMO_SOUND_REVERB: the clapper above our avatar
+            // DEEPLY_DEMO_SOUND_REVERB: the clapper above our avatar
             if let Some(e) = crate::demo::sound_reverb::tick(self.world.agent.position).and_then(|ev| self.world.apply(ev)) {
                 self.on_app_event(e);
             }
@@ -9433,10 +9433,10 @@ impl App {
             self.world.region_alerts.cfg = crate::world::region_alerts::Config {
                 script_count: self.settings.script_count_alert,
                 script_threshold: self.settings.script_count_threshold,
-                // AURORA_DEMO_SIM_VERSION=on: on for the run, not saved
+                // DEEPLY_DEMO_SIM_VERSION=on: on for the run, not saved
                 version: self.settings.sim_version_alert || (self.demo && crate::demo::sim_version::forced()),
             };
-            // AURORA_DEMO_COLLISIONS=chat: the nearby chat lines for this run only
+            // DEEPLY_DEMO_COLLISIONS=chat: the nearby chat lines for this run only
             self.world.collisions.cfg = if self.demo {
                 crate::demo::collisions::settings(self.settings.collisions)
             } else {
@@ -9458,7 +9458,7 @@ impl App {
             self.world.restore_open_ims(
                 self.settings.reopen_ims || (self.demo && crate::demo::chatlog::mode() == Some(crate::demo::chatlog::Mode::Restore)),
             );
-            // AURORA_DEMO_OBJECT_IM: a filter for this run only
+            // DEEPLY_DEMO_OBJECT_IM: a filter for this run only
             self.world.object_im_filter = crate::demo::object_im::settings()
                 .filter(|_| self.demo)
                 .unwrap_or(self.settings.object_im_filter);
@@ -9560,7 +9560,7 @@ impl App {
         if self.left_down && self.color_pipette() && !self.egui_ctx.is_pointer_over_egui() {
             self.sample_build_color();
         }
-        // AURORA_DEMO_LINK's lost link, before the frame takes the window
+        // DEEPLY_DEMO_LINK's lost link, before the frame takes the window
         self.demo_link_lost();
         let Some(mut gfx) = self.gfx.take() else {
             return;
@@ -9600,7 +9600,7 @@ impl App {
         let typing = self.egui_ctx.egui_wants_keyboard_input();
         self.update_move_input(typing, dt);
         if self.demo
-            && let Ok(mode) = std::env::var("AURORA_DEMO_GROUNDING")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_GROUNDING")
             && let Some(input) = crate::demo::grounding::scripted_input(&mode, self.frame_count)
         {
             self.input = input;
@@ -9633,7 +9633,7 @@ impl App {
                 // no simulator offline: move the avatar locally
                 let p = self.world.agent.position;
                 let floor = crate::demo::floor_at(p.x, p.y);
-                let floor = std::env::var("AURORA_DEMO_GROUNDING")
+                let floor = std::env::var("DEEPLY_DEMO_GROUNDING")
                     .ok()
                     .filter(|_| self.frame_count >= 600)
                     .map_or(floor, |mode| {
@@ -9656,7 +9656,7 @@ impl App {
             let camera_distance = self.camera.position.distance(self.world.agent.position);
             self.world.agent.update(&self.input, ml, dt, camera_distance);
             if self.demo
-                && let Ok(mode) = std::env::var("AURORA_DEMO_GROUNDING")
+                && let Ok(mode) = std::env::var("DEEPLY_DEMO_GROUNDING")
             {
                 crate::demo::grounding::update_motion(&mut self.world, &self.scene, self.frame_count, &mode, &self.input);
             }
@@ -9775,8 +9775,8 @@ impl App {
         self.update_bridge();
         self.update_region_restart();
         if self.demo
-            && let Ok(mode) = std::env::var("AURORA_DEMO_HAND_IK").or_else(|_| {
-                std::env::var("AURORA_DEMO_IK_EDIT").and_then(|m| {
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_HAND_IK").or_else(|_| {
+                std::env::var("DEEPLY_DEMO_IK_EDIT").and_then(|m| {
                     if m.starts_with("poser") {
                         Err(std::env::VarError::NotPresent)
                     } else {
@@ -9794,7 +9794,7 @@ impl App {
             }
         }
         if self.demo
-            && let Ok(mode) = std::env::var("AURORA_DEMO_IK_EDIT")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_IK_EDIT")
         {
             if mode == "shortcut" {
                 if matches!(self.frame_count, 420 | 520) {
@@ -9919,7 +9919,7 @@ impl App {
             && let Some(command) = self.world.update_hand_contacts(Instant::now())
         {
             if self.demo {
-                let mode = std::env::var("AURORA_DEMO_IK_EDIT").unwrap_or_default();
+                let mode = std::env::var("DEEPLY_DEMO_IK_EDIT").unwrap_or_default();
                 for event in crate::demo::hand_ik::editor_reply(&command, self.frame_count, &mode) {
                     self.world.apply(event);
                 }
@@ -9965,7 +9965,7 @@ impl App {
         );
         // The experimental XR worker can look in any direction after these
         // CPU lists are prepared; per-eye GPU culling still uses the real frusta.
-        if gfx.renderer.vr_engaged() || (self.demo && std::env::var_os("AURORA_DEMO_XR_WORLD").is_some()) {
+        if gfx.renderer.vr_engaged() || (self.demo && std::env::var_os("DEEPLY_DEMO_XR_WORLD").is_some()) {
             cull.planes = [glam::Vec4::W; 6];
         }
         // debug: frozen culling view (move around to see what it drops)
@@ -10090,7 +10090,7 @@ impl App {
                 .tick_clip(&self.scene.jobs, &self.egui_ctx, self.world.avatar_lib.rig.clone());
             self.scene.ik_edit = self.ik_editor.request();
             if self.demo
-                && let Ok(mode) = std::env::var("AURORA_DEMO_POSER")
+                && let Ok(mode) = std::env::var("DEEPLY_DEMO_POSER")
             {
                 self.poser_demo(&mode);
             }
@@ -10311,7 +10311,7 @@ impl App {
                 if self.settings.debug.freeze_culling {
                     cull = *self.frozen_cull.get_or_insert(cull);
                 }
-                if gfx.renderer.vr_engaged() || (self.demo && std::env::var_os("AURORA_DEMO_XR_WORLD").is_some()) {
+                if gfx.renderer.vr_engaged() || (self.demo && std::env::var_os("DEEPLY_DEMO_XR_WORLD").is_some()) {
                     cull.planes = [glam::Vec4::W; 6];
                 }
                 self.scene.fov_y = self.camera.fov_y;
@@ -10398,18 +10398,18 @@ impl App {
             // avatars still loading: clouds (Firestorm) and progress bars
             self.scene.update_loading(&self.world, effects_now());
             // the rez effect of what appears (Preferences › Aurora;
-            // AURORA_REZ_EFFECT=0|1 overrides it): its grid stands for the
+            // DEEPLY_REZ_EFFECT=0|1 overrides it): its grid stands for the
             // clouds of the avatars it draws
             static REZ_ENV: std::sync::OnceLock<Option<bool>> = std::sync::OnceLock::new();
-            let rez_env = *REZ_ENV.get_or_init(|| std::env::var("AURORA_REZ_EFFECT").ok().map(|v| v.trim() != "0"));
+            let rez_env = *REZ_ENV.get_or_init(|| std::env::var("DEEPLY_REZ_EFFECT").ok().map(|v| v.trim() != "0"));
             self.scene.rez.enabled = rez_env.unwrap_or(!self.settings.classic_rez_effect && !self.settings.reduce_motion);
             self.scene.rez.log = self.demo;
             let covered = matches!(self.screen, Screen::Loading { .. }) || self.tp_overlay.as_ref().is_some_and(|o| o.end.is_none());
             self.scene.update_rez(&mut gfx.renderer, &self.world, &cull, covered, effects_now());
             // the demo avatars have no real bakes: no clouds offline unless
-            // AURORA_DEMO_CLOUD is set
+            // DEEPLY_DEMO_CLOUD is set
             static DEMO_CLOUD: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-            let mode = if self.demo && !*DEMO_CLOUD.get_or_init(|| std::env::var_os("AURORA_DEMO_CLOUD").is_some()) {
+            let mode = if self.demo && !*DEMO_CLOUD.get_or_init(|| std::env::var_os("DEEPLY_DEMO_CLOUD").is_some()) {
                 2
             } else {
                 self.settings.loading_avatars
@@ -10509,10 +10509,10 @@ impl App {
                     gfx.renderer.records.get(id).map(|r| Mat4::from_cols_array_2d(&r.model))
                 });
             self.frame_profile.lap(Lap::Lists);
-            if self.demo && std::env::var_os("AURORA_DEMO_ANIMESH").is_some() && self.frame_count.is_multiple_of(120) {
+            if self.demo && std::env::var_os("DEEPLY_DEMO_ANIMESH").is_some() && self.frame_count.is_multiple_of(120) {
                 self.scene.log_demo_animesh(&self.world);
             }
-            // AURORA_DEMO_ANIMESH=churn: the ground animesh takes a new mesh
+            // DEEPLY_DEMO_ANIMESH=churn: the ground animesh takes a new mesh
             // asset; the one it leaves is freed with its skin bindings
             if self.demo
                 && self.frame_count > 0
@@ -10549,6 +10549,8 @@ impl App {
                 gfx.renderer.info.shared_mb,
                 gfx.renderer.info.integrated,
             );
+            self.scene
+                .apply_texture_settings(&gfx.renderer, self.settings.texture_compression, self.settings.mipmap_streaming);
             self.scene
                 .stream(&mut gfx.renderer, &self.net, &self.world, texture_budget * 1024 * 1024, frame_time);
         }
@@ -10674,7 +10676,7 @@ impl App {
                 w.tp_progress = w.tp_progress.max(0.10);
                 w.tp_status = aurora_i18n::tr!("common-teleport-accepted").into();
             }
-            // AURORA_DEMO_TP_CANCEL=1: Cancel pressed during the transfer
+            // DEEPLY_DEMO_TP_CANCEL=1: Cancel pressed during the transfer
             if crate::demo::tp_cancel_pressed() && (1.5..2.4).contains(&e) {
                 self.cancel_teleport();
             }
@@ -10962,11 +10964,11 @@ impl App {
             })
             .to_array(),
             rez_gradient: {
-                // AURORA_REZ_STYLE=1|2|3: the effect's look (grid, scanlines,
+                // DEEPLY_REZ_STYLE=1|2|3: the effect's look (grid, scanlines,
                 // wireframe, the one chosen), to compare them
                 static STYLE: std::sync::OnceLock<f32> = std::sync::OnceLock::new();
                 let style = *STYLE.get_or_init(|| {
-                    std::env::var("AURORA_REZ_STYLE")
+                    std::env::var("DEEPLY_REZ_STYLE")
                         .ok()
                         .and_then(|v| v.trim().parse::<u8>().ok())
                         .filter(|s| (1..=3).contains(s))
@@ -11079,13 +11081,13 @@ impl App {
         raw.events.extend(self.alt_text.drain(..).map(egui::Event::Text));
         self.demo_script_input(&mut raw);
         // Synthetic preedit uses the ordinary focused Conversations editor.
-        if self.demo && self.frame_count == 710 && std::env::var("AURORA_DEMO_CHAT_INPUT").is_ok_and(|mode| mode == "ime") {
+        if self.demo && self.frame_count == 710 && std::env::var("DEEPLY_DEMO_CHAT_INPUT").is_ok_and(|mode| mode == "ime") {
             raw.events.push(egui::Event::Ime(egui::ImeEvent::Preedit {
                 text: "日本語の変換中の文節を確認します".into(),
                 active_range_chars: Some(4..7),
             }));
         }
-        if self.demo && std::env::var("AURORA_DEMO_OPTIONS").is_ok_and(|mode| mode == "1:scale-keys") {
+        if self.demo && std::env::var("DEEPLY_DEMO_OPTIONS").is_ok_and(|mode| mode == "1:scale-keys") {
             raw.focused = true;
             raw.events.retain(|event| !matches!(event, egui::Event::WindowFocused(false)));
             if self.frame_count == 600 {
@@ -11126,11 +11128,11 @@ impl App {
             && self.capture.is_some()
             && (ui::color_picker::demo::mode().is_some()
                 || self.chat_ui.demo_reorder.is_some()
-                || std::env::var_os("AURORA_DEMO_EMOJI_CODES").is_some()
-                || std::env::var_os("AURORA_DEMO_CHAT_INPUT").is_some()
-                || std::env::var("AURORA_DEMO_OBJECT_MENU").is_ok_and(|mode| mode.starts_with("customize"))
-                || std::env::var("AURORA_DEMO_MARKETPLACE_LISTINGS").is_ok_and(|mode| mode.starts_with("menu-"))
-                || std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|v| {
+                || std::env::var_os("DEEPLY_DEMO_EMOJI_CODES").is_some()
+                || std::env::var_os("DEEPLY_DEMO_CHAT_INPUT").is_some()
+                || std::env::var("DEEPLY_DEMO_OBJECT_MENU").is_ok_and(|mode| mode.starts_with("customize"))
+                || std::env::var("DEEPLY_DEMO_MARKETPLACE_LISTINGS").is_ok_and(|mode| mode.starts_with("menu-"))
+                || std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|v| {
                     matches!(
                         v.as_str(),
                         "rename"
@@ -11162,7 +11164,7 @@ impl App {
         }
         if self.demo
             && self.capture.is_some()
-            && let Ok(view) = std::env::var("AURORA_DEMO_INVENTORY")
+            && let Ok(view) = std::env::var("DEEPLY_DEMO_INVENTORY")
             && matches!(view.as_str(), "resize-left" | "resize-right")
             && let Some(rect) = self.egui_ctx.memory(|memory| memory.area_rect(egui::Id::unique("inventory")))
         {
@@ -11181,14 +11183,14 @@ impl App {
                 _ => {}
             }
         }
-        // AURORA_DEMO_POINTER="x,y[,l|r|s|h][;x,y…]": the pointer at these window
+        // DEEPLY_DEMO_POINTER="x,y[,l|r|s|h][;x,y…]": the pointer at these window
         // pixels from frame 300, one point every 60 frames (hover states,
         // sub-menus); ",l"/",r" left-/right-clicks the interface there; ",s"
         // leaves the pointer at rest there instead of moving it every frame
         // (egui only shows a tooltip under a pointer at rest)
         if self.demo
             && self.frame_count >= 300
-            && let Ok(v) = std::env::var("AURORA_DEMO_POINTER")
+            && let Ok(v) = std::env::var("DEEPLY_DEMO_POINTER")
         {
             let points: Vec<(f32, f32, Option<egui::PointerButton>, bool, u64)> = v
                 .split(';')
@@ -11238,7 +11240,7 @@ impl App {
             self.contents_drop_demo_input(&mut raw, vp, (w, h));
             self.contents_folder_drag_demo_input(&mut raw);
             if self.frame_count == 420
-                && std::env::var("AURORA_DEMO_ACTIONS").as_deref() == Ok("open-multi")
+                && std::env::var("DEEPLY_DEMO_ACTIONS").as_deref() == Ok("open-multi")
                 && let Some(c) = &self.interactions.contents
             {
                 ui::object_actions::contents_demo_select_all(&self.egui_ctx, c.target.object, &mut raw);
@@ -11291,7 +11293,7 @@ impl App {
             ui::inventory::aurora_demo(&ctx, self.frame_count);
             ui::inventory::folder_colors_demo_frame(&ctx, &mut self.inventory_ui, &self.settings.inventory, self.frame_count);
             ui::inventory::bulk_permissions_demo(self.frame_count, &mut self.inventory_ui);
-            if std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|mode| matches!(mode.as_str(), "show-original" | "aurora-show-original")) {
+            if std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|mode| matches!(mode.as_str(), "show-original" | "aurora-show-original")) {
                 match self.frame_count {
                     650 => ui::widgets::minimize_floater(&ctx, "inventory"),
                     750 => self.on_ctx_action(ui::context::CtxAction::AttachmentInventory(uuid::Uuid::from_u128(8100))),
@@ -11299,11 +11301,11 @@ impl App {
                 }
             }
         }
-        // AURORA_DEMO_POSER=compact-face: Ctrl held over the face while
+        // DEEPLY_DEMO_POSER=compact-face: Ctrl held over the face while
         // posing the Body, for its oval tint; compact-body: over the chest
         // while posing the Hands, for the body drawn from its mesh
         // (`poser::world_hints`)
-        let hovered = std::env::var("AURORA_DEMO_POSER").ok().and_then(|mode| match mode.as_str() {
+        let hovered = std::env::var("DEEPLY_DEMO_POSER").ok().and_then(|mode| match mode.as_str() {
             // the forehead: from the demo camera, behind, the nose falls on
             // the head's marker, which takes the pointer first
             "compact-face" => Some("mFaceForeheadCenter"),
@@ -11545,8 +11547,8 @@ impl App {
                 idx
             });
             if self.demo
-                && ((self.frame_count == 650 && std::env::var_os("AURORA_DEMO_ACTIONS").is_some())
-                    || (self.frame_count == 699 && std::env::var_os("AURORA_DEMO_WORLD_CLICKS").is_some()))
+                && ((self.frame_count == 650 && std::env::var_os("DEEPLY_DEMO_ACTIONS").is_some())
+                    || (self.frame_count == 699 && std::env::var_os("DEEPLY_DEMO_WORLD_CLICKS").is_some()))
             {
                 log::info!(
                     "demo cursor hover: prim={:?}, action={:?}",
@@ -11561,7 +11563,7 @@ impl App {
                     self.send(cmd);
                 }
                 if let Some(action) = crate::interaction::cursor_action(&self.world, idx, &self.interactions.props) {
-                    if self.demo && self.frame_count == 722 && std::env::var_os("AURORA_DEMO_ACTIONS").is_some() {
+                    if self.demo && self.frame_count == 722 && std::env::var_os("DEEPLY_DEMO_ACTIONS").is_some() {
                         log::info!("demo action hover: {action:?}, prim={}", target.clicked.local_id);
                     }
                     if action == crate::interaction::Action::Touch {
@@ -11643,7 +11645,7 @@ impl App {
         }
         if self.demo
             && self.frame_count == 650
-            && (std::env::var_os("AURORA_DEMO_ACTIONS").is_some() || std::env::var_os("AURORA_DEMO_PLATE_HOVER").is_some())
+            && (std::env::var_os("DEEPLY_DEMO_ACTIONS").is_some() || std::env::var_os("DEEPLY_DEMO_PLATE_HOVER").is_some())
         {
             log::info!(
                 "demo cursor output: icon={:?}, bitmap={}, plate={:?}",
@@ -11798,10 +11800,10 @@ impl App {
             // a few times a second: worn meshes change seldom
             if self.frame_count.is_multiple_of(10) {
                 let mut joints = self.scene.rigged_joints(&self.world, self.ik_editor.poser_subject());
-                // AURORA_DEMO_POSER=compact-wings / compact-tail: as if a worn
+                // DEEPLY_DEMO_POSER=compact-wings / compact-tail: as if a worn
                 // mesh used the wings and the tail, or the tail alone (the demo
                 // wears none)
-                let demo = self.demo.then(|| std::env::var("AURORA_DEMO_POSER").ok()).flatten();
+                let demo = self.demo.then(|| std::env::var("DEEPLY_DEMO_POSER").ok()).flatten();
                 if let Some(parts) = demo.as_deref().and_then(|m| match m {
                     "compact-wings" => Some(&["Wing", "Tail"][..]),
                     "compact-tail" => Some(&["Tail"][..]),
@@ -11867,7 +11869,7 @@ impl App {
         } else {
             &self.empty_lists
         };
-        let stats = if self.demo && gfx.renderer.capture_request && std::env::var_os("AURORA_DEMO_RENDER_TEXTURE").is_some() {
+        let stats = if self.demo && gfx.renderer.capture_request && std::env::var_os("DEEPLY_DEMO_RENDER_TEXTURE").is_some() {
             gfx.renderer.render_world_texture_capture(fp, lists)
         } else {
             gfx.renderer.render(fp, lists, Some(egui_frame))
@@ -11966,7 +11968,7 @@ impl App {
         self.note_viewer_stats(paced, &gfx.renderer.info);
         if self.demo
             && self.frame_count == 1500
-            && std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|v| matches!(v.as_str(), "image-photo" | "image-photo-save"))
+            && std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|v| matches!(v.as_str(), "image-photo" | "image-photo-save"))
         {
             let request = uuid::Uuid::new_v4();
             let item = uuid::Uuid::from_u128(8101);
@@ -11978,7 +11980,7 @@ impl App {
         {
             self.demo_big_inventory(big);
         }
-        if self.demo && self.frame_count == 2100 && std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|v| v == "image-photo-save") {
+        if self.demo && self.frame_count == 2100 && std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|v| v == "image-photo-save") {
             let mut actions = Vec::new();
             self.inventory_ui.thumbnail.save_photo(&mut actions);
             for action in actions {
@@ -11997,7 +11999,7 @@ impl App {
                 self.world.apply(event);
             }
         }
-        if self.demo && std::env::var_os("AURORA_DEMO_ANIM_LOOP").is_some() {
+        if self.demo && std::env::var_os("DEEPLY_DEMO_ANIM_LOOP").is_some() {
             // acos(dot) amplifies f32 normalization error near identical poses.
             let phase_error = |a: &glam::Quat, b: &glam::Quat| {
                 let relative = a.conjugate() * *b;
@@ -12560,11 +12562,11 @@ impl App {
         self.resolve_clicks();
         self.demo_action_steps();
         self.demo_click_steps();
-        // AURORA_DEMO_MAP=…,switch: the map's layout flips at frame 700 with
+        // DEEPLY_DEMO_MAP=…,switch: the map's layout flips at frame 700 with
         // the map open, as Preferences › Aurora › World map does (#2669)
         if self.demo
             && self.frame_count == 700
-            && std::env::var("AURORA_DEMO_MAP").is_ok_and(|s| s.split(',').any(|w| w.trim() == "switch"))
+            && std::env::var("DEEPLY_DEMO_MAP").is_ok_and(|s| s.split(',').any(|w| w.trim() == "switch"))
         {
             use crate::settings::WorldMapStyle;
             let now = self.worldmap_ui.demo_style.unwrap_or(self.settings.world_map_style);
@@ -12573,7 +12575,7 @@ impl App {
                 WorldMapStyle::Legacy => WorldMapStyle::Aurora,
             });
         }
-        if self.demo && self.frame_count == 700 && std::env::var("AURORA_DEMO_MAP").as_deref() == Ok("beacon-click") {
+        if self.demo && self.frame_count == 700 && std::env::var("DEEPLY_DEMO_MAP").as_deref() == Ok("beacon-click") {
             if let Some(hit) = &self.beacon_hit {
                 let at = hit.rect.center() * self.egui_ctx.pixels_per_point();
                 self.cursor_pos = (at.x, at.y);
@@ -12592,12 +12594,12 @@ impl App {
             self.demo_avatar_travel_steps();
         }
         self.demo_hud_drag_steps();
-        // AURORA_DEMO_INVENTORY=offer|offer-reject: the sample offer's item
+        // DEEPLY_DEMO_INVENTORY=offer|offer-reject: the sample offer's item
         // shown in the folder it reaches; the second rejects it at frame 700
         // (offer-card…: answered from its card or its notification, the
         // conversation in sight; …-show: kept, the inventory opening on it)
         if self.demo
-            && let Ok(mode) = std::env::var("AURORA_DEMO_INVENTORY")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_INVENTORY")
             && mode.starts_with("offer")
         {
             let card = crate::demo::offer_card_scene();
@@ -12643,12 +12645,12 @@ impl App {
         self.demo_social_menu_steps();
         self.demo_land_moderation();
         self.demo_admin_status();
-        if self.demo && std::env::var("AURORA_DEMO_HUDS").is_ok_and(|m| matches!(m.as_str(), "touch" | "touch-shift")) {
+        if self.demo && std::env::var("DEEPLY_DEMO_HUDS").is_ok_and(|m| matches!(m.as_str(), "touch" | "touch-shift")) {
             if self.frame_count == 720
                 && let Some(view) = self.scene.lists.hud_view
             {
                 self.cursor_pos = view.pixel(Vec3::new(0.0, 0.18, 0.028)).into();
-                self.shift = std::env::var("AURORA_DEMO_HUDS").is_ok_and(|m| m == "touch-shift");
+                self.shift = std::env::var("DEEPLY_DEMO_HUDS").is_ok_and(|m| m == "touch-shift");
                 log::info!("demo HUD touch: shift={}", self.shift);
                 self.on_left_press();
             } else if self.frame_count == 800 {
@@ -12659,7 +12661,7 @@ impl App {
             }
         }
         if self.demo
-            && let Ok(mode) = std::env::var("AURORA_DEMO_HUDS")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_HUDS")
             && matches!(mode.as_str(), "menu" | "edit" | "edit-zoom" | "edit-no-mod" | "rotate-no-mod")
         {
             let key = crate::world::objects::ObjKey {
@@ -12709,12 +12711,12 @@ impl App {
                 }
             }
         }
-        // captures: AURORA_DEMO_RCLICK="x,y" simulates a right click (physical
+        // captures: DEEPLY_DEMO_RCLICK="x,y" simulates a right click (physical
         // px) at frame 225; "tag" on the name tag of the nearest other avatar
         // at frame 600, once the tags are shown
         if self.demo
             && (self.frame_count == 225 || self.frame_count == 600)
-            && let Ok(v) = std::env::var("AURORA_DEMO_RCLICK")
+            && let Ok(v) = std::env::var("DEEPLY_DEMO_RCLICK")
         {
             let ppp = self.egui_ctx.pixels_per_point();
             let c: Vec<f32> = v.split(',').filter_map(|s| s.trim().parse().ok()).collect();
@@ -12733,13 +12735,13 @@ impl App {
                 self.open_context_menu();
             }
         }
-        // AURORA_DEMO_VOICE_MENU=1|louder|muted: the world menu of the nearest
+        // DEEPLY_DEMO_VOICE_MENU=1|louder|muted: the world menu of the nearest
         // name tag of a resident in our voice channel at frame 600, its voice
         // row first; `louder` sets their volume to 160 % before, `muted`
         // blocks their voice (as the row's button does)
         if self.demo
             && self.frame_count == 600
-            && let Ok(mode) = std::env::var("AURORA_DEMO_VOICE_MENU")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_VOICE_MENU")
         {
             // (not the demo's blocked wolf: his voice is muted with the rest)
             let w = &self.world;
@@ -12769,19 +12771,19 @@ impl App {
                 None => log::warn!("demo voice menu: no name tag of a resident in voice on screen"),
             }
         }
-        // AURORA_DEMO_STATUSMENU=invisible: the status menu, invisible (shown
+        // DEEPLY_DEMO_STATUSMENU=invisible: the status menu, invisible (shown
         // only: no right is changed, nothing is saved), once logged in
-        if self.demo && self.frame_count == 60 && std::env::var("AURORA_DEMO_STATUSMENU").is_ok_and(|v| v == "invisible") {
+        if self.demo && self.frame_count == 60 && std::env::var("DEEPLY_DEMO_STATUSMENU").is_ok_and(|v| v == "invisible") {
             self.world.status.invisible.on = true;
         }
-        // AURORA_DEMO_CONTACTS: contact sets and aliases to show, once logged in
-        if self.demo && self.frame_count == 60 && std::env::var_os("AURORA_DEMO_CONTACTS").is_some() {
+        // DEEPLY_DEMO_CONTACTS: contact sets and aliases to show, once logged in
+        if self.demo && self.frame_count == 60 && std::env::var_os("DEEPLY_DEMO_CONTACTS").is_some() {
             crate::demo::seed_contact_sets(&mut self.world);
-            if std::env::var("AURORA_DEMO_CONTACTS").as_deref() == Ok("empty") {
+            if std::env::var("DEEPLY_DEMO_CONTACTS").as_deref() == Ok("empty") {
                 self.world.social.friends.clear();
             }
         }
-        // AURORA_DEMO_PEOPLE's tabs: the mock-up's sets, pins and recent people
+        // DEEPLY_DEMO_PEOPLE's tabs: the mock-up's sets, pins and recent people
         if self.demo && self.frame_count == 60 {
             crate::demo::people::seed(&mut self.world);
             crate::demo::contact_markers::seed(&mut self.world);
@@ -12789,10 +12791,10 @@ impl App {
         }
         if self.demo && matches!(self.frame_count, 700 | 720) && crate::demo::friend_join_scenario() {
             if self.frame_count == 700 {
-                let contact = std::env::var("AURORA_DEMO_FRIEND_LOCATION").as_deref() != Ok("join-map");
+                let contact = std::env::var("DEEPLY_DEMO_FRIEND_LOCATION").as_deref() != Ok("join-map");
                 self.world.locate_avatar(crate::demo::DEMO_FRIEND, contact);
                 self.panels.world_map = true;
-            } else if std::env::var("AURORA_DEMO_FRIEND_LOCATION").as_deref() == Ok("join-map")
+            } else if std::env::var("DEEPLY_DEMO_FRIEND_LOCATION").as_deref() == Ok("join-map")
                 && let Some(t) = &self.world.map.track
                 && !t.pending
                 && !t.invalid
@@ -12816,7 +12818,7 @@ impl App {
                     info.name.clone_from(&sim.name);
                 }
                 info.region_flags &= !aurora_net::region_flags::BLOCK_FLY;
-                if std::env::var("AURORA_DEMO_FRIEND_LOCATION").as_deref() == Ok("join-fly-blocked") {
+                if std::env::var("DEEPLY_DEMO_FRIEND_LOCATION").as_deref() == Ok("join-fly-blocked") {
                     info.region_flags |= aurora_net::region_flags::BLOCK_FLY;
                 }
                 self.world.apply(NetEvent::RegionHandshake(Arc::new(info)));
@@ -12876,17 +12878,17 @@ impl App {
                 self.demo_friend_join_flight = Some((Instant::now() + Duration::from_millis(400), true));
             }
         }
-        // AURORA_DEMO_NAVEDIT=1: click in the location field at frame 230
-        if self.demo && self.frame_count == 230 && std::env::var_os("AURORA_DEMO_NAVEDIT").is_some() {
+        // DEEPLY_DEMO_NAVEDIT=1: click in the location field at frame 230
+        if self.demo && self.frame_count == 230 && std::env::var_os("DEEPLY_DEMO_NAVEDIT").is_some() {
             self.panels.nav_edit = Some(crate::slurl::make(&self.world.region_name(), self.world.agent.position));
             self.panels.nav_edit_new = true;
         }
-        // AURORA_DEMO_SIT=n: the toolbar sit button clicked n times, at
+        // DEEPLY_DEMO_SIT=n: the toolbar sit button clicked n times, at
         // frames 240, 300, 360…
         if self.demo
             && self.frame_count >= 240
             && self.frame_count.is_multiple_of(60)
-            && let Some(n) = std::env::var("AURORA_DEMO_SIT").ok().and_then(|v| v.trim().parse::<u64>().ok())
+            && let Some(n) = std::env::var("DEEPLY_DEMO_SIT").ok().and_then(|v| v.trim().parse::<u64>().ok())
             && (self.frame_count - 240) / 60 < n
         {
             self.toggle_ground_sit();
@@ -12928,17 +12930,17 @@ impl App {
         if let (Some(demo), Some(g)) = (&mut self.rez_demo, &mut self.gfx) {
             demo.tick(self.frame_count, &mut self.world, &mut self.scene, &mut g.renderer);
         }
-        // AURORA_DEMO_MASK_255: a Mask of cutoff 255 over an alpha under opaque
+        // DEEPLY_DEMO_MASK_255: a Mask of cutoff 255 over an alpha under opaque
         if let Some(demo) = &mut self.mask_255_demo {
             demo.tick(self.frame_count, &mut self.world, self.scene.textures.cache_dir());
         }
-        // AURORA_DEMO_TEXREFRESH: a panel with a stale cached texture
+        // DEEPLY_DEMO_TEXREFRESH: a panel with a stale cached texture
         if let Some(demo) = &mut self.tex_refresh_demo
             && let Some(object) = demo.tick(self.frame_count, &mut self.world, self.scene.textures.cache_dir())
         {
             self.refresh_object_textures(object);
         }
-        // AURORA_DEMO_TEXTURE_RES: boards with 2048 px streamed textures
+        // DEEPLY_DEMO_TEXTURE_RES: boards with 2048 px streamed textures
         if let (Some(demo), Some(g)) = (&mut self.texture_res_demo, &mut self.gfx) {
             demo.tick(
                 self.frame_count,
@@ -12954,7 +12956,7 @@ impl App {
         if let Some(demo) = &mut self.texture_missing_demo {
             demo.tick(self.frame_count, &mut self.world, &mut self.scene.textures);
         }
-        // AURORA_DEMO_SLIDESHOW: a scripted slideshow
+        // DEEPLY_DEMO_SLIDESHOW: a scripted slideshow
         if let Some(demo) = &mut self.slideshow_demo {
             demo.tick(
                 self.frame_count,
@@ -12964,7 +12966,7 @@ impl App {
                 self.camera.forward(),
             );
         }
-        // AURORA_DEMO_EXPERIENCE: the door or the pad, and what asks
+        // DEEPLY_DEMO_EXPERIENCE: the door or the pad, and what asks
         // without a click (walking into the pad, arriving)
         if let Some(reply) = self
             .experience_demo
@@ -12973,7 +12975,7 @@ impl App {
         {
             self.apply_experience_demo(reply);
         }
-        // AURORA_DEMO_GROUP_REGION=1: to a region with its own group title and back
+        // DEEPLY_DEMO_GROUP_REGION=1: to a region with its own group title and back
         if self.demo
             && let Some(events) = crate::demo::group_region::trip(self.frame_count, &self.world)
         {
@@ -12981,7 +12983,7 @@ impl App {
                 self.world.apply(ev);
             }
         }
-        // AURORA_DEMO_TP_AWAY=1: out of reach of the demo region, then back
+        // DEEPLY_DEMO_TP_AWAY=1: out of reach of the demo region, then back
         if self.demo
             && let Some(events) = crate::demo::away_teleport(self.frame_count, &self.world, &mut self.away_coarse)
         {
@@ -12994,12 +12996,12 @@ impl App {
                 self.world.objects.len()
             );
         }
-        // AURORA_DEMO_TEXTURES with AURORA_GPU_OOM: the uploads that waited
+        // DEEPLY_DEMO_TEXTURES with DEEPLY_GPU_OOM: the uploads that waited
         // for video memory get their texels again (`refeed_demo_memory_waits`)
         if self.demo && self.frame_count.is_multiple_of(30) && crate::demo::texture_stress_count().is_some() {
             self.scene.textures.refeed_demo_memory_waits();
         }
-        // AURORA_DEMO_TEXTURES_CHURN=1: stress cubes removed at frame 300
+        // DEEPLY_DEMO_TEXTURES_CHURN=1: stress cubes removed at frame 300
         // (textures released, evicted after 2 s), back with new textures at 700
         if self.demo
             && crate::demo::texture_churn()
@@ -13037,7 +13039,7 @@ impl App {
             && self.tp_overlay.is_none()
         {
             self.demo_tp_triggered = true;
-            if let Ok(v) = std::env::var("AURORA_DEMO_TP") {
+            if let Ok(v) = std::env::var("DEEPLY_DEMO_TP") {
                 let c: Vec<f32> = v.split(',').filter_map(|s| s.trim().parse().ok()).collect();
                 let (x, y, z) = if c.len() == 3 { (c[0], c[1], c[2]) } else { (128.0, 128.0, 30.0) };
                 let region = if v == "remote" {
@@ -13045,11 +13047,11 @@ impl App {
                 } else {
                     aurora_i18n::tr!("common-aurora-demo")
                 };
-                // AURORA_DEMO_TP_CAM=alt|alt-off: the camera on a point ahead
+                // DEEPLY_DEMO_TP_CAM=alt|alt-off: the camera on a point ahead
                 // before the teleport; `alt-off` with "Return after a
                 // teleport in the region" off for this teleport only (the
                 // local arrival is applied inside the call; never saved)
-                let cam = std::env::var("AURORA_DEMO_TP_CAM").unwrap_or_default();
+                let cam = std::env::var("DEEPLY_DEMO_TP_CAM").unwrap_or_default();
                 let keep_return = self.settings.camera.reset_on_teleport;
                 if cam.starts_with("alt") {
                     let ray = (self.camera.position, self.camera.forward());
@@ -13073,9 +13075,9 @@ impl App {
             }
         }
         if self.demo && self.frame_count == 240 {
-            // AURORA_DEMO_CHATCMD="calc 2+2;rolld 2 20": lines typed in the
+            // DEEPLY_DEMO_CHATCMD="calc 2+2;rolld 2 20": lines typed in the
             // chat bar, one after the other (chat bar commands)
-            if let Ok(lines) = std::env::var("AURORA_DEMO_CHATCMD") {
+            if let Ok(lines) = std::env::var("DEEPLY_DEMO_CHATCMD") {
                 for line in lines.split(';').map(str::trim).filter(|l| !l.is_empty()) {
                     let (channel, message) = ui::chat::parse_channel(line);
                     self.send_local_chat(ui::chat::OutgoingChat {
@@ -13085,9 +13087,9 @@ impl App {
                     });
                 }
             }
-            // AURORA_DEMO_DISPLAYNAME="name": display name change (simulated
+            // DEEPLY_DEMO_DISPLAYNAME="name": display name change (simulated
             // reply, never sent in demo mode), then the window, now locked
-            if let Ok(new) = std::env::var("AURORA_DEMO_DISPLAYNAME") {
+            if let Ok(new) = std::env::var("DEEPLY_DEMO_DISPLAYNAME") {
                 let me = self.world.agent_id;
                 let old = self
                     .world
@@ -13106,7 +13108,7 @@ impl App {
             self.demo_money_tracker();
             self.demo_payment();
         }
-        // AURORA_DEMO_LOOKAT=1: our eye tracking on (cursor on the left of
+        // DEEPLY_DEMO_LOOKAT=1: our eye tracking on (cursor on the left of
         // the window, moving), Violet Wolf looks at a point north of him;
         // =own: the crosshairs shown, ours too, the real cursor; =own,x,y:
         // the cursor at (x, y), fractions of the window, moving by a pixel
@@ -13114,7 +13116,7 @@ impl App {
         // with every other avatar looking somewhere new every 2 s; =leave
         // (or leave,x,y): own, Violet Wolf looks at us, then logs off
         if self.demo
-            && let Ok(value) = std::env::var("AURORA_DEMO_LOOKAT")
+            && let Ok(value) = std::env::var("DEEPLY_DEMO_LOOKAT")
         {
             let mut parts = value.split(',');
             let mode = parts.next().unwrap_or_default().trim();
@@ -13200,13 +13202,13 @@ impl App {
             }
         }
         self.demo_altgr_shortcuts();
-        // AURORA_DEMO_KEY="down" (up, left, right): hold that arrow from frame
+        // DEEPLY_DEMO_KEY="down" (up, left, right): hold that arrow from frame
         // 235, log the agent and drawn body headings every 30 frames;
         // "up:pulse": 2 s held, 2 s released, over and over (by the clock,
         // the same at any frame rate)
         if self.demo
             && self.frame_count >= 235
-            && let Ok(v) = std::env::var("AURORA_DEMO_KEY")
+            && let Ok(v) = std::env::var("DEEPLY_DEMO_KEY")
         {
             let (name, pulse) = v
                 .split_once(':')
@@ -13238,12 +13240,12 @@ impl App {
                 );
             }
         }
-        // AURORA_DEMO_ENV_KEYS="u" (y, n, x, j): Ctrl+Shift + that letter at
+        // DEEPLY_DEMO_ENV_KEYS="u" (y, n, x, j): Ctrl+Shift + that letter at
         // frame 300, through the shortcut table, as World › Environment's
         // shortcuts (#1264)
         if self.demo
             && self.frame_count == 300
-            && let Ok(v) = std::env::var("AURORA_DEMO_ENV_KEYS")
+            && let Ok(v) = std::env::var("DEEPLY_DEMO_ENV_KEYS")
         {
             let code = match v.as_str() {
                 "u" => KeyCode::KeyU,
@@ -13269,9 +13271,9 @@ impl App {
         if self.demo {
             self.particle_editor_demo();
         }
-        // AURORA_DEMO_BUILD="mode,x,y[,part,dx,dy]": build tools script (build/demo.rs)
+        // DEEPLY_DEMO_BUILD="mode,x,y[,part,dx,dy]": build tools script (build/demo.rs)
         if self.demo
-            && let Ok(v) = std::env::var("AURORA_DEMO_BUILD")
+            && let Ok(v) = std::env::var("DEEPLY_DEMO_BUILD")
         {
             for step in crate::build::demo::steps(&v, self.frame_count, &self.build, &self.world, &self.settings.build) {
                 match step {
@@ -13417,7 +13419,7 @@ impl App {
                         if local {
                             self.build.ui.picker.show_local_tab();
                         }
-                        if std::env::var("AURORA_DEMO_BUILD").is_ok_and(|mode| mode.contains("-badges-")) {
+                        if std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|mode| mode.contains("-badges-")) {
                             use crate::world::objects::{LocalAppearance, LocalTextureSlot};
                             let material = target == crate::build::ui::PickTarget::PbrMaterial;
                             if let Some(id) = self
@@ -13618,14 +13620,14 @@ impl App {
                 }
             }
         }
-        // AURORA_DEMO_MEDIA_CLICK="x,y[,x2,y2]": clicks on a media face at
+        // DEEPLY_DEMO_MEDIA_CLICK="x,y[,x2,y2]": clicks on a media face at
         // frames 700 (focus) and 760, a click at (x2, y2) at 820, then types
         // "aurora". The optional start frame allows slow plugins to load.
         if self.demo
-            && let Ok(v) = std::env::var("AURORA_DEMO_MEDIA_CLICK")
+            && let Ok(v) = std::env::var("DEEPLY_DEMO_MEDIA_CLICK")
         {
             let c: Vec<f32> = v.split(',').filter_map(|s| s.trim().parse().ok()).collect();
-            let start = std::env::var("AURORA_DEMO_MEDIA_CLICK_FRAME")
+            let start = std::env::var("DEEPLY_DEMO_MEDIA_CLICK_FRAME")
                 .ok()
                 .and_then(|v| v.parse::<u64>().ok())
                 .unwrap_or(700);
@@ -13663,17 +13665,17 @@ impl App {
                 );
             }
         }
-        // AURORA_DEMO_CAMERA="alt,x,y" (pan, zoom, ml, wheel, fly): camera/demo.rs
+        // DEEPLY_DEMO_CAMERA="alt,x,y" (pan, zoom, ml, wheel, fly): camera/demo.rs
         if self.demo
-            && let Ok(v) = std::env::var("AURORA_DEMO_CAMERA")
+            && let Ok(v) = std::env::var("DEEPLY_DEMO_CAMERA")
         {
             self.demo_camera_steps(&v);
         }
-        // AURORA_DEMO_MMO="x,y[,flags]": left press once the world shows
+        // DEEPLY_DEMO_MMO="x,y[,flags]": left press once the world shows
         // (frame 225 at the earliest), right button held 10 to 105 frames
         // later (MMO walking test), positions logged
         if self.demo
-            && let Ok(v) = std::env::var("AURORA_DEMO_MMO")
+            && let Ok(v) = std::env::var("DEEPLY_DEMO_MMO")
         {
             if self.demo_mmo_start.is_none() && self.frame_count >= 225 && matches!(self.screen, Screen::World) && self.tp_overlay.is_none()
             {
@@ -13758,7 +13760,7 @@ impl App {
         });
     }
 
-    /// AURORA_PROFILE: the frame's counters and the settings that change its
+    /// DEEPLY_PROFILE: the frame's counters and the settings that change its
     /// cost, for the summary line.
     fn end_profile_frame(&mut self, width: u32, height: u32) {
         let s = &self.settings;
@@ -13804,57 +13806,57 @@ impl App {
         parts.merge(&std::mem::take(&mut self.ui_parts));
         let logged = self.frame_profile.end_frame(&self.last_render, &counts, &parts);
         self.net_profile.end_frame(&self.net.stats);
-        // AURORA_SYNC_SLICE=alt: the sync of each second by one way or the
+        // DEEPLY_SYNC_SLICE=alt: the sync of each second by one way or the
         // other, named at the end of its line
         if logged || self.sync_alt == 0 {
             self.sync_alt += 1;
             if let Some(old) = crate::scene::sync_sets::alternate_slice(self.sync_alt) {
                 self.frame_profile.set_mark(if old { " | xmode=old" } else { " | xmode=new" });
             }
-            // AURORA_MATERIAL_REBUILD=alt: every material user rebuilt at a
+            // DEEPLY_MATERIAL_REBUILD=alt: every material user rebuilt at a
             // material change one second in three
             if let Some(old) = crate::scene::mat_changes::alternate(self.sync_alt) {
                 self.frame_profile.set_mark(if old { " | xmode=old" } else { " | xmode=new" });
             }
-            // AURORA_FLEXI_CULL=alt: every flexible prim swept one second in three
+            // DEEPLY_FLEXI_CULL=alt: every flexible prim swept one second in three
             if let Some(old) = crate::scene::flexible::alternate(self.sync_alt) {
                 self.frame_profile.set_mark(if old { " | xmode=old" } else { " | xmode=new" });
             }
-            // AURORA_MOVING_ANCHORS=alt: what moves by itself placed by the
+            // DEEPLY_MOVING_ANCHORS=alt: what moves by itself placed by the
             // sync one second in three
             if let Some(old) = crate::scene::anchors::alternate_movers(self.sync_alt) {
                 self.frame_profile.set_mark(if old { " | xmode=old" } else { " | xmode=new" });
             }
-            // AURORA_IMPOSTOR_POSES=alt: impostors posed at every frame in the
+            // DEEPLY_IMPOSTOR_POSES=alt: impostors posed at every frame in the
             // same seconds
             if let Some(old) = crate::scene::impostors::alternate_poses(self.sync_alt) {
                 self.frame_profile.set_mark(if old { " | xmode=old" } else { " | xmode=new" });
             }
-            // AURORA_WRITE_STAGING=alt: the journal's buffer writes through
+            // DEEPLY_WRITE_STAGING=alt: the journal's buffer writes through
             // the queue one second in three
             if let Some(old) = aurora_render::write_staging::alternate(self.sync_alt) {
                 self.frame_profile.set_mark(if old { " | xmode=old" } else { " | xmode=new" });
             }
-            // AURORA_PROBE_WALK=alt: the whole probe list walked one second in three
+            // DEEPLY_PROBE_WALK=alt: the whole probe list walked one second in three
             if aurora_render::probes::ProbeWalk::from_env() == aurora_render::probes::ProbeWalk::Alternate {
                 let old = self.frame_profile.probe_walk_list();
                 self.frame_profile.set_mark(if old { " | xmode=old" } else { " | xmode=new" });
             }
-            // AURORA_FRAME_PRIORITY=alt: the frame's threads at normal
+            // DEEPLY_FRAME_PRIORITY=alt: the frame's threads at normal
             // priority one second in three
             if aurora_render::frame_priority::PriorityMode::from_env() == aurora_render::frame_priority::PriorityMode::Alternate {
                 let old = self.sync_alt.is_multiple_of(3);
                 aurora_render::frame_priority::set_raised(!old);
                 self.frame_profile.set_mark(if old { " | xmode=old" } else { " | xmode=new" });
             }
-            // AURORA_RIGGED_BLEND=alt: the rigged blended faces drawn as
+            // DEEPLY_RIGGED_BLEND=alt: the rigged blended faces drawn as
             // `runs` (#966) one second in three
             if crate::scene::blend_order::mode() == crate::scene::blend_order::Mode::Alternate {
                 let old = self.sync_alt.is_multiple_of(3);
                 crate::scene::blend_order::set_old_now(old);
                 self.frame_profile.set_mark(if old { " | xmode=old" } else { " | xmode=new" });
             }
-            // AURORA_NAME_TAGS=alt: the classic tags one second in three
+            // DEEPLY_NAME_TAGS=alt: the classic tags one second in three
             if name_tags_env() == Some(NameTagsEnv::Alternate) {
                 let old = self.sync_alt.is_multiple_of(3);
                 self.name_tags_alt_classic = old;
@@ -13863,7 +13865,7 @@ impl App {
         }
     }
 
-    /// AURORA_PROFILE: the frame's share of the lines written every 10 s
+    /// DEEPLY_PROFILE: the frame's share of the lines written every 10 s
     /// (deep_profile.rs), and what only their end reads.
     fn end_deep_profile(&mut self, renderer: &aurora_render::Renderer) {
         self.monitor_feed.upload_bytes = self.scene.textures.stats.uploaded_bytes_frame;
@@ -13960,7 +13962,7 @@ impl App {
             self.stop_local_typing();
             return;
         }
-        // AURORA_DEMO_TYPING: we type from our arrival on, no key needed
+        // DEEPLY_DEMO_TYPING: we type from our arrival on, no key needed
         if self.demo && crate::demo::typing_scenario() && matches!(self.screen, Screen::World) {
             if self.chat_ui.hold_local_typing(Instant::now()) {
                 self.send_local_typing(true);
@@ -14655,10 +14657,10 @@ impl App {
         }
     }
 
-    /// Where the favourites live: the setting, or what `AURORA_DEMO_BARS`
+    /// Where the favourites live: the setting, or what `DEEPLY_DEMO_BARS`
     /// asks for in demo (never saved).
     /// Nearby chat flashes the Conversations button (Preferences › Chat, or
-    /// that button's right-click menu); `AURORA_DEMO_CONV_BUTTON=mute` leaves
+    /// that button's right-click menu); `DEEPLY_DEMO_CONV_BUTTON=mute` leaves
     /// it out for the run.
     fn flash_nearby(&self) -> bool {
         self.settings.flash_conversations_nearby && !(self.demo && crate::demo::conv_button::nearby_off())
@@ -14714,7 +14716,7 @@ impl App {
         use crate::settings::FavoritesAccess;
         use crate::world::inventory::FetchState;
         let access = self.favorites_access();
-        // AURORA_DEMO_BARS=added: the last one comes from the star
+        // DEEPLY_DEMO_BARS=added: the last one comes from the star
         if self.demo
             && self.world.favorites.added.is_none()
             && let Some(id) = crate::demo::place::added_favorite()
@@ -14819,11 +14821,11 @@ impl App {
 
     /// Help › Knowledge base: the help page of the grid info of an OpenSim
     /// grid, none on Second Life (update_grid_help, llviewermenu.cpp).
-    /// AURORA_DEMO_GRID_HELP=<page>: a page of the tester's choice in demo,
+    /// DEEPLY_DEMO_GRID_HELP=<page>: a page of the tester's choice in demo,
     /// named after its host.
     fn grid_help(&self) -> Option<ui::bars::GridHelp> {
         if self.demo {
-            let url = std::env::var("AURORA_DEMO_GRID_HELP").ok().filter(|u| !u.trim().is_empty())?;
+            let url = std::env::var("DEEPLY_DEMO_GRID_HELP").ok().filter(|u| !u.trim().is_empty())?;
             let grid = crate::grids::authority(&url)?;
             return Some(ui::bars::GridHelp { grid, url });
         }
@@ -14835,7 +14837,7 @@ impl App {
     }
 
     /// Firestorm's bars or the islands, and how the islands are set: the
-    /// settings, or what `AURORA_DEMO_BARS` asks for in demo (never saved).
+    /// settings, or what `DEEPLY_DEMO_BARS` asks for in demo (never saved).
     fn bars_look(&self) -> (bool, ui::bars::IslandsLook) {
         let s = &self.settings;
         let demo = if self.demo { ui::bars::demo::get() } else { Default::default() };
@@ -14886,11 +14888,11 @@ impl App {
     /// a grid without one. On the main grid it carries the session id of the
     /// agent, as Firestorm's does: it is only given to the embedded browser,
     /// never logged, shown or saved; on the beta grid it is anonymous.
-    /// AURORA_DEMO_SEARCH_WEB=<page>: a page of the tester's choice in demo,
+    /// DEEPLY_DEMO_SEARCH_WEB=<page>: a page of the tester's choice in demo,
     /// which loads nothing by itself and has no session.
     fn search_home(&self) -> Option<crate::world::search::WebHome> {
         if self.demo {
-            let page = std::env::var("AURORA_DEMO_SEARCH_WEB").ok().filter(|u| !u.trim().is_empty())?;
+            let page = std::env::var("DEEPLY_DEMO_SEARCH_WEB").ok().filter(|u| !u.trim().is_empty())?;
             let url = if page == "teleport" {
                 use base64::Engine as _;
                 let html = include_str!("ui/search/fixtures/teleport.html");
@@ -14972,25 +14974,25 @@ impl App {
     }
 
     /// The Marketplace page of the grid (World › SL Marketplace), None on a
-    /// grid without one. AURORA_DEMO_MARKETPLACE=<page>: a page of the
+    /// grid without one. DEEPLY_DEMO_MARKETPLACE=<page>: a page of the
     /// tester's choice in demo, which also stands for the Marketplace links.
     fn marketplace_home(&self) -> Option<String> {
         if self.demo {
-            return std::env::var("AURORA_DEMO_MARKETPLACE").ok().filter(|u| !u.trim().is_empty());
+            return std::env::var("DEEPLY_DEMO_MARKETPLACE").ok().filter(|u| !u.trim().is_empty());
         }
         ui::marketplace::home(&self.settings.grid).map(str::to_owned)
     }
 
     /// The grid's Destination Guide page (LFSimFeatureHandler::
     /// destinationGuideURL), None on a grid without one.
-    /// AURORA_DEMO_DESTINATIONS=<page>: a page of the tester's choice in
+    /// DEEPLY_DEMO_DESTINATIONS=<page>: a page of the tester's choice in
     /// demo, "sl" for the Second Life guide's address; the native modes
     /// (compact, wide, legacy, empty) have the Second Life guide's.
     fn destination_guide(&self) -> Option<String> {
         use ui::destinations::{GuideGrid, guide_url};
         let language = aurora_i18n::language();
         if self.demo {
-            let page = std::env::var("AURORA_DEMO_DESTINATIONS").ok().filter(|u| !u.trim().is_empty())?;
+            let page = std::env::var("DEEPLY_DEMO_DESTINATIONS").ok().filter(|u| !u.trim().is_empty())?;
             if page.trim() == "sl" || crate::demo::destinations::mode().is_some() {
                 return guide_url(GuideGrid::SecondLife, language);
             }
@@ -15447,7 +15449,7 @@ impl App {
     }
 
     /// Logged in (or about to) on Second Life rather than an OpenSim grid
-    /// (AURORA_DEMO_USERINFO=opensim: the demo plays another grid).
+    /// (DEEPLY_DEMO_USERINFO=opensim: the demo plays another grid).
     fn second_life(&self) -> bool {
         !matches!(self.settings.grid, crate::settings::GridChoice::Custom) && !(self.demo && crate::demo::home::opensim())
     }
@@ -15496,7 +15498,7 @@ impl App {
         }
         self.options_ui.maturity = self.world.login.is_some().then(|| self.world.agent_access());
         // the account settings the grid keeps, asked at each opening
-        // (AURORA_DEMO_USERINFO=opensim: another grid's)
+        // (DEEPLY_DEMO_USERINFO=opensim: another grid's)
         let second_life = self.second_life();
         self.world.follow_preferences(self.panels.settings, second_life);
         self.options_ui.account = self.world.login.is_some().then(|| ui::options::privacy::Account {
@@ -15557,13 +15559,13 @@ impl App {
         // Repeatable live-scale profiling without taking the native pointer.
         if self.demo
             && matches!(self.frame_count, 740 | 980)
-            && std::env::var("AURORA_DEMO_OPTIONS").is_ok_and(|mode| mode == "1:scale-keys")
+            && std::env::var("DEEPLY_DEMO_OPTIONS").is_ok_and(|mode| mode == "1:scale-keys")
         {
             self.settings.snap_windows = !self.settings.snap_windows;
             res.changed = true;
             log::info!("demo keyboard UI scale: unrelated preference changed");
         }
-        if self.demo && self.frame_count >= 600 && std::env::var("AURORA_DEMO_OPTIONS").is_ok_and(|mode| mode == "1:scale") {
+        if self.demo && self.frame_count >= 600 && std::env::var("DEEPLY_DEMO_OPTIONS").is_ok_and(|mode| mode == "1:scale") {
             let phase = (self.frame_count - 600) % 600;
             let scale = 1.0 + phase.min(600 - phase) as f32 / 600.0;
             if self.settings.ui_scale != scale {
@@ -15574,7 +15576,7 @@ impl App {
                 log::info!("demo interface scale: frame={} scale={scale:.3}", self.frame_count);
             }
         }
-        if self.demo && self.frame_count >= 600 && std::env::var("AURORA_DEMO_OPTIONS").is_ok_and(|mode| mode == "2:text-size") {
+        if self.demo && self.frame_count >= 600 && std::env::var("DEEPLY_DEMO_OPTIONS").is_ok_and(|mode| mode == "2:text-size") {
             let phase = ((self.frame_count - 600) / 180) % 5;
             let scale = [0.8, 1.0, 1.4, 2.0, 1.0][phase as usize];
             if self.settings.font_scale != scale {
@@ -15694,7 +15696,7 @@ impl App {
         self.panels.settings = open;
     }
 
-    /// The bars' clock settings, with the demo's (`AURORA_DEMO_BARS`) for
+    /// The bars' clock settings, with the demo's (`DEEPLY_DEMO_BARS`) for
     /// the run.
     fn system_island(&self) -> crate::settings::SystemIsland {
         let s = self.settings.system_island;
@@ -15781,12 +15783,12 @@ impl App {
                     a.exit = self.exit_prompt.show(&ctx, &p, false);
                     return a;
                 }
-                // `AURORA_DEMO_LOGIN_SUBMIT=<frame>[,<frame>…]`: press the open
+                // `DEEPLY_DEMO_LOGIN_SUBMIT=<frame>[,<frame>…]`: press the open
                 // form's Log in at those frames, as its button does (the
                 // editor closes, the code field and the last error go, an Add
                 // stays an Add while the request runs).
                 if self.demo
-                    && std::env::var("AURORA_DEMO_LOGIN_SUBMIT")
+                    && std::env::var("DEEPLY_DEMO_LOGIN_SUBMIT")
                         .is_ok_and(|frames| frames.split(',').any(|frame| frame.parse::<u64>().ok() == Some(self.frame_count)))
                 {
                     self.login_form.editing = false;
@@ -15795,7 +15797,7 @@ impl App {
                     self.start_login();
                 }
                 if self.demo_mfa_challenge.is_some_and(|at| std::time::Instant::now() >= at)
-                    && std::env::var("AURORA_DEMO_LOGIN").as_deref() == Ok("next-server")
+                    && std::env::var("DEEPLY_DEMO_LOGIN").as_deref() == Ok("next-server")
                 {
                     self.demo_mfa_challenge = None;
                     // the offline login server sends the login on to another
@@ -15811,7 +15813,7 @@ impl App {
                         next_server: Some("login.other-grid.example".into()),
                     });
                 } else if self.demo_mfa_challenge.is_some_and(|at| std::time::Instant::now() >= at)
-                    && std::env::var("AURORA_DEMO_LOGIN").as_deref() == Ok("terms")
+                    && std::env::var("DEEPLY_DEMO_LOGIN").as_deref() == Ok("terms")
                 {
                     self.demo_mfa_challenge = None;
                     // the Terms of Service first (reason "tos"), then a
@@ -15980,7 +15982,7 @@ impl App {
                         self.settings.audio.voice_enabled,
                         self.talking(),
                         self.voice.mic_level,
-                        VOICE_MODE.get_or_init(|| std::env::var("AURORA_DEMO_VOICE").ok()).as_deref(),
+                        VOICE_MODE.get_or_init(|| std::env::var("DEEPLY_DEMO_VOICE").ok()).as_deref(),
                     );
                     crate::demo::tags::voice(&mut levels, ctx.input(|i| i.time));
                     crate::demo::people::voice(&mut levels, ctx.input(|i| i.time));
@@ -16015,10 +16017,10 @@ impl App {
                     self.draw_walk_mark(&ctx, &p, projector);
                 }
                 let classic_tags = self.classic_name_tags();
-                // AURORA_DEMO_FRIEND_PLATES=1: the setting for this run, without saving it
+                // DEEPLY_DEMO_FRIEND_PLATES=1: the setting for this run, without saving it
                 self.plates.friends_only_full =
-                    self.settings.plates_friends_only_full || (self.demo && std::env::var_os("AURORA_DEMO_FRIEND_PLATES").is_some());
-                // AURORA_VOICE_LEVEL_LOG=1 (temporary): our own plate's voice level in the log
+                    self.settings.plates_friends_only_full || (self.demo && std::env::var_os("DEEPLY_DEMO_FRIEND_PLATES").is_some());
+                // DEEPLY_VOICE_LEVEL_LOG=1 (temporary): our own plate's voice level in the log
                 self.plates.probe = ui::nameplate::level_log().then_some(self.world.agent_id);
                 self.update_plate_hover(&ctx);
                 let chat_bubbles = self.chat_bubbles();
@@ -16123,12 +16125,12 @@ impl App {
                 let (classic_bars, islands) = self.bars_look();
                 self.poser_consent_ui(&ctx, &p, false);
                 let own_name = self.world.own_name();
-                // AURORA_DEMO_BARS: the long parcel name of the mockup (the
+                // DEEPLY_DEMO_BARS: the long parcel name of the mockup (the
                 // islands only: Firestorm's bars stay as they were)
-                // AURORA_DEMO_PARCEL_NAME=<text>: any parcel name ("\n" is a
+                // DEEPLY_DEMO_PARCEL_NAME=<text>: any parcel name ("\n" is a
                 // line break), to check how odd names sit in the place island
                 let demo_parcel = if self.demo {
-                    std::env::var("AURORA_DEMO_PARCEL_NAME").ok().map(|v| v.replace("\\n", "\n"))
+                    std::env::var("DEEPLY_DEMO_PARCEL_NAME").ok().map(|v| v.replace("\\n", "\n"))
                 } else {
                     None
                 };
@@ -16322,7 +16324,7 @@ impl App {
                     mouselook: self.camera.mouselook(),
                     show_in_mouselook: self.settings.camera.show_interface_in_mouselook,
                     chat_active: self.chat_ui.in_use(),
-                    // AURORA_DEMO_BARS=peek: the pointer at the top edge
+                    // DEEPLY_DEMO_BARS=peek: the pointer at the top edge
                     pointer: if demo_hidden == Some(true) {
                         Some(egui::pos2(screen_rect.center().x, screen_rect.top()))
                     } else {
@@ -16353,7 +16355,7 @@ impl App {
                 } else {
                     ui::bars::islands::set_favorites_row_bottom(&ctx, None);
                 }
-                // AURORA_DEMO_BARS: the mockup's voice (connected; talking
+                // DEEPLY_DEMO_BARS: the mockup's voice (connected; talking
                 // with `voice`) and chat island width, for this run only and
                 // with the islands (Firestorm's bars stay as they were)
                 let demo_bars = if self.demo && !classic_bars {
@@ -16363,7 +16365,7 @@ impl App {
                 };
                 let mut demo_chat_width = demo_bars.chat_width;
                 // the chat bar shown only while it is used (#1009); also
-                // AURORA_DEMO_BARS=autohide, for this run, with either bars,
+                // DEEPLY_DEMO_BARS=autohide, for this run, with either bars,
                 // and `chatstart`: Enter pressed at frame 300 on a draft
                 let demo_autohide = if self.demo { ui::bars::demo::get() } else { Default::default() };
                 let autohide_chat_bar = self.settings.autohide_chat_bar || demo_autohide.autohide;
@@ -16407,9 +16409,9 @@ impl App {
                 self.chat_ui.flash_nearby = self.flash_nearby();
                 let toolbar_migrated = self.settings.migrate_toolbar(self.world.agent_id);
                 let mut demo_toolbar = None;
-                // AURORA_DEMO_TOOLBAR=custom|side|labels|right: the mockup's
+                // DEEPLY_DEMO_TOOLBAR=custom|side|labels|right: the mockup's
                 // side bar, for this run only
-                if self.demo && std::env::var_os("AURORA_DEMO_TOOLBAR").is_some() {
+                if self.demo && std::env::var_os("DEEPLY_DEMO_TOOLBAR").is_some() {
                     let layout = if classic_bars {
                         layout
                     } else {
@@ -16439,7 +16441,7 @@ impl App {
                     t.buttons = Some(buttons);
                     demo_toolbar = Some(t);
                 }
-                // AURORA_DEMO_GRID_STATUS: the Grid status button at the end
+                // DEEPLY_DEMO_GRID_STATUS: the Grid status button at the end
                 // of the bottom bar, for this run only
                 if self.demo && crate::demo::grid_status::mode().is_some() {
                     let layout = if classic_bars {
@@ -16537,7 +16539,7 @@ impl App {
                         mouselook: self.camera.mouselook(),
                         show_in_mouselook: self.settings.camera.show_interface_in_mouselook,
                         chat_active: false,
-                        // AURORA_DEMO_BARS=peekleft: the pointer at the left edge
+                        // DEEPLY_DEMO_BARS=peekleft: the pointer at the left edge
                         pointer: if self.demo && ui::bars::demo::get().peek_left {
                             Some(egui::pos2(screen_rect.left(), screen_rect.center().y))
                         } else {
@@ -16606,10 +16608,10 @@ impl App {
                     right: self.settings.windows_stop_right,
                     bottom: self.settings.windows_stop_bottom,
                 };
-                // AURORA_DEMO_WINDOW_EDGES=<l|r|b…>: those edges let open for
+                // DEEPLY_DEMO_WINDOW_EDGES=<l|r|b…>: those edges let open for
                 // the run, nothing saved
                 if self.demo
-                    && let Ok(open) = std::env::var("AURORA_DEMO_WINDOW_EDGES")
+                    && let Ok(open) = std::env::var("DEEPLY_DEMO_WINDOW_EDGES")
                 {
                     edges.left &= !open.contains('l');
                     edges.right &= !open.contains('r');
@@ -16860,7 +16862,7 @@ impl App {
                         self.settings.chat_console_max_lines,
                         self.settings.chat_timestamps_nearby,
                         !classic_bars,
-                        // AURORA_DEMO_CHAT_LINES=legacy: the one-line look
+                        // DEEPLY_DEMO_CHAT_LINES=legacy: the one-line look
                         // for the session, nothing saved
                         !(self.settings.classic_chat_lines || crate::demo::chat_lines_scenario() == Some(true)),
                         self.chat_ui.compact_automated,
@@ -16904,7 +16906,7 @@ impl App {
                         None => {}
                     }
                 }
-                // AURORA_DEMO_BARS=hidden / peek: hidden at frame 600 (asked
+                // DEEPLY_DEMO_BARS=hidden / peek: hidden at frame 600 (asked
                 // first with Firestorm's bars); `immersive`: Conversations
                 // opened at frame 300, immersive mode at 600 (`immersivetags`:
                 // the name tags shown, `immersivehuds`: the HUDs hidden, not
@@ -16939,7 +16941,7 @@ impl App {
                 let mut contact_actions = Vec::new();
                 self.chat_ui.set_style(self.settings.chat_style);
                 self.chat_ui.translation.configure(
-                    &self.settings.translation_endpoint,
+                    &self.settings.translation_model_path,
                     self.settings.translation_language,
                     self.settings.translation_automatic,
                 );
@@ -16953,7 +16955,7 @@ impl App {
                 }
                 self.chat_ui.timestamps_nearby = self.settings.chat_timestamps_nearby;
                 self.chat_ui.timestamps_im = self.settings.chat_timestamps_im;
-                // AURORA_DEMO_OBJECT_CHAT=…:on: for the run, nothing saved
+                // DEEPLY_DEMO_OBJECT_CHAT=…:on: for the run, nothing saved
                 self.chat_ui.compact_automated = self.settings.compact_automated_chat || (self.demo && crate::demo::object_chat::on());
                 self.chat_ui.compact_im_notices =
                     self.settings.compact_im_system_lines || (self.demo && crate::demo::object_chat::scene().is_some_and(|s| s.im_lines));
@@ -16974,7 +16976,7 @@ impl App {
                 self.chat_ui.follow_column_setting(self.settings.chat_column_collapsed);
                 self.chat_ui.own_windows = self.settings.conversations_own_windows
                     || (self.demo && crate::demo::popout_scenario() == Some(crate::demo::Popout::Option));
-                // AURORA_DEMO_CONV_POPOUT: at frame 640, the friend's IM and
+                // DEEPLY_DEMO_CONV_POPOUT: at frame 640, the friend's IM and
                 // the group popped out, or the group opened with the option
                 // on, their windows at the left of the Conversations window
                 if self.demo
@@ -17032,7 +17034,7 @@ impl App {
                         }
                     }
                 }
-                // AURORA_DEMO_CONV=aurora / bubbles: someone types in the
+                // DEEPLY_DEMO_CONV=aurora / bubbles: someone types in the
                 // conversation shown (the friend's tab says so in the window
                 // of tabs)
                 match crate::demo::bubbles_scenario() {
@@ -17045,13 +17047,13 @@ impl App {
                     }
                     _ => {}
                 }
-                // AURORA_DEMO_FLASH: Tess writes now and then
+                // DEEPLY_DEMO_FLASH: Tess writes now and then
                 if self.demo
                     && let Some(ev) = crate::demo::flash_message(self.world.agent_id, self.radar_clock.elapsed().as_secs_f64())
                 {
                     self.world.apply(ev);
                 }
-                // AURORA_DEMO_CHAT_LINES=stagger: the nearby chat lines said
+                // DEEPLY_DEMO_CHAT_LINES=stagger: the nearby chat lines said
                 // one at a time
                 if self.demo
                     && self.in_world()
@@ -17059,7 +17061,7 @@ impl App {
                 {
                     self.world.apply(ev);
                 }
-                // AURORA_DEMO_SNOOZE: Tess writes in the group chat, which
+                // DEEPLY_DEMO_SNOOZE: Tess writes in the group chat, which
                 // `auto` snoozes by itself
                 if self.demo && self.in_world() {
                     if let Some(ev) = crate::demo::snooze_message(self.world.agent_id) {
@@ -17075,12 +17077,12 @@ impl App {
                         );
                     }
                 }
-                // AURORA_DEMO_CONV_SCROLL=new: the friend writes while we read
+                // DEEPLY_DEMO_CONV_SCROLL=new: the friend writes while we read
                 // higher up
                 if self.demo {
                     crate::demo::conv_scroll_new(&mut self.world, self.chat_ui.demo_scrolled);
                 }
-                // AURORA_DEMO_CONV=aurora: the group's call rings without us
+                // DEEPLY_DEMO_CONV=aurora: the group's call rings without us
                 if let Some(scene) = crate::demo::aurora_scenario() {
                     // call-away: the call opened its conversation; once it
                     // is connected the nearby chat comes back
@@ -17562,7 +17564,7 @@ impl App {
                 let had_menu = self.context_menu.is_some();
                 // Capture-only style override; leave the saved preference intact.
                 let use_pie = if self.demo {
-                    match std::env::var("AURORA_DEMO_PIE").as_deref() {
+                    match std::env::var("DEEPLY_DEMO_PIE").as_deref() {
                         Ok("1") => true,
                         Ok("0") => false,
                         _ => self.settings.use_pie_menu,
@@ -17632,9 +17634,9 @@ impl App {
                     }
                     ui::context::request(&ctx, ui::context::CtxAction::TeleportToPlaceConfirmed(region, pos));
                 }
-                // AURORA_DEMO_SUITCASE: the question, as a Hypergrid teleport
+                // DEEPLY_DEMO_SUITCASE: the question, as a Hypergrid teleport
                 // from the plaza would ask it (docs/TESTING.md)
-                if self.demo && self.frame_count == 300 && std::env::var_os("AURORA_DEMO_SUITCASE").is_some() {
+                if self.demo && self.frame_count == 300 && std::env::var_os("DEEPLY_DEMO_SUITCASE").is_some() {
                     self.suitcase_ask = Some(SuitcaseAsk {
                         go: SuitcaseGo::Named {
                             destination: "hop://hg.example-grid.org:80/Harbor%20Plaza/128/128/25".into(),
@@ -17742,12 +17744,12 @@ impl App {
                 let toasts_hidden = self.camera.mouselook() || self.photo_full_frame();
                 self.world.notifications.aurora = aurora;
                 // #465: a friendship offer in the middle of the screen, before
-                // the toasts it replaces (AURORA_DEMO_FRIEND_PROMPT: on for the run)
+                // the toasts it replaces (DEEPLY_DEMO_FRIEND_PROMPT: on for the run)
                 let prompt_on = self.settings.friend_request_prompt || (self.demo && crate::demo::friend_prompt::mode().is_some());
                 let prompt_allowed = !toasts_hidden && !dnd && self.world.notifications.started;
                 // #1404: a message to the whole region there too, first: the
                 // friendship offers wait behind it
-                // (AURORA_DEMO_REGION_MESSAGE: on for the run)
+                // (DEEPLY_DEMO_REGION_MESSAGE: on for the run)
                 let region_on = self.settings.region_message_prompt || (self.demo && crate::demo::region_message::enabled());
                 let mut region_action = None;
                 let region_shown = self
@@ -17788,7 +17790,7 @@ impl App {
                         .show(&ctx, &p, &self.skin.icons, &self.world.notifications, id, &env);
                 }
                 let restart = self.restart_bell_info(&p);
-                // AURORA_DEMO_PRESENCE: a place for this run only
+                // DEEPLY_DEMO_PRESENCE: a place for this run only
                 let presence_at = crate::demo::presence::position()
                     .filter(|_| self.demo)
                     .unwrap_or(self.settings.presence_position);
@@ -17900,7 +17902,7 @@ impl App {
                     .then(|| self.world.land.sel.as_ref().map(|s| s.handle).or(self.world.main_region))
                     .flatten()
                     .and_then(|h| self.minimap_ui.region_image(&ctx, &self.world, &mut self.map_tiles, h));
-                // AURORA_DEMO_LAND=…:classic shows Firestorm's tabs without saving it
+                // DEEPLY_DEMO_LAND=…:classic shows Firestorm's tabs without saving it
                 let classic_land =
                     self.settings.classic_about_land || (self.demo && crate::demo::land::scenario().is_some_and(|s| s.classic));
                 if self.land_ui.show(
@@ -17955,7 +17957,7 @@ impl App {
                     Some(ui::region::RegionAction::Deselect) => self.build.deselect_all(&self.world),
                     None => {}
                 }
-                // AURORA_DEMO_REGION: notecards for the covenant, once the
+                // DEEPLY_DEMO_REGION: notecards for the covenant, once the
                 // inventory is there
                 if self.demo && open && !self.world.inventory.root.is_nil() && crate::demo::region::scenario().is_some() {
                     crate::demo::region::seed_notecards(&mut self.world.inventory, self.world.agent_id);
@@ -18060,8 +18062,8 @@ impl App {
                 let browser = crate::media::browser_settings(&crate::settings::cache_dir(), aurora_i18n::language());
                 let cookie = self.media.openid.cookie();
                 let profile_base = match self.settings.grid {
-                    // AURORA_DEMO_FEED=<page>: the feed browser on a local page
-                    _ if self.demo => std::env::var("AURORA_DEMO_FEED").ok(),
+                    // DEEPLY_DEMO_FEED=<page>: the feed browser on a local page
+                    _ if self.demo => std::env::var("DEEPLY_DEMO_FEED").ok(),
                     ref grid => crate::snapshot::profile::grid_web_profile(
                         grid,
                         &self
@@ -18590,7 +18592,7 @@ impl App {
             }
         }
         // Bug report form (disabled, see main.rs):
-        // if self.demo && self.frame_count == 550 && std::env::var_os("AURORA_DEMO_BUG_REPORT").is_some() {
+        // if self.demo && self.frame_count == 550 && std::env::var_os("DEEPLY_DEMO_BUG_REPORT").is_some() {
         //     self.bug_report.requested = true;
         // }
         // if self.bug_report.requested {
@@ -18601,7 +18603,7 @@ impl App {
         // }
         // self.bug_report
         //     .show(&ctx, &p, &self.skin.icons, matches!(self.screen, Screen::World));
-        if self.demo && self.frame_count == 550 && std::env::var_os("AURORA_DEMO_GRIDS").is_some() {
+        if self.demo && self.frame_count == 550 && std::env::var_os("DEEPLY_DEMO_GRIDS").is_some() {
             self.grids_ui.demo(&mut self.settings);
         }
         self.grids_ui.show(
@@ -18617,13 +18619,13 @@ impl App {
     }
 }
 
-/// AURORA_WINDOW_SIZE="w,h": the window size of this run (logical pixels),
+/// DEEPLY_WINDOW_SIZE="w,h": the window size of this run (logical pixels),
 /// to measure by window size. It is not remembered: the next run opens at
 /// the size of the last session again.
 fn forced_window_size() -> Option<(u32, u32)> {
     static SIZE: std::sync::OnceLock<Option<(u32, u32)>> = std::sync::OnceLock::new();
     *SIZE.get_or_init(|| {
-        let v = std::env::var("AURORA_WINDOW_SIZE").ok()?;
+        let v = std::env::var("DEEPLY_WINDOW_SIZE").ok()?;
         let (w, h) = v.split_once(',')?;
         Some((w.trim().parse::<u32>().ok()?.max(800), h.trim().parse::<u32>().ok()?.max(560)))
     })
@@ -18636,17 +18638,17 @@ enum NameTagsEnv {
     Alternate,
 }
 
-/// AURORA_NAME_TAGS=classic|plate|alt: the style of the avatar name tags of
+/// DEEPLY_NAME_TAGS=classic|plate|alt: the style of the avatar name tags of
 /// this run, whatever the setting (which is left alone). `alt` switches
 /// with each `perf summary` line, to measure both styles in one run.
 fn name_tags_env() -> Option<NameTagsEnv> {
     static STYLE: std::sync::OnceLock<Option<NameTagsEnv>> = std::sync::OnceLock::new();
-    *STYLE.get_or_init(|| match std::env::var("AURORA_NAME_TAGS").ok()?.trim() {
+    *STYLE.get_or_init(|| match std::env::var("DEEPLY_NAME_TAGS").ok()?.trim() {
         "classic" => Some(NameTagsEnv::Classic),
         "plate" => Some(NameTagsEnv::Plate),
         "alt" => Some(NameTagsEnv::Alternate),
         other => {
-            log::warn!("AURORA_NAME_TAGS: unknown style {other:?} (classic, plate or alt)");
+            log::warn!("DEEPLY_NAME_TAGS: unknown style {other:?} (classic, plate or alt)");
             None
         }
     })
@@ -18836,10 +18838,10 @@ impl ApplicationHandler for App {
         self.safe_graphics_at_start();
         self.photo_quality_at_start();
         // version 33 of the settings turned the camera's limits back on:
-        // said once on the login screen (`AURORA_DEMO_CAMERA_LIMITS=1` shows
+        // said once on the login screen (`DEEPLY_DEMO_CAMERA_LIMITS=1` shows
         // the card in demo, without changing a setting)
         self.login_form.camera_limits_restored = std::mem::take(&mut self.settings.camera_limits_restored)
-            || (self.demo && std::env::var_os("AURORA_DEMO_CAMERA_LIMITS").is_some());
+            || (self.demo && std::env::var_os("DEEPLY_DEMO_CAMERA_LIMITS").is_some());
         self.screen_rate.poll(&window, Instant::now());
         let egui_state = self.egui_state_for(&window, &renderer);
         self.gfx = Some(Gfx {
@@ -18849,9 +18851,9 @@ impl ApplicationHandler for App {
             renderer,
             egui_state,
         });
-        if std::env::var_os("AURORA_DEMO").is_some() {
+        if std::env::var_os("DEEPLY_DEMO").is_some() {
             self.demo = true;
-            if let Ok(modes) = std::env::var("AURORA_DEMO_VOICE_PREFS") {
+            if let Ok(modes) = std::env::var("DEEPLY_DEMO_VOICE_PREFS") {
                 for mode in modes.split(',') {
                     let a = &mut self.settings.audio;
                     match mode.trim() {
@@ -18875,10 +18877,10 @@ impl ApplicationHandler for App {
                 // The update preview stays offline on a synthetic login screen.
                 return;
             }
-            // AURORA_DEMO_TOOLBOX=1, or "target:tool" (target 0 nearest, 1
+            // DEEPLY_DEMO_TOOLBOX=1, or "target:tool" (target 0 nearest, 1
             // selection, 2 under the cursor, 3 my avatar; tool: the one "Send a diagnostic"
             // shows, e.g. "0:J4"), or "edit" (Customize): the Dev Toolbox
-            if let Ok(v) = std::env::var("AURORA_DEMO_TOOLBOX") {
+            if let Ok(v) = std::env::var("DEEPLY_DEMO_TOOLBOX") {
                 self.panels.dev_toolbox = true;
                 self.panels.perf = false;
                 if v == "edit" {
@@ -18893,9 +18895,9 @@ impl ApplicationHandler for App {
                     }
                 }
             }
-            // before the login scenarios: with AURORA_DEMO_LOGIN the
+            // before the login scenarios: with DEEPLY_DEMO_LOGIN the
             // preferences open over the login screen (its cogwheel)
-            if let Ok(mode) = std::env::var("AURORA_DEMO_ANTI_SPAM") {
+            if let Ok(mode) = std::env::var("DEEPLY_DEMO_ANTI_SPAM") {
                 let (id, clip) = crate::demo::chime();
                 self.scene.sounds.insert(id, clip);
                 self.settings.anti_spam = crate::world::anti_spam::Settings {
@@ -18910,10 +18912,10 @@ impl ApplicationHandler for App {
                 self.panels.settings = true;
                 self.options_ui.open(ui::options::Page::Protections, 0);
             }
-            if std::env::var_os("AURORA_DEMO_OPTIONS").is_some() {
+            if std::env::var_os("DEEPLY_DEMO_OPTIONS").is_some() {
                 self.panels.settings = true;
                 self.panels.perf = false;
-                let value = std::env::var("AURORA_DEMO_OPTIONS").unwrap_or_default();
+                let value = std::env::var("DEEPLY_DEMO_OPTIONS").unwrap_or_default();
                 // the former Debug page: the Dev Toolbox
                 if value.split(':').next() == Some("9") {
                     self.panels.settings = false;
@@ -18938,10 +18940,10 @@ impl ApplicationHandler for App {
                 }
                 ui::options::demo(&mut self.options_ui, &value);
             }
-            if let Ok(mode) = std::env::var("AURORA_DEMO_UNINSTALL") {
+            if let Ok(mode) = std::env::var("DEEPLY_DEMO_UNINSTALL") {
                 self.uninstall_demo(&mode);
             }
-            if let Ok(mode) = std::env::var("AURORA_DEMO_LOGIN") {
+            if let Ok(mode) = std::env::var("DEEPLY_DEMO_LOGIN") {
                 if matches!(
                     mode.as_str(),
                     "cards"
@@ -18995,7 +18997,7 @@ impl ApplicationHandler for App {
                         })
                         .collect();
                     self.login_form.accounts_loaded = true;
-                    // AURORA_DEMO_LOGIN_FAVORITES: stored favourites for two of them
+                    // DEEPLY_DEMO_LOGIN_FAVORITES: stored favourites for two of them
                     if let Some(favorites) = crate::login_favorites::demo() {
                         let uri = self.settings.login_uri();
                         self.login_form.favorites = crate::login_favorites::demo_store(&uri);
@@ -19013,10 +19015,10 @@ impl ApplicationHandler for App {
                         .accounts
                         .first()
                         .map_or_else(String::new, |account| account.username.clone());
-                    // AURORA_DEMO_LOGIN_LAST=<n>: the demo account of the
+                    // DEEPLY_DEMO_LOGIN_LAST=<n>: the demo account of the
                     // last login, which the cards select (the second one by
                     // default, or the only one)
-                    let last = std::env::var("AURORA_DEMO_LOGIN_LAST")
+                    let last = std::env::var("DEEPLY_DEMO_LOGIN_LAST")
                         .ok()
                         .and_then(|n| n.trim().parse::<usize>().ok())
                         .map_or(1, |n| n.saturating_sub(1))
@@ -19127,7 +19129,7 @@ impl ApplicationHandler for App {
                     Arc::new(crate::scene::anim::BoundAnim::bind(crate::demo::emote::animation(mode), &rig)),
                 );
             }
-            let demo_anim = if std::env::var_os("AURORA_DEMO_ANIM_LOOP").is_some() {
+            let demo_anim = if std::env::var_os("DEEPLY_DEMO_ANIM_LOOP").is_some() {
                 crate::demo::loop_animation()
             } else {
                 crate::demo::idle_animation()
@@ -19136,7 +19138,7 @@ impl ApplicationHandler for App {
                 crate::demo::IDLE_ANIM,
                 Arc::new(crate::scene::anim::BoundAnim::bind(demo_anim, &rig)),
             );
-            if std::env::var_os("AURORA_DEMO_PELVIS_CONSTRAINT").is_some() {
+            if std::env::var_os("DEEPLY_DEMO_PELVIS_CONSTRAINT").is_some() {
                 let (animation, constraints) = crate::demo::pelvis_constraint_animation();
                 self.scene.anims.insert(
                     crate::demo::IDLE_ANIM,
@@ -19155,7 +19157,7 @@ impl ApplicationHandler for App {
                     Arc::new(crate::scene::anim::BoundAnim::bind(crate::demo::loop_animation(), &rig)),
                 );
             }
-            // AURORA_DEMO_LINK's stand-in simulator signals the stock walk,
+            // DEEPLY_DEMO_LINK's stand-in simulator signals the stock walk,
             // run, fly and stand: drawn with the demo's own motions
             if self.demo_link_cfg.is_some() {
                 for (id, anim) in crate::demo::link::animations() {
@@ -19172,13 +19174,13 @@ impl ApplicationHandler for App {
                     self.scene.settings.insert_local(id, crate::world::eep::Settings::Sky(sky), None);
                 }
             }
-            // AURORA_DEMO_ENV_SELECT: the library's settings assets, known locally
+            // DEEPLY_DEMO_ENV_SELECT: the library's settings assets, known locally
             if crate::demo::env::enabled() {
                 for (id, settings, map) in crate::demo::env::settings_assets() {
                     self.scene.settings.insert_local(id, settings, Some(map));
                 }
             }
-            // AURORA_DEMO_BARS's favourites: the mockup's gradients as thumbnails
+            // DEEPLY_DEMO_BARS's favourites: the mockup's gradients as thumbnails
             for (id, colors) in crate::demo::place::favorite_thumbnails() {
                 let image = ui::bars::favorites::demo_thumbnail(colors);
                 let t = self
@@ -19186,12 +19188,12 @@ impl ApplicationHandler for App {
                     .load_texture(format!("demo-favorite-{id}"), image, egui::TextureOptions::LINEAR);
                 self.ui_images.insert(id, t);
             }
-            // AURORA_DEMO_PERF=compact|full|network|monitor-<section>: the
+            // DEEPLY_DEMO_PERF=compact|full|network|monitor-<section>: the
             // performance window in that view (full: the resource monitor's
             // overview; network or monitor-<section>: that section of it)
             // a minute of synthetic traffic for the network's graphs
             self.perf.demo_history();
-            if let Ok(v) = std::env::var("AURORA_DEMO_PERF") {
+            if let Ok(v) = std::env::var("DEEPLY_DEMO_PERF") {
                 self.panels.perf = true;
                 let v = v.trim();
                 if v == "network" {
@@ -19206,7 +19208,7 @@ impl ApplicationHandler for App {
                     ui::perf::set_full(&self.egui_ctx, v != "compact");
                 }
             }
-            // AURORA_DEMO_NIGHT_SKY: the chosen stars, at midnight
+            // DEEPLY_DEMO_NIGHT_SKY: the chosen stars, at midnight
             if let Some((mode, _)) = crate::demo::night_sky::scenario() {
                 self.settings.night_sky = mode;
                 self.panels.time_of_day = 4;
@@ -19222,7 +19224,7 @@ impl ApplicationHandler for App {
                 }
                 self.settings.sync_night_sky();
             }
-            // AURORA_DEMO_NIGHT_SKY_CLOCK: the real time at this longitude
+            // DEEPLY_DEMO_NIGHT_SKY_CLOCK: the real time at this longitude
             if let Some(longitude) = crate::demo::night_sky::clock_longitude() {
                 if self.settings.night_sky_place != crate::world::night_sky::SkyPlace::Custom {
                     // keep the preset's latitude, as Custom
@@ -19232,11 +19234,11 @@ impl ApplicationHandler for App {
                 self.settings.night_sky_hour = crate::world::night_sky::StarHour::RealTime;
                 self.settings.sync_night_sky();
             }
-            if let Some(t) = std::env::var("AURORA_DEMO_TOD").ok().and_then(|v| v.parse::<u8>().ok()) {
+            if let Some(t) = std::env::var("DEEPLY_DEMO_TOD").ok().and_then(|v| v.parse::<u8>().ok()) {
                 self.panels.time_of_day = t.min(crate::world::env::TIME_OF_DAY_PRESETS);
             }
-            // AURORA_DEMO_DEBUG="bounds,culling,..." turns debug overlays on (captures)
-            if let Ok(v) = std::env::var("AURORA_DEMO_DEBUG") {
+            // DEEPLY_DEMO_DEBUG="bounds,culling,..." turns debug overlays on (captures)
+            if let Ok(v) = std::env::var("DEEPLY_DEMO_DEBUG") {
                 let d = &mut self.settings.debug;
                 for k in v.split(',').map(str::trim) {
                     match k {
@@ -19262,7 +19264,7 @@ impl ApplicationHandler for App {
                     }
                 }
             }
-            if std::env::var("AURORA_DEMO_PARTICLES").is_ok_and(|mode| matches!(mode.as_str(), "region-wind" | "region-calm")) {
+            if std::env::var("DEEPLY_DEMO_PARTICLES").is_ok_and(|mode| matches!(mode.as_str(), "region-wind" | "region-calm")) {
                 // Frame both plumes independently of the saved camera preset.
                 self.panels.inventory = false;
                 self.panels.ao = false;
@@ -19275,7 +19277,7 @@ impl ApplicationHandler for App {
                 );
                 self.camera.snap();
             }
-            if let Ok(mode) = std::env::var("AURORA_DEMO_BEACONS") {
+            if let Ok(mode) = std::env::var("DEEPLY_DEMO_BEACONS") {
                 self.world.apply(crate::demo::beacons::events());
                 let (id, clip) = crate::demo::chime();
                 self.scene.sounds.insert(id, clip);
@@ -19308,15 +19310,15 @@ impl ApplicationHandler for App {
                     self.world.group_money.request_owned_land();
                 }
             }
-            // AURORA_DEMO_RENDER_TYPES=water,avatars,…: those rendering
+            // DEEPLY_DEMO_RENDER_TYPES=water,avatars,…: those rendering
             // types hidden from the start (Advanced › Rendering types)
-            if let Ok(list) = std::env::var("AURORA_DEMO_RENDER_TYPES") {
+            if let Ok(list) = std::env::var("DEEPLY_DEMO_RENDER_TYPES") {
                 let (hidden, particles) = crate::scene::render_types::Hidden::parse(&list);
                 self.settings.debug.hidden_types = hidden;
                 self.settings.world_overlays.hide_particles |= particles;
             }
-            // AURORA_DEMO_CAM="yaw,pitch,distance" (radians, meters) for captures
-            if let Ok(v) = std::env::var("AURORA_DEMO_CAM") {
+            // DEEPLY_DEMO_CAM="yaw,pitch,distance" (radians, meters) for captures
+            if let Ok(v) = std::env::var("DEEPLY_DEMO_CAM") {
                 let p: Vec<f32> = v.split(',').filter_map(|s| s.trim().parse().ok()).collect();
                 if p.len() >= 2 {
                     self.camera.demo_orbit(p[0], p[1], p.get(2).copied(), &self.settings.camera);
@@ -19326,7 +19328,7 @@ impl ApplicationHandler for App {
             if crate::demo::tags::apply_name_tag_preferences(&mut self.settings) {
                 self.panels.ao = false;
             }
-            // AURORA_DEMO_TAGS: residents whose name plates show every
+            // DEEPLY_DEMO_TAGS: residents whose name plates show every
             // state, at the three distance levels
             if crate::demo::tags::mode().is_some() {
                 crate::demo::tags::apply_render_preferences(&mut self.settings);
@@ -19336,11 +19338,11 @@ impl ApplicationHandler for App {
                 // (nothing over the rows of plates)
                 self.panels.people = false;
             }
-            // AURORA_DEMO_RADAR=1|tp|walk|friends|groups|profile: residents
+            // DEEPLY_DEMO_RADAR=1|tp|walk|friends|groups|profile: residents
             // around for the radar of People (tp: with the ones of a region a
             // teleport just left; walk: with one who comes and goes), or its
             // friends / groups tab (profil: with the profile of a group)
-            if let Ok(v) = std::env::var("AURORA_DEMO_RADAR") {
+            if let Ok(v) = std::env::var("DEEPLY_DEMO_RADAR") {
                 self.demo_radar_tp = v == "tp";
                 self.demo_radar_walk = v == "walk";
                 for ev in crate::demo::radar_events(self.demo_radar_tp) {
@@ -19356,7 +19358,7 @@ impl ApplicationHandler for App {
                     self.group_profile_ui.open(&mut self.world, crate::demo::DEMO_GROUP1);
                 }
             }
-            // AURORA_DEMO_PEOPLE=rows|crowd|sheet|legacy: Near you with the
+            // DEEPLY_DEMO_PEOPLE=rows|crowd|sheet|legacy: Near you with the
             // residents of the People mock-up, alone on screen
             if crate::demo::people::mode().is_some() {
                 for ev in crate::demo::people::events() {
@@ -19365,7 +19367,7 @@ impl ApplicationHandler for App {
                 // the density is the list's own toggle; the look is forced
                 // for the run only (`demo::people::legacy`), not saved
                 self.settings.radar.compact = crate::demo::people::compact();
-                if let Ok(filter) = std::env::var("AURORA_DEMO_PEOPLE_FILTER") {
+                if let Ok(filter) = std::env::var("DEEPLY_DEMO_PEOPLE_FILTER") {
                     self.people_ui.filter = filter;
                 }
                 // the friends tab opens sorted as the mock-up's (online first)
@@ -19393,7 +19395,7 @@ impl ApplicationHandler for App {
                     self.people_ui.select(vec![crate::demo::people::NOVA]);
                     if crate::demo::people::visuals() {
                         self.contacts_ui.configure_set(aurora_i18n::tr!("demo-family"));
-                        self.settings.classic_name_tags = std::env::var("AURORA_DEMO_PEOPLE").is_ok_and(|v| v == "visuals-legacy");
+                        self.settings.classic_name_tags = std::env::var("DEEPLY_DEMO_PEOPLE").is_ok_and(|v| v == "visuals-legacy");
                     }
                 }
                 self.panels.people = true;
@@ -19403,7 +19405,7 @@ impl ApplicationHandler for App {
                 self.panels.minimap = false;
                 self.panels.perf = false;
             }
-            // AURORA_DEMO_CHAT_LINES: the lines above the chat bar, the
+            // DEEPLY_DEMO_CHAT_LINES: the lines above the chat bar, the
             // Conversations window closed (it hides them while it shows the
             // local chat)
             if crate::demo::chat_lines_scenario().is_some() {
@@ -19414,21 +19416,21 @@ impl ApplicationHandler for App {
                 self.panels.people = false;
                 self.panels.inventory = false;
             }
-            if std::env::var_os("AURORA_DEMO_UI").is_some() {
+            if std::env::var_os("DEEPLY_DEMO_UI").is_some() {
                 self.panels.people = true;
-                self.panels.people_tab = std::env::var("AURORA_DEMO_UI").ok().and_then(|v| v.parse().ok()).unwrap_or(1);
+                self.panels.people_tab = std::env::var("DEEPLY_DEMO_UI").ok().and_then(|v| v.parse().ok()).unwrap_or(1);
                 self.panels.inventory = true;
                 self.panels.chat = true;
                 self.panels.perf = false;
                 self.panels.minimap = false;
             }
-            // AURORA_DEMO_PLACE=1|lagoon|nordheim|grove|flaw|unknown: the
+            // DEEPLY_DEMO_PLACE=1|lagoon|nordheim|grove|flaw|unknown: the
             // place details of a place link, as if clicked
             if let Some((region, pos)) = crate::demo::place::scenario() {
                 ui::context::request(&self.egui_ctx, ui::context::CtxAction::ShowPlaceInfo(region.to_owned(), pos));
                 self.panels.perf = false;
             }
-            // AURORA_DEMO_PLACE=repere|historique: a landmark's / history
+            // DEEPLY_DEMO_PLACE=repere|historique: a landmark's / history
             // entry's profile (asked once the inventory is there: demo_pending)
             if let Some(source) = crate::demo::place::profile_scenario() {
                 self.demo_place = Some(source);
@@ -19438,13 +19440,13 @@ impl ApplicationHandler for App {
                 self.create_landmark_ui.demo_pending = Some(start);
                 self.panels.perf = false;
             }
-            // AURORA_DEMO_PLACES=favorites|landmarks|history: "Places" on a tab
+            // DEEPLY_DEMO_PLACES=favorites|landmarks|history: "Places" on a tab
             // (after the tab, ":wide": Aurora's window widened to its rail and
             // preview; ":open": its first place selected; both: ":wide,open";
             // ":classic": the Legacy Viewer's tabs for this run, not saved;
             // ":narrow": the window 260 points wide, its least width at
             // text size 1)
-            let demo_places = std::env::var("AURORA_DEMO_PLACES").unwrap_or_default();
+            let demo_places = std::env::var("DEEPLY_DEMO_PLACES").unwrap_or_default();
             let (demo_tab, demo_how) = demo_places.split_once(':').unwrap_or((demo_places.as_str(), ""));
             if let Some(tab) = ui::places::tab_from_name(demo_tab) {
                 self.places_ui.open_tab(tab);
@@ -19459,22 +19461,22 @@ impl ApplicationHandler for App {
                 self.places_ui.aurora.demo_open = demo_how.split(',').any(|w| w == "open");
                 self.places_ui.demo_classic = demo_how.split(',').any(|w| w == "classic");
             }
-            // AURORA_DEMO_MARKETPLACE=<page>: World › SL Marketplace on that
+            // DEEPLY_DEMO_MARKETPLACE=<page>: World › SL Marketplace on that
             // page, open at start
             if self.marketplace_home().is_some() {
                 self.marketplace_ui.open(None);
                 self.panels.perf = false;
             }
-            // AURORA_DEMO_WEB_BROWSER=<page>: the toolbar's web browser on
+            // DEEPLY_DEMO_WEB_BROWSER=<page>: the toolbar's web browser on
             // that page, open at start
-            if let Ok(page) = std::env::var("AURORA_DEMO_WEB_BROWSER")
+            if let Ok(page) = std::env::var("DEEPLY_DEMO_WEB_BROWSER")
                 && !page.trim().is_empty()
             {
                 self.web_browser_ui.go_to(&page);
                 self.panels.web_browser = true;
                 self.panels.perf = false;
             }
-            // AURORA_DEMO_DESTINATIONS=<page>|sl: the Destination Guide on
+            // DEEPLY_DEMO_DESTINATIONS=<page>|sl: the Destination Guide on
             // that page (sl: the Second Life guide's address), open at start;
             // compact|wide|empty: Aurora's window on the made-up guide,
             // legacy: the Legacy style for this run
@@ -19494,13 +19496,13 @@ impl ApplicationHandler for App {
                     _ => {}
                 }
             }
-            // AURORA_DEMO_MARKETPLACE_LISTINGS=merchant|not-merchant|error|audit:
+            // DEEPLY_DEMO_MARKETPLACE_LISTINGS=merchant|not-merchant|error|audit:
             // Me › Marketplace listings open on the demo SLM server
             if crate::world::marketplace::demo::Mode::from_env().is_some() {
                 self.demo_marketplace_listings();
                 self.panels.perf = false;
             }
-            // AURORA_DEMO_TP_CONFIRM=link|landmark: a teleport confirmation on
+            // DEEPLY_DEMO_TP_CONFIRM=link|landmark: a teleport confirmation on
             // screen, asked whatever the saved setting says (not saved)
             if let Some(confirm) = crate::demo::place::teleport_confirm_scenario() {
                 use crate::demo::place::TeleportConfirm;
@@ -19511,11 +19513,11 @@ impl ApplicationHandler for App {
                 }
                 self.panels.perf = false;
             }
-            // AURORA_DEMO_SEARCH=<tab>[:text]: "Search" on a tab (or on
+            // DEEPLY_DEMO_SEARCH=<tab>[:text]: "Search" on a tab (or on
             // Aurora's "all" chip), its search done ("page" in the text: a
             // full page, "xyz": nothing; for land in the Legacy look the
             // text is the price limit, 0 by default)
-            if let Ok(v) = std::env::var("AURORA_DEMO_SEARCH") {
+            if let Ok(v) = std::env::var("DEEPLY_DEMO_SEARCH") {
                 let (name, text) = v.split_once(':').unwrap_or((v.as_str(), "aurora"));
                 // land without a text keeps the default price field ("0")
                 let typed = !name.trim().eq_ignore_ascii_case("land") || v.contains(':');
@@ -19544,13 +19546,13 @@ impl ApplicationHandler for App {
                     }
                 }
             }
-            // AURORA_DEMO_PLACE_WINDOW=1: the standalone windows instead
-            if std::env::var_os("AURORA_DEMO_PLACE_WINDOW").is_some() {
+            // DEEPLY_DEMO_PLACE_WINDOW=1: the standalone windows instead
+            if std::env::var_os("DEEPLY_DEMO_PLACE_WINDOW").is_some() {
                 self.settings.standalone_place_details = true;
             }
-            // AURORA_DEMO_PROFILE=wolf|nova|friend|self[:tab|edit|compact]:
+            // DEEPLY_DEMO_PROFILE=wolf|nova|friend|self[:tab|edit|compact]:
             // a profile window
-            if let Ok(v) = std::env::var("AURORA_DEMO_PROFILE") {
+            if let Ok(v) = std::env::var("DEEPLY_DEMO_PROFILE") {
                 let (who, option) = v.split_once(':').unwrap_or((v.as_str(), "0"));
                 let id = match who {
                     "self" => crate::demo::DEMO_AGENT,
@@ -19562,7 +19564,7 @@ impl ApplicationHandler for App {
                 self.profile_ui.demo(&self.egui_ctx, id, option);
                 self.panels.perf = false;
             }
-            // AURORA_DEMO_REGION=overview[:owner|:manager|:resident]: Region /
+            // DEEPLY_DEMO_REGION=overview[:owner|:manager|:resident]: Region /
             // Estate on that page
             if let Some(scenario) = crate::demo::region::scenario() {
                 self.region_ui.demo(scenario.page, scenario.preview, scenario.manage);
@@ -19592,16 +19594,16 @@ impl ApplicationHandler for App {
                 self.panels.region_estate = true;
                 self.panels.perf = false;
             }
-            // AURORA_DEMO_LAND=<tab>[:role][:classic]: About Land on that tab
+            // DEEPLY_DEMO_LAND=<tab>[:role][:classic]: About Land on that tab
             if let Some(scenario) = crate::demo::land::scenario() {
                 self.land_ui.set_tab(&scenario.tab);
                 self.panels.about_land = true;
                 self.panels.perf = false;
             }
-            // AURORA_DEMO_GROUP_PROFILE=1|member|officer|owner|guest: the
+            // DEEPLY_DEMO_GROUP_PROFILE=1|member|officer|owner|guest: the
             // profile of the demo parcel's group, as after a click on its
             // name (a guest's: a group we are not in)
-            if std::env::var_os("AURORA_DEMO_GROUP_PROFILE").is_some() {
+            if std::env::var_os("DEEPLY_DEMO_GROUP_PROFILE").is_some() {
                 self.group_profile_ui.open(&mut self.world, crate::demo::group::shown_group());
                 if let Some(member) = crate::demo::group::members_tab() {
                     self.group_profile_ui.show_member(member);
@@ -19629,7 +19631,7 @@ impl ApplicationHandler for App {
                 }
                 self.panels.perf = false;
             }
-            // AURORA_DEMO_GROUP_CREATE=form|cost|refused|limit|created: "Create
+            // DEEPLY_DEMO_GROUP_CREATE=form|cost|refused|limit|created: "Create
             // a group", as from People › Groups, once the group list is in
             if let Some(scenario) = crate::demo::group::create_scenario() {
                 use crate::demo::group::CreateScenario;
@@ -19652,10 +19654,10 @@ impl ApplicationHandler for App {
                 self.group_profile_ui.create.demo(DemoStart { draft, then });
                 self.panels.perf = false;
             }
-            // AURORA_DEMO_CONTACTS=friends|groups|sets|detached|add|hidden: the
+            // DEEPLY_DEMO_CONTACTS=friends|groups|sets|detached|add|hidden: the
             // Contacts tab of Conversations (or its torn-off window, or the
             // resident picker of "Add...")
-            if let Ok(v) = std::env::var("AURORA_DEMO_CONTACTS") {
+            if let Ok(v) = std::env::var("DEEPLY_DEMO_CONTACTS") {
                 self.panels.chat = true;
                 self.panels.perf = false;
                 self.chat_ui.contacts = true;
@@ -19671,11 +19673,11 @@ impl ApplicationHandler for App {
                 if matches!(v.as_str(), "add" | "ajout") {
                     self.contacts_ui.pick_new_friend();
                 }
-                if let Ok(filter) = std::env::var("AURORA_DEMO_CONTACTS_FILTER") {
+                if let Ok(filter) = std::env::var("DEEPLY_DEMO_CONTACTS_FILTER") {
                     self.contacts_ui.filter_groups(&filter);
                 }
             }
-            // AURORA_DEMO_CONV=1: the demo group chat with its participants;
+            // DEEPLY_DEMO_CONV=1: the demo group chat with its participants;
             // =names[:narrow|wide]: conversations and nearby avatars whose
             // names do not fit, in windows of a known size
             if let Some((conversations, people)) = crate::demo::long_names_scenario() {
@@ -19701,8 +19703,8 @@ impl ApplicationHandler for App {
                 self.panels.chat = true;
                 self.panels.perf = false;
                 self.chat_ui.selected = crate::demo::bubbles_conversation(view);
-                // AURORA_DEMO_PREVIEW_PLAY=card|window: the first video plays
-                self.chat_ui.previews.demo_play = match std::env::var("AURORA_DEMO_PREVIEW_PLAY").as_deref() {
+                // DEEPLY_DEMO_PREVIEW_PLAY=card|window: the first video plays
+                self.chat_ui.previews.demo_play = match std::env::var("DEEPLY_DEMO_PREVIEW_PLAY").as_deref() {
                     Ok("card") => Some(crate::link_preview::Player::InCard),
                     Ok("window") => Some(crate::link_preview::Player::Window),
                     _ => None,
@@ -19740,15 +19742,15 @@ impl ApplicationHandler for App {
                 self.panels.perf = false;
                 self.chat_ui.open(crate::demo::DEMO_NOVA);
                 ui::widgets::place_floater(&self.egui_ctx, "conversations", egui::pos2(480.0, 420.0), egui::vec2(600.0, 320.0));
-            } else if std::env::var_os("AURORA_DEMO_CONV").is_some() {
+            } else if std::env::var_os("DEEPLY_DEMO_CONV").is_some() {
                 self.panels.chat = true;
                 self.chat_ui.selected = Some(crate::demo::DEMO_GROUP1);
                 self.chat_ui.show_profile = true;
             }
-            // AURORA_DEMO_GIFS=open|klipy|sent|menu|nokey|net: the GIF picker of
-            // the friend's conversation (#932), with AURORA_DEMO_CONV or alone
+            // DEEPLY_DEMO_GIFS=open|klipy|sent|menu|nokey|net: the GIF picker of
+            // the friend's conversation (#932), with DEEPLY_DEMO_CONV or alone
             if let Some(mode) = crate::demo::gifs_scenario() {
-                if std::env::var_os("AURORA_DEMO_CONV").is_none() {
+                if std::env::var_os("DEEPLY_DEMO_CONV").is_none() {
                     self.panels.chat = true;
                     self.panels.perf = false;
                     self.chat_ui.selected = Some(crate::demo::DEMO_FRIEND);
@@ -19764,7 +19766,7 @@ impl ApplicationHandler for App {
                 }
                 self.chat_ui.gifs.demo_scene(mode);
             }
-            // AURORA_DEMO_OBJECT_CHAT=<style>|lines[:on]: the nearby chat in
+            // DEEPLY_DEMO_OBJECT_CHAT=<style>|lines[:on]: the nearby chat in
             // the Conversations window of that style, or the lines above the
             // chat bar with the window closed
             if let Some(scene) = crate::demo::object_chat::scene() {
@@ -19778,9 +19780,9 @@ impl ApplicationHandler for App {
                     ui::widgets::place_floater(&self.egui_ctx, "conversations", egui::pos2(460.0, 230.0), egui::vec2(760.0, 560.0));
                 }
             }
-            // captures: AURORA_DEMO_MAP=1 opens the mini-map and the world map
+            // captures: DEEPLY_DEMO_MAP=1 opens the mini-map and the world map
             // (with a tracked spot east of the plaza)
-            if let Ok(scenario) = std::env::var("AURORA_DEMO_MAP") {
+            if let Ok(scenario) = std::env::var("DEEPLY_DEMO_MAP") {
                 let mode = scenario.split(',').next().unwrap_or_default().trim();
                 self.panels.minimap = true;
                 self.panels.world_map = mode != "mini" && !mode.starts_with("beacon");
@@ -19822,15 +19824,15 @@ impl ApplicationHandler for App {
                     }
                 }
             }
-            // captures: AURORA_DEMO_SIT keeps the toolbar sit button visible
-            if std::env::var_os("AURORA_DEMO_SIT").is_some() {
+            // captures: DEEPLY_DEMO_SIT keeps the toolbar sit button visible
+            if std::env::var_os("DEEPLY_DEMO_SIT").is_some() {
                 self.panels.perf = false;
             }
-            // captures: AURORA_DEMO_NOTIF=1 opens the notification list
-            if std::env::var_os("AURORA_DEMO_NOTIF").is_some() {
+            // captures: DEEPLY_DEMO_NOTIF=1 opens the notification list
+            if std::env::var_os("DEEPLY_DEMO_NOTIF").is_some() {
                 self.notif_ui.open = true;
             }
-            // AURORA_DEMO_NOTIFS, AURORA_DEMO_PRESENCE: nothing else open
+            // DEEPLY_DEMO_NOTIFS, DEEPLY_DEMO_PRESENCE: nothing else open
             // over the corners (and the nearby chat lines over the chat bar)
             if crate::demo::notifs::mode().is_some() || crate::demo::presence::position().is_some() {
                 self.panels.perf = false;
@@ -19840,12 +19842,12 @@ impl ApplicationHandler for App {
             if crate::demo::presence::position().is_some() {
                 self.panels.people = false;
             }
-            // AURORA_DEMO_CONV_BUTTON: the Conversations window closed
+            // DEEPLY_DEMO_CONV_BUTTON: the Conversations window closed
             if crate::demo::conv_button::mode().is_some() {
                 self.panels.perf = false;
                 self.panels.chat = false;
             }
-            // AURORA_DEMO_TOASTS: the toasts arrive with the Conversations
+            // DEEPLY_DEMO_TOASTS: the toasts arrive with the Conversations
             // window closed, or minimized for `minimized`
             if let Some(mode) = crate::demo::toasts::mode() {
                 self.panels.perf = false;
@@ -19855,7 +19857,7 @@ impl ApplicationHandler for App {
                     ui::widgets::minimize_floater(&self.egui_ctx, "conversations");
                 }
             }
-            // AURORA_DEMO_MATURITY: the content rating changed in the
+            // DEEPLY_DEMO_MATURITY: the content rating changed in the
             // Preferences, answered by the demo server
             if let Some(mode) = crate::demo::maturity_scene() {
                 self.panels.settings = true;
@@ -19863,7 +19865,7 @@ impl ApplicationHandler for App {
                 self.options_ui.open(ui::options::Page::Privacy, 0);
                 self.notif_ui.open = mode != "agree";
             }
-            // AURORA_DEMO_LURE: teleports received, with the notification list
+            // DEEPLY_DEMO_LURE: teleports received, with the notification list
             // (and the conversation the answers go to)
             if let Some(scene) = crate::demo::lure_scene() {
                 use crate::demo::LureScene;
@@ -19888,7 +19890,7 @@ impl ApplicationHandler for App {
                     self.chat_ui.demo_style = Some(crate::settings::ChatStyle::Legacy);
                 }
             }
-            // AURORA_DEMO_INVENTORY=offer-card…: the giver's conversation in
+            // DEEPLY_DEMO_INVENTORY=offer-card…: the giver's conversation in
             // sight, the card alone
             if let Some(scene) = crate::demo::offer_card_scene() {
                 self.panels.perf = false;
@@ -19899,8 +19901,8 @@ impl ApplicationHandler for App {
                     self.chat_ui.demo_style = Some(crate::settings::ChatStyle::Legacy);
                 }
             }
-            // AURORA_DEMO_TALK=1: microphone on (voice dot of our avatar)
-            if std::env::var_os("AURORA_DEMO_TALK").is_some() {
+            // DEEPLY_DEMO_TALK=1: microphone on (voice dot of our avatar)
+            if std::env::var_os("DEEPLY_DEMO_TALK").is_some() {
                 self.mic_on = true;
             }
             for (id, m) in crate::demo::legacy_materials() {
@@ -19935,10 +19937,10 @@ impl ApplicationHandler for App {
                     self.settings.show_accepted_in_inventory,
                 );
             }
-            if let Ok(mode) = std::env::var("AURORA_DEMO_PARCEL_VISIBILITY") {
+            if let Ok(mode) = std::env::var("DEEPLY_DEMO_PARCEL_VISIBILITY") {
                 crate::demo::parcel_visibility::install(&mut self.world, &mut self.settings, &mode);
             }
-            // AURORA_DEMO_APPLINKS: a link of each `secondlife:///app/...`
+            // DEEPLY_DEMO_APPLINKS: a link of each `secondlife:///app/...`
             // command, in a conversation and in the bubbles
             if crate::demo::applinks_scene() {
                 let item = self
@@ -19991,7 +19993,7 @@ impl ApplicationHandler for App {
                     self.on_ctx_action(action);
                 }
             }
-            // AURORA_DEMO_SLURLS: place links of every rating, and one unknown
+            // DEEPLY_DEMO_SLURLS: place links of every rating, and one unknown
             if crate::demo::slurls_scene() {
                 for ev in crate::demo::slurls_events() {
                     self.world.apply(ev);
@@ -20034,7 +20036,7 @@ impl ApplicationHandler for App {
                 self.chat_ui.open(crate::demo::DEMO_NOVA);
                 ui::widgets::place_floater(&self.egui_ctx, "conversations", egui::pos2(480.0, 420.0), egui::vec2(600.0, 320.0));
                 // =offer: our teleport offer to her, with our region's badge
-                if std::env::var("AURORA_DEMO_SLURLS").as_deref() == Ok("offer") {
+                if std::env::var("DEEPLY_DEMO_SLURLS").as_deref() == Ok("offer") {
                     let region = self
                         .world
                         .main()
@@ -20044,11 +20046,11 @@ impl ApplicationHandler for App {
                     self.contacts_ui.ask_teleport_offer(vec![crate::demo::DEMO_NOVA], &region);
                 }
             }
-            // AURORA_DEMO_MATURITY: "General" asked once the login is known
+            // DEEPLY_DEMO_MATURITY: "General" asked once the login is known
             if crate::demo::maturity_scene().is_some() {
                 self.world.set_maturity_preference(aurora_net::search::SIM_ACCESS_PG);
             }
-            // AURORA_DEMO_LURE=card-answered / notification-answered: the
+            // DEEPLY_DEMO_LURE=card-answered / notification-answered: the
             // offer answered by its card's button, or by its entry's
             if let Some(scene) = crate::demo::lure_scene()
                 && let Some(v) = self.world.teleport_invites.list.first().map(|v| (v.id, v.notification))
@@ -20067,7 +20069,7 @@ impl ApplicationHandler for App {
                     _ => {}
                 }
             }
-            // AURORA_DEMO_CONV_SCROLL: the friend's earlier talk first
+            // DEEPLY_DEMO_CONV_SCROLL: the friend's earlier talk first
             if crate::demo::conv_scroll_scenario().is_some() {
                 crate::demo::conv_scroll_lines(&mut self.world);
                 self.chat_ui.demo_scroll = Some(crate::demo::DEMO_FRIEND);
@@ -20075,20 +20077,20 @@ impl ApplicationHandler for App {
             if let Some(view) = crate::demo::bubbles_scenario() {
                 crate::demo::bubbles_lines(&mut self.world, view);
             }
-            // AURORA_DEMO_AREA_SEARCH: a native object list and filter fixtures.
-            if let Ok(mode) = std::env::var("AURORA_DEMO_AREA_SEARCH") {
+            // DEEPLY_DEMO_AREA_SEARCH: a native object list and filter fixtures.
+            if let Ok(mode) = std::env::var("DEEPLY_DEMO_AREA_SEARCH") {
                 self.demo_area_search(&mode);
             }
-            if let Ok(mode) = std::env::var("AURORA_DEMO_AVATAR_RENDER_SETTINGS") {
+            if let Ok(mode) = std::env::var("DEEPLY_DEMO_AVATAR_RENDER_SETTINGS") {
                 self.demo_avatar_render_settings(&mode);
             }
-            if let Ok(mode) = std::env::var("AURORA_DEMO_SOUND_EXPLORER") {
+            if let Ok(mode) = std::env::var("DEEPLY_DEMO_SOUND_EXPLORER") {
                 self.demo_sound_explorer(&mode);
             }
-            if let Ok(mode) = std::env::var("AURORA_DEMO_ANIMATION_EXPLORER") {
+            if let Ok(mode) = std::env::var("DEEPLY_DEMO_ANIMATION_EXPLORER") {
                 self.demo_animation_explorer(&mode);
             }
-            // AURORA_DEMO_OBJECT_CHAT: two notices among the lines, each with
+            // DEEPLY_DEMO_OBJECT_CHAT: two notices among the lines, each with
             // its topic's icon when compact
             if crate::demo::object_chat::scene().is_some() {
                 crate::demo::object_chat::notices(&mut self.world);
@@ -20098,7 +20100,7 @@ impl ApplicationHandler for App {
                 // the scene's unread lines as if they came while away
                 self.chat_ui.demo_lines_unseen();
             }
-            // AURORA_DEMO_CONV=tp[:sent|reject]: the avatar menu's teleport
+            // DEEPLY_DEMO_CONV=tp[:sent|reject]: the avatar menu's teleport
             // offer (its invitation, or sent as invited to the resident whose
             // conversation is open and to one without any), or a request
             // while we reject teleports
@@ -20116,21 +20118,21 @@ impl ApplicationHandler for App {
                     None => {}
                 }
             }
-            if std::env::var("AURORA_DEMO_BUILD").is_ok_and(|v| {
+            if std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|v| {
                 v.starts_with("faces")
                     || v.starts_with("shared")
                     || v.starts_with("mesh-inspector")
                     || v.starts_with("invisible-")
                     || v.starts_with("physics")
             }) {
-                let invisible_manipulation = std::env::var("AURORA_DEMO_BUILD").is_ok_and(|v| v.starts_with("invisible-"));
-                let invisible = std::env::var("AURORA_DEMO_BUILD").is_ok_and(|v| v.starts_with("faces-invisible,"));
-                let inspector = std::env::var("AURORA_DEMO_BUILD").is_ok_and(|v| v.starts_with("mesh-inspector"));
-                let physics = std::env::var("AURORA_DEMO_BUILD").is_ok_and(|v| v.starts_with("physics"));
+                let invisible_manipulation = std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|v| v.starts_with("invisible-"));
+                let invisible = std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|v| v.starts_with("faces-invisible,"));
+                let inspector = std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|v| v.starts_with("mesh-inspector"));
+                let physics = std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|v| v.starts_with("physics"));
                 let complex = inspector
                     || physics
                     || invisible_manipulation
-                    || std::env::var("AURORA_DEMO_BUILD").is_ok_and(|v| v.starts_with("faces-complex,"));
+                    || std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|v| v.starts_with("faces-complex,"));
                 let mut events = if complex {
                     crate::demo::complex_face_selection_events()
                 } else {
@@ -20151,10 +20153,10 @@ impl ApplicationHandler for App {
                 }
                 if complex && let Some(gfx) = &mut self.gfx {
                     if physics {
-                        let analysed = std::env::var("AURORA_DEMO_BUILD").is_ok_and(|v| v.starts_with("physics-analysed"));
+                        let analysed = std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|v| v.starts_with("physics-analysed"));
                         crate::scene::physics_shapes::install_demo(&mut self.scene.meshes, analysed);
                     } else if inspector {
-                        let empty = std::env::var("AURORA_DEMO_BUILD").is_ok_and(|v| v.starts_with("mesh-inspector-cycle-empty"));
+                        let empty = std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|v| v.starts_with("mesh-inspector-cycle-empty"));
                         self.scene.install_demo_mesh_inspector(&mut gfx.renderer, empty);
                     } else {
                         self.scene.install_demo_selection_mesh(&mut gfx.renderer);
@@ -20164,7 +20166,7 @@ impl ApplicationHandler for App {
                     self.world.apply(event);
                 }
             }
-            // AURORA_DEMO_CHATLOG: the conversation transcripts, written in
+            // DEEPLY_DEMO_CHATLOG: the conversation transcripts, written in
             // the demo account's own folder (demo_chatlog.rs)
             if let Some(mode) = crate::demo::chatlog::mode() {
                 use crate::demo::chatlog::{self, Mode};
@@ -20249,29 +20251,29 @@ impl ApplicationHandler for App {
                     ui::widgets::place_floater(&self.egui_ctx, "conversations", egui::pos2(8.0, 44.0), egui::vec2(480.0, 560.0));
                 }
             }
-            if std::env::var("AURORA_DEMO_BUILD").is_ok_and(|v| v.starts_with("cycle,") || v.starts_with("cycle-linked,")) {
+            if std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|v| v.starts_with("cycle,") || v.starts_with("cycle-linked,")) {
                 for ev in crate::demo::selection_cycle_events() {
                     self.world.apply(ev);
                 }
             }
-            // AURORA_DEMO_NIGHT_SKY: from behind the avatar, up at the sky
+            // DEEPLY_DEMO_NIGHT_SKY: from behind the avatar, up at the sky
             if let Some((_, dir)) = crate::demo::night_sky::scenario()
-                && std::env::var_os("AURORA_DEMO_CAM").is_none()
+                && std::env::var_os("DEEPLY_DEMO_CAM").is_none()
             {
                 // above the avatar's head, a little behind it
                 let eye = self.world.agent.position + Vec3::new(0.0, 0.0, 2.5) - Vec3::new(dir.x, dir.y, 0.0) * 3.0;
                 self.camera
                     .set_view(eye, eye + dir * 30.0, &mut self.world.agent, &self.settings.camera);
             }
-            // AURORA_DEMO_SKY_OPTICS: from behind the avatar, up at the eastern sky
+            // DEEPLY_DEMO_SKY_OPTICS: from behind the avatar, up at the eastern sky
             if let Some(dir) = crate::demo::sky::view_direction()
-                && std::env::var_os("AURORA_DEMO_CAM").is_none()
+                && std::env::var_os("DEEPLY_DEMO_CAM").is_none()
             {
                 let eye = self.world.agent.position + Vec3::new(-3.0, 0.0, 2.5);
                 self.camera
                     .set_view(eye, eye + dir * 30.0, &mut self.world.agent, &self.settings.camera);
             }
-            if std::env::var_os("AURORA_DEMO_REPLACE_PRIM").is_some() && std::env::var_os("AURORA_DEMO_CAM").is_none() {
+            if std::env::var_os("DEEPLY_DEMO_REPLACE_PRIM").is_some() && std::env::var_os("DEEPLY_DEMO_CAM").is_none() {
                 let focus = Vec3::new(135.5, 125.0, crate::demo::floor_at(135.0, 125.0) + 1.3);
                 self.camera.set_view(
                     focus + Vec3::new(0.0, -6.0, 4.0),
@@ -20280,8 +20282,8 @@ impl ApplicationHandler for App {
                     &self.settings.camera,
                 );
             }
-            if std::env::var_os("AURORA_DEMO_FLEXIBLE").is_some() && std::env::var_os("AURORA_DEMO_CAM").is_none() {
-                let edit_focus = std::env::var("AURORA_DEMO_BUILD")
+            if std::env::var_os("DEEPLY_DEMO_FLEXIBLE").is_some() && std::env::var_os("DEEPLY_DEMO_CAM").is_none() {
+                let edit_focus = std::env::var("DEEPLY_DEMO_BUILD")
                     .ok()
                     .and_then(|spec| crate::build::demo::target_index(&spec, &self.world))
                     .and_then(|i| crate::scene::Scene::object_transform(&self.world, i, Instant::now(), 0))
@@ -20330,7 +20332,7 @@ impl ApplicationHandler for App {
                 self.panels.perf = false;
                 self.panels.inventory = false;
             }
-            if let Ok(view) = std::env::var("AURORA_DEMO_APPEARANCE") {
+            if let Ok(view) = std::env::var("DEEPLY_DEMO_APPEARANCE") {
                 crate::world::appearance::seed_demo(&mut self.world.inventory, self.world.agent_id);
                 // showcase: the gallery's showcase with folders, pictures and favorites
                 let showcase = view == "showcase" || view.starts_with("portrait") || view == "photo-mode" || view.starts_with("batch");
@@ -20413,7 +20415,7 @@ impl ApplicationHandler for App {
                 if matches!(mode, "build" | "build-object" | "build-delete") {
                     self.build.open_build(crate::build::Tool::Create);
                 }
-                if mode != "1" && std::env::var_os("AURORA_DEMO_CAM").is_none() {
+                if mode != "1" && std::env::var_os("DEEPLY_DEMO_CAM").is_none() {
                     self.camera.demo_orbit(0.0, 0.6, Some(9.0), &self.settings.camera);
                 }
                 crate::world::inventory::demo::seed(&mut self.world.inventory, self.world.agent_id);
@@ -20439,7 +20441,7 @@ impl ApplicationHandler for App {
                     }
                 }
             }
-            if let Ok(view) = std::env::var("AURORA_DEMO_INVENTORY") {
+            if let Ok(view) = std::env::var("DEEPLY_DEMO_INVENTORY") {
                 crate::world::inventory::demo::seed(&mut self.world.inventory, self.world.agent_id);
                 if matches!(view.as_str(), "calling-card" | "aurora-calling-card") {
                     // the viewer-made card naming the wolf, selected
@@ -20623,7 +20625,7 @@ impl ApplicationHandler for App {
                             // the right-click tests in a window of their own
                             self.inventory_ui.open_folder_window(uuid::Uuid::from_u128(8000));
                             if let Some(window) = self.inventory_ui.windows.last_mut() {
-                                window.id = ui::inventory::AURORA_DEMO_FOLDER_WINDOW;
+                                window.id = ui::inventory::DEEPLY_DEMO_FOLDER_WINDOW;
                             }
                         }
                     }
@@ -20953,7 +20955,7 @@ impl ApplicationHandler for App {
                     self.send(cmd);
                 }
             }
-            if std::env::var_os("AURORA_DEMO_ACTIONS").is_some() {
+            if std::env::var_os("DEEPLY_DEMO_ACTIONS").is_some() {
                 for ev in crate::demo::action_events() {
                     self.world.apply(ev);
                 }
@@ -20967,7 +20969,7 @@ impl ApplicationHandler for App {
                     p.media.auto_scale = true;
                 }
             }
-            if std::env::var_os("AURORA_DEMO_ANIMESH").is_some() || std::env::var("AURORA_DEMO_POSER").is_ok_and(|m| m == "animesh") {
+            if std::env::var_os("DEEPLY_DEMO_ANIMESH").is_some() || std::env::var("DEEPLY_DEMO_POSER").is_ok_and(|m| m == "animesh") {
                 if let Some(g) = &mut self.gfx {
                     self.scene.install_demo_animesh(&mut g.renderer);
                 }
@@ -20987,15 +20989,15 @@ impl ApplicationHandler for App {
                     }
                 }
             }
-            // AURORA_DEMO_CLASSIC: classic avatars, shaped and baked
-            if std::env::var_os("AURORA_DEMO_CLASSIC").is_some() {
+            // DEEPLY_DEMO_CLASSIC: classic avatars, shaped and baked
+            if std::env::var_os("DEEPLY_DEMO_CLASSIC").is_some() {
                 for ev in crate::demo::classic_events(&self.world.avatar_lib.shape_params) {
                     self.world.apply(ev);
                 }
             }
-            // AURORA_DEMO_CLOUD=self: our avatar with an invisible head bake,
+            // DEEPLY_DEMO_CLOUD=self: our avatar with an invisible head bake,
             // wearing a mesh that cannot be downloaded (issue #121)
-            if std::env::var("AURORA_DEMO_CLOUD").is_ok_and(|v| v == "self") {
+            if std::env::var("DEEPLY_DEMO_CLOUD").is_ok_and(|v| v == "self") {
                 self.scene.meshes.insert_demo_unavailable(crate::demo::CLOUD_MESH);
                 for ev in crate::demo::cloud_self_events(&self.world.avatar_lib.shape_params) {
                     self.world.apply(ev);
@@ -21026,10 +21028,10 @@ impl ApplicationHandler for App {
                     self.world.apply(ev);
                 }
             }
-            // AURORA_DEMO_CROWD=<n>: avatars wearing attachments that follow
+            // DEEPLY_DEMO_CROWD=<n>: avatars wearing attachments that follow
             // their animated bones (scene sync stress test)
             if let Some(n) = crate::demo::crowd_count() {
-                let rigged = std::env::var_os("AURORA_DEMO_ANIMESH").is_some();
+                let rigged = std::env::var_os("DEEPLY_DEMO_ANIMESH").is_some();
                 // (<n>,<worn>: dancers dressed in rigged meshes)
                 if let Some((_, triangles)) = crate::demo::crowd_worn().filter(|_| rigged) {
                     if let Some(g) = &mut self.gfx {
@@ -21053,13 +21055,13 @@ impl ApplicationHandler for App {
                     }
                 }
             }
-            // AURORA_DEMO_LIGHTS=<n>: small local lights among the crowd
+            // DEEPLY_DEMO_LIGHTS=<n>: small local lights among the crowd
             if let Some(n) = crate::demo::lights_count() {
                 for ev in crate::demo::lights_events(n) {
                     self.world.apply(ev);
                 }
             }
-            // AURORA_DEMO_HAIR=<layers>[,<segments>[,<empty %>[,<period>]]]: layered
+            // DEEPLY_DEMO_HAIR=<layers>[,<segments>[,<empty %>[,<period>]]]: layered
             // blended shells on our avatar and on the crowd (blended pass load)
             if let Some(hair) = crate::demo::hair_demo() {
                 if let Some(g) = &mut self.gfx {
@@ -21069,7 +21071,7 @@ impl ApplicationHandler for App {
                     self.world.apply(ev);
                 }
             }
-            // AURORA_DEMO_PHYSICS: a physics layer and balls on the body of
+            // DEEPLY_DEMO_PHYSICS: a physics layer and balls on the body of
             // our avatar and of the one in front of it
             if let Some(mode) = crate::demo::physics::mode() {
                 if let Some(g) = &mut self.gfx {
@@ -21079,17 +21081,17 @@ impl ApplicationHandler for App {
                     self.world.apply(ev);
                 }
             }
-            // AURORA_DEMO_PHYSICS_EDIT: after the layer above, which a new
+            // DEEPLY_DEMO_PHYSICS_EDIT: after the layer above, which a new
             // layer replaces
             self.demo_physics_editor();
-            // AURORA_DEMO_FEET=opaque|blend: a shoe on each foot of our avatar
+            // DEEPLY_DEMO_FEET=opaque|blend: a shoe on each foot of our avatar
             // and of the crowd (what the contact shadows see touch the ground)
             if let Some(blend) = crate::demo::feet_demo() {
                 for ev in crate::demo::feet_events(blend, crate::demo::crowd_count().unwrap_or(0)) {
                     self.world.apply(ev);
                 }
             }
-            // AURORA_DEMO_GLYPHS=1|2|rtl: residents named and talking in the
+            // DEEPLY_DEMO_GLYPHS=1|2|rtl: residents named and talking in the
             // characters of the grid's display names (system fallback fonts)
             if let Some(mode) = crate::demo::glyphs::scenario() {
                 for ev in crate::demo::glyphs::events(mode) {
@@ -21097,7 +21099,7 @@ impl ApplicationHandler for App {
                         self.on_app_event(e);
                     }
                 }
-                // closed with AURORA_DEMO_CHAT_LINES, whose lines show above
+                // closed with DEEPLY_DEMO_CHAT_LINES, whose lines show above
                 // the chat bar with the Conversations window closed
                 self.panels.chat = crate::demo::chat_lines_scenario().is_none();
                 self.panels.people = false;
@@ -21105,27 +21107,27 @@ impl ApplicationHandler for App {
                 self.panels.minimap = false;
                 self.panels.perf = false;
             }
-            // AURORA_DEMO_EMOJI_PICKER=1|<text>: the conversation window open
+            // DEEPLY_DEMO_EMOJI_PICKER=1|<text>: the conversation window open
             // on its emoji picker (colour emoji font); a text is put in the
             // input field, as if picked
-            if let Ok(text) = std::env::var("AURORA_DEMO_EMOJI_PICKER") {
+            if let Ok(text) = std::env::var("DEEPLY_DEMO_EMOJI_PICKER") {
                 self.panels.chat = true;
                 self.chat_ui.emoji_open = true;
                 if text.trim() != "1" {
                     *self.chat_ui.draft_mut(self.chat_ui.selected) = text;
                 }
             }
-            // AURORA_DEMO_EMOJI_CODES=<text>: the conversation window open, its
+            // DEEPLY_DEMO_EMOJI_CODES=<text>: the conversation window open, its
             // input holding <text> with the keyboard and the caret at the
             // end: a `:code` of two letters or more there opens the emoji
             // suggestions (`ui/emoji/codes.rs`)
-            if let Ok(text) = std::env::var("AURORA_DEMO_EMOJI_CODES") {
+            if let Ok(text) = std::env::var("DEEPLY_DEMO_EMOJI_CODES") {
                 self.panels.chat = true;
                 *self.chat_ui.draft_mut(self.chat_ui.selected) = text;
                 self.chat_ui.conv_focus_request = true;
             }
             // Paragraph drafts in both editors, without a grid or clipboard.
-            if let Ok(mode) = std::env::var("AURORA_DEMO_CHAT_INPUT") {
+            if let Ok(mode) = std::env::var("DEEPLY_DEMO_CHAT_INPUT") {
                 self.panels.chat = true;
                 let text = if mode == "long" {
                     "A long paragraph with café and emoji 🙂 that wraps within the chat field.\n".repeat(12)
@@ -21138,7 +21140,7 @@ impl ApplicationHandler for App {
                 *self.chat_ui.draft_mut(self.chat_ui.selected) = text;
                 self.chat_ui.conv_focus_request = true;
             }
-            // AURORA_DEMO_SPELLING=1|menu|replace: misspelled words in the
+            // DEEPLY_DEMO_SPELLING=1|menu|replace: misspelled words in the
             // chat bar and in the conversation input (`spelling.rs`); `menu`:
             // the text menu opened on the bar's last word with its
             // suggestions; `replace`: auto-replace on for the run (not
@@ -21152,39 +21154,39 @@ impl ApplicationHandler for App {
                     *self.chat_ui.draft_mut(self.chat_ui.selected) = "Teh avatar is waiting at the landng point".into();
                 }
             }
-            // AURORA_DEMO_CONV_SELECT=all|part: the conversation window open,
+            // DEEPLY_DEMO_CONV_SELECT=all|part: the conversation window open,
             // its lines selected (Ctrl+A, or across three lines)
-            if let Ok(mode) = std::env::var("AURORA_DEMO_CONV_SELECT") {
+            if let Ok(mode) = std::env::var("DEEPLY_DEMO_CONV_SELECT") {
                 self.panels.chat = true;
                 self.chat_ui.demo_select = Some(mode.trim().to_owned());
             }
-            // AURORA_DEMO_CONV_MENU=local|im|group|conference: the right-click
-            // menu of a conversation of the list open (with AURORA_DEMO_CONV)
-            if let Ok(kind) = std::env::var("AURORA_DEMO_CONV_MENU") {
+            // DEEPLY_DEMO_CONV_MENU=local|im|group|conference: the right-click
+            // menu of a conversation of the list open (with DEEPLY_DEMO_CONV)
+            if let Ok(kind) = std::env::var("DEEPLY_DEMO_CONV_MENU") {
                 self.panels.chat = true;
                 self.chat_ui.demo_menu = Some(kind.trim().to_owned());
             }
-            // AURORA_DEMO_CONV_REORDER=1|hold|out|nearby: an entry of the
-            // list dragged (with AURORA_DEMO_CONV)
-            if let Ok(mode) = std::env::var("AURORA_DEMO_CONV_REORDER") {
+            // DEEPLY_DEMO_CONV_REORDER=1|hold|out|nearby: an entry of the
+            // list dragged (with DEEPLY_DEMO_CONV)
+            if let Ok(mode) = std::env::var("DEEPLY_DEMO_CONV_REORDER") {
                 self.panels.chat = true;
                 self.chat_ui.demo_reorder = Some(ui::chat::ReorderDemo::parse(&mode));
             }
-            // AURORA_DEMO_KEYWORDS: the alerts on for the run, with the
+            // DEEPLY_DEMO_KEYWORDS: the alerts on for the run, with the
             // Conversations window open on the nearby chat
             if crate::demo::keywords::active() {
                 crate::keywords::set(&self.keyword_settings());
                 self.panels.chat = true;
             }
-            // AURORA_DEMO_SOUND=1: a looped chime in the world; =hud:
+            // DEEPLY_DEMO_SOUND=1: a looped chime in the world; =hud:
             // on a linked HUD prim. Interface sounds are enabled too.
-            if std::env::var_os("AURORA_DEMO_SOUND").is_some() {
+            if std::env::var_os("DEEPLY_DEMO_SOUND").is_some() {
                 let (id, clip) = crate::demo::chime();
                 self.scene.sounds.insert(id, clip);
                 for id in self.settings.audio.ui.preload() {
                     self.scene.sounds.insert(id, crate::demo::ui_sound(id));
                 }
-                let mode = std::env::var("AURORA_DEMO_SOUND").unwrap_or_default();
+                let mode = std::env::var("DEEPLY_DEMO_SOUND").unwrap_or_default();
                 let events = match mode.as_str() {
                     "hud" => crate::demo::hud::sound_events(id),
                     "parcel-open" | "parcel-local" | "parcel-source" => {
@@ -21199,9 +21201,9 @@ impl ApplicationHandler for App {
                     }
                 }
             }
-            // AURORA_DEMO_SOUND_OCCLUSION=1: three looping sources, in the
+            // DEEPLY_DEMO_SOUND_OCCLUSION=1: three looping sources, in the
             // open, behind a wall and shut in a box
-            // AURORA_DEMO_SOUND_HRTF=1|circle|updown: a sound circling the
+            // DEEPLY_DEMO_SOUND_HRTF=1|circle|updown: a sound circling the
             // listener and one rising above it and falling (moved by
             // `demo::sound_hrtf::tick`)
             if crate::demo::sound_hrtf::active() {
@@ -21226,7 +21228,7 @@ impl ApplicationHandler for App {
                     }
                 }
             }
-            // AURORA_DEMO_SOUND_REVERB=1: a clapper above our avatar, a
+            // DEEPLY_DEMO_SOUND_REVERB=1: a clapper above our avatar, a
             // small room and a large hall to walk into
             if crate::demo::sound_reverb::active() {
                 self.world.agent.get_off(crate::demo::sound_reverb::start());
@@ -21239,9 +21241,9 @@ impl ApplicationHandler for App {
                     }
                 }
             }
-            // AURORA_DEMO_MEDIA=<url> (1: a test page): a screen with media
+            // DEEPLY_DEMO_MEDIA=<url> (1: a test page): a screen with media
             // on a prim east of the start position, playing at once
-            if let Some(v) = std::env::var_os("AURORA_DEMO_MEDIA") {
+            if let Some(v) = std::env::var_os("DEEPLY_DEMO_MEDIA") {
                 let v = v.to_string_lossy().into_owned();
                 // Mini controls: the same page, with the address hidden
                 // (LLMediaEntry::MINI, LLPanelPrimMediaControls::updateShape).
@@ -21257,14 +21259,14 @@ impl ApplicationHandler for App {
                 }
                 self.media.demo_face(object, face, &url, mini);
             }
-            // AURORA_DEMO_WORN: an object worn on our avatar's back
-            if std::env::var_os("AURORA_DEMO_WORN").is_some() {
+            // DEEPLY_DEMO_WORN: an object worn on our avatar's back
+            if std::env::var_os("DEEPLY_DEMO_WORN").is_some() {
                 for ev in crate::demo::worn::events() {
                     self.world.apply(ev);
                 }
                 crate::demo::worn::seed_inventory(&mut self.world);
                 // `inventory`, `library`, `sound`: the rows to double-click in sight
-                let mode = std::env::var("AURORA_DEMO_WORN").unwrap_or_default();
+                let mode = std::env::var("DEEPLY_DEMO_WORN").unwrap_or_default();
                 if mode == "library" {
                     crate::demo::worn::seed_library(&mut self.world);
                 }
@@ -21285,7 +21287,7 @@ impl ApplicationHandler for App {
                     self.world.apply(ev);
                 }
             }
-            if let Ok(mode) = std::env::var("AURORA_DEMO_HUDS") {
+            if let Ok(mode) = std::env::var("DEEPLY_DEMO_HUDS") {
                 let faces = matches!(mode.as_str(), "faces" | "faces-turned" | "faces-alpha");
                 let mask_cutoff = matches!(mode.as_str(), "mask-cutoff" | "mask-cutoff-zoom");
                 if mask_cutoff {
@@ -21426,9 +21428,9 @@ impl ApplicationHandler for App {
                     self.demo_worn_item(item, self.world.agent_id);
                 }
             }
-            // AURORA_DEMO_PARCEL_MEDIA=<url> (1: the test page): parcel media
+            // DEEPLY_DEMO_PARCEL_MEDIA=<url> (1: the test page): parcel media
             // on the first test panel's texture, started at once.
-            if let Some(v) = std::env::var_os("AURORA_DEMO_PARCEL_MEDIA") {
+            if let Some(v) = std::env::var_os("DEEPLY_DEMO_PARCEL_MEDIA") {
                 let v = v.to_string_lossy().into_owned();
                 let url = if v == "1" || v.is_empty() {
                     crate::demo::demo_media_page().to_string()
@@ -21958,7 +21960,7 @@ impl ApplicationHandler for App {
             }
             WindowEvent::MouseInput { state, button, .. } => {
                 self.last_input = Instant::now();
-                // (AURORA_DEMO_BUSY_PAUSE: a click ends the demo's busy card,
+                // (DEEPLY_DEMO_BUSY_PAUSE: a click ends the demo's busy card,
                 // as the focus does a real one; busy_pause.rs)
                 if *state == ElementState::Pressed && self.busy_pause.paused() {
                     self.busy_pause.demo_released = true;
@@ -22099,7 +22101,7 @@ fn wait_until(until: Instant) {
 /// the screen rate outside the world. The login screen draws an empty scene:
 /// left free it runs at thousands of frames per second, which floods the
 /// desktop compositor and makes the whole machine stutter on some setups.
-/// `timed` runs (AURORA_CAPTURE, AURORA_PROFILE) count or measure frames,
+/// `timed` runs (DEEPLY_CAPTURE, DEEPLY_PROFILE) count or measure frames,
 /// often in a window that never had the focus: no background cap there.
 fn frame_cap(s: &Settings, focused: bool, in_world: bool, monitor_hz: f32, timed: bool, fps_limit: Option<u32>) -> f32 {
     let mut cap = if s.fps_cap { s.fps_limit as f32 } else { f32::INFINITY };
@@ -22142,7 +22144,7 @@ fn present_mode_name(mode: Option<aurora_render::wgpu::PresentMode>) -> &'static
     mode.map_or("unknown", aurora_render::present::name)
 }
 
-/// AURORA_CAPTURE files: one per frame of AURORA_CAPTURE_FRAMES (comma
+/// DEEPLY_CAPTURE files: one per frame of DEEPLY_CAPTURE_FRAMES (comma
 /// separated, default 240), in frame order; with several frames each file is
 /// named `<name>-<frame>.<ext>`.
 fn capture_files(path: &std::path::Path, frames: &str) -> Vec<(u64, std::path::PathBuf)> {

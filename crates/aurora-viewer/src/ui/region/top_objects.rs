@@ -69,7 +69,7 @@ pub(super) struct TopState {
     /// (column, descending)
     sort: Option<(Column, bool)>,
     ask_return_all: bool,
-    /// AURORA_DEMO_REGION's report, opened once the simulator answered.
+    /// DEEPLY_DEMO_REGION's report, opened once the simulator answered.
     pub demo: Option<u32>,
 }
 

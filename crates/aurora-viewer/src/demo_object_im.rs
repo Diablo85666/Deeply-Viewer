@@ -1,4 +1,4 @@
-//! AURORA_DEMO_OBJECT_IM=off|region|parcel|strict: objects' messages from
+//! DEEPLY_DEMO_OBJECT_IM=off|region|parcel|strict: objects' messages from
 //! near and far (`world/object_im_filter.rs`), with the filter set for this
 //! run only: `off`, on for the region, on for the parcel, or on for the
 //! parcel with friends' objects blocked too. Seven messages reach nearby
@@ -12,7 +12,7 @@ use uuid::Uuid;
 
 /// The filter of this run, if the scenario is on.
 pub fn settings() -> Option<Settings> {
-    let mode = std::env::var("AURORA_DEMO_OBJECT_IM").ok()?;
+    let mode = std::env::var("DEEPLY_DEMO_OBJECT_IM").ok()?;
     let on = |scope, allow_friends| Settings {
         on: true,
         scope,

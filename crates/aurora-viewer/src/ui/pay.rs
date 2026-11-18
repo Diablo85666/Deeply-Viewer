@@ -883,7 +883,7 @@ impl PayUi {
         }
     }
 
-    /// AURORA_DEMO_PAY: the window in the state its mode names
+    /// DEEPLY_DEMO_PAY: the window in the state its mode names
     /// (docs/TESTING.md).
     pub fn demo(&mut self, id: Uuid, mode: &str) {
         let group = mode == "group";

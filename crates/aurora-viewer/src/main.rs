@@ -1,4 +1,4 @@
-//! Aurora Viewer — a Second Life client in Rust (wgpu / Vulkan).
+//! Deeply Viewer — a Second Life client in Rust (wgpu / Vulkan).
 
 #![cfg_attr(all(windows, not(debug_assertions)), windows_subsystem = "windows")]
 
@@ -154,7 +154,7 @@ fn main() -> anyhow::Result<()> {
         std::process::exit(uninstall::command_line());
     }
     anyhow::ensure!(
-        std::env::var_os("AURORA_UPDATE_TEST_ROOT").is_none() || aurora_updater::test_environment().is_some(),
+        std::env::var_os("DEEPLY_UPDATE_TEST_ROOT").is_none() || aurora_updater::test_environment().is_some(),
         "invalid isolated update test installation"
     );
     anyhow::ensure!(
@@ -206,14 +206,14 @@ fn main() -> anyhow::Result<()> {
     if !vulkan_layers_off.is_empty() {
         let names: Vec<_> = vulkan_layers_off.iter().map(|l| format!("{} ({})", l.name, l.program)).collect();
         log::info!(
-            "Vulkan layers kept out of the viewer (overlays: crashes and lost images, #901): {}; overlays {} in Preferences › Graphics, AURORA_VULKAN_LAYERS=keep loads them all",
+            "Vulkan layers kept out of the viewer (overlays: crashes and lost images, #901): {}; overlays {} in Preferences › Graphics, DEEPLY_VULKAN_LAYERS=keep loads them all",
             names.join(", "),
             if allow_overlays { "allowed" } else { "not allowed" }
         );
     }
     if dozen_off {
         log::info!(
-            "Vulkan driver kept out of the viewer: Dozen (Vulkan on Direct3D 12, from Microsoft's compatibility pack; crashed an old Direct3D 12 driver at start), {}={}; AURORA_VULKAN_DRIVERS=keep loads it",
+            "Vulkan driver kept out of the viewer: Dozen (Vulkan on Direct3D 12, from Microsoft's compatibility pack; crashed an old Direct3D 12 driver at start), {}={}; DEEPLY_VULKAN_DRIVERS=keep loads it",
             aurora_render::vulkan_drivers::DISABLE_VARIABLE,
             aurora_render::vulkan_drivers::DOZEN_GLOB
         );

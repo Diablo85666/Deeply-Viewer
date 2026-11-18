@@ -1,4 +1,4 @@
-Aurora Deeply Viewer 0.9.10.4
+Deeply Deeply Viewer 0.9.12
 Guida all'utilizzo
 
 INSTALLAZIONE
@@ -6,13 +6,13 @@ INSTALLAZIONE
 2. Confronta il file .sha256.
 3. Verifica il file .minisig con la chiave pubblica del README.
 4. Estrai tutto lo ZIP in una cartella dedicata.
-5. Avvia Aurora-Deeply-Viewer.exe.
+5. Avvia Deeply-Viewer.exe.
 
 Non eliminare la cartella assets: il pacchetto e portable.
 
 LINGUA E AGGIORNAMENTI
-Imposta AURORA_UI_LANGUAGE=it per l'italiano. Usa il controllo aggiornamenti:
-l'updater segue il repository community e Aurora-Deeply-Update-policy.json.
+Imposta DEEPLY_UI_LANGUAGE=it per l'italiano. Usa il controllo aggiornamenti:
+l'updater segue il repository community e Deeply-Update-policy.json.
 
 BROWSER
 Usa il browser interno per URL HTTP/HTTPS, navigazione, ricaricamento e
@@ -24,7 +24,7 @@ Le preferenze sono persistenti e il rifiuto conference precede l'apertura.
 
 LOG E FIRESTORM
 Attiva la condivisione Firestorm solo se vuoi usare la stessa cartella locale.
-Aurora importa transcript esistenti e puo leggere/scrivere nella cartella
+Deeply importa transcript esistenti e puo leggere/scrivere nella cartella
 compatibile trovata. Non vengono sincronizzati dati via Internet.
 
 GRAFICA E REPORT
@@ -35,3 +35,4 @@ solo dopo autorizzazione. Log, posizione e screenshot sono opzionali.
 SICUREZZA
 Un avviso del sistema operativo non va ignorato automaticamente. Controlla
 sempre provenienza, SHA-256, Minisign e risultati delle scansioni disponibili.
+

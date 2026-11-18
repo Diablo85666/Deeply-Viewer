@@ -1,11 +1,11 @@
-//! AURORA_DEMO_GLYPHS: residents whose group title, display name and chat
+//! DEEPLY_DEMO_GLYPHS: residents whose group title, display name and chat
 //! line use the characters residents really put there (mathematical "fancy"
 //! letters, symbols, Georgian hearts, Japanese, Korean, Chinese, Arabic,
 //! Hebrew, emoji…), and a prim with such a hover text. Everything the
 //! embedded fonts lack must come from the system's fonts
 //! (`ui::fonts::fallback`) instead of showing squares.
 //!
-//! `AURORA_DEMO_GLYPHS=rtl`: the same scene in right-to-left text (Arabic,
+//! `DEEPLY_DEMO_GLYPHS=rtl`: the same scene in right-to-left text (Arabic,
 //! Hebrew, mixed with English, numbers, brackets, a link, a long line), read
 //! in its order (`ui::bidi`); `rtl2` with the chat lines in reverse order,
 //! the two-word Arabic and Hebrew names among the last lines.
@@ -71,7 +71,7 @@ pub const SAMPLES: &[Sample] = &[
     },
 ];
 
-/// `AURORA_DEMO_GLYPHS=rtl`: what right-to-left text puts to the test.
+/// `DEEPLY_DEMO_GLYPHS=rtl`: what right-to-left text puts to the test.
 pub const RTL_SAMPLES: &[Sample] = &[
     Sample {
         title: "فريق أورورا",
@@ -90,7 +90,7 @@ pub const RTL_SAMPLES: &[Sample] = &[
         chat: "I love this place, شكرا جزيلا for the party!",
     },
     Sample {
-        title: "Aurora Viewer",
+        title: "Deeply Viewer",
         display_name: "ليلى",
         chat: "الحفلة الساعة 8:30 مساءً في المنطقة رقم 42 (الطابق الثاني)",
     },
@@ -102,7 +102,7 @@ pub const RTL_SAMPLES: &[Sample] = &[
     Sample {
         title: "דניאל",
         display_name: "Dani דני",
-        chat: "ברוכים הבאים ל-Aurora Viewer, תהנו!",
+        chat: "ברוכים הבאים ל-Deeply Viewer, תהנו!",
     },
     Sample {
         title: "رسالة طويلة",
@@ -131,10 +131,10 @@ pub struct Mode {
     pub rtl: bool,
 }
 
-/// `AURORA_DEMO_GLYPHS=1`, `2` for the chat lines in reverse order, `rtl`
+/// `DEEPLY_DEMO_GLYPHS=1`, `2` for the chat lines in reverse order, `rtl`
 /// for right-to-left text, `rtl2` for both.
 pub fn scenario() -> Option<Mode> {
-    std::env::var("AURORA_DEMO_GLYPHS").ok().map(|v| Mode {
+    std::env::var("DEEPLY_DEMO_GLYPHS").ok().map(|v| Mode {
         reversed: matches!(v.trim(), "2" | "rtl2"),
         rtl: matches!(v.trim(), "rtl" | "rtl2"),
     })

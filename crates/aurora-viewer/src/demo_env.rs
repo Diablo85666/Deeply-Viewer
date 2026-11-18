@@ -1,5 +1,5 @@
 //! Environment selector in the offline demo
-//! (`AURORA_DEMO_ENV_SELECT=1|lighting`): a small library with an
+//! (`DEEPLY_DEMO_ENV_SELECT=1|lighting`): a small library with an
 //! "Environments" folder, a Settings folder in the inventory, and their
 //! settings assets known locally (nothing is fetched), then a scripted run.
 //!
@@ -23,10 +23,10 @@ use uuid::Uuid;
 
 fn scenario() -> &'static str {
     static S: OnceLock<String> = OnceLock::new();
-    S.get_or_init(|| std::env::var("AURORA_DEMO_ENV_SELECT").unwrap_or_default().trim().to_owned())
+    S.get_or_init(|| std::env::var("DEEPLY_DEMO_ENV_SELECT").unwrap_or_default().trim().to_owned())
 }
 
-/// The selector's scripted run (`AURORA_DEMO_ENV_SELECT`).
+/// The selector's scripted run (`DEEPLY_DEMO_ENV_SELECT`).
 fn select_enabled() -> bool {
     !scenario().is_empty() && scenario() != "0"
 }
@@ -36,16 +36,16 @@ pub fn kind_of(asset: Uuid) -> Option<SettingsKind> {
     items().iter().find(|(.., a)| u(*a) == asset).map(|(_, _, k, _)| *k)
 }
 
-/// `AURORA_DEMO_ENV_EDITOR=sky|clouds|sun|water|item`: the sky or water
+/// `DEEPLY_DEMO_ENV_EDITOR=sky|clouds|sun|water|item`: the sky or water
 /// editor opens on a snapshot (on its Clouds or Sun & Moon tab), or on the
 /// user's "My purple sky" item.
 pub fn editor() -> Option<&'static str> {
     static S: OnceLock<String> = OnceLock::new();
-    let s = S.get_or_init(|| std::env::var("AURORA_DEMO_ENV_EDITOR").unwrap_or_default().trim().to_owned());
+    let s = S.get_or_init(|| std::env::var("DEEPLY_DEMO_ENV_EDITOR").unwrap_or_default().trim().to_owned());
     (!s.is_empty() && s != "0").then_some(s.as_str())
 }
 
-/// `AURORA_DEMO_ENV_EDITOR=parcel|region|custom` (or `…-refused`,
+/// `DEEPLY_DEMO_ENV_EDITOR=parcel|region|custom` (or `…-refused`,
 /// `custom-follow`): the
 /// editors' parcel and region scenarios. The avatar owns its parcel (and
 /// manages the estate for `region`), the region has an EEP day.
@@ -53,7 +53,7 @@ pub fn parcel_scenario() -> bool {
     editor().is_some_and(|s| matches!(s.split('-').next(), Some("parcel" | "region" | "custom")))
 }
 
-/// `AURORA_DEMO_ENV_EDITOR=region…`: the avatar manages the demo estate.
+/// `DEEPLY_DEMO_ENV_EDITOR=region…`: the avatar manages the demo estate.
 pub fn estate_manager() -> bool {
     editor().is_some_and(|s| s.starts_with("region"))
 }
@@ -61,13 +61,13 @@ pub fn estate_manager() -> bool {
 /// The library and the user's Settings folder: for the selector's and the
 /// editors' scenarios, and for About Land's (its environment picker).
 pub fn enabled() -> bool {
-    select_enabled() || editor().is_some() || std::env::var_os("AURORA_DEMO_LAND").is_some() || photo_windlight()
+    select_enabled() || editor().is_some() || std::env::var_os("DEEPLY_DEMO_LAND").is_some() || photo_windlight()
 }
 
-/// `AURORA_DEMO_SNAPSHOT=windlight…`: the photo's Light section picks from
+/// `DEEPLY_DEMO_SNAPSHOT=windlight…`: the photo's Light section picks from
 /// the library.
 fn photo_windlight() -> bool {
-    std::env::var("AURORA_DEMO_SNAPSHOT").is_ok_and(|s| s.trim().starts_with("windlight"))
+    std::env::var("DEEPLY_DEMO_SNAPSHOT").is_ok_and(|s| s.trim().starts_with("windlight"))
 }
 
 /// The photo's demo picks: the library's "Coastal Sunset" sky and "Murky

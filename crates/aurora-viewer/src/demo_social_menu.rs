@@ -1,4 +1,4 @@
-//! AURORA_DEMO_SOCIAL_MENU: a resident's "Invite to group", "Add to
+//! DEEPLY_DEMO_SOCIAL_MENU: a resident's "Invite to group", "Add to
 //! contact set" and "Block particles" (app/social_menu_demo.rs runs the
 //! steps). The violet wolf stands in for the resident: not blocked in this
 //! scenario, owner of the plaza's fountain, and our abilities in "Aurora
@@ -27,7 +27,7 @@ pub enum Step {
 }
 
 pub fn step() -> Option<Step> {
-    Some(match std::env::var("AURORA_DEMO_SOCIAL_MENU").ok()?.trim() {
+    Some(match std::env::var("DEEPLY_DEMO_SOCIAL_MENU").ok()?.trim() {
         "1" | "menu" => Step::Menu,
         "picker" => Step::Picker,
         "invite" => Step::Invite,

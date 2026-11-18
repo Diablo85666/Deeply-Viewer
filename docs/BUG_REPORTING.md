@@ -2,7 +2,7 @@
 
 "Report a bug", in the top bar, the Help menu and on the login screen, opens
 the project's
-[GitHub issue forms](https://github.com/Aurora-Viewer/Aurora-Viewer/issues/new/choose)
+[GitHub issue forms](https://github.com/Diablo85666/Deeply-Viewer/issues/new/choose)
 in the browser. The tester needs a GitHub account, chooses the bug report
 template and fills it in on GitHub. "Copy trace" and "Open report folder",
 in the crash window, give the full technical details, to review before
@@ -25,7 +25,7 @@ browser" opens a new issue with the same title and text instead (text in
 the clipboard when the link would be too long).
 
 The authorization is kept in the system credential store (Windows
-Credential Manager, entry "Aurora Viewer GitHub"), never in the settings,
+Credential Manager, entry "Deeply Viewer GitHub"), never in the settings,
 the reports or the logs: an expiring user token and its refresh token,
 refreshed without any client secret (allowed for the Device Flow) and
 replaced at each refresh. "Forget the GitHub connection", in the crash
@@ -171,7 +171,7 @@ What each part tells the one who fixes it:
 
 ### Crash symbols
 
-Each Windows release carries `Aurora-Viewer-vX.Y.Z-windows-x64-symbols.zip`:
+Each Windows release carries `Deeply-Viewer-vX.Y.Z-windows-x64-symbols.zip`:
 the Breakpad symbol file of the exe, made by `dump_syms` from the release
 build's PDB (line tables only) and stored as
 `aurora_viewer.pdb/<debug id>/aurora_viewer.sym`. The debug id is the
@@ -254,7 +254,7 @@ disabled for now; its code stays in the tree, out of the build, to be
 brought back later: uncomment every line marked "Bug report form (disabled,
 see main.rs)" (`main.rs` lists its files). The rest of this page describes
 that form, as it works once enabled, and its GitHub setup.
-`AURORA_DEMO_BUG_REPORT` has no effect while it is disabled.
+`DEEPLY_DEMO_BUG_REPORT` has no effect while it is disabled.
 
 The shared form can be reached from the top bar, Help and the login screen.
 "Send from Aurora" is the first choice and the default mode of new reports.
@@ -276,7 +276,7 @@ new authorisation from the tester.
 
 ### Setting up direct sending
 
-Create a **GitHub App**, in the developer settings of the Aurora-Viewer
+Create a **GitHub App**, in the developer settings of the Deeply-Viewer
 organisation, then:
 
 - turn on **Enable Device Flow**, keep the expiry of the authorisations;
@@ -284,7 +284,7 @@ organisation, then:
 - repository permissions: **Issues — Read and write**, read-only metadata,
   no other permission;
 - public application (**Any account**) for the testers; install it on the
-  organisation with only the Aurora-Viewer repository selected;
+  organisation with only the Deeply-Viewer repository selected;
 - copy the **public Client ID** into `bug_report/github.rs::CLIENT_ID`.
   The numeric App ID is not suitable. No Client secret and no private key
   may be added to the viewer.
@@ -354,7 +354,7 @@ server of its own for the reports.
 
 ### Validation
 
-`AURORA_DEMO_BUG_REPORT=1` with demo mode opens a sample report. Both
+`DEEPLY_DEMO_BUG_REPORT=1` with demo mode opens a sample report. Both
 sending modes stay local, without GitHub authorisation and without opening
 the browser. The `details`, `image`, `image-ui` and `direct` modes show
 respectively the information with the location unticked, a screenshot of

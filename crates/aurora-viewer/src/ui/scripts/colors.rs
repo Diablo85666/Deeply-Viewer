@@ -74,7 +74,7 @@ impl State {
             id,
         });
         self.picker.open_from(literal.rgb, false, parent);
-        if std::env::var("AURORA_DEMO_SCRIPTS").is_ok_and(|mode| matches!(mode.as_str(), "color-picker" | "color-accept" | "color-cancel"))
+        if std::env::var("DEEPLY_DEMO_SCRIPTS").is_ok_and(|mode| matches!(mode.as_str(), "color-picker" | "color-accept" | "color-cancel"))
         {
             self.picker.track_controls();
         }

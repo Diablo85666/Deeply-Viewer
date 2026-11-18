@@ -761,10 +761,10 @@ fn status_dot(ui: &mut egui::Ui, p: &Palette, status: crate::world::status::Stat
         ui.painter().circle_stroke(rect.center(), 7.5, egui::Stroke::new(1.0, p.muted));
     }
     let resp = resp.on_hover_text(status_tip(&status));
-    // demo captures: AURORA_DEMO_STATUSMENU=1 opens it (=invisible: with
+    // demo captures: DEEPLY_DEMO_STATUSMENU=1 opens it (=invisible: with
     // that status, set by the viewer)
     static DEMO_OPEN: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    if *DEMO_OPEN.get_or_init(|| std::env::var_os("AURORA_DEMO_STATUSMENU").is_some()) && ui.ctx().cumulative_frame_nr() == 300 {
+    if *DEMO_OPEN.get_or_init(|| std::env::var_os("DEEPLY_DEMO_STATUSMENU").is_some()) && ui.ctx().cumulative_frame_nr() == 300 {
         egui::Popup::open_id(ui.ctx(), egui::Popup::default_response_id(&resp));
     }
     menu::dropdown(&resp, p, egui::PopupCloseBehavior::CloseOnClickOutside, |ui| {
@@ -1928,7 +1928,7 @@ fn location_field(ui: &mut egui::Ui, p: &Palette, panels: &mut Panels, st: &Stat
             panels.nav_edit = Some(slurl.to_owned());
             panels.nav_edit_new = true;
         }
-        // AURORA_DEMO_BARS=legacy,locations: a place being typed
+        // DEEPLY_DEMO_BARS=legacy,locations: a place being typed
         if demo::get().locations && ui.ctx().cumulative_frame_nr() == location_suggest::DEMO_FRAME {
             panels.nav_edit = Some(location_suggest::DEMO_TYPED.to_owned());
             panels.nav_edit_new = true;
@@ -2906,9 +2906,9 @@ fn mic_button(
         }
     });
 
-    // demo captures: AURORA_DEMO_MICMENU=1 opens the panel
+    // demo captures: DEEPLY_DEMO_MICMENU=1 opens the panel
     static DEMO_OPEN: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    let demo = *DEMO_OPEN.get_or_init(|| std::env::var_os("AURORA_DEMO_MICMENU").is_some()) && ui.ctx().cumulative_frame_nr() == 300;
+    let demo = *DEMO_OPEN.get_or_init(|| std::env::var_os("DEEPLY_DEMO_MICMENU").is_some()) && ui.ctx().cumulative_frame_nr() == 300;
     let toggle = match &arrow {
         Some(arrow) => arrow.clicked(),
         None => !toolbar_menu && resp.secondary_clicked(),

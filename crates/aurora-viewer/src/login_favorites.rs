@@ -349,7 +349,7 @@ pub fn merge(stored: &[Favorite], current: Vec<Current>) -> Vec<Favorite> {
         .collect()
 }
 
-/// AURORA_DEMO_LOGIN_FAVORITES=1|open|pick, with AURORA_DEMO_LOGIN=cards:
+/// DEEPLY_DEMO_LOGIN_FAVORITES=1|open|pick, with DEEPLY_DEMO_LOGIN=cards:
 /// stored favourites for the second (selected) and third demo accounts (the first
 /// was never logged in here: Home and Last only); `open` opens the
 /// selected card's start menu once, `pick` chooses its second favourite
@@ -364,7 +364,7 @@ pub enum Demo {
 pub fn demo() -> Option<Demo> {
     static DEMO: std::sync::OnceLock<Option<Demo>> = std::sync::OnceLock::new();
     *DEMO.get_or_init(|| {
-        let value = std::env::var("AURORA_DEMO_LOGIN_FAVORITES").ok()?;
+        let value = std::env::var("DEEPLY_DEMO_LOGIN_FAVORITES").ok()?;
         match value.trim() {
             "" | "0" | "off" => None,
             "open" => Some(Demo::Open),

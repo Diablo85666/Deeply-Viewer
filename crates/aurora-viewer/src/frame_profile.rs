@@ -1,4 +1,4 @@
-//! Frame profile (AURORA_PROFILE=1): where the time of each frame goes, as
+//! Frame profile (DEEPLY_PROFILE=1): where the time of each frame goes, as
 //! one summary line in the log every second. The laps of the frame loop
 //! cover the whole time between two frames; the renderer adds its own
 //! steps, the GPU time by element and counters (draws, synced objects,
@@ -505,7 +505,7 @@ pub struct FrameProfile {
     click: Option<ClickFrames>,
 }
 
-/// AURORA_PROFILE: the frames from a click on the world to a few frames
+/// DEEPLY_PROFILE: the frames from a click on the world to a few frames
 /// after it is answered, one line for them all, so that a spike in the
 /// frame graph at each click names its side (main thread step, render
 /// thread, GPU element). The GPU times come back two or three frames
@@ -520,7 +520,7 @@ const CLICK_FRAMES: usize = 9;
 
 impl Default for FrameProfile {
     fn default() -> Self {
-        FrameProfile::new(std::env::var_os("AURORA_PROFILE").is_some())
+        FrameProfile::new(std::env::var_os("DEEPLY_PROFILE").is_some())
     }
 }
 
@@ -562,7 +562,7 @@ impl FrameProfile {
         self.enabled
     }
 
-    /// Measure the frames without AURORA_PROFILE (the resource monitor
+    /// Measure the frames without DEEPLY_PROFILE (the resource monitor
     /// shows them); nothing is logged. Turned off, the averages are
     /// forgotten.
     pub fn set_live(&mut self, live: bool) {
@@ -585,12 +585,12 @@ impl FrameProfile {
     }
 
     /// Averages per frame of the last second measured (with
-    /// AURORA_PROFILE or [`FrameProfile::set_live`]).
+    /// DEEPLY_PROFILE or [`FrameProfile::set_live`]).
     pub fn averages(&self) -> Option<&Averages> {
         self.averages.as_ref()
     }
 
-    /// AURORA_BLEND_EARLY_DISCARD=alt: the blended faces take the old path
+    /// DEEPLY_BLEND_EARLY_DISCARD=alt: the blended faces take the old path
     /// (invisible fragments lit, then dropped) during one summary in three,
     /// so that one run measures both paths on the same scene, second after
     /// second (`blend_early=` in the summary tells them apart). Three rather
@@ -600,13 +600,13 @@ impl FrameProfile {
         self.enabled && BlendDiscard::from_env() == BlendDiscard::Alternate && self.periods.is_multiple_of(3)
     }
 
-    /// AURORA_LIGHT_TILES=alt: likewise, the fragments walk the whole light
+    /// DEEPLY_LIGHT_TILES=alt: likewise, the fragments walk the whole light
     /// list during one summary in three (`light_tiles=` in the summary).
     pub fn all_lights(&self) -> bool {
         self.enabled && LightCulling::from_env() == LightCulling::Alternate && self.periods.is_multiple_of(3)
     }
 
-    /// AURORA_PROBE_WALK=alt: likewise, the fragments walk the whole list
+    /// DEEPLY_PROBE_WALK=alt: likewise, the fragments walk the whole list
     /// of reflection probes during one summary in three (`xmode=old`).
     pub fn probe_walk_list(&self) -> bool {
         use aurora_render::probes::ProbeWalk;
@@ -783,7 +783,7 @@ impl FrameProfile {
         if !self.enabled {
             return Some(String::new());
         }
-        // (with AURORA_SHADOW_LEGACY=ab, the next period compares the other path)
+        // (with DEEPLY_SHADOW_LEGACY=ab, the next period compares the other path)
         p.shadow_path = aurora_render::shadow_cull::next_path();
         Some(summary(&p, elapsed))
     }

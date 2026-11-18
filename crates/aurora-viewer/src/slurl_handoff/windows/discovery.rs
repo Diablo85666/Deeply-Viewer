@@ -28,7 +28,7 @@ pub(super) struct Scope {
 impl Scope {
     pub fn current() -> Self {
         Self {
-            demo: std::env::var_os("AURORA_DEMO").is_some(),
+            demo: std::env::var_os("DEEPLY_DEMO").is_some(),
             title: crate::cli::title_slug(),
         }
     }

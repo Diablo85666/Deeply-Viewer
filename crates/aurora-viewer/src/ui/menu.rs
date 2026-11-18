@@ -1420,12 +1420,12 @@ pub fn searchable(ui: &mut Ui, p: &Palette, body: impl FnOnce(&mut Ui)) {
     }
 }
 
-/// `AURORA_DEMO_MENU_SEARCH=<query>`: the wolf menu of the islands (the
+/// `DEEPLY_DEMO_MENU_SEARCH=<query>`: the wolf menu of the islands (the
 /// default bars) clicked at frames 540–541 and `query` typed in its search
 /// field at 560; capture frame 620.
 pub fn search_demo_events(frame: u64) -> Vec<egui::Event> {
     static QUERY: std::sync::OnceLock<Option<String>> = std::sync::OnceLock::new();
-    let Some(query) = QUERY.get_or_init(|| std::env::var("AURORA_DEMO_MENU_SEARCH").ok()) else {
+    let Some(query) = QUERY.get_or_init(|| std::env::var("DEEPLY_DEMO_MENU_SEARCH").ok()) else {
         return Vec::new();
     };
     let wolf = egui::pos2(30.0, 30.0);

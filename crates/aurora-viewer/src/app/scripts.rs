@@ -120,7 +120,7 @@ impl App {
         if !self.demo {
             return;
         }
-        let Ok(mode) = std::env::var("AURORA_DEMO_SCRIPTS") else { return };
+        let Ok(mode) = std::env::var("DEEPLY_DEMO_SCRIPTS") else { return };
         if matches!(mode.as_str(), "insert-filter" | "insert-empty") {
             raw.events
                 .extend(self.script_editors.demo_insertion_events(&self.egui_ctx, self.frame_count, &mode));
@@ -197,7 +197,7 @@ impl App {
     }
 
     pub(super) fn demo_script_steps(&mut self) {
-        let Ok(mode) = std::env::var("AURORA_DEMO_SCRIPTS") else { return };
+        let Ok(mode) = std::env::var("DEEPLY_DEMO_SCRIPTS") else { return };
         let syntax_demo = matches!(
             mode.as_str(),
             "syntax"
@@ -432,7 +432,7 @@ impl App {
                 }
             };
             let source = if mode == "error" {
-                DEFAULT_SOURCE.replace("llSay(0, \"Hello, Avatar!\");", "AURORA_DEMO_SYNTAX_ERROR")
+                DEFAULT_SOURCE.replace("llSay(0, \"Hello, Avatar!\");", "DEEPLY_DEMO_SYNTAX_ERROR")
             } else {
                 DEFAULT_SOURCE.replace("Hello, Avatar!", "Bonjour, Aurora !")
             };
@@ -807,7 +807,7 @@ impl App {
             } => {
                 // A named marker simulates a server diagnostic in demo mode;
                 // this is deliberately not a local LSL compiler.
-                let compiled = !source.contains("AURORA_DEMO_SYNTAX_ERROR");
+                let compiled = !source.contains("DEEPLY_DEMO_SYNTAX_ERROR");
                 let asset = Uuid::new_v4();
                 self.demo_script_sources.insert(*target, source.clone());
                 self.demo_script_experiences.insert(*target, options.experience);

@@ -45,7 +45,7 @@ pub struct ParcelLandmark {
     pub favorite: bool,
 }
 
-/// AURORA_DEMO_LANDMARK=create|favorite|landmark: the Create Landmark
+/// DEEPLY_DEMO_LANDMARK=create|favorite|landmark: the Create Landmark
 /// window, or a landmark of the plaza already in Favorites / Landmarks (the
 /// star lit).
 #[derive(Debug, Clone, Copy, PartialEq)]
@@ -56,7 +56,7 @@ pub enum DemoStart {
 
 impl DemoStart {
     pub fn from_env() -> Option<Self> {
-        match std::env::var("AURORA_DEMO_LANDMARK").ok()?.as_str() {
+        match std::env::var("DEEPLY_DEMO_LANDMARK").ok()?.as_str() {
             "create" => Some(Self::Window),
             "favorite" | "favorites" => Some(Self::Quick(FOLDER_FAVORITES)),
             "landmark" | "landmarks" => Some(Self::Quick(FOLDER_LANDMARKS)),
@@ -72,7 +72,7 @@ type HereKey = (u64, u64, Option<(u32, u32)>, u64);
 #[derive(Default)]
 pub struct CreateLandmarkUi {
     pub open: bool,
-    /// AURORA_DEMO_LANDMARK: what to do once the agent stands on a parcel.
+    /// DEEPLY_DEMO_LANDMARK: what to do once the agent stands on a parcel.
     pub demo_pending: Option<DemoStart>,
     /// CreateInventoryItem sent by the window, its item not arrived yet.
     waiting: bool,

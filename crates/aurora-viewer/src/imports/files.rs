@@ -954,9 +954,9 @@ mod tests {
     }
 
     #[test]
-    #[ignore = "requires AURORA_IMPORT_TEST_DIR local asset fixtures"]
+    #[ignore = "requires DEEPLY_IMPORT_TEST_DIR local asset fixtures"]
     fn local_asset_directory_loads_and_prepares_supported_files() {
-        let root = PathBuf::from(std::env::var_os("AURORA_IMPORT_TEST_DIR").expect("fixture directory"));
+        let root = PathBuf::from(std::env::var_os("DEEPLY_IMPORT_TEST_DIR").expect("fixture directory"));
         let prefs = Preferences {
             mesh_suffixes: ["lowest".into(), "low".into(), "medium".into(), "high".into(), "physics".into()],
             ..Default::default()

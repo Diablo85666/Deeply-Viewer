@@ -95,7 +95,7 @@ impl Page {
         Page::Fun,
     ];
 
-    /// Its name in `AURORA_DEMO_OPTIONS`.
+    /// Its name in `DEEPLY_DEMO_OPTIONS`.
     pub fn key(self) -> &'static str {
         match self {
             Page::Aurora => "aurora",
@@ -232,7 +232,7 @@ impl Page {
     }
 
     /// A page by its demo name, or by its number in the window before the
-    /// pages were reorganized (the docs' `AURORA_DEMO_OPTIONS=0:tonemap`).
+    /// pages were reorganized (the docs' `DEEPLY_DEMO_OPTIONS=0:tonemap`).
     pub fn parse(text: &str) -> Option<(Page, usize)> {
         if let Some(page) = Page::ALL.iter().find(|p| p.key() == text) {
             return Some((*page, 0));
@@ -258,7 +258,7 @@ impl Page {
     }
 }
 
-/// `AURORA_DEMO_OPTIONS=<page>[/<tab>][:<what>]`: the page by its name
+/// `DEEPLY_DEMO_OPTIONS=<page>[/<tab>][:<what>]`: the page by its name
 /// (`graphics`, `chat`…) or its number before the reorganisation, then a
 /// search (`search=<text>`), the modified settings (`modified`), the reset
 /// of the page and its undo (`reset`), or one of the rows the docs' former
@@ -407,12 +407,12 @@ pub struct OptionsUi {
     /// The defaults the rows compare with.
     defaults: Option<Box<Settings>>,
     undo: Option<Undo>,
-    /// Reset the page shown at the next frame (`AURORA_DEMO_OPTIONS=…:reset`).
+    /// Reset the page shown at the next frame (`DEEPLY_DEMO_OPTIONS=…:reset`).
     pub demo_reset: bool,
-    /// Open every cog once counted (`AURORA_DEMO_OPTIONS=…:cogs`, captures).
+    /// Open every cog once counted (`DEEPLY_DEMO_OPTIONS=…:cogs`, captures).
     pub demo_open_cogs: bool,
     /// Keep the system font list open, scrolling it when true
-    /// (`AURORA_DEMO_OPTIONS=appearance:system-fonts`, `…:system-fonts-scroll`).
+    /// (`DEEPLY_DEMO_OPTIONS=appearance:system-fonts`, `…:system-fonts-scroll`).
     pub demo_font_list: Option<bool>,
     interface_scale: scale::ScaleSlider,
     text_scale: scale::ScaleSlider,

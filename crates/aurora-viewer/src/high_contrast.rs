@@ -32,10 +32,10 @@ pub fn current() -> bool {
     ON.load(Ordering::Relaxed)
 }
 
-/// `AURORA_DEMO_CONTRAST=1|0` (demo mode only): this run's choice, never
+/// `DEEPLY_DEMO_CONTRAST=1|0` (demo mode only): this run's choice, never
 /// saved in the settings.
 pub fn demo_override() -> Option<bool> {
-    match std::env::var("AURORA_DEMO_CONTRAST").ok()?.trim() {
+    match std::env::var("DEEPLY_DEMO_CONTRAST").ok()?.trim() {
         "1" | "on" | "high" => Some(true),
         "0" | "off" => Some(false),
         _ => None,

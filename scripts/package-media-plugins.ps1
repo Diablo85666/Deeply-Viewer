@@ -18,11 +18,11 @@
     Contents/Frameworks, signed ad hoc.
 
 .EXAMPLE
-    ./scripts/package-media-plugins.ps1 -Source fs -Build fs/build-vc170-64 -Out Aurora-Media-Plugins-1-windows-x64 -Version 1
+    ./scripts/package-media-plugins.ps1 -Source fs -Build fs/build-vc170-64 -Out Deeply-Media-Plugins-1-windows-x64 -Version 1
 .EXAMPLE
-    ./scripts/package-media-plugins.ps1 -Platform linux -Source fs -Build fs/build-linux-x86_64 -Out Aurora-Media-Plugins-2-linux-x64 -Version 2
+    ./scripts/package-media-plugins.ps1 -Platform linux -Source fs -Build fs/build-linux-x86_64 -Out Deeply-Media-Plugins-2-linux-x64 -Version 2
 .EXAMPLE
-    ./scripts/package-media-plugins.ps1 -Platform macos -Source fs -Build fs/build-darwin-universal -Out Aurora-Media-Plugins-3-macos-universal -Version 3
+    ./scripts/package-media-plugins.ps1 -Platform macos -Source fs -Build fs/build-darwin-universal -Out Deeply-Media-Plugins-3-macos-universal -Version 3
 #>
 param(
     # checkout of the Legacy Viewer sources, at the commit that was built

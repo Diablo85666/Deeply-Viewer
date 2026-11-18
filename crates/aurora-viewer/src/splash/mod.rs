@@ -24,8 +24,8 @@
 //!
 //! Not on macOS: the main window is visible from its creation there (Metal
 //! presents into a visible layer), and a second process would add a second
-//! icon to the Dock. `AURORA_SPLASH=0` turns it off; automated captures
-//! (`AURORA_CAPTURE`) have none unless `AURORA_SPLASH_CAPTURE` asks for it.
+//! icon to the Dock. `DEEPLY_SPLASH=0` turns it off; automated captures
+//! (`DEEPLY_CAPTURE`) have none unless `DEEPLY_SPLASH_CAPTURE` asks for it.
 
 pub mod progress;
 mod window;
@@ -71,9 +71,9 @@ fn wanted(splash: Option<&str>, capture: bool, splash_capture: bool) -> bool {
 
 fn wanted_here() -> bool {
     wanted(
-        std::env::var("AURORA_SPLASH").ok().as_deref(),
-        std::env::var_os("AURORA_CAPTURE").is_some(),
-        std::env::var_os("AURORA_SPLASH_CAPTURE").is_some(),
+        std::env::var("DEEPLY_SPLASH").ok().as_deref(),
+        std::env::var_os("DEEPLY_CAPTURE").is_some(),
+        std::env::var_os("DEEPLY_SPLASH_CAPTURE").is_some(),
     )
 }
 
@@ -258,7 +258,7 @@ fn feed(started: Instant) {
         std::thread::sleep(Duration::from_millis(25));
     }
     // its input closed: the splash ends (it holds on with
-    // AURORA_DEMO_SPLASH_HOLD)
+    // DEEPLY_DEMO_SPLASH_HOLD)
     drop(input);
     let _ = child.wait();
 }

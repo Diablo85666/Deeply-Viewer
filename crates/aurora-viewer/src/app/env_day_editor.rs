@@ -294,7 +294,7 @@ impl App {
         }
     }
 
-    /// `AURORA_DEMO_ENV_EDITOR=day|day-play|day-edit`: the user's day cycle
+    /// `DEEPLY_DEMO_ENV_EDITOR=day|day-play|day-edit`: the user's day cycle
     /// opens (frame 400); `day-play` plays it; `day-edit` selects the
     /// ground frame at the middle of the day, brightens it, adds a frame at
     /// 75 %, copies the track to Sky 3 and saves (frames 900 to 1100).

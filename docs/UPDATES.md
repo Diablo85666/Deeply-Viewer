@@ -16,7 +16,7 @@ a grey veil. A required offer shows only Quit and Update; neither Esc nor a
 click outside can close it. The login button stays disabled as long as this
 update is required.
 
-**Grace period** ([#3014](https://github.com/Aurora-Viewer/Aurora-Viewer/issues/3014)).
+**Grace period** ([#3014](https://github.com/Diablo85666/Deeply-Viewer/issues/3014)).
 Below a new minimum version, the viewer may still log in for the release's
 grace period: 12 hours unless the policy says otherwise (`grace_hours`).
 It counts from the first time this installation sees that minimum (saved in
@@ -90,16 +90,16 @@ tried locally with `scripts/test-update.ps1 -Beta`
 
 The Release workflow publishes together:
 
-- `Aurora-Viewer-vX.Y.Z-windows-x64.zip`, with a single root folder of that name;
+- `Deeply-Viewer-vX.Y.Z-windows-x64.zip`, with a single root folder of that name;
 - its `.zip.sha256` file, in the format `hash  zip-name`;
-- `Aurora-Deeply-Update-policy.json`: `schema: 1`, `version: X.Y.Z`,
+- `Deeply-Update-policy.json`: `schema: 1`, `version: X.Y.Z`,
   `minimum_supported_version`, `cache_invalidation_before` and
   `settings_reset_before`: `null` or a stable SemVer version ≤ X.Y.Z;
   optionally `grace_hours`, 0 to 72 (absent: 12, above);
-- `Aurora-Viewer-vX.Y.Z-windows-x64-symbols.zip` and its `.zip.sha256`: the
+- `Deeply-Viewer-vX.Y.Z-windows-x64-symbols.zip` and its `.zip.sha256`: the
   exe's crash symbols ([crash reports](BUG_REPORTING.md#crash-symbols)),
   never downloaded by the viewer, which looks for the package's exact name;
-- then `Aurora-Viewer-vX.Y.Z-linux-x64.tar.gz` and its `.tar.gz.sha256`,
+- then `Deeply-Viewer-vX.Y.Z-linux-x64.tar.gz` and its `.tar.gz.sha256`,
   built on Ubuntu 24.04 by a second job once the release exists: a failed
   Linux build leaves the Windows release published.
 
@@ -108,7 +108,7 @@ On Linux the viewer checks the releases the same way, with the same policy
 "Open the release page" button leads to the archive, extracted by hand
 ([Installing on Linux](LINUX.md#updates)).
 
-`scripts/package.ps1` adds `aurora-install.json` (`schema: 1`, version read
+`scripts/package.ps1` adds `deeply-install.json` (`schema: 1`, version read
 by `--version`). The exe, the assets and the licence are mandatory in the
 package. The default thresholds come from `update-policy.json` at the root.
 `null` makes every update optional. Below a minimum version, the update is
@@ -187,5 +187,5 @@ cancellation, dangerous ZIP, lock, backup and rollback of the package and of
 the data. `scripts/test-update-policy.ps1` checks the release choices (minimum
 version included, typed or refused), their carry-over into an annotated tag and the refusal of an invalid threshold,
 without touching the current repository. The visual demo downloads nothing
-(`AURORA_DEMO_UPDATE`). The human test with two real executables is
+(`DEEPLY_DEMO_UPDATE`). The human test with two real executables is
 described in [TESTING.md](TESTING.md#interface).

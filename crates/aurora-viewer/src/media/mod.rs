@@ -534,7 +534,7 @@ impl Default for MediaManager {
 /// The user agent of the viewer's web requests (getCurrentUserAgent): the
 /// browsers' and the web profile's.
 pub fn user_agent() -> String {
-    format!("SecondLife (Aurora Deeply Viewer {})", aurora_version::version())
+    format!("SecondLife (Deeply Viewer {})", aurora_version::version())
 }
 
 /// The shared cache of our CEF browsers, in which the plugin creates
@@ -823,7 +823,7 @@ impl MediaManager {
         self.demo_face(object, face, url, false);
     }
 
-    /// `mini` is `PRIM_MEDIA_CONTROLS_MINI` (`AURORA_DEMO_MEDIA=mini`).
+    /// `mini` is `PRIM_MEDIA_CONTROLS_MINI` (`DEEPLY_DEMO_MEDIA=mini`).
     pub fn demo_face(&mut self, object: Uuid, face: u8, url: &str, mini: bool) {
         let entry = MediaEntry {
             current_url: url.to_string(),

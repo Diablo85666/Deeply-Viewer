@@ -35,7 +35,7 @@ pub struct AreaSearchUi {
     menu_at: Option<egui::Pos2>,
     /// The result list the selection was last checked against.
     checked: u64,
-    /// AURORA_DEMO_AREA_SEARCH=menu: right click the second row once shown.
+    /// DEEPLY_DEMO_AREA_SEARCH=menu: right click the second row once shown.
     pub(crate) demo_menu: bool,
 }
 

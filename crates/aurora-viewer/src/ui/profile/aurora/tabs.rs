@@ -857,7 +857,7 @@ pub(in super::super) fn classifieds(ui: &mut egui::Ui, env: &mut Env, w: &mut Wi
     if w.classified_sel.is_none_or(|s| !ids.contains(&s)) {
         w.classified_sel = ids.first().copied();
     }
-    // AURORA_DEMO_PROFILE=self:3:form / self:3:publish
+    // DEEPLY_DEMO_PROFILE=self:3:form / self:3:publish
     match w.demo_classified {
         Some(false) if own => {
             if let Some(c) = ids.first().and_then(|id| world.profiles.classifieds.get(id)) {

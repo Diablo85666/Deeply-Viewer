@@ -99,7 +99,7 @@ Windows runtime names are not macOS installation instructions.
    Meta's [simulator setup](https://developers.meta.com/vr/documentation/native/xrsim-getting-started/)
    provides a separate desktop-simulator route; record simulator results as such.
 2. If the loader is not discoverable as `libopenxr_loader.dylib`, set
-   `AURORA_OPENXR_LOADER` to its absolute installed path. For a development
+   `DEEPLY_OPENXR_LOADER` to its absolute installed path. For a development
    runtime, `XR_RUNTIME_JSON` may select its manifest. No loader/runtime is bundled.
 3. Validate the runtime independently with Khronos `hello_xr -g Metal`. Aurora's
    `xr_spike` example remains a Vulkan-only Linux/Windows interoperability test.
@@ -107,11 +107,11 @@ Windows runtime names are not macOS installation instructions.
    test (environment values below are examples of controls, not installed paths):
 
    ```sh
-   AURORA_DEMO=1 AURORA_DEMO_XR_WORLD=1 cargo run -p aurora-viewer -- --title "Test vr-scene-view macOS"
+   DEEPLY_DEMO=1 DEEPLY_DEMO_XR_WORLD=1 cargo run -p aurora-viewer -- --title "Test vr-scene-view macOS"
    ```
 
    This enters after frame 600 and submits for about 15 seconds. Then test manual
-   toolbar entry/Esc exit with `AURORA_DEMO=1` and no `AURORA_DEMO_XR_WORLD`.
+   toolbar entry/Esc exit with `DEEPLY_DEMO=1` and no `DEEPLY_DEMO_XR_WORLD`.
 5. Record Mac/GPU, OS, runtime commit/version, loader, simulator/headset/client,
    stereo/depth/tracking, horizon leveling from tilted desktop/headset entry,
    repeated entry/Esc exit, desktop restoration, mirror/hint, focus, resizing and

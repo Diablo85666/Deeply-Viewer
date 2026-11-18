@@ -675,7 +675,7 @@ impl App {
         });
     }
 
-    /// `AURORA_DEMO_ENV_EDITOR=parcel|region|custom` (`-refused`: the
+    /// `DEEPLY_DEMO_ENV_EDITOR=parcel|region|custom` (`-refused`: the
     /// simulator refuses inline days):
     /// - `parcel`: the sky editor on "My purple sky" (frame 400), applied to
     ///   the parcel unchanged, as its asset (900), then brightened and

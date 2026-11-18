@@ -1,13 +1,13 @@
-//! AURORA_DEMO_STAFF=1: a few demo residents count as members of the Aurora
+//! DEEPLY_DEMO_STAFF=1: a few demo residents count as members of the Aurora
 //! team or as Linden Lab employees (`world::staff`), to see their marks
 //! without the real avatars.
 //!
 //! The Aurora team: ourselves, the first friend of the buddy list (the
 //! profile and chat scenarios), the resident who speaks in nearby chat in
 //! the bubbles scenario and the chat console (`DEMO_NOVA`), and with
-//! AURORA_DEMO_TAGS Orion (full plate, speaking), Sol (compact pill) and
+//! DEEPLY_DEMO_TAGS Orion (full plate, speaking), Sol (compact pill) and
 //! Vega (far pill). Linden Lab: the wolf (`DEMO_LOUP`: nearby chat, his
-//! profile), Lune of People › Near you, and with AURORA_DEMO_TAGS Lune
+//! profile), Lune of People › Near you, and with DEEPLY_DEMO_TAGS Lune
 //! (full plate, typing) and Iris (compact pill).
 
 use uuid::Uuid;
@@ -15,7 +15,7 @@ use uuid::Uuid;
 pub fn active() -> bool {
     static ON: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
     *ON.get_or_init(|| {
-        std::env::var_os("AURORA_DEMO").is_some() && std::env::var("AURORA_DEMO_STAFF").is_ok_and(|v| !matches!(v.trim(), "" | "0"))
+        std::env::var_os("DEEPLY_DEMO").is_some() && std::env::var("DEEPLY_DEMO_STAFF").is_ok_and(|v| !matches!(v.trim(), "" | "0"))
     })
 }
 

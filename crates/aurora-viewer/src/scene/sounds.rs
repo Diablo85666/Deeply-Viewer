@@ -202,11 +202,11 @@ impl Listener {
     }
 }
 
-/// `AURORA_SOUND_HRTF=0|1`: the 3D sound for headphones forced off or on
+/// `DEEPLY_SOUND_HRTF=0|1`: the 3D sound for headphones forced off or on
 /// for this launch, without saving it.
 pub fn binaural_forced() -> Option<bool> {
     static FORCED: std::sync::OnceLock<Option<bool>> = std::sync::OnceLock::new();
-    *FORCED.get_or_init(|| match std::env::var("AURORA_SOUND_HRTF").as_deref() {
+    *FORCED.get_or_init(|| match std::env::var("DEEPLY_SOUND_HRTF").as_deref() {
         Ok("0") => Some(false),
         Ok("1") => Some(true),
         _ => None,

@@ -409,7 +409,7 @@ pub fn show(
     let preview = egui::Id::unique((INSPECTOR_ID, "compact-preview"));
     if env.demo && !ctx.data(|d| d.get_temp::<bool>(preview).unwrap_or(false)) {
         ctx.data_mut(|d| d.insert_temp(preview, true));
-        let mode = std::env::var("AURORA_DEMO_BUILD_TAB").unwrap_or_default();
+        let mode = std::env::var("DEEPLY_DEMO_BUILD_TAB").unwrap_or_default();
         if mode.split('+').any(|mode| mode == "folded") {
             s.transform_expanded = false;
         }

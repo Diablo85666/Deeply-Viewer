@@ -449,7 +449,7 @@ pub struct World {
     /// The announced restart of the agent's region (region_restart.rs).
     pub region_restart: region_restart::Tracker,
     pub movement_complete: bool,
-    /// AURORA_DEMO_OUTFIT_RESTORE: the demo region answers the outfit
+    /// DEEPLY_DEMO_OUTFIT_RESTORE: the demo region answers the outfit
     /// restore, which then starts without the inventory capability.
     pub demo_outfit_region: bool,
     pub avatar_lib: Arc<AvatarLibrary>,

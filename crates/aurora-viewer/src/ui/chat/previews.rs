@@ -206,7 +206,7 @@ pub struct Previews {
     /// A site whose previews the resident hid from a card's menu, for the
     /// app to add to the settings.
     pub hide_site: Option<String>,
-    /// `AURORA_DEMO_PREVIEW_PLAY=card|window`: the first video card drawn
+    /// `DEEPLY_DEMO_PREVIEW_PLAY=card|window`: the first video card drawn
     /// plays there by itself.
     pub demo_play: Option<lp::Player>,
     /// A player's cog was clicked: the app opens the video settings.
@@ -255,7 +255,7 @@ impl Default for Previews {
             playing: None,
             lightbox: None,
             image_window: None,
-            demo_zoom: std::env::var("AURORA_DEMO_PREVIEW_ZOOM").ok(),
+            demo_zoom: std::env::var("DEEPLY_DEMO_PREVIEW_ZOOM").ok(),
         }
     }
 }
@@ -859,7 +859,7 @@ fn card(ui: &mut egui::Ui, p: &Palette, pv: &mut Previews, k: u64, url: &str, ta
 /// Exercise the actual hovered Copy button, including platform clipboard delivery.
 pub(super) fn demo_events(ctx: &egui::Context, frame: u64) -> Vec<egui::Event> {
     static LINKS: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    if *LINKS.get_or_init(|| std::env::var("AURORA_DEMO_PREVIEW_ZOOM").is_ok_and(|mode| mode == "links")) && frame >= 620 {
+    if *LINKS.get_or_init(|| std::env::var("DEEPLY_DEMO_PREVIEW_ZOOM").is_ok_and(|mode| mode == "links")) && frame >= 620 {
         return ctx
             .data(|d| d.get_temp::<egui::Pos2>(egui::Id::unique("preview_links_demo")))
             .filter(|at| ctx.input(|i| i.pointer.hover_pos()) != Some(*at))
@@ -867,7 +867,7 @@ pub(super) fn demo_events(ctx: &egui::Context, frame: u64) -> Vec<egui::Event> {
             .unwrap_or_default();
     }
     static COPY: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    if !*COPY.get_or_init(|| std::env::var("AURORA_DEMO_PREVIEW_ZOOM").is_ok_and(|mode| mode == "copy")) || !(620..=760).contains(&frame) {
+    if !*COPY.get_or_init(|| std::env::var("DEEPLY_DEMO_PREVIEW_ZOOM").is_ok_and(|mode| mode == "copy")) || !(620..=760).contains(&frame) {
         return Vec::new();
     }
     let id = egui::Id::unique("preview_copy_demo");
@@ -1372,7 +1372,7 @@ fn video_card(ui: &mut egui::Ui, p: &Palette, pv: &mut Previews, k: u64, url: &s
     let demo = pv.playing.is_none().then(|| pv.demo_play.take()).flatten();
     if play || demo.is_some() {
         let mut options = pv.settings.player_options(aurora_i18n::language());
-        // AURORA_DEMO_VIDEO_VOLUME=<0-100>: the level a video starts at,
+        // DEEPLY_DEMO_VIDEO_VOLUME=<0-100>: the level a video starts at,
         // as if kept from an earlier one
         if let Some(v) = demo_video_volume() {
             options.volume = v;
@@ -1410,13 +1410,13 @@ fn video_card(ui: &mut egui::Ui, p: &Palette, pv: &mut Previews, k: u64, url: &s
     card_menu(&resp, p, pv, k, url);
 }
 
-/// `AURORA_DEMO_VIDEO_VOLUME=<0-100>` (demo only): the player's starting level.
+/// `DEEPLY_DEMO_VIDEO_VOLUME=<0-100>` (demo only): the player's starting level.
 fn demo_video_volume() -> Option<u8> {
     static LEVEL: std::sync::OnceLock<Option<u8>> = std::sync::OnceLock::new();
     *LEVEL.get_or_init(|| {
-        std::env::var_os("AURORA_DEMO")
+        std::env::var_os("DEEPLY_DEMO")
             .is_some()
-            .then(|| std::env::var("AURORA_DEMO_VIDEO_VOLUME").ok()?.trim().parse::<u8>().ok())
+            .then(|| std::env::var("DEEPLY_DEMO_VIDEO_VOLUME").ok()?.trim().parse::<u8>().ok())
             .flatten()
             .map(|v| v.min(100))
     })

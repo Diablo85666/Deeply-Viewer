@@ -18,7 +18,7 @@ use uuid::Uuid;
 impl App {
     /// Reuse the real command dispatch for offline minimize/reopen captures.
     pub(super) fn prepare_uri_restore_demo(&mut self, action: &CtxAction) {
-        if !std::env::var("AURORA_DEMO_APPLINKS").is_ok_and(|mode| mode.ends_with(":restore")) {
+        if !std::env::var("DEEPLY_DEMO_APPLINKS").is_ok_and(|mode| mode.ends_with(":restore")) {
             return;
         }
         let window = match action {

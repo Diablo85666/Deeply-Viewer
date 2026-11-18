@@ -25,7 +25,7 @@ pub struct TestEnvironment {
 pub fn test_environment() -> Option<&'static TestEnvironment> {
     static TEST: std::sync::OnceLock<Option<TestEnvironment>> = std::sync::OnceLock::new();
     TEST.get_or_init(|| {
-        let root = std::path::PathBuf::from(std::env::var_os("AURORA_UPDATE_TEST_ROOT")?);
+        let root = std::path::PathBuf::from(std::env::var_os("DEEPLY_UPDATE_TEST_ROOT")?);
         if !root.is_absolute() {
             return None;
         }

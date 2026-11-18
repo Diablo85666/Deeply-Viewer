@@ -65,7 +65,7 @@ Assert-Set $p.Unlabel @(2, 3) 'a waiting draft or on-hold PR loses the label'
 Assert-Set $p.Back @() 'a draft does not come back'
 
 # the comments
-$links = Get-PrSlotLinks 'Aurora-Viewer/Aurora-Viewer' 'someone'
+$links = Get-PrSlotLinks 'Diablo85666/Deeply-Viewer' 'someone'
 Assert-Slot ($links.Review.Contains('author%3Asomeone') -and $links.Review.Contains('-is%3Adraft') -and $links.Review.Contains("-label%3A$PrSlotLabel")) 'The review link lists the author''s PRs in review.'
 Assert-Slot ($links.Waiting.Contains("label%3A$PrSlotLabel")) 'The waiting link lists the waiting PRs.'
 $wait = Format-PrSlotWait 'someone' 42 $links

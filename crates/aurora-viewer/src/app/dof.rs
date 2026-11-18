@@ -1,17 +1,17 @@
 //! The depth of field of a frame (LLPipeline::renderDoF's focus point:
 //! the camera's focus, the point under the pointer or the crosshair, a
-//! clicked or locked point), and its demo (`AURORA_DEMO_DOF`).
+//! clicked or locked point), and its demo (`DEEPLY_DEMO_DOF`).
 
 use super::App;
 use crate::dof::{self, FocusMode};
 use aurora_render::{DepthOfField, Renderer};
 
-/// AURORA_DEMO_DOF=<f-number>:<focus distance m>[:debug]: the effect on,
+/// DEEPLY_DEMO_DOF=<f-number>:<focus distance m>[:debug]: the effect on,
 /// at that aperture, focused at that distance (no transition).
 fn demo_lens() -> Option<(f32, f32, bool)> {
     static DEMO: std::sync::OnceLock<Option<(f32, f32, bool)>> = std::sync::OnceLock::new();
     *DEMO.get_or_init(|| {
-        let v = std::env::var("AURORA_DEMO_DOF").ok()?;
+        let v = std::env::var("DEEPLY_DEMO_DOF").ok()?;
         let mut parts = v.split(':');
         let n = parts.next()?.parse().ok()?;
         let d = parts.next()?.parse().ok()?;

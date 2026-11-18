@@ -12,7 +12,7 @@ impl App {
         self.always_run || self.temp_run.is_some() || self.autopilot.as_ref().is_some_and(|a| a.run)
     }
 
-    /// Offline with AURORA_DEMO_LINK: the keys go to the stand-in simulator
+    /// Offline with DEEPLY_DEMO_LINK: the keys go to the stand-in simulator
     /// and its reports come back through the world, as on a grid.
     pub(super) fn drive_demo_link(&mut self, mouselook: bool, dt: f32) {
         let Some(cfg) = self.demo_link_cfg.clone() else {
@@ -102,7 +102,7 @@ impl App {
         }
     }
 
-    /// AURORA_DEMO_SIT_TP=local|region: at frame 300 our avatar sits on the
+    /// DEEPLY_DEMO_SIT_TP=local|region: at frame 300 our avatar sits on the
     /// nearest prim of the plaza, at frame 420 it teleports from the seat,
     /// in the region or to another one; at frame 700 the log says whether
     /// it still sits (the stale seat of a teleport, LLAgent::teleportCore).
@@ -112,7 +112,7 @@ impl App {
         if !self.demo || !matches!(self.frame_count, 240 | 300 | 420 | 700) {
             return;
         }
-        let Ok(mode) = std::env::var("AURORA_DEMO_SIT_TP") else {
+        let Ok(mode) = std::env::var("DEEPLY_DEMO_SIT_TP") else {
             return;
         };
         let ao = demo_sit_tp_ao();
@@ -245,7 +245,7 @@ impl App {
         }
     }
 
-    /// `AURORA_DEMO_LINK=…,trace`, or `AURORA_OWN_MOTION_TRACE=1` on a grid
+    /// `DEEPLY_DEMO_LINK=…,trace`, or `DEEPLY_OWN_MOTION_TRACE=1` on a grid
     /// (only the frames where our avatar moves or a correction is left):
     /// one line per frame with the keys, the drawn position, the
     /// simulator's, the lead, the correction left, the camera and the drawn
@@ -253,7 +253,7 @@ impl App {
     /// velocity, to read a start, a stop, a take-off or a landing.
     pub(super) fn trace_own_motion(&self) {
         static GRID: std::sync::OnceLock<Option<Instant>> = std::sync::OnceLock::new();
-        let grid = *GRID.get_or_init(|| std::env::var_os("AURORA_OWN_MOTION_TRACE").map(|_| Instant::now()));
+        let grid = *GRID.get_or_init(|| std::env::var_os("DEEPLY_OWN_MOTION_TRACE").map(|_| Instant::now()));
         let a = &self.world.agent;
         let (offset, lead) = a.drawn_offsets();
         let t = match (self.demo_link.as_ref().filter(|l| l.cfg.trace), grid) {
@@ -350,7 +350,7 @@ impl App {
     }
 }
 
-/// `AURORA_DEMO_SIT_TP=ao-local|ao-region` (`App::demo_sit_teleport`).
+/// `DEEPLY_DEMO_SIT_TP=ao-local|ao-region` (`App::demo_sit_teleport`).
 fn demo_sit_tp_ao() -> bool {
-    std::env::var("AURORA_DEMO_SIT_TP").is_ok_and(|m| m.trim().starts_with("ao-"))
+    std::env::var("DEEPLY_DEMO_SIT_TP").is_ok_and(|m| m.trim().starts_with("ao-"))
 }

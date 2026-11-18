@@ -302,7 +302,7 @@ impl App {
         self.snapshots.vf.af.hunt(target, now);
     }
 
-    /// The demo's group (AURORA_DEMO_SNAPSHOT=viewfinder-group): the other
+    /// The demo's group (DEEPLY_DEMO_SNAPSHOT=viewfinder-group): the other
     /// avatars in view within 25 m added one by one, as Shift + clicks on
     /// them would.
     fn vf_demo_group(&mut self, eye: glam::Vec3, at: glam::Vec3, now: f64) {

@@ -150,10 +150,10 @@ fn arrange(items: &[(Uuid, usize)], fit: usize) -> (Vec<usize>, Vec<usize>) {
     (shown, rest)
 }
 
-/// AURORA_DEMO_THUMBNAILS=bar|top|off: where the thumbnails stand for the
+/// DEEPLY_DEMO_THUMBNAILS=bar|top|off: where the thumbnails stand for the
 /// run, the settings left alone.
 pub fn demo_place() -> Option<ChatThumbnails> {
-    match std::env::var("AURORA_DEMO_THUMBNAILS").ok()?.as_str() {
+    match std::env::var("DEEPLY_DEMO_THUMBNAILS").ok()?.as_str() {
         "bar" => Some(ChatThumbnails::ChatBar),
         "top" => Some(ChatThumbnails::TopRight),
         "off" => Some(ChatThumbnails::Off),

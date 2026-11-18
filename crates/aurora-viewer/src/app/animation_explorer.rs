@@ -235,7 +235,7 @@ impl App {
         rows
     }
 
-    /// AURORA_DEMO_ANIMATION_EXPLORER=1|blacklist: a pose ball dances our
+    /// DEEPLY_DEMO_ANIMATION_EXPLORER=1|blacklist: a pose ball dances our
     /// avatar, a worn object's motion has stopped, our own stand is listed;
     /// `blacklist` also lists the stopped motion in the Asset blacklist.
     pub(super) fn demo_animation_explorer(&mut self, mode: &str) {

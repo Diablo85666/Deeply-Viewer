@@ -7,11 +7,11 @@ pub const ROOT: u32 = 121_000;
 pub const TEXTS: [u32; 3] = [ROOT + 1, ROOT + 2, ROOT + 3];
 
 pub fn scenario() -> bool {
-    std::env::var_os("AURORA_DEMO_FLOATING_TEXT").is_some()
+    std::env::var_os("DEEPLY_DEMO_FLOATING_TEXT").is_some()
 }
 
 pub fn events() -> Vec<NetEvent> {
-    if std::env::var("AURORA_DEMO_FLOATING_TEXT").is_ok_and(|mode| mode == "world") {
+    if std::env::var("DEEPLY_DEMO_FLOATING_TEXT").is_ok_and(|mode| mode == "world") {
         let start = Vec3::new(132.0, 126.0, 0.0);
         let ahead = Vec3::new(0.8, 0.4, 0.0).normalize();
         let p = start + ahead * 5.0 - Vec3::new(ahead.y, -ahead.x, 0.0) * 3.2;
@@ -91,7 +91,7 @@ pub fn hud_events() -> Vec<NetEvent> {
 }
 
 pub fn guides(ctx: &egui::Context, world: &crate::world::World, scene: &crate::scene::Scene) {
-    if !std::env::var("AURORA_DEMO_FLOATING_TEXT").is_ok_and(|mode| mode == "guides") {
+    if !std::env::var("DEEPLY_DEMO_FLOATING_TEXT").is_ok_and(|mode| mode == "guides") {
         return;
     }
     let Some(view) = scene.lists.hud_view else { return };

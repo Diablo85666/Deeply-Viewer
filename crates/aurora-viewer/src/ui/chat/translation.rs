@@ -1,20 +1,23 @@
 use crate::settings::TranslationLanguage;
+use ct2rs::{Config, Device, Translator};
 use egui::Context;
+use std::collections::HashMap;
 use std::sync::mpsc::{self, Receiver};
 
 #[derive(Default)]
 pub(crate) struct State {
-    endpoint: String,
+    model_path: String,
     target: TranslationLanguage,
     automatic: bool,
     request: Option<Receiver<Result<String, String>>>,
     source: Option<String>,
     result: Option<Result<String, String>>,
+    cache: HashMap<(String, String), String>,
 }
 
 impl State {
-    pub(crate) fn configure(&mut self, endpoint: &str, target: TranslationLanguage, automatic: bool) {
-        self.endpoint = endpoint.to_owned();
+    pub(crate) fn configure(&mut self, model_path: &str, target: TranslationLanguage, automatic: bool) {
+        self.model_path = model_path.to_owned();
         self.target = target;
         // TODO: hook this setting into live incoming-chat dispatch. Keeping
         // it persisted and explicitly labelled inactive avoids translating
@@ -39,6 +42,10 @@ impl State {
                 TranslationLanguage::Es,
                 TranslationLanguage::De,
                 TranslationLanguage::Fr,
+                TranslationLanguage::Pt,
+                TranslationLanguage::Ru,
+                TranslationLanguage::Ja,
+                TranslationLanguage::Zh,
             ] {
                 if ui.button(language.as_str()).clicked() {
                     state.request(text, language);
@@ -57,49 +64,46 @@ impl State {
             return;
         }
 
-        let endpoint = self.endpoint.clone();
+        let model_path = self.model_path.clone();
         let text = text.to_owned();
-        let language = target.as_str().to_owned();
+        let language = target.flores_code().to_owned();
+        if let Some(translated) = self.cache.get(&(text.clone(), language.clone())) {
+            self.source = Some(text);
+            self.result = Some(Ok(translated.clone()));
+            return;
+        }
         let (tx, rx) = mpsc::channel();
         self.source = Some(text.clone());
         self.result = None;
         self.request = Some(rx);
         std::thread::spawn(move || {
-            let result = tokio::runtime::Builder::new_current_thread()
-                .enable_all()
-                .build()
-                .map_err(|e| e.to_string())
-                .and_then(|runtime| {
-                    runtime.block_on(async move {
-                        let client = reqwest::Client::new();
-                        let response = client
-                            .post(endpoint)
-                            .header(reqwest::header::CONTENT_TYPE, "application/json")
-                            .body(
-                                serde_json::json!({
-                                    "q": text,
-                                    "source": "auto",
-                                    "target": language,
-                                    "format": "text",
-                                })
-                                .to_string(),
-                            )
-                            .send()
-                            .await
-                            .map_err(|e| e.to_string())?;
-                        let status = response.status();
-                        let body = response.text().await.map_err(|e| e.to_string())?;
-                        if !status.is_success() {
-                            return Err(format!("HTTP {status}: {body}"));
-                        }
-                        serde_json::from_str::<serde_json::Value>(&body)
-                            .ok()
-                            .and_then(|v| v.get("translatedText").and_then(|v| v.as_str()).map(str::to_owned))
-                            .ok_or_else(|| "LibreTranslate returned no translation".to_owned())
-                    })
-                });
+            let result = Self::offline_translate(&model_path, &text, &language);
             let _ = tx.send(result);
         });
+    }
+
+    fn offline_translate(model_path: &str, text: &str, language: &str) -> Result<String, String> {
+        let path = std::path::Path::new(model_path);
+        if !path.is_dir() {
+            return Err(format!(
+                "Offline translation model unavailable at {model_path}; install models/nllb-200-600M-int8"
+            ));
+        }
+        let config = Config {
+            device: Device::CPU,
+            ..Config::default()
+        };
+        let translator = Translator::new(path, &config).map_err(|error| format!("NLLB initialization failed: {error}"))?;
+        let sources = vec![text.to_owned()];
+        let source_prefixes = vec![vec!["eng_Latn".to_owned()]];
+        let target_prefixes = vec![vec![language.to_owned()]];
+        let mut results = translator
+            .translate_batch_with_source_and_target_prefix(&sources, &source_prefixes, &target_prefixes, &Default::default(), None)
+            .map_err(|error| format!("NLLB translation failed: {error}"))?;
+        results
+            .pop()
+            .map(|(translated, _)| translated)
+            .ok_or_else(|| "NLLB returned no translation".to_owned())
     }
 
     pub(super) fn show(&mut self, ctx: &Context) {
@@ -127,6 +131,13 @@ impl State {
                 } else {
                     match self.result.as_ref() {
                         Some(Ok(text)) => {
+                            self.cache
+                                .insert((source.to_owned(), self.target.flores_code().to_owned()), text.clone());
+                            if self.cache.len() > 64 {
+                                if let Some(key) = self.cache.keys().next().cloned() {
+                                    self.cache.remove(&key);
+                                }
+                            }
                             ui.label(aurora_i18n::tr!("ui-chat-translation-result"));
                             ui.label(text);
                         }

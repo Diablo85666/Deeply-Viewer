@@ -94,7 +94,7 @@ pub struct AutoResponse {
 
 impl Default for AutoResponse {
     fn default() -> Self {
-        // Firestorm's French defaults (strings.xml), [APP_NAME] = Aurora Viewer
+        // Firestorm's French defaults (strings.xml), [APP_NAME] = Deeply Viewer
         AutoResponse {
             autorespond: false,
             autorespond_nonfriends: false,

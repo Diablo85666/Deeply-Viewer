@@ -86,7 +86,7 @@ mod bus {
 
     /// `org.aurora_viewer.AuroraViewer[.Demo][.T_<title>]`.
     fn bus_name() -> String {
-        name_for(std::env::var_os("AURORA_DEMO").is_some(), crate::cli::title_slug().as_deref())
+        name_for(std::env::var_os("DEEPLY_DEMO").is_some(), crate::cli::title_slug().as_deref())
     }
 
     /// A bus name's elements hold only `[A-Za-z0-9_]` and do not start with

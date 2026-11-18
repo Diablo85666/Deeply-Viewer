@@ -378,7 +378,7 @@ pub fn path(inv: &Inventory, id: Uuid) -> String {
     names.join(" › ")
 }
 
-/// Offline fixture for `AURORA_DEMO_APPEARANCE=folders…`: a "Club" group
+/// Offline fixture for `DEEPLY_DEMO_APPEARANCE=folders…`: a "Club" group
 /// with two outfits, a "Beach" group with one and a "Night" subgroup with
 /// one, and an empty "Spring" group, beside the four demo outfits.
 pub fn seed_demo(inv: &mut Inventory, agent: Uuid) {

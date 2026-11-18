@@ -1,5 +1,5 @@
 //! Command-line arguments. Most test switches are environment variables
-//! (`AURORA_DEMO`, `AURORA_CAPTURE`...: see the README); the command line
+//! (`DEEPLY_DEMO`, `DEEPLY_CAPTURE`...: see the README); the command line
 //! carries what identifies one running instance, and where and as whom it
 //! starts (the Legacy Viewer's `--grid`, `--loginuri`, `--login` and the
 //! startup SLURL of app_settings/cmd_line.xml).
@@ -202,7 +202,7 @@ fn parse_fps_limit(value: &str) -> Option<u32> {
 /// The window title, ending with the build profile ("(Dev)", "(Release)",
 /// "(Debug)"): test windows of different builds can be told apart.
 pub fn window_title() -> String {
-    title_with(get().title.as_deref(), env!("AURORA_BUILD_PROFILE"), aurora_version::version())
+    title_with(get().title.as_deref(), env!("DEEPLY_BUILD_PROFILE"), aurora_version::version())
 }
 
 /// The viewer's identity on the Linux desktop: Wayland app_id, X11

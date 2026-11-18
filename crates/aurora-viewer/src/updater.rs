@@ -159,9 +159,9 @@ pub struct Updater {
 }
 
 pub fn checks_enabled() -> bool {
-    std::env::var_os("AURORA_DEMO").is_none()
+    std::env::var_os("DEEPLY_DEMO").is_none()
         && (aurora_updater::test_environment().is_some()
-            || (env!("AURORA_BUILD_PROFILE") == "release" && published_version(aurora_version::version())))
+            || (env!("DEEPLY_BUILD_PROFILE") == "release" && published_version(aurora_version::version())))
 }
 
 /// A version the Release workflow published: a stable one, or a beta. A
@@ -175,7 +175,7 @@ impl Updater {
         let (tx, rx) = crossbeam_channel::unbounded();
         let test = aurora_updater::test_environment();
         let enabled = checks_enabled();
-        let rollback = std::env::var_os("AURORA_UPDATE_ROLLBACK").is_some();
+        let rollback = std::env::var_os("DEEPLY_UPDATE_ROLLBACK").is_some();
         let source = test.map(|t| t.source.clone()).unwrap_or_default();
         let mut this = Self {
             state: if rollback { State::Rollback } else { State::Idle },

@@ -1,4 +1,4 @@
-﻿# Local policy/tag fixtures; never publishes a release or changes the checkout.
+# Local policy/tag fixtures; never publishes a release or changes the checkout.
 $ErrorActionPreference = 'Stop'
 . "$PSScriptRoot/tools/update-policy.ps1"
 $taskRoot = Join-Path ([IO.Path]::GetTempPath()) "aurora-policy-test-$([Guid]::NewGuid().ToString('N'))"

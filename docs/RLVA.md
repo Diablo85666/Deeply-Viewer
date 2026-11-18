@@ -442,7 +442,7 @@ The `sitting` FR capture and its native demo log confirm one object sit,
 one stand and then `ground_sit=true, object_seated=false`. Fixture actions
 are delivered once per rendered frame, even when native updates repeat.
 
-`AURORA_DEMO_RLVA=enabled|disabled|released` opens the native preference page
+`DEEPLY_DEMO_RLVA=enabled|disabled|released` opens the native preference page
 and delivers synthetic object commands through `World::apply`. Capture after
 frame 800. The three modes show active locks, ignored commands and locks
 released by the global switch. These fixtures do not establish grid parity.

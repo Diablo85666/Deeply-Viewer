@@ -60,7 +60,7 @@ fn four_component_community_release_keeps_its_public_version() {
 
 #[test]
 fn runtime_and_http_read_the_compiled_version() {
-    assert_eq!(aurora_version::user_agent(), format!("AuroraViewer/{}", aurora_version::version()));
+    assert_eq!(aurora_version::user_agent(), format!("DeeplyViewer/{}", aurora_version::version()));
     let version = semver::Version::parse(aurora_version::version()).unwrap();
     assert!(aurora_version::login_version().starts_with(&format!("{}.{}.{}.", version.major, version.minor, version.patch)));
 }

@@ -176,7 +176,7 @@ impl App {
         if !self.demo {
             return;
         }
-        let Ok(scenario) = std::env::var("AURORA_DEMO_JOYSTICK") else {
+        let Ok(scenario) = std::env::var("DEEPLY_DEMO_JOYSTICK") else {
             return;
         };
         let absolute = scenario.ends_with("-absolute");

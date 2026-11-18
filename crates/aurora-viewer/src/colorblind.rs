@@ -71,7 +71,7 @@ impl Deficiency {
         }
     }
 
-    /// `AURORA_DEMO_COLORBLIND` values.
+    /// `DEEPLY_DEMO_COLORBLIND` values.
     pub fn parse(s: &str) -> Option<Deficiency> {
         Some(match s.trim().to_ascii_lowercase().as_str() {
             "off" | "none" => Deficiency::Off,
@@ -138,10 +138,10 @@ pub fn current() -> Vision {
     decode(CURRENT.load(Ordering::Relaxed))
 }
 
-/// `AURORA_DEMO_COLORBLIND=protan|deutan|tritan|mono[:strength]` (demo
+/// `DEEPLY_DEMO_COLORBLIND=protan|deutan|tritan|mono[:strength]` (demo
 /// mode only): the vision of this run, never saved in the settings.
 pub fn demo_override() -> Option<Vision> {
-    let v = std::env::var("AURORA_DEMO_COLORBLIND").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_COLORBLIND").ok()?;
     let (kind, strength) = match v.split_once(':') {
         Some((k, s)) => (k, s.trim().parse::<f32>().ok()?),
         None => (v.as_str(), 1.0),

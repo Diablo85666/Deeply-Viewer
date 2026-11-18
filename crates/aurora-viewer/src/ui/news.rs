@@ -124,15 +124,15 @@ impl Source {
     /// `None` where the login screen stays offline: demo and updater test
     /// installation.
     fn from_environment() -> Option<Self> {
-        if std::env::var_os("AURORA_DEMO").is_some() || aurora_updater::test_environment().is_some() {
+        if std::env::var_os("DEEPLY_DEMO").is_some() || aurora_updater::test_environment().is_some() {
             return None;
         }
-        if let Ok(address) = std::env::var("AURORA_NEWS_URL") {
+        if let Ok(address) = std::env::var("DEEPLY_NEWS_URL") {
             if let Some(source) = Self::test(&address) {
-                log::info!("Login news read from {} (AURORA_NEWS_URL), not kept in the cache", source.base);
+                log::info!("Login news read from {} (DEEPLY_NEWS_URL), not kept in the cache", source.base);
                 return Some(source);
             }
-            log::warn!("AURORA_NEWS_URL ignored: neither a server of this machine nor a folder of the Aurora Viewer repository");
+            log::warn!("DEEPLY_NEWS_URL ignored: neither a server of this machine nor a folder of the Deeply Viewer repository");
         }
         let base = crate::links::NEWS_FEED;
         (!base.is_empty()).then(|| Self {
@@ -142,7 +142,7 @@ impl Source {
         })
     }
 
-    /// `AURORA_NEWS_URL`: a server of this machine, or another branch or
+    /// `DEEPLY_NEWS_URL`: a server of this machine, or another branch or
     /// folder of the project's repository (to read a news file before it is
     /// merged). Nothing else: the variable must not be a way to make the
     /// login screen show somebody else's text.
@@ -474,8 +474,8 @@ mod tests {
             ("http://localhost:8123/news/", "http://localhost:8123/news/", true),
             ("http://[::1]:8123/news", "http://[::1]:8123/news/", true),
             (
-                " https://raw.githubusercontent.com/Aurora-Viewer/Aurora-Viewer/feat/actualites-md/news ",
-                "https://raw.githubusercontent.com/Aurora-Viewer/Aurora-Viewer/feat/actualites-md/news/",
+                " https://raw.githubusercontent.com/Diablo85666/Deeply-Viewer/feat/actualites-md/news ",
+                "https://raw.githubusercontent.com/Diablo85666/Deeply-Viewer/feat/actualites-md/news/",
                 false,
             ),
         ] {
@@ -492,10 +492,10 @@ mod tests {
             "http://127.0.0.1.example.org/",
             "http://user:secret@127.0.0.1/",
             "http://127.0.0.1/?next=https://example.org",
-            "http://raw.githubusercontent.com/Aurora-Viewer/Aurora-Viewer/main/news/",
-            "https://raw.githubusercontent.com/Somebody/Aurora-Viewer/main/news/",
-            "https://raw.githubusercontent.com/Aurora-Viewer/Aurora-Viewer/../../Somebody/Else/main/",
-            "https://raw.githubusercontent.com.example.org/Aurora-Viewer/Aurora-Viewer/main/news/",
+            "http://raw.githubusercontent.com/Diablo85666/Deeply-Viewer/main/news/",
+            "https://raw.githubusercontent.com/Somebody/Deeply-Viewer/main/news/",
+            "https://raw.githubusercontent.com/Diablo85666/Deeply-Viewer/../../Somebody/Else/main/",
+            "https://raw.githubusercontent.com.example.org/Diablo85666/Deeply-Viewer/main/news/",
             "file:///C:/news/",
         ] {
             assert!(Source::test(address).is_none(), "{address}");

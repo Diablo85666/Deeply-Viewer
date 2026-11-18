@@ -827,7 +827,7 @@ The own-avatar editor and its script-IK mask do not freeze remote avatars.
 
 ## Offline validation
 
-`AURORA_DEMO_IK_EDIT=1|move|release` reuses the synthetic motorcycle and
+`DEEPLY_DEMO_IK_EDIT=1|move|release` reuses the synthetic motorcycle and
 opens the editor at frame 420. `move` edits the left palm position and
 orientation. `release` makes that edit, then closes at frame 720 without
 standing the rider, so the original motorcycle contacts must return.

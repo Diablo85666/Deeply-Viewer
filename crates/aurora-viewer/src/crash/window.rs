@@ -122,10 +122,10 @@ impl Sending {
         let mut sent = super::read_limited(&dir.join("sent.txt"), 32)
             .ok()
             .and_then(|n| n.trim().parse().ok());
-        // `AURORA_DEMO_CRASH_SEND=ask|always|never[,connected][,preview][,authorize][,sent][,fail]`:
+        // `DEEPLY_DEMO_CRASH_SEND=ask|always|never[,connected][,preview][,authorize][,sent][,fail]`:
         // the demo's simulated GitHub (docs/TESTING.md).
         if record.demo
-            && let Ok(options) = std::env::var("AURORA_DEMO_CRASH_SEND")
+            && let Ok(options) = std::env::var("DEEPLY_DEMO_CRASH_SEND")
         {
             for option in options.split(',') {
                 match option {
@@ -227,7 +227,7 @@ impl Recovery {
                     .show(ui, |ui| {
                         ui.set_width(ui.available_width());
                         ui.horizontal_wrapped(|ui| {
-                            ui.label(RichText::new(format!("Aurora Deeply Viewer {}", self.record.version)).strong());
+                            ui.label(RichText::new(format!("Deeply Viewer {}", self.record.version)).strong());
                             ui.label(
                                 RichText::new(format!("· {} · {}", self.record.profile, self.record.language.to_uppercase()))
                                     .color(p.muted),
@@ -564,14 +564,14 @@ impl Recovery {
         self.frames += 1;
         if self.record.demo
             && self.frames == 3
-            && let Some(path) = std::env::var_os("AURORA_CRASH_CAPTURE")
+            && let Some(path) = std::env::var_os("DEEPLY_CRASH_CAPTURE")
         {
             let rgba: Vec<_> = buffer
                 .iter()
                 .flat_map(|p| [(*p >> 16) as u8, (*p >> 8) as u8, *p as u8, 255])
                 .collect();
             image::save_buffer(path, &rgba, size.width, size.height, image::ColorType::Rgba8)?;
-            if std::env::var_os("AURORA_CRASH_CAPTURE_EXIT").is_some() {
+            if std::env::var_os("DEEPLY_CRASH_CAPTURE_EXIT").is_some() {
                 event_loop.exit();
             }
         }
@@ -636,7 +636,7 @@ impl ApplicationHandler for Recovery {
                     self.open_preview();
                 }
                 // Bug report form (disabled, see main.rs):
-                // if self.record.demo && std::env::var_os("AURORA_DEMO_BUG_REPORT").is_some() {
+                // if self.record.demo && std::env::var_os("DEEPLY_DEMO_BUG_REPORT").is_some() {
                 //     self.open_report();
                 // }
             }

@@ -31,9 +31,9 @@ impl App {
         }
         if self.demo
             && self.frame_count == 300
-            && (std::env::var_os("AURORA_DEMO_MOVELOCK").is_some()
-                || std::env::var_os("AURORA_DEMO_MOVEMENT").is_some()
-                || std::env::var_os("AURORA_DEMO_BRIDGE_QUERY").is_some()
+            && (std::env::var_os("DEEPLY_DEMO_MOVELOCK").is_some()
+                || std::env::var_os("DEEPLY_DEMO_MOVEMENT").is_some()
+                || std::env::var_os("DEEPLY_DEMO_BRIDGE_QUERY").is_some()
                 || crate::ao::water_demo::mode().is_some()
                 || folder_names)
         {
@@ -42,16 +42,16 @@ impl App {
                 crate::ao::demo::inventory_services(&mut self.world, true);
             }
             self.movelock_ui.open =
-                crate::ao::water_demo::mode().is_none() && !folder_names && std::env::var_os("AURORA_DEMO_BRIDGE_QUERY").is_none();
-            if std::env::var("AURORA_DEMO_BRIDGE_QUERY").is_ok_and(|m| m == "radar") {
+                crate::ao::water_demo::mode().is_none() && !folder_names && std::env::var_os("DEEPLY_DEMO_BRIDGE_QUERY").is_none();
+            if std::env::var("DEEPLY_DEMO_BRIDGE_QUERY").is_ok_and(|m| m == "radar") {
                 crate::world::bridge::demo::seed_queries(&mut self.world);
                 self.panels.people = true;
                 self.panels.people_tab = 0;
             }
             self.panels.perf = false;
             self.settings.bridge.entry(self.world.agent_id).or_default().enabled =
-                std::env::var("AURORA_DEMO_MOVELOCK").is_ok_and(|mode| mode != "off");
-            if std::env::var("AURORA_DEMO_MOVELOCK").is_ok_and(|mode| mode.starts_with("native")) {
+                std::env::var("DEEPLY_DEMO_MOVELOCK").is_ok_and(|mode| mode != "off");
+            if std::env::var("DEEPLY_DEMO_MOVELOCK").is_ok_and(|mode| mode.starts_with("native")) {
                 self.settings.bridge.entry(self.world.agent_id).or_default().mode = crate::world::bridge::LockMode::NativeSit;
                 crate::ao::demo::assets(&mut self.scene);
                 crate::ao::demo::native_anchor_assets(&mut self.scene);
@@ -64,7 +64,7 @@ impl App {
                     self.world.agent_id,
                     crate::ao::Account {
                         selected,
-                        enabled: std::env::var("AURORA_DEMO_MOVELOCK").is_ok_and(|mode| mode != "native-missing"),
+                        enabled: std::env::var("DEEPLY_DEMO_MOVELOCK").is_ok_and(|mode| mode != "native-missing"),
                         ..Default::default()
                     },
                 );
@@ -72,9 +72,9 @@ impl App {
         }
         let online = self.in_world()
             && (!self.demo
-                || std::env::var_os("AURORA_DEMO_MOVELOCK").is_some()
-                || std::env::var_os("AURORA_DEMO_MOVEMENT").is_some()
-                || std::env::var_os("AURORA_DEMO_BRIDGE_QUERY").is_some()
+                || std::env::var_os("DEEPLY_DEMO_MOVELOCK").is_some()
+                || std::env::var_os("DEEPLY_DEMO_MOVEMENT").is_some()
+                || std::env::var_os("DEEPLY_DEMO_BRIDGE_QUERY").is_some()
                 || crate::ao::water_demo::mode().is_some()
                 || folder_names);
         if !online {
@@ -87,7 +87,7 @@ impl App {
         self.egui_ctx
             .data_mut(|d| d.insert_temp(egui::Id::unique("movelock_requested"), prefs.enabled));
         if self.demo {
-            let mode = std::env::var("AURORA_DEMO_MOVELOCK").unwrap_or_default();
+            let mode = std::env::var("DEEPLY_DEMO_MOVELOCK").unwrap_or_default();
             self.bridge_demo.startup_stalled = mode == "timeout";
             self.bridge_demo.invalid_endpoint = mode == "endpoint";
             self.bridge_demo.halt = mode == "halted";
@@ -118,7 +118,7 @@ impl App {
         }
         if self.demo
             && self.frame_count == 700
-            && std::env::var("AURORA_DEMO_BRIDGE_QUERY").is_ok_and(|m| matches!(m.as_str(), "scripts" | "object" | "error"))
+            && std::env::var("DEEPLY_DEMO_BRIDGE_QUERY").is_ok_and(|m| matches!(m.as_str(), "scripts" | "object" | "error"))
         {
             let object = self
                 .world
@@ -127,7 +127,7 @@ impl App {
                 .find(|(_, o)| !o.is_avatar() && Some(o.key.region) == self.world.main_region)
                 .map(|(_, o)| o.full_id);
             if let Some(object) = object {
-                if std::env::var("AURORA_DEMO_BRIDGE_QUERY").is_ok_and(|m| m == "object") {
+                if std::env::var("DEEPLY_DEMO_BRIDGE_QUERY").is_ok_and(|m| m == "object") {
                     self.on_ctx_action(crate::ui::context::CtxAction::ObjectInfo(object));
                 } else {
                     self.inspect_scripts(object);
@@ -203,7 +203,7 @@ impl App {
         }
     }
     pub(super) fn bridge_demo_command(&mut self, command: &NetCommand) -> bool {
-        let mode = std::env::var("AURORA_DEMO_MOVELOCK").unwrap_or_default();
+        let mode = std::env::var("DEEPLY_DEMO_MOVELOCK").unwrap_or_default();
         let moving = mode == "moving"
             || self.input.forward
             || self.input.back

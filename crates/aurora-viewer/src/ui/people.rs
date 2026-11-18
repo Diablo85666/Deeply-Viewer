@@ -44,7 +44,7 @@ pub(crate) const TAB_GROUPS: u8 = 2;
 pub(crate) const TAB_RECENT: u8 = 3;
 pub(crate) const TAB_BLOCKED: u8 = 4;
 pub(crate) const TAB_SETS: u8 = 5;
-const AURORA_TABS: [u8; 6] = [TAB_NEARBY, TAB_FRIENDS, TAB_GROUPS, TAB_SETS, TAB_RECENT, TAB_BLOCKED];
+const DEEPLY_TABS: [u8; 6] = [TAB_NEARBY, TAB_FRIENDS, TAB_GROUPS, TAB_SETS, TAB_RECENT, TAB_BLOCKED];
 
 /// Search every name with a trimmed, lowercase filter, independently of the
 /// row's display preferences. Unlike
@@ -256,7 +256,7 @@ pub(crate) fn default_pos(work: egui::Rect) -> egui::Pos2 {
 pub(crate) const DEFAULT_SIZE: Vec2 = Vec2::new(462.0, 420.0);
 
 /// Its size in Aurora's look, the mock-up's: a dozen rich rows.
-pub(crate) const AURORA_SIZE: Vec2 = Vec2::new(520.0, 560.0);
+pub(crate) const DEEPLY_SIZE: Vec2 = Vec2::new(520.0, 560.0);
 
 #[derive(Default)]
 pub struct PeopleUi {
@@ -284,7 +284,7 @@ pub struct PeopleUi {
     sheet_grown: f32,
     /// The row whose "…" menu is open: its quick actions stay shown.
     row_menu: Option<Uuid>,
-    /// AURORA_DEMO_PEOPLE=rows: the row shown as under the pointer, its
+    /// DEEPLY_DEMO_PEOPLE=rows: the row shown as under the pointer, its
     /// quick actions out (a capture has no pointer).
     pub demo_hover: Option<Uuid>,
     /// The open sheet is a group's (the groups tab).
@@ -325,7 +325,7 @@ impl PeopleUi {
         self.sheet_group = true;
     }
 
-    /// Choose rows of a list as with Ctrl (AURORA_DEMO_PEOPLE).
+    /// Choose rows of a list as with Ctrl (DEEPLY_DEMO_PEOPLE).
     pub fn select(&mut self, ids: Vec<Uuid>) {
         self.anchor = ids.last().copied();
         self.sel = ids;
@@ -418,7 +418,7 @@ pub fn people_window(
     let mut open = panels.people;
     let help = aurora_i18n::tr!("ui-people-nearby-avatars-and-friends-list");
     let pos = default_pos(super::layout::work_area(ctx));
-    let size = if aurora { AURORA_SIZE } else { DEFAULT_SIZE };
+    let size = if aurora { DEEPLY_SIZE } else { DEFAULT_SIZE };
     // the table has no sheet: back to Firestorm's look, the window gives
     // back the width it took for one
     if !aurora && st.sheet.is_some() {
@@ -592,17 +592,17 @@ fn aurora_tabs(ui: &mut egui::Ui, p: &Palette, world: &World, radar: &RadarData,
     };
     let open = tab;
     let counted = |t: u8| (t == open).then(|| count(t).map(|n| aurora_i18n::integer(n as i64))).flatten();
-    let widths: Vec<f32> = AURORA_TABS
+    let widths: Vec<f32> = DEEPLY_TABS
         .iter()
         .map(|t| pill_tab_width(ui, label(*t), counted(*t).as_deref()))
         .collect();
     let shown = tabs_shown(
         &widths,
-        AURORA_TABS.iter().position(|t| *t == tab).unwrap_or(0),
+        DEEPLY_TABS.iter().position(|t| *t == tab).unwrap_or(0),
         ui.available_width(),
         pill_tab_width(ui, "…", None),
     );
-    let hidden: Vec<u8> = AURORA_TABS
+    let hidden: Vec<u8> = DEEPLY_TABS
         .iter()
         .enumerate()
         .filter(|(i, _)| !shown.contains(i))
@@ -625,12 +625,12 @@ fn aurora_tabs(ui: &mut egui::Ui, p: &Palette, world: &World, radar: &RadarData,
             more(ui, &mut tab);
         }
         for i in shown.clone() {
-            let t = AURORA_TABS[i];
+            let t = DEEPLY_TABS[i];
             if widgets::pill_tab(ui, p, "", label(t), counted(t), true, t == open, true).clicked() {
                 tab = t;
             }
         }
-        if !before && shown.end < AURORA_TABS.len() {
+        if !before && shown.end < DEEPLY_TABS.len() {
             more(ui, &mut tab);
         }
     });

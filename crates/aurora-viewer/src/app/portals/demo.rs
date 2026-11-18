@@ -14,7 +14,7 @@ pub(in crate::app) struct Peer {
 
 fn drop_mode() -> Option<&'static str> {
     static MODE: std::sync::OnceLock<Option<String>> = std::sync::OnceLock::new();
-    MODE.get_or_init(|| std::env::var("AURORA_DEMO_PORTALS").ok().filter(|mode| mode.starts_with("drop-")))
+    MODE.get_or_init(|| std::env::var("DEEPLY_DEMO_PORTALS").ok().filter(|mode| mode.starts_with("drop-")))
         .as_deref()
 }
 
@@ -97,7 +97,7 @@ impl App {
 
     pub(in crate::app) fn portal_demo_input(&mut self, raw: &mut egui::RawInput) {
         if self.demo
-            && let Ok(mode) = std::env::var("AURORA_DEMO_PORTALS")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_PORTALS")
             && (mode.starts_with("private-") && (mode.contains("-chat-") || mode.contains("-keyboard-")) || mode.starts_with("stranger"))
         {
             self.portal_keyboard_demo_input(raw, mode.contains("-chat-"));
@@ -292,7 +292,7 @@ impl App {
         let Some(peer) = &mut self.portal_demo_peer else { return };
         let peer = peer.as_mut();
         let now = Instant::now();
-        let departing = std::env::var("AURORA_DEMO_PORTALS").is_ok_and(|mode| mode.contains("-departing-"));
+        let departing = std::env::var("DEEPLY_DEMO_PORTALS").is_ok_and(|mode| mode.contains("-departing-"));
         peer.state.sync(&peer.world, None, unix_time());
         if let Some(NetCommand::BridgeQuery {
             request,

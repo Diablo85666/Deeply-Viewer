@@ -128,7 +128,7 @@ pub(super) fn fixtures(root: &Path) -> Result<(), String> {
 }
 
 pub fn start(imports: &mut Imports, jobs: &crate::scene::jobs::Jobs, ctx: &egui::Context) {
-    let Ok(mut mode) = std::env::var("AURORA_DEMO_IMPORTS") else {
+    let Ok(mut mode) = std::env::var("DEEPLY_DEMO_IMPORTS") else {
         return;
     };
     let type_windows = mode.starts_with("type-");
@@ -230,7 +230,7 @@ pub fn start(imports: &mut Imports, jobs: &crate::scene::jobs::Jobs, ctx: &egui:
     let wake = ctx.clone();
     jobs.execute(move || {
         let root = PathBuf::from(".scratch").join("import-demo").join(request.to_string());
-        let external = std::env::var_os("AURORA_DEMO_IMPORT_FILE").map(PathBuf::from);
+        let external = std::env::var_os("DEEPLY_DEMO_IMPORT_FILE").map(PathBuf::from);
         let fixture_result = if external.is_some() && mode != "animation-custom" {
             Ok(())
         } else {
@@ -450,7 +450,7 @@ pub fn start(imports: &mut Imports, jobs: &crate::scene::jobs::Jobs, ctx: &egui:
 }
 
 fn folder_fixtures(root: &Path, prefs: &Preferences) -> Result<Vec<Entry>, String> {
-    if let Some(folder) = std::env::var_os("AURORA_DEMO_IMPORT_FILE").map(PathBuf::from)
+    if let Some(folder) = std::env::var_os("DEEPLY_DEMO_IMPORT_FILE").map(PathBuf::from)
         && folder.is_dir()
     {
         return Ok(files::load_folder(&folder, prefs, prefs.texture(), 30, 0, 0));

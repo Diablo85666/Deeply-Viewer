@@ -921,7 +921,7 @@ mod tests {
         for (width, height) in [(1280.0, 720.0), (1600.0, 900.0), (1920.0, 1080.0)] {
             let screen = screen(width, height);
             let work = Rect::from_min_max(Pos2::new(8.0, 53.0), Pos2::new(width - 8.0, height - 57.0));
-            let people = Rect::from_min_size(super::super::people::default_pos(work), super::super::people::AURORA_SIZE);
+            let people = Rect::from_min_size(super::super::people::default_pos(work), super::super::people::DEEPLY_SIZE);
             let map = super::super::minimap::default_rect(work);
             let chat = super::super::chat::default_rect(work);
             let (people_point, people_travel) = if height == 720.0 {

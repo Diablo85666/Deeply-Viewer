@@ -1,4 +1,4 @@
-//! What the system knows of the process (AURORA_PROFILE and the resource
+//! What the system knows of the process (DEEPLY_PROFILE and the resource
 //! monitor, Windows and Linux):
 //! its memory, and the CPU time of each of its threads, gathered by group
 //! of threads (the decode pool, the frame workers, the network runtime…).

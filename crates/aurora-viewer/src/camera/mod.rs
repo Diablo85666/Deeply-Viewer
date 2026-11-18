@@ -1125,7 +1125,7 @@ impl Camera {
         }
     }
 
-    /// AURORA_DEMO_CAM: heading offset, pitch and distance.
+    /// DEEPLY_DEMO_CAM: heading offset, pitch and distance.
     pub fn demo_orbit(&mut self, yaw: f32, pitch: f32, distance: Option<f32>, s: &CameraSettings) {
         self.orbit_yaw = yaw;
         self.pitch = pitch;

@@ -68,7 +68,7 @@ pub(super) struct ReelState {
     pub in_photo_mode: bool,
     /// The photo the last photo's card shows.
     pub card: Option<u64>,
-    /// AURORA_DEMO_PHOTO_ROLL (`demo`).
+    /// DEEPLY_DEMO_PHOTO_ROLL (`demo`).
     demo: Option<demo::Demo>,
 }
 

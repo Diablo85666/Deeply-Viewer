@@ -1,4 +1,4 @@
-﻿# Aurora Tools: reset the repository to the state of a fresh clone of
+# Aurora Tools: reset the repository to the state of a fresh clone of
 # GitHub's main (dot-sourced by aurora-tools.ps1). What would be lost is
 # listed first; nothing happens without typing the confirmation word.
 # $DryRun (aurora-tools.ps1 -DryRun) stops after the list.

@@ -87,7 +87,7 @@ by the human in Second Life.
 
 ## Offline validation
 
-`AURORA_DEMO_IK_EDIT=clip` creates head rotation and pelvis position keys at
+`DEEPLY_DEMO_IK_EDIT=clip` creates head rotation and pelvis position keys at
 frames 0, 30 and 60, then displays frame 15. `clip-frame` displays frame 45;
 `clip-priority` shows the global/inherited and per-bone priorities;
 `clip-settings` displays loop/ease metadata; `clip-crop` trims frames 15–45;

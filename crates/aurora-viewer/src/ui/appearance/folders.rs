@@ -74,7 +74,7 @@ pub(super) fn header(ui: &mut egui::Ui, p: &Palette, title: &str, count: usize, 
     const ICON: f32 = 14.0;
     const CARET: f32 = 12.0;
     let unit = ui.spacing().indent;
-    let height = crate::ui::inventory::AURORA_ROW_HEIGHT;
+    let height = crate::ui::inventory::DEEPLY_ROW_HEIGHT;
     let (rect, response) = ui.allocate_exact_size(Vec2::new(ui.available_width(), height), egui::Sense::click());
     response.widget_info(|| {
         if open.is_some() {

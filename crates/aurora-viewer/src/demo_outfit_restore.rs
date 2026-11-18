@@ -1,4 +1,4 @@
-//! AURORA_DEMO_OUTFIT_RESTORE=warm|cold: the login restore of the outfit's
+//! DEEPLY_DEMO_OUTFIT_RESTORE=warm|cold: the login restore of the outfit's
 //! attachments against a region that puts part of it back by itself, as
 //! the busy region of 2026-10-27 did.
 //!
@@ -54,7 +54,7 @@ pub struct OutfitRestoreDemo {
 
 impl OutfitRestoreDemo {
     pub fn from_env() -> Option<Self> {
-        let mode = std::env::var("AURORA_DEMO_OUTFIT_RESTORE").ok()?;
+        let mode = std::env::var("DEEPLY_DEMO_OUTFIT_RESTORE").ok()?;
         Some(OutfitRestoreDemo {
             cold: mode == "cold",
             start: None,

@@ -1,4 +1,4 @@
-//! A local asset server for the demo (`net=<ms>` of AURORA_DEMO_STREAM):
+//! A local asset server for the demo (`net=<ms>` of DEEPLY_DEMO_STREAM):
 //! it stands for the grid's asset hosts, so that the whole download path
 //! runs without a grid — the fetcher with its queue and its connections,
 //! the byte ranges, the replies that continue what is held — at the round
@@ -7,7 +7,7 @@
 //! and not throughput is the limit.
 //!
 //! It serves textures, and with `start_assets` meshes and animations too
-//! (AURORA_DEMO_ARRIVAL). It speaks the little of HTTP/1.1 the fetcher needs: `GET` with an
+//! (DEEPLY_DEMO_ARRIVAL). It speaks the little of HTTP/1.1 the fetcher needs: `GET` with an
 //! optional `Range: bytes=a-b` or `a-`, answered by a 200, a 206 with its
 //! `Content-Range`, a 416 past the end or a 404, on connections kept open.
 

@@ -34,7 +34,7 @@ fn read_backup(path: &std::path::Path) -> Option<Values> {
 }
 
 /// The card to show at start: an offer after GPU trouble, else the way
-/// back while settings are kept aside. `AURORA_DEMO_SAFE_GRAPHICS=offer|active`
+/// back while settings are kept aside. `DEEPLY_DEMO_SAFE_GRAPHICS=offer|active`
 /// shows either in demo.
 pub(super) fn at_start(trouble: bool, kept: bool, demo: Option<&str>) -> Option<SafeGraphics> {
     match demo {
@@ -55,7 +55,7 @@ impl App {
         if trouble {
             log::warn!("the last session ended with the graphics card in trouble: safe graphics offered");
         }
-        let demo = std::env::var_os("AURORA_DEMO").and_then(|_| std::env::var("AURORA_DEMO_SAFE_GRAPHICS").ok());
+        let demo = std::env::var_os("DEEPLY_DEMO").and_then(|_| std::env::var("DEEPLY_DEMO_SAFE_GRAPHICS").ok());
         self.login_form.safe_graphics = at_start(trouble, backup_path().exists(), demo.as_deref());
     }
 

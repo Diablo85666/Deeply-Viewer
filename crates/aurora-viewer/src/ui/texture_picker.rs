@@ -1077,8 +1077,8 @@ impl TexturePicker {
 fn wearable_demo_input() -> bool {
     static ON: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
     *ON.get_or_init(|| {
-        std::env::var("AURORA_DEMO").as_deref() == Ok("1")
-            && std::env::var("AURORA_DEMO_WEARABLE").is_ok_and(|mode| mode.contains(":picker-"))
+        std::env::var("DEEPLY_DEMO").as_deref() == Ok("1")
+            && std::env::var("DEEPLY_DEMO_WEARABLE").is_ok_and(|mode| mode.contains(":picker-"))
     })
 }
 

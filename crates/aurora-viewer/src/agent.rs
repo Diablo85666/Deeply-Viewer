@@ -434,7 +434,7 @@ impl AgentState {
     }
 
     /// What is left of the last correction with the prediction, and the
-    /// lead drawn this frame (`AURORA_DEMO_LINK`'s trace).
+    /// lead drawn this frame (`DEEPLY_DEMO_LINK`'s trace).
     pub fn drawn_offsets(&self) -> (Vec3, Vec3) {
         (self.offset, self.drawn_lead)
     }

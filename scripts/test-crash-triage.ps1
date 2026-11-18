@@ -9,7 +9,7 @@ $id = 'FEDCBA9876543210FEDCBA98765432101'
 function New-Report([string]$Crash, [string[]]$Stack, [string]$Extra = '') {
     @"
 $CrashMarker
-Sent from the crash window of Aurora Viewer.
+Sent from the crash window of Deeply Viewer.
 
 | Field | Value |
 |---|---|
@@ -39,9 +39,9 @@ kernelbase id=0123456789ABCDEF0123456789ABCDEF1 code=6712ABCD3f0000
 # 3000: std::panicking frame; PUBLIC 5000: a function without FUNC record.
 $sym = @'
 MODULE windows x86_64 FEDCBA9876543210FEDCBA98765432101 aurora_viewer.pdb
-INFO CODE_ID 6700000Ac5e0000 aurora-viewer.exe
-FILE 0 D:\a\Aurora-Viewer\Aurora-Viewer\crates\aurora-render\src\draw.rs
-FILE 1 D:\a\Aurora-Viewer\Aurora-Viewer\crates\aurora-render\src\cull.rs
+INFO CODE_ID 6700000Ac5e0000 deeply-viewer.exe
+FILE 0 D:\a\Deeply-Viewer\Deeply-Viewer\crates\aurora-render\src\draw.rs
+FILE 1 D:\a\Deeply-Viewer\Deeply-Viewer\crates\aurora-render\src\cull.rs
 FILE 2 /rustc/0123abcd/library\std\src\panicking.rs
 FILE 3 C:\Users\runneradmin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\wgpu-core-27.0.3\src\lib.rs
 INLINE_ORIGIN 0 aurora_render::cull<aurora_render::Mesh>
@@ -79,7 +79,7 @@ try {
     Assert-Triage ($null -eq (Get-ReleaseTag '0.7.3+13.gabcdef')) 'A development build has no release.'
 
     foreach ($case in @(
-            @('D:\a\Aurora-Viewer\Aurora-Viewer\crates\aurora-net\src\udp.rs', 'crates/aurora-net/src/udp.rs'),
+            @('D:\a\Deeply-Viewer\Deeply-Viewer\crates\aurora-net\src\udp.rs', 'crates/aurora-net/src/udp.rs'),
             @('C:\Users\runneradmin\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\wgpu-core-27.0.3\src\lib.rs', 'wgpu-core-27.0.3/src/lib.rs'),
             @('/rustc/0123abcd/library\core\src\option.rs', 'library/core/src/option.rs'),
             @('D:\a\_work\1\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl', 'exe_common.inl'))) {
@@ -142,7 +142,7 @@ try {
     Assert-Triage ($null -eq (Get-TriageTitle $r $bareSig)) 'Without symbols the title stays as the viewer wrote it.'
 
     # The section: added once, replaced on a new run, the report kept.
-    $section = Format-TriageSection $frames 'Aurora-Viewer-v0.8.0-windows-x64-symbols.zip' $sig
+    $section = Format-TriageSection $frames 'Deeply-Viewer-v0.8.0-windows-x64-symbols.zip' $sig
     $body = Merge-TriageSection $native $section
     Assert-Triage ($body.StartsWith($native.TrimEnd()) -and $body.Contains("<!-- crash-signature: $($sig.Id) -->")) 'The section must follow the report.'
     $again = Merge-TriageSection $body (Format-TriageSection $bare $null $bareSig)
@@ -225,7 +225,7 @@ try {
             @('Intel(R) Iris(R) Xe Graphics', 'Intel integrated'),
             @('Intel(R) Arc(TM) A770 Graphics', 'Intel Arc'),
             @('Apple M2 Pro', 'Apple M2'),
-            @('no discrete GPU visible to Vulkan on a hybrid PC the NVIDIA Control Panels Preferred graphics processor for aurora-viewer.exe', 'no discrete GPU visible'),
+            @('no discrete GPU visible to Vulkan on a hybrid PC the NVIDIA Control Panels Preferred graphics processor for deeply-viewer.exe', 'no discrete GPU visible'),
             @('', 'unknown GPU'),
             @('Some Card 9000', 'other GPU'))) {
         Assert-Triage ((Get-GpuFamily $case[0]) -eq $case[1]) "GPU $($case[0]) must be $($case[1]), not $(Get-GpuFamily $case[0])."

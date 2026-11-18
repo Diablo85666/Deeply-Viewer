@@ -216,7 +216,7 @@ pub struct Panels {
     pub quick_prefs: bool,
     /// "Voice controls" (toolbar): who is in the voice channel and who speaks.
     pub voice_controls: bool,
-    /// "About Aurora Viewer" (Help menu): the version, the system
+    /// "About Deeply Viewer" (Help menu): the version, the system
     /// information and the licences.
     pub about: bool,
     /// World › Stream title (kept in `audio.stream_title_window`), and its

@@ -91,7 +91,7 @@ pub struct AuroraState {
     rename_folder: Option<(Uuid, String)>,
     /// The places, and what they were built from.
     catalog: Option<(CatalogKey, Arc<Catalog>)>,
-    /// AURORA_DEMO_PLACES=…:open: the first place selected (a narrow row
+    /// DEEPLY_DEMO_PLACES=…:open: the first place selected (a narrow row
     /// opened) once the list has one.
     pub demo_open: bool,
 }

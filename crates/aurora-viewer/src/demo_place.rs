@@ -1,4 +1,4 @@
-//! Places of the demo (`AURORA_DEMO_PLACE`, `AURORA_DEMO_PLACES`): the
+//! Places of the demo (`DEEPLY_DEMO_PLACE`, `DEEPLY_DEMO_PLACES`): the
 //! RemoteParcelRequest, ParcelInfoRequest and RegionHandleRequest answers
 //! for the regions of the demo map, the landmarks of the Landmarks and
 //! Favorites folders with their assets, and a teleport history over several
@@ -19,19 +19,19 @@ pub const LANDMARKS_FOLDER: u128 = 12;
 pub const FAVORITES_FOLDER: u128 = 20;
 /// A sub-folder of the landmarks.
 pub const SHOPS_FOLDER: u128 = 30;
-/// Two more of `AURORA_DEMO_MAP=landmarks`.
+/// Two more of `DEEPLY_DEMO_MAP=landmarks`.
 pub const CLUBS_FOLDER: u128 = 32;
 pub const BEACHES_FOLDER: u128 = 33;
 pub const WALKS_FOLDER: u128 = 34;
 pub const MARKETS_FOLDER: u128 = 35;
-/// Landmarks `AURORA_DEMO_MAP=landmarks` adds to the table's: 212 in all,
+/// Landmarks `DEEPLY_DEMO_MAP=landmarks` adds to the table's: 212 in all,
 /// the count of a well-travelled inventory, for the world map's drawer and
 /// pins.
 const GENERATED: usize = 204;
 
-/// AURORA_DEMO_MAP=…,landmarks.
+/// DEEPLY_DEMO_MAP=…,landmarks.
 pub fn many_landmarks() -> bool {
-    std::env::var("AURORA_DEMO_MAP").is_ok_and(|v| v.split(',').any(|w| w.trim() == "landmarks"))
+    std::env::var("DEEPLY_DEMO_MAP").is_ok_and(|v| v.split(',').any(|w| w.trim() == "landmarks"))
 }
 
 /// The n-th landmark `many_landmarks` adds: (folder, name, region grid,
@@ -123,11 +123,11 @@ fn region_id(grid: (u32, u32)) -> Uuid {
     Uuid::from_u128(0xDE40_5E61_0000_0000_0000_0000_0000_0000 | ((grid.0 as u128) << 16) | grid.1 as u128)
 }
 
-/// AURORA_DEMO_PLACE=1|lagoon|nordheim|grove|flaw|unknown: the region
+/// DEEPLY_DEMO_PLACE=1|lagoon|nordheim|grove|flaw|unknown: the region
 /// name and position of the place link the demo opens (landmark and
 /// history are handled by `profile_scenario`).
 pub fn scenario() -> Option<(&'static str, Vec3)> {
-    let v = std::env::var("AURORA_DEMO_PLACE").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_PLACE").ok()?;
     Some(match v.to_lowercase().as_str() {
         "lagoon" | "lagune" => (aurora_i18n::tr!("common-boreal-lagoon"), Vec3::new(60.0, 200.0, 22.0)),
         "nordheim" => ("Nordheim", Vec3::new(128.0, 64.0, 40.0)),
@@ -140,11 +140,11 @@ pub fn scenario() -> Option<(&'static str, Vec3)> {
     })
 }
 
-/// AURORA_DEMO_PLACE=repere|historique: a landmark's or a history entry's
+/// DEEPLY_DEMO_PLACE=repere|historique: a landmark's or a history entry's
 /// profile.
 pub fn profile_scenario() -> Option<crate::world::place_details::Source> {
     use crate::world::place_details::Source;
-    match std::env::var("AURORA_DEMO_PLACE").ok()?.to_lowercase().as_str() {
+    match std::env::var("DEEPLY_DEMO_PLACE").ok()?.to_lowercase().as_str() {
         "landmark" | "repere" => {
             let (id, asset) = landmark_ids(1);
             Some(Source::Landmark { item: id, asset })
@@ -165,10 +165,10 @@ pub enum TeleportConfirm {
     Landmark(Uuid, &'static str),
 }
 
-/// AURORA_DEMO_TP_CONFIRM=link|landmark: the confirmation of a teleport asked
+/// DEEPLY_DEMO_TP_CONFIRM=link|landmark: the confirmation of a teleport asked
 /// by a place link (the default) or by a landmark of "Places".
 pub fn teleport_confirm_scenario() -> Option<TeleportConfirm> {
-    let v = std::env::var("AURORA_DEMO_TP_CONFIRM").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_TP_CONFIRM").ok()?;
     Some(match v.to_lowercase().as_str() {
         "landmark" | "repere" => {
             let (_, name, ..) = landmarks().get(1)?;
@@ -321,7 +321,7 @@ fn landmarks() -> &'static Vec<(u128, &'static str, (u32, u32), [f32; 3], i64)> 
 /// Where the bars' demo favourites start in `landmark_ids`.
 const BAR_FAVORITES: usize = 2000;
 
-/// The favourites of the bars mockup (`AURORA_DEMO_BARS=fav12|added`):
+/// The favourites of the bars mockup (`DEEPLY_DEMO_BARS=fav12|added`):
 /// name, region grid, position, created at (newest first: the mockup's
 /// order), and the three colours of the thumbnail's gradient. The last one
 /// is the place we stand on, added from the star with `added`.
@@ -598,7 +598,7 @@ pub fn folder_contents(folder_id: Uuid, owner: Uuid) -> Option<FolderContents> {
         })
         .chain(extra)
         .collect();
-    // AURORA_DEMO_BARS's favourites take the place of the demo's own
+    // DEEPLY_DEMO_BARS's favourites take the place of the demo's own
     let bars = crate::ui::bars::demo::get().favorites;
     let snapshots = bars == Some(crate::ui::bars::demo::Favorites::Snapshots);
     let items = if n == FAVORITES_FOLDER && bars.is_some() {
@@ -625,7 +625,7 @@ pub fn folder_contents(folder_id: Uuid, owner: Uuid) -> Option<FolderContents> {
 }
 
 /// The places of the session before the demo's arrival, oldest first, the
-/// last one twenty minutes ago (`AURORA_DEMO_BARS=tplist`).
+/// last one twenty minutes ago (`DEEPLY_DEMO_BARS=tplist`).
 pub fn session() -> Vec<TpEntry> {
     let now = std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)

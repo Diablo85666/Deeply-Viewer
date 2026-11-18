@@ -136,20 +136,20 @@ impl App {
         }
     }
 
-    /// AURORA_DEMO_CONTROLS=camera | movement | compact | compact-move |
+    /// DEEPLY_DEMO_CONTROLS=camera | movement | compact | compact-move |
     /// classic | free | free-compact: the window open (minimized for
     /// `compact`; `compact-move` also, then Move pressed 40 frames later as
     /// the toolbar does, #1815); `free` the
     /// photo window's free camera on, which opens it, `free-compact` the
     /// same minimized; 40 frames later the free camera has flown 2 m to the
     /// left and 1 m up and turned toward the avatar, which stayed.
-    /// AURORA_DEMO_CONTROLS=views | classic-views (issue #2755): the
+    /// DEEPLY_DEMO_CONTROLS=views | classic-views (issue #2755): the
     /// window open at 600 (Aurora's or the Legacy Viewer's); the camera
     /// turned away at 610 and saved as the Front view at 620, as its right
     /// click does; the Rear view at 640, the Front view again at 660. The log
     /// gives the camera when saved and at 700: the same place.
     fn controls_views_demo(&mut self) {
-        if !matches!(std::env::var("AURORA_DEMO_CONTROLS").as_deref(), Ok("views" | "classic-views")) {
+        if !matches!(std::env::var("DEEPLY_DEMO_CONTROLS").as_deref(), Ok("views" | "classic-views")) {
             return;
         }
         let preset = crate::camera::CameraPreset::Front;
@@ -171,7 +171,7 @@ impl App {
             return;
         }
         if self.frame_count == 640
-            && std::env::var("AURORA_DEMO_CONTROLS").is_ok_and(|m| m.starts_with("free"))
+            && std::env::var("DEEPLY_DEMO_CONTROLS").is_ok_and(|m| m.starts_with("free"))
             && let Some(cam) = self.camera.free_mut()
         {
             let left = glam::Vec3::new(-cam.yaw.sin(), cam.yaw.cos(), 0.0);
@@ -179,7 +179,7 @@ impl App {
             cam.turn(-0.35, -0.15);
             log::info!("demo free camera: flown to {:.1?}", cam.position);
         }
-        if self.frame_count == 640 && std::env::var("AURORA_DEMO_CONTROLS").as_deref() == Ok("compact-move") {
+        if self.frame_count == 640 && std::env::var("DEEPLY_DEMO_CONTROLS").as_deref() == Ok("compact-move") {
             self.request_controls(true, true);
             log::info!("demo controls: Move pressed on the minimized window");
         }
@@ -187,7 +187,7 @@ impl App {
         if self.frame_count != 600 {
             return;
         }
-        match std::env::var("AURORA_DEMO_CONTROLS").as_deref() {
+        match std::env::var("DEEPLY_DEMO_CONTROLS").as_deref() {
             Ok(mode @ ("free" | "free-compact")) => {
                 self.panels.snapshot = true;
                 self.panels.chat = false;

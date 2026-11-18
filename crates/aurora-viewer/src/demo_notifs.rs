@@ -1,4 +1,4 @@
-//! AURORA_DEMO_NOTIFS: the scenario of the notification center's mockup —
+//! DEEPLY_DEMO_NOTIFS: the scenario of the notification center's mockup —
 //! a message, a friend coming online (a toast outside the center), a
 //! teleport offer and an inventory offer close together, then a burst of
 //! five. `dnd` plays it with do not disturb on (the paused bell), `legacy`
@@ -22,7 +22,7 @@ use uuid::Uuid;
 /// The scenario, if asked: `1`, `dnd`, `legacy`, `list`, `history`,
 /// `group-notice`, `legacy-group-notice`, `group-notice-saved`…
 pub fn mode() -> Option<String> {
-    std::env::var("AURORA_DEMO_NOTIFS").ok()
+    std::env::var("DEEPLY_DEMO_NOTIFS").ok()
 }
 
 /// Frame at which do not disturb goes on (`dnd`).
@@ -249,7 +249,7 @@ pub fn events(frame: u64, agent: Uuid) -> Vec<NetEvent> {
             "Nova Exemple",
             0,
             Uuid::nil(),
-            // AURORA_DEMO_APPLINKS=preview: its links on the card (#947)
+            // DEEPLY_DEMO_APPLINKS=preview: its links on the card (#947)
             &if super::applinks_preview_scene() {
                 super::applinks_text(None)
             } else {

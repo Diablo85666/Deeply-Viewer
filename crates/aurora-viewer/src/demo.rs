@@ -1,4 +1,4 @@
-//! Offline demo scene (`AURORA_DEMO=1`): a synthetic region fed through the
+//! Offline demo scene (`DEEPLY_DEMO=1`): a synthetic region fed through the
 //! same event path as the network, used to test rendering without a grid.
 
 use aurora_llsd::Llsd;
@@ -31,285 +31,285 @@ pub mod water;
 
 const HANDLE: u64 = (256000u64 << 32) | 256000;
 
-/// AURORA_DEMO_AA_SWITCH: the anti-aliasing changed at given frames.
+/// DEEPLY_DEMO_AA_SWITCH: the anti-aliasing changed at given frames.
 #[path = "demo_aa_switch.rs"]
 pub mod aa_switch;
-/// Help › About Aurora Viewer on one of its tabs (AURORA_DEMO_ABOUT).
+/// Help › About Deeply Viewer on one of its tabs (DEEPLY_DEMO_ABOUT).
 #[path = "demo_about.rs"]
 pub mod about;
 #[path = "demo_alpha_mask_ab.rs"]
 pub mod alpha_mask_ab;
 #[path = "demo_alpha_sort.rs"]
 pub mod alpha_sort;
-/// AURORA_DEMO_ARRIVAL: an arrival in a busy region, every asset downloaded.
+/// DEEPLY_DEMO_ARRIVAL: an arrival in a busy region, every asset downloaded.
 #[path = "demo_arrival.rs"]
 pub mod arrival;
 /// The local asset server of its `net=` option.
 #[path = "demo_asset_server.rs"]
 pub mod asset_server;
 /// Taskbar flashes and system notifications in the background
-/// (AURORA_DEMO_ATTENTION).
+/// (DEEPLY_DEMO_ATTENTION).
 #[path = "demo_attention.rs"]
 pub mod attention;
 #[path = "demo_auto_hover.rs"]
 pub mod auto_hover;
 /// Blended panes standing in the sun, for their shadows
-/// (AURORA_DEMO_BLEND_SHADOWS).
+/// (DEEPLY_DEMO_BLEND_SHADOWS).
 #[path = "demo_blend_shadows.rs"]
 pub mod blend_shadows;
-/// A box of bake-on-mesh placeholders on the ground (AURORA_DEMO_BOM_REZZED).
+/// A box of bake-on-mesh placeholders on the ground (DEEPLY_DEMO_BOM_REZZED).
 #[path = "demo_bom_rezzed.rs"]
 pub mod bom_rezzed;
-/// Voice calls with a simulated voice server (AURORA_DEMO_CALL).
+/// Voice calls with a simulated voice server (DEEPLY_DEMO_CALL).
 #[path = "demo_calls.rs"]
 pub mod calls;
-/// EEP environment answers (AURORA_DEMO_EEP_PARCEL).
+/// EEP environment answers (DEEPLY_DEMO_EEP_PARCEL).
 #[path = "demo_chatlog.rs"]
 pub mod chatlog;
 /// The classifieds of the profile scenarios, ours kept for the run.
 #[path = "demo_classifieds.rs"]
 pub mod classifieds;
-/// Bumps, pushes and hits, and their window (AURORA_DEMO_COLLISIONS).
+/// Bumps, pushes and hits, and their window (DEEPLY_DEMO_COLLISIONS).
 #[path = "demo_collisions.rs"]
 pub mod collisions;
 /// Conference invitations from a stranger and a friend in turn
-/// (AURORA_DEMO_CONFERENCE).
+/// (DEEPLY_DEMO_CONFERENCE).
 #[path = "demo_conference.rs"]
 pub mod conference;
-/// Place details of place links (AURORA_DEMO_PLACE).
+/// Place details of place links (DEEPLY_DEMO_PLACE).
 #[path = "demo_contact_markers.rs"]
 pub mod contact_markers;
-/// The Conversations button flashing (AURORA_DEMO_CONV_BUTTON).
+/// The Conversations button flashing (DEEPLY_DEMO_CONV_BUTTON).
 #[path = "demo_conv_button.rs"]
 pub mod conv_button;
 /// A blended face lying exactly on an opaque face of the same mesh
-/// (AURORA_DEMO_COPLANAR_DECAL).
+/// (DEEPLY_DEMO_COPLANAR_DECAL).
 #[path = "demo_coplanar_decal.rs"]
 pub mod coplanar_decal;
 /// A worn layer lying exactly on the skin, in strips
-/// (AURORA_DEMO_COPLANAR_LAYERS).
+/// (DEEPLY_DEMO_COPLANAR_LAYERS).
 #[path = "demo_coplanar_layers.rs"]
 pub mod coplanar_layers;
-/// A deformed avatar to reset (AURORA_DEMO_DEFORM).
+/// A deformed avatar to reset (DEEPLY_DEMO_DEFORM).
 #[path = "demo_deform.rs"]
 pub mod deform;
-/// A Marketplace delivery's notification (AURORA_DEMO_DELIVERY).
+/// A Marketplace delivery's notification (DEEPLY_DEMO_DELIVERY).
 #[path = "demo_delivery.rs"]
 pub mod delivery;
-/// The Destination Guide made up offline (AURORA_DEMO_DESTINATIONS).
+/// The Destination Guide made up offline (DEEPLY_DEMO_DESTINATIONS).
 #[path = "demo_destinations.rs"]
 pub mod destinations;
 #[path = "demo_eep.rs"]
 pub mod eep;
-/// A facial expression and a hand pose (AURORA_DEMO_EMOTE).
+/// A facial expression and a hand pose (DEEPLY_DEMO_EMOTE).
 #[path = "demo_emote.rs"]
 pub mod emote;
-/// Environment selector library and script (AURORA_DEMO_ENV_SELECT).
+/// Environment selector library and script (DEEPLY_DEMO_ENV_SELECT).
 #[path = "demo_env.rs"]
 pub mod env;
 /// An experience's teleport door and its permission question
-/// (AURORA_DEMO_EXPERIENCE).
+/// (DEEPLY_DEMO_EXPERIENCE).
 #[path = "demo_experience.rs"]
 pub mod experience;
 #[path = "demo_floating_text.rs"]
 pub mod floating_text;
 /// A prop derezzed and particles started while the photo mode holds the
-/// world still (AURORA_DEMO_FREEZE_WORLD).
+/// world still (DEEPLY_DEMO_FREEZE_WORLD).
 #[path = "demo_freeze_world.rs"]
 pub mod freeze_world;
 /// Meshes filling the geometry arena until it outgrows its buffers
-/// (AURORA_DEMO_GEOMETRY).
-/// Friendship offers in the middle of the screen (AURORA_DEMO_FRIEND_PROMPT).
+/// (DEEPLY_DEMO_GEOMETRY).
+/// Friendship offers in the middle of the screen (DEEPLY_DEMO_FRIEND_PROMPT).
 #[path = "demo_friend_prompt.rs"]
 pub mod friend_prompt;
 #[path = "demo_geometry.rs"]
 pub mod geometry;
-/// Names and chat in the characters residents use (AURORA_DEMO_GLYPHS).
+/// Names and chat in the characters residents use (DEEPLY_DEMO_GLYPHS).
 #[path = "demo_glyphs.rs"]
 pub mod glyphs;
-/// The grid status feed and its button (AURORA_DEMO_GRID_STATUS).
+/// The grid status feed and its button (DEEPLY_DEMO_GRID_STATUS).
 #[path = "demo_grid_status.rs"]
 pub mod grid_status;
 #[path = "demo_grounding.rs"]
 pub mod grounding;
-/// The demo group server (AURORA_DEMO_GROUP_PROFILE).
+/// The demo group server (DEEPLY_DEMO_GROUP_PROFILE).
 #[path = "demo_group.rs"]
 pub mod group;
 /// The Group titles window and the title worn by region
-/// (AURORA_DEMO_GROUP_REGION).
+/// (DEEPLY_DEMO_GROUP_REGION).
 #[path = "demo_group_region.rs"]
 pub mod group_region;
 #[path = "demo_hand_ik.rs"]
 pub mod hand_ik;
-/// Set Home to Here and Privacy's account settings (AURORA_DEMO_HOME,
-/// AURORA_DEMO_USERINFO).
+/// Set Home to Here and Privacy's account settings (DEEPLY_DEMO_HOME,
+/// DEEPLY_DEMO_USERINFO).
 #[path = "demo_home.rs"]
 pub mod home;
-/// The world's hover tips in one of their forms (AURORA_DEMO_HOVER_TIPS).
+/// The world's hover tips in one of their forms (DEEPLY_DEMO_HOVER_TIPS).
 #[path = "demo_hover_tips.rs"]
 pub mod hover_tips;
 #[path = "demo_hud.rs"]
 pub mod hud;
 /// IMs announced as their sender starts typing, and the unread count in
-/// the window title (AURORA_DEMO_IM_ANNOUNCE).
+/// the window title (DEEPLY_DEMO_IM_ANNOUNCE).
 #[path = "demo_im_announce.rs"]
 pub mod im_announce;
-/// Keyword alerts on lines of every kind (AURORA_DEMO_KEYWORDS).
+/// Keyword alerts on lines of every kind (DEEPLY_DEMO_KEYWORDS).
 #[path = "demo_keywords.rs"]
 pub mod keywords;
-/// About Land answers (AURORA_DEMO_LAND).
+/// About Land answers (DEEPLY_DEMO_LAND).
 #[path = "demo_land.rs"]
 pub mod land;
 /// Legacy texture-entry bump presets and normal-map precedence
-/// (AURORA_DEMO_LEGACY_BUMP).
+/// (DEEPLY_DEMO_LEGACY_BUMP).
 #[path = "demo_legacy_bump.rs"]
 pub mod legacy_bump;
 #[path = "demo_link.rs"]
 pub mod link;
-/// A Mask of cutoff 255 over an alpha just under opaque (AURORA_DEMO_MASK_255).
+/// A Mask of cutoff 255 over an alpha just under opaque (DEEPLY_DEMO_MASK_255).
 #[path = "demo_mask_255.rs"]
 pub mod mask_255;
 #[path = "demo_missing_texture.rs"]
 pub mod missing_texture;
 /// The real or the Legacy Viewer's night sky, the camera on the stars
-/// (AURORA_DEMO_NIGHT_SKY).
+/// (DEEPLY_DEMO_NIGHT_SKY).
 #[path = "demo_night_sky.rs"]
 pub mod night_sky;
 /// The notification center's mockup scenario, in either style
-/// (AURORA_DEMO_NOTIFS).
+/// (DEEPLY_DEMO_NOTIFS).
 #[path = "demo_notifs.rs"]
 pub mod notifs;
 /// What objects say in the nearby chat among residents, as compact rows or
-/// not (AURORA_DEMO_OBJECT_CHAT).
+/// not (DEEPLY_DEMO_OBJECT_CHAT).
 #[path = "demo_object_chat.rs"]
 pub mod object_chat;
-/// Objects' messages from near and far, filtered (AURORA_DEMO_OBJECT_IM).
+/// Objects' messages from near and far, filtered (DEEPLY_DEMO_OBJECT_IM).
 #[path = "demo_object_im.rs"]
 pub mod object_im;
-/// The object menu scenario's objects (AURORA_DEMO_OBJECT_MENU).
+/// The object menu scenario's objects (DEEPLY_DEMO_OBJECT_MENU).
 #[path = "demo_object_menu.rs"]
 pub mod object_menu;
-/// Boxes for the build tools' snap to objects (AURORA_DEMO_OBJECT_SNAP).
+/// Boxes for the build tools' snap to objects (DEEPLY_DEMO_OBJECT_SNAP).
 #[path = "demo_object_snap.rs"]
 pub mod object_snap;
-/// AURORA_DEMO_OUTFIT_RESTORE: the login restore of the outfit against a
+/// DEEPLY_DEMO_OUTFIT_RESTORE: the login restore of the outfit against a
 /// region that puts part of it back by itself.
 #[path = "demo_outfit_restore.rs"]
 pub mod outfit_restore;
 #[path = "demo_people.rs"]
 pub mod people;
-/// Avatar body physics: a physics layer and balls on the body (AURORA_DEMO_PHYSICS).
+/// Avatar body physics: a physics layer and balls on the body (DEEPLY_DEMO_PHYSICS).
 #[path = "demo_physics.rs"]
 pub mod physics;
 #[path = "demo_place.rs"]
 pub mod place;
-/// Linden trees and grass, near, far or as a forest (AURORA_DEMO_PLANTS).
+/// Linden trees and grass, near, far or as a forest (DEEPLY_DEMO_PLANTS).
 #[path = "demo_plants.rs"]
 pub mod plants;
 /// The friends' online / offline toasts at one of their places
-/// (AURORA_DEMO_PRESENCE).
+/// (DEEPLY_DEMO_PRESENCE).
 #[path = "demo_presence.rs"]
 pub mod presence;
-/// Region / Estate answers (AURORA_DEMO_REGION).
+/// Region / Estate answers (DEEPLY_DEMO_REGION).
 #[path = "demo_region.rs"]
 pub mod region;
 /// Messages to the whole region in the middle of the screen
-/// (AURORA_DEMO_REGION_MESSAGE).
+/// (DEEPLY_DEMO_REGION_MESSAGE).
 #[path = "demo_region_message.rs"]
 pub mod region_message;
-/// The rez effect of objects and avatars appearing (AURORA_DEMO_REZ_EFFECT).
+/// The rez effect of objects and avatars appearing (DEEPLY_DEMO_REZ_EFFECT).
 #[path = "demo_rez.rs"]
 pub mod rez;
 /// A rigged mesh rezzed on a cube and the same one worn
-/// (AURORA_DEMO_RIGGED_PROP).
+/// (DEEPLY_DEMO_RIGGED_PROP).
 #[path = "demo_rigged_prop.rs"]
 pub mod rigged_prop;
 #[path = "demo_sculpt.rs"]
 pub mod sculpt;
-/// Directory answers of the search window (AURORA_DEMO_SEARCH).
+/// Directory answers of the search window (DEEPLY_DEMO_SEARCH).
 #[path = "demo_search.rs"]
 pub mod search;
-/// A seat deleted under the resident sitting on it (AURORA_DEMO_SEAT_KILL).
+/// A seat deleted under the resident sitting on it (DEEPLY_DEMO_SEAT_KILL).
 #[path = "demo_seat_kill.rs"]
 pub mod seat_kill;
-/// Freeze, region console and voice moderation (AURORA_DEMO_FREEZE,
-/// AURORA_DEMO_SIM_CONSOLE, AURORA_DEMO_VOICE_MODERATION).
+/// Freeze, region console and voice moderation (DEEPLY_DEMO_FREEZE,
+/// DEEPLY_DEMO_SIM_CONSOLE, DEEPLY_DEMO_VOICE_MODERATION).
 #[path = "demo_sim_extras.rs"]
 pub mod sim_extras;
 /// The region's simulator version changing during the run
-/// (AURORA_DEMO_SIM_VERSION).
+/// (DEEPLY_DEMO_SIM_VERSION).
 #[path = "demo_sim_version.rs"]
 pub mod sim_version;
-/// A rainbow or a 22° halo in the region's sky (AURORA_DEMO_SKY_OPTICS).
+/// A rainbow or a 22° halo in the region's sky (DEEPLY_DEMO_SKY_OPTICS).
 #[path = "demo_sky.rs"]
 pub mod sky;
 /// A panel whose texture a script changes every few seconds
-/// (AURORA_DEMO_SLIDESHOW).
+/// (DEEPLY_DEMO_SLIDESHOW).
 #[path = "demo_slideshow.rs"]
 pub mod slideshow;
 /// A resident's "Invite to group", "Add to contact set" and "Block
-/// particles" (AURORA_DEMO_SOCIAL_MENU).
+/// particles" (DEEPLY_DEMO_SOCIAL_MENU).
 #[path = "demo_social_menu.rs"]
 pub mod social_menu;
 /// Sounds circling the listener and rising above it, for the 3D sound for
-/// headphones (AURORA_DEMO_SOUND_HRTF).
+/// headphones (DEEPLY_DEMO_SOUND_HRTF).
 #[path = "demo_sound_hrtf.rs"]
 pub mod sound_hrtf;
-/// Sounds behind a wall and in a box (AURORA_DEMO_SOUND_OCCLUSION).
+/// Sounds behind a wall and in a box (DEEPLY_DEMO_SOUND_OCCLUSION).
 #[path = "demo_sound_occlusion.rs"]
 pub mod sound_occlusion;
 #[path = "demo_sound_parcels.rs"]
 pub mod sound_parcels;
 /// A clapper above our avatar, a small room and a large hall, for the
-/// reverb of the surroundings (AURORA_DEMO_SOUND_REVERB).
+/// reverb of the surroundings (DEEPLY_DEMO_SOUND_REVERB).
 #[path = "demo_sound_reverb.rs"]
 pub mod sound_reverb;
 /// The files the scenarios take from a folder, and which ones a build reads.
 #[path = "demo_source.rs"]
 pub mod source;
-/// The Aurora team's marks on demo residents (AURORA_DEMO_STAFF).
+/// The Aurora team's marks on demo residents (DEEPLY_DEMO_STAFF).
 #[path = "demo_staff.rs"]
 pub mod staff;
 /// Streaming hitch test: objects and textures arriving in waves
-/// (AURORA_DEMO_STREAM).
+/// (DEEPLY_DEMO_STREAM).
 #[path = "demo_stream.rs"]
 pub mod stream;
 /// The parcel radio's titles and the stream title window
-/// (AURORA_DEMO_STREAM_TITLE).
+/// (DEEPLY_DEMO_STREAM_TITLE).
 #[path = "demo_stream_title.rs"]
 pub mod stream_title;
-/// Name plates in every state and at each distance (AURORA_DEMO_TAGS).
+/// Name plates in every state and at each distance (DEEPLY_DEMO_TAGS).
 #[path = "demo_tags.rs"]
 pub mod tags;
-/// A low-poly ball with a baked normal map (AURORA_DEMO_BUMP=sphere).
+/// A low-poly ball with a baked normal map (DEEPLY_DEMO_BUMP=sphere).
 #[path = "demo_tangents.rs"]
 pub mod tangents;
 /// "Refresh textures" on a panel whose disk cache file is stale
-/// (AURORA_DEMO_TEXREFRESH).
+/// (DEEPLY_DEMO_TEXREFRESH).
 #[path = "demo_tex_refresh.rs"]
 pub mod tex_refresh;
 /// Boards with 2048 px streamed textures, tinted by the level shown, for
-/// the maximum texture resolution (AURORA_DEMO_TEXTURE_RES).
+/// the maximum texture resolution (DEEPLY_DEMO_TEXTURE_RES).
 #[path = "demo_texture_res.rs"]
 pub mod texture_res;
 /// Toasts of friends and messages, and the list under the bell
-/// (AURORA_DEMO_TOASTS).
+/// (DEEPLY_DEMO_TOASTS).
 #[path = "demo_toasts.rs"]
 pub mod toasts;
 #[path = "demo_tortured_prims.rs"]
 pub mod tortured_prims;
-/// Fast camera turns (AURORA_DEMO_TURN).
+/// Fast camera turns (DEEPLY_DEMO_TURN).
 #[path = "demo_turn.rs"]
 pub mod turn;
 /// The Voice controls window with residents in the nearby channel
-/// (AURORA_DEMO_VOICE_CONTROLS).
+/// (DEEPLY_DEMO_VOICE_CONTROLS).
 #[path = "demo_voice_controls.rs"]
 pub mod voice_controls;
 /// Transparent shells with a shiny blended legacy material, the wet layers
-/// of mesh bodies (AURORA_DEMO_WET_LAYER).
+/// of mesh bodies (DEEPLY_DEMO_WET_LAYER).
 #[path = "demo_wet_layer.rs"]
 pub mod wet_layer;
-/// A worn object of ours (AURORA_DEMO_WORN).
+/// A worn object of ours (DEEPLY_DEMO_WORN).
 #[path = "demo_worn.rs"]
 pub mod worn;
 
@@ -325,13 +325,13 @@ pub fn floor_at(x: f32, y: f32) -> f32 {
     }
 }
 
-/// AURORA_DEMO_ALTITUDE=<m>: the whole demo place (terrain, objects,
+/// DEEPLY_DEMO_ALTITUDE=<m>: the whole demo place (terrain, objects,
 /// avatars) raised by that much, to see what single precision does to the
 /// picture high above the ground (0.24 mm steps between 2048 and 4096 m).
 fn altitude() -> f32 {
     static ALTITUDE: std::sync::OnceLock<f32> = std::sync::OnceLock::new();
     *ALTITUDE.get_or_init(|| {
-        std::env::var("AURORA_DEMO_ALTITUDE")
+        std::env::var("DEEPLY_DEMO_ALTITUDE")
             .ok()
             .and_then(|v| v.trim().parse::<f32>().ok())
             .filter(|v| v.is_finite())
@@ -339,13 +339,13 @@ fn altitude() -> f32 {
     })
 }
 
-/// AURORA_DEMO_AGENT_JITTER=<mm>: our avatar receives small position
+/// DEEPLY_DEMO_AGENT_JITTER=<mm>: our avatar receives small position
 /// corrections a few times per second, as a simulator sends for an avatar
 /// standing high above the ground. The value is their largest size.
 pub fn agent_jitter() -> Option<f32> {
     static JITTER: std::sync::OnceLock<Option<f32>> = std::sync::OnceLock::new();
     *JITTER.get_or_init(|| {
-        std::env::var("AURORA_DEMO_AGENT_JITTER")
+        std::env::var("DEEPLY_DEMO_AGENT_JITTER")
             .ok()
             .and_then(|v| v.trim().parse::<f32>().ok())
             .filter(|v| v.is_finite() && *v > 0.0)
@@ -353,7 +353,7 @@ pub fn agent_jitter() -> Option<f32> {
     })
 }
 
-/// The correction of AURORA_DEMO_AGENT_JITTER at a frame: a new one every
+/// The correction of DEEPLY_DEMO_AGENT_JITTER at a frame: a new one every
 /// 12 frames (5 per second at 60 images/s), the same for a given frame.
 pub fn agent_jitter_offset(frame: u64, mm: f32) -> Vec3 {
     let step = frame / 12;
@@ -376,7 +376,7 @@ fn height(x: f32, y: f32) -> f32 {
     // a beach and a lagoon to the west (water at 20 m)
     let shore = ((x - 75.0) / 9.0).clamp(-6.0, 9.0);
     static TERRAIN_SLOPES: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    let slopes = *TERRAIN_SLOPES.get_or_init(|| std::env::var("AURORA_DEMO_REGION").is_ok_and(|v| v.split(':').any(|p| p == "pbr-slopes")));
+    let slopes = *TERRAIN_SLOPES.get_or_init(|| std::env::var("DEEPLY_DEMO_REGION").is_ok_and(|v| v.split(':').any(|p| p == "pbr-slopes")));
     let relief = if slopes {
         7.0 * (-((x - 123.0).powi(2) / 9.0 + (y - 49.0).powi(2) / 25.0)).exp()
             - 2.0 * (-((x - 128.0).powi(2) + (y - 46.0).powi(2)) / 8.0).exp()
@@ -410,7 +410,7 @@ fn shape(path: u8, profile: u8, sy: u8, hollow: u16, cut_end: u16) -> aurora_pri
     .to_params()
 }
 
-/// The hat Violet Wolf wears (AURORA_DEMO_DERENDER=hat): `prim`'s id of
+/// The hat Violet Wolf wears (DEEPLY_DEMO_DERENDER=hat): `prim`'s id of
 /// local id 9100.
 pub fn wolf_hat() -> Uuid {
     Uuid::from_u128(0xA0E0_0000_0000_0000_0000_0000_0000_0000 | 9100)
@@ -663,7 +663,7 @@ fn compressed_particle_block(block: &[u8], legacy: bool) -> Option<aurora_net::o
     aurora_net::objects::parse_compressed(&data, 0).map(|o| o.particles)
 }
 
-/// First friend of the demo buddy list (AURORA_DEMO_PROFILE=friend).
+/// First friend of the demo buddy list (DEEPLY_DEMO_PROFILE=friend).
 pub const DEMO_FRIEND: Uuid = Uuid::from_u128(0xD0D0_0000_0000_0000_0000_0000_0000_0000 | 100);
 
 pub(crate) fn u(n: u128) -> Uuid {
@@ -827,7 +827,7 @@ fn demo_raw() -> Llsd {
     if env::enabled() {
         skel.push(env::settings_folder(u(1)));
     }
-    // AURORA_DEMO_PEOPLE: its friends and their rights
+    // DEEPLY_DEMO_PEOPLE: its friends and their rights
     let people = people::friends();
     let mut buddies: Vec<Llsd> = (0..4)
         .map(|i| u(100 + i))
@@ -845,7 +845,7 @@ fn demo_raw() -> Llsd {
     let mut raw = llsd_map! {
         "inventory-root" => Llsd::Array(vec![llsd_map!{"folder_id" => u(1)}]),
         // an adult account that wants every rating (the search window's boxes);
-        // AURORA_DEMO_LURE=exceeded: it wants General and Moderate only,
+        // DEEPLY_DEMO_LURE=exceeded: it wants General and Moderate only,
         // =blocked: it is not adult
         "agent_access_max" => demo_access().0,
         "agent_region_access" => demo_access().1,
@@ -863,13 +863,13 @@ fn demo_raw() -> Llsd {
     {
         env::library_login(m);
     }
-    // AURORA_DEMO_PEOPLE's groups tab: "3 groups out of 42"
+    // DEEPLY_DEMO_PEOPLE's groups tab: "3 groups out of 42"
     if let Some(limit) = people::group_limit()
         && let Llsd::Map(m) = &mut raw
     {
         m.insert("max-agent-groups".to_owned(), Llsd::from(limit));
     }
-    // AURORA_DEMO_GROUP_CREATE: the membership's fee and group limit
+    // DEEPLY_DEMO_GROUP_CREATE: the membership's fee and group limit
     for (key, value) in group::login_benefits().unwrap_or_default() {
         raw.insert(key, value);
     }
@@ -886,7 +886,7 @@ pub const DEMO_GROUP1: Uuid = Uuid::from_u128(0x6E00_0000_0000_0000_0000_0000_00
 pub const DEMO_GROUP2: Uuid = Uuid::from_u128(0x6E00_0000_0000_0000_0000_0000_0000_0002);
 /// Hidden from the profile (Contacts › Groups shows it in the other color).
 pub const DEMO_GROUP3: Uuid = Uuid::from_u128(0x6E00_0000_0000_0000_0000_0000_0000_0003);
-/// AURORA_DEMO_CONV=noms: residents and a conference whose names do not fit
+/// DEEPLY_DEMO_CONV=noms: residents and a conference whose names do not fit
 /// in the lists (long display name and username, wide letters, long title).
 pub const DEMO_LONG_NAME: Uuid = Uuid::from_u128(0xA0E0_A6E1_0000_0000_0000_0000_0000_0010);
 pub const DEMO_WIDE_NAME: Uuid = Uuid::from_u128(0xA0E0_A6E1_0000_0000_0000_0000_0000_0011);
@@ -906,10 +906,10 @@ fn long_name(id: &Uuid) -> Option<(&'static str, &'static str, &'static str)> {
     }
 }
 
-/// AURORA_DEMO_CONV=names[:narrow|wide]: the long names scenario, and the
+/// DEEPLY_DEMO_CONV=names[:narrow|wide]: the long names scenario, and the
 /// sizes of the Conversations and People windows it is shown in.
 pub fn long_names_scenario() -> Option<(egui::Vec2, egui::Vec2)> {
-    let v = std::env::var("AURORA_DEMO_CONV").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_CONV").ok()?;
     let (mode, width) = v.split_once(':').unwrap_or((v.as_str(), ""));
     if !matches!(mode, "names" | "noms") {
         return None;
@@ -922,7 +922,7 @@ pub fn long_names_scenario() -> Option<(egui::Vec2, egui::Vec2)> {
     })
 }
 
-/// AURORA_DEMO_CONV=many: more conversations than the list of the
+/// DEEPLY_DEMO_CONV=many: more conversations than the list of the
 /// Conversations window shows at once.
 pub const MANY_CONVERSATIONS: u32 = 24;
 
@@ -931,7 +931,7 @@ pub fn many_conversation(i: u32) -> Uuid {
 }
 
 pub fn many_conversations_scenario() -> bool {
-    std::env::var("AURORA_DEMO_CONV").is_ok_and(|v| v == "many")
+    std::env::var("DEEPLY_DEMO_CONV").is_ok_and(|v| v == "many")
 }
 
 /// One instant message from each of `MANY_CONVERSATIONS` residents.
@@ -954,13 +954,13 @@ pub fn many_conversation_events(agent: Uuid) -> Vec<NetEvent> {
         .collect()
 }
 
-/// AURORA_DEMO_FLASH=1: Tess writes to us every 8 seconds from the 10th
+/// DEEPLY_DEMO_FLASH=1: Tess writes to us every 8 seconds from the 10th
 /// (`ui/chat/flash.rs`): with another conversation shown, her entry
 /// flashes. The message due at `secs` seconds of the session, once.
 pub fn flash_message(agent: Uuid, secs: f64) -> Option<NetEvent> {
     use std::sync::atomic::{AtomicU64, Ordering};
     static SENT: AtomicU64 = AtomicU64::new(0);
-    if std::env::var("AURORA_DEMO_FLASH").is_err() || secs < 10.0 {
+    if std::env::var("DEEPLY_DEMO_FLASH").is_err() || secs < 10.0 {
         return None;
     }
     let due = ((secs - 10.0) / 8.0) as u64 + 1;
@@ -981,7 +981,7 @@ pub fn flash_message(agent: Uuid, secs: f64) -> Option<NetEvent> {
     }))
 }
 
-/// AURORA_DEMO_SNOOZE=<seconds>[,auto][,ask]: a group chat's snooze
+/// DEEPLY_DEMO_SNOOZE=<seconds>[,auto][,ask]: a group chat's snooze
 /// (`world/groups.rs`). Tess writes in the Aurora Builders chat every 6
 /// seconds from the 10th in world; a snooze lasts `<seconds>` instead of
 /// the setting's minutes, to watch it end; `auto` snoozes that chat by
@@ -997,7 +997,7 @@ struct SnoozeScene {
 fn snooze_scenario() -> Option<SnoozeScene> {
     static SCENE: std::sync::OnceLock<Option<SnoozeScene>> = std::sync::OnceLock::new();
     *SCENE.get_or_init(|| {
-        let v = std::env::var("AURORA_DEMO_SNOOZE").ok()?;
+        let v = std::env::var("DEEPLY_DEMO_SNOOZE").ok()?;
         let mut parts = v.split(',').map(str::trim);
         let seconds = parts.next()?.parse().ok()?;
         let flags: Vec<&str> = parts.collect();
@@ -1009,12 +1009,12 @@ fn snooze_scenario() -> Option<SnoozeScene> {
     })
 }
 
-/// The snooze's duration of `AURORA_DEMO_SNOOZE`.
+/// The snooze's duration of `DEEPLY_DEMO_SNOOZE`.
 pub fn snooze_seconds() -> Option<u32> {
     snooze_scenario().map(|s| s.seconds)
 }
 
-/// `AURORA_DEMO_SNOOZE=…,ask`: the duration is asked at each snooze.
+/// `DEEPLY_DEMO_SNOOZE=…,ask`: the duration is asked at each snooze.
 pub fn snooze_ask() -> bool {
     snooze_scenario().is_some_and(|s| s.ask)
 }
@@ -1025,7 +1025,7 @@ fn snooze_clock() -> f64 {
     START.get_or_init(std::time::Instant::now).elapsed().as_secs_f64()
 }
 
-/// `AURORA_DEMO_SNOOZE=…,auto`: true once, when the demo snoozes the group
+/// `DEEPLY_DEMO_SNOOZE=…,auto`: true once, when the demo snoozes the group
 /// chat itself. Asked every frame in world.
 pub fn snooze_now() -> bool {
     use std::sync::atomic::{AtomicBool, Ordering};
@@ -1033,7 +1033,7 @@ pub fn snooze_now() -> bool {
     snooze_scenario().is_some_and(|s| s.auto) && snooze_clock() >= 14.0 && !DONE.swap(true, Ordering::Relaxed)
 }
 
-/// `AURORA_DEMO_SNOOZE`: Tess's message in the group chat now due, once.
+/// `DEEPLY_DEMO_SNOOZE`: Tess's message in the group chat now due, once.
 /// Asked every frame in world.
 pub fn snooze_message(agent: Uuid) -> Option<NetEvent> {
     use std::sync::atomic::{AtomicU64, Ordering};
@@ -1061,23 +1061,23 @@ pub fn snooze_message(agent: Uuid) -> Option<NetEvent> {
     }))
 }
 
-/// AURORA_DEMO_CONV_PREVIEWS=net: the previews of the demo's links come from
+/// DEEPLY_DEMO_CONV_PREVIEWS=net: the previews of the demo's links come from
 /// the real sites; otherwise the demo makes them (`link_preview::demo`).
 pub fn previews_offline() -> bool {
     static NET: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    !*NET.get_or_init(|| std::env::var("AURORA_DEMO_CONV_PREVIEWS").is_ok_and(|v| v == "net"))
+    !*NET.get_or_init(|| std::env::var("DEEPLY_DEMO_CONV_PREVIEWS").is_ok_and(|v| v == "net"))
 }
 
-/// AURORA_DEMO_CONV_PREVIEWS=services: the made-up Nextcloud of the demo's
+/// DEEPLY_DEMO_CONV_PREVIEWS=services: the made-up Nextcloud of the demo's
 /// links is one of the picture sites (#1063), without being added to the
 /// user's settings.
 pub fn picture_sites() -> &'static [&'static str] {
     let on =
-        std::env::var_os("AURORA_DEMO").is_some() && std::env::var("AURORA_DEMO_CONV_PREVIEWS").is_ok_and(|v| v.starts_with("services"));
+        std::env::var_os("DEEPLY_DEMO").is_some() && std::env::var("DEEPLY_DEMO_CONV_PREVIEWS").is_ok_and(|v| v.starts_with("services"));
     if on { &["cloud.example.org"] } else { &[] }
 }
 
-/// AURORA_DEMO_GIFS: the GIF picker of the Conversations field (#932).
+/// DEEPLY_DEMO_GIFS: the GIF picker of the Conversations field (#932).
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Gifs {
     /// `1` / `open`: open on GIPHY's trending, made here.
@@ -1106,7 +1106,7 @@ impl Gifs {
 
 pub fn gifs_scenario() -> Option<Gifs> {
     static MODE: std::sync::OnceLock<Option<Gifs>> = std::sync::OnceLock::new();
-    *MODE.get_or_init(|| match std::env::var("AURORA_DEMO_GIFS").ok()?.trim() {
+    *MODE.get_or_init(|| match std::env::var("DEEPLY_DEMO_GIFS").ok()?.trim() {
         "1" | "open" => Some(Gifs::Open),
         "klipy" => Some(Gifs::Klipy),
         "sent" => Some(Gifs::Sent),
@@ -1115,29 +1115,29 @@ pub fn gifs_scenario() -> Option<Gifs> {
         "nokey" => Some(Gifs::NoKey),
         "net" => Some(Gifs::Net),
         other => {
-            log::warn!("AURORA_DEMO_GIFS={other}: unknown");
+            log::warn!("DEEPLY_DEMO_GIFS={other}: unknown");
             None
         }
     })
 }
 
-/// Whether `AURORA_DEMO_RECENT_EMOJIS` is set: the row is shown then.
+/// Whether `DEEPLY_DEMO_RECENT_EMOJIS` is set: the row is shown then.
 pub fn recent_emojis_on() -> bool {
-    std::env::var_os("AURORA_DEMO_RECENT_EMOJIS").is_some()
+    std::env::var_os("DEEPLY_DEMO_RECENT_EMOJIS").is_some()
 }
 
-/// AURORA_DEMO_RECENT_EMOJIS=1|<emojis>: the row by the chat fields, the
+/// DEEPLY_DEMO_RECENT_EMOJIS=1|<emojis>: the row by the chat fields, the
 /// given emojis or a full row, shown even though Preferences › Chat keeps it
 /// off by default; unset, it starts empty as a new account's.
 pub fn recent_emojis() -> String {
-    match std::env::var("AURORA_DEMO_RECENT_EMOJIS") {
+    match std::env::var("DEEPLY_DEMO_RECENT_EMOJIS") {
         Ok(v) if v.trim() == "1" => "🌟🐱🍕🎶🌈☕🤔😎🥳😍👏😢🙏🎉😅🔥👍❤😭😂".to_owned(),
         Ok(v) => v,
         Err(_) => String::new(),
     }
 }
 
-/// AURORA_DEMO_CONV=bubbles[:busy|:group|:local|:legacy]: the
+/// DEEPLY_DEMO_CONV=bubbles[:busy|:group|:local|:legacy]: the
 /// Conversations window as a messenger (ui/chat/bubbles.rs). Without a
 /// suffix the conversation with an online friend, over two days; `busy` the
 /// one with a resident nearby in do not disturb, after their automatic
@@ -1156,7 +1156,7 @@ pub fn bubbles_scenario() -> Option<Bubbles> {
     if let Some(scene) = aurora_scenario() {
         return Some(scene.view);
     }
-    let v = std::env::var("AURORA_DEMO_CONV").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_CONV").ok()?;
     Some(match v.strip_prefix("bubbles")? {
         "" => Bubbles::Friend,
         ":busy" => Bubbles::Busy,
@@ -1167,7 +1167,7 @@ pub fn bubbles_scenario() -> Option<Bubbles> {
     })
 }
 
-/// `AURORA_DEMO_CONV_POPOUT=1|option|nearby|nearby-out` (with `AURORA_DEMO_CONV=aurora…` or
+/// `DEEPLY_DEMO_CONV_POPOUT=1|option|nearby|nearby-out` (with `DEEPLY_DEMO_CONV=aurora…` or
 /// `bubbles…`): conversations in their own windows (#717).
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Popout {
@@ -1182,7 +1182,7 @@ pub enum Popout {
 }
 
 pub fn popout_scenario() -> Option<Popout> {
-    match std::env::var("AURORA_DEMO_CONV_POPOUT").ok()?.trim() {
+    match std::env::var("DEEPLY_DEMO_CONV_POPOUT").ok()?.trim() {
         "option" => Some(Popout::Option),
         "nearby" => Some(Popout::Nearby),
         "nearby-out" => Some(Popout::NearbyOut),
@@ -1255,7 +1255,7 @@ pub fn bubbles_events() -> Vec<NetEvent> {
     ev
 }
 
-/// `AURORA_DEMO_CHAT_LINES=1|legacy|volumes`: nearby chat said at the arrival, to
+/// `DEEPLY_DEMO_CHAT_LINES=1|legacy|volumes`: nearby chat said at the arrival, to
 /// see the lines above the chat bar (`ui/chat/console.rs`): two lines of
 /// one resident, an emote, an object's line, a long line with a link, a
 /// shout. `legacy` shows them as the Legacy Viewer's lines for the session
@@ -1263,7 +1263,7 @@ pub fn bubbles_events() -> Vec<NetEvent> {
 /// wrapped text lines for this demo. Some(true) for `legacy`. `stagger` and
 /// `legacy:stagger` say them one at a time (`chat_lines_due`).
 pub fn chat_lines_scenario() -> Option<bool> {
-    let mode = std::env::var("AURORA_DEMO_CHAT_LINES").ok()?;
+    let mode = std::env::var("DEEPLY_DEMO_CHAT_LINES").ok()?;
     match mode.split(':').next()? {
         "legacy" => Some(true),
         "" | "0" => None,
@@ -1271,13 +1271,13 @@ pub fn chat_lines_scenario() -> Option<bool> {
     }
 }
 
-/// `AURORA_DEMO_CHAT_LINES=stagger|legacy:stagger`: the lines are said one
+/// `DEEPLY_DEMO_CHAT_LINES=stagger|legacy:stagger`: the lines are said one
 /// at a time instead of at the arrival.
 fn chat_lines_stagger() -> bool {
-    std::env::var("AURORA_DEMO_CHAT_LINES").is_ok_and(|mode| mode.ends_with("stagger"))
+    std::env::var("DEEPLY_DEMO_CHAT_LINES").is_ok_and(|mode| mode.ends_with("stagger"))
 }
 
-/// `AURORA_DEMO_CHAT_LINES=stagger`: the scenario's next line now due, once:
+/// `DEEPLY_DEMO_CHAT_LINES=stagger`: the scenario's next line now due, once:
 /// one every 2 s from 3 s after the first look in world, so that each
 /// leaves on its own at the end of its fade, as in a busy region (#2544:
 /// the others moved for a frame). Asked every frame in world.
@@ -1303,7 +1303,7 @@ pub fn chat_lines_due() -> Option<NetEvent> {
 }
 
 pub fn chat_lines_limit() -> Option<u32> {
-    let mode = std::env::var("AURORA_DEMO_CHAT_LINES").ok()?;
+    let mode = std::env::var("DEEPLY_DEMO_CHAT_LINES").ok()?;
     mode.split_once(':')?.1.parse::<u32>().ok().map(|lines| lines.min(50))
 }
 
@@ -1311,8 +1311,8 @@ pub fn chat_lines_limit() -> Option<u32> {
 pub fn chat_volume_comparison() -> bool {
     static ENABLED: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
     *ENABLED.get_or_init(|| {
-        std::env::var_os("AURORA_DEMO").is_some()
-            && std::env::var("AURORA_DEMO_CHAT_LINES").is_ok_and(|mode| mode.split(':').next() == Some("volumes"))
+        std::env::var_os("DEEPLY_DEMO").is_some()
+            && std::env::var("DEEPLY_DEMO_CHAT_LINES").is_ok_and(|mode| mode.split(':').next() == Some("volumes"))
     })
 }
 
@@ -1323,7 +1323,7 @@ pub fn chat_lines_events() -> Vec<NetEvent> {
     chat_lines_said()
 }
 
-/// The lines of `AURORA_DEMO_CHAT_LINES`, in the order they are said.
+/// The lines of `DEEPLY_DEMO_CHAT_LINES`, in the order they are said.
 fn chat_lines_said() -> Vec<NetEvent> {
     let object = Uuid::from_u128(0xC4A7_0000_0000_0000_0000_0000_0000_0001);
     let nova = aurora_i18n::tr!("demo-nova-example");
@@ -1400,9 +1400,9 @@ pub fn bubbles_lines(world: &mut crate::world::World, view: Bubbles) {
         Bubbles::Friend | Bubbles::Legacy => {
             let friend = DEMO_FRIEND;
             let name = "Nova Example";
-            // AURORA_DEMO_CONV_EMOJI=1: messages of emoji alone, drawn large
+            // DEEPLY_DEMO_CONV_EMOJI=1: messages of emoji alone, drawn large
             // (#483), among the others
-            let emoji_lines = std::env::var("AURORA_DEMO_CONV_EMOJI").is_ok().then(|| {
+            let emoji_lines = std::env::var("DEEPLY_DEMO_CONV_EMOJI").is_ok().then(|| {
                 [
                     line(ago(10), name, friend, ChatKind::Im, "🎉🎶🐺"),
                     line(ago(3), &me, Uuid::nil(), ChatKind::OWN, "👍"),
@@ -1425,10 +1425,10 @@ pub fn bubbles_lines(world: &mut crate::world::World, view: Bubbles) {
             if let Some(extra) = emoji_lines {
                 lines.splice(4..4, extra);
             }
-            // AURORA_DEMO_CONV_PREVIEWS=1|states|videos|clips: links with their
+            // DEEPLY_DEMO_CONV_PREVIEWS=1|states|videos|clips: links with their
             // cards (#538, #739, #848), made here without network
             // (`link_preview::demo`)
-            let preview_lines = std::env::var("AURORA_DEMO_CONV_PREVIEWS").ok().map(|mode| {
+            let preview_lines = std::env::var("DEEPLY_DEMO_CONV_PREVIEWS").ok().map(|mode| {
                 let with = |key: &str, url: &str| format!("{key} {url}");
                 if mode == "net" {
                     // real sites: a site to click on, a YouTube video
@@ -1602,12 +1602,12 @@ pub fn bubbles_lines(world: &mut crate::world::World, view: Bubbles) {
     }
 }
 
-/// AURORA_DEMO_CONV_SCROLL=up|new: the friend's conversation (the one
-/// `AURORA_DEMO_CONV=aurora`, `bubbles` or `bubbles:legacy` shows) a few
+/// DEEPLY_DEMO_CONV_SCROLL=up|new: the friend's conversation (the one
+/// `DEEPLY_DEMO_CONV=aurora`, `bubbles` or `bubbles:legacy` shows) a few
 /// screens long, shown from its top (`ui/chat/latest.rs`); with `new`, the
 /// friend writes three messages once it is there. True for `new`.
 pub fn conv_scroll_scenario() -> Option<bool> {
-    match std::env::var("AURORA_DEMO_CONV_SCROLL").ok()?.trim() {
+    match std::env::var("DEEPLY_DEMO_CONV_SCROLL").ok()?.trim() {
         "new" => Some(true),
         _ => Some(false),
     }
@@ -1658,7 +1658,7 @@ pub fn conv_scroll_new(world: &mut crate::world::World, scrolled: bool) {
     }
 }
 
-/// AURORA_DEMO_CONV=aurora[:flag…]: the Conversations window in Aurora's
+/// DEEPLY_DEMO_CONV=aurora[:flag…]: the Conversations window in Aurora's
 /// workspace (ui/chat/workspace.rs), on the lines of the bubbles scenario
 /// and a few more. Flags, joined by ":": `local`, `im` (the default),
 /// `busy`, `group` (members' panel open) for the conversation shown;
@@ -1718,7 +1718,7 @@ pub fn aurora_scenario() -> Option<AuroraScene> {
     if chat_volume_comparison() {
         return parse_aurora_scene("aurora:local");
     }
-    parse_aurora_scene(&std::env::var("AURORA_DEMO_CONV").ok()?)
+    parse_aurora_scene(&std::env::var("DEEPLY_DEMO_CONV").ok()?)
 }
 
 fn parse_aurora_scene(v: &str) -> Option<AuroraScene> {
@@ -1824,8 +1824,8 @@ pub fn aurora_lines(world: &mut crate::world::World, scene: AuroraScene) {
         (27, Uuid::nil(), aurora_i18n::tr!("demo-aurora-group-5").to_owned()),
         (3, DEMO_NOVA, aurora_i18n::tr!("demo-aurora-mention", name = me.as_str())),
     ];
-    // AURORA_DEMO_CONV_PREVIEWS: a picture in the group, blurred until clicked
-    let previews = std::env::var("AURORA_DEMO_CONV_PREVIEWS").is_ok().then(|| {
+    // DEEPLY_DEMO_CONV_PREVIEWS: a picture in the group, blurred until clicked
+    let previews = std::env::var("DEEPLY_DEMO_CONV_PREVIEWS").is_ok().then(|| {
         (
             2,
             DEMO_LOUP,
@@ -2018,7 +2018,7 @@ pub fn aurora_events(scene: &AuroraScene) -> Vec<NetEvent> {
     ev
 }
 
-/// AURORA_DEMO_CONV=tp[:sent|reject]: a conversation with a resident
+/// DEEPLY_DEMO_CONV=tp[:sent|reject]: a conversation with a resident
 /// (DEMO_NOVA, whom the demo's names call "Tess Touch"), then (issue #280)
 /// the invitation of a teleport offer to them (`tp`), the offer sent to
 /// them and to DEMO_TESS, who has no conversation (`tp:sent`), or a
@@ -2031,7 +2031,7 @@ pub enum TeleportOfferScene {
 }
 
 pub fn teleport_offer_scene() -> Option<TeleportOfferScene> {
-    match std::env::var("AURORA_DEMO_CONV").ok()?.as_str() {
+    match std::env::var("DEEPLY_DEMO_CONV").ok()?.as_str() {
         "tp" => Some(TeleportOfferScene::Invitation),
         "tp:sent" => Some(TeleportOfferScene::Sent),
         "tp:reject" => Some(TeleportOfferScene::Reject),
@@ -2043,7 +2043,7 @@ fn teleport_offer_scenario() -> bool {
     teleport_offer_scene().is_some()
 }
 
-/// AURORA_DEMO_LURE=offer|request|god|answers|reject: teleports received
+/// DEEPLY_DEMO_LURE=offer|request|god|answers|reject: teleports received
 /// from Tess Touch (DEMO_NOVA in the demo's names), with the notification
 /// list open: an offer to the plaza, a request (Yes / No), a god's lure
 /// (accepted at once), the answers to our offers (declined in her open
@@ -2093,13 +2093,13 @@ fn demo_access() -> (&'static str, &'static str) {
     }
 }
 
-/// AURORA_DEMO_MATURITY=agree|disagree|fail: the Preferences open on the
+/// DEEPLY_DEMO_MATURITY=agree|disagree|fail: the Preferences open on the
 /// content rating, which asks the server for "General" (the demo account is
 /// adult and wants every rating). The demo server agrees, keeps "Adult"
 /// (the request is sent three more times, then MaturityChangeError), or
 /// fails (MaturityChangeError at once).
 pub fn maturity_scene() -> Option<String> {
-    std::env::var("AURORA_DEMO_MATURITY").ok()
+    std::env::var("DEEPLY_DEMO_MATURITY").ok()
 }
 
 /// The demo server's answer to a maturity preference request.
@@ -2112,7 +2112,7 @@ pub fn maturity_reply(asked: u8) -> Option<u8> {
 }
 
 pub fn lure_scene() -> Option<LureScene> {
-    match std::env::var("AURORA_DEMO_LURE").ok()?.as_str() {
+    match std::env::var("DEEPLY_DEMO_LURE").ok()?.as_str() {
         "offer" => Some(LureScene::Offer),
         "request" => Some(LureScene::Request),
         "god" => Some(LureScene::God),
@@ -2130,14 +2130,14 @@ pub fn lure_scene() -> Option<LureScene> {
     }
 }
 
-/// AURORA_DEMO_SLURLS=1: place links in every form, in Tess Touch's
+/// DEEPLY_DEMO_SLURLS=1: place links in every form, in Tess Touch's
 /// conversation, in the chat console and in a notification: the plaza
 /// (General, connected), the lagoon (Moderate) and Nordheim (Adult) known
 /// from the map, the pine grove unknown until the demo server answers its
 /// lookup (`SLURLS_LOOKUP_DELAY` later), and a region that does not exist,
 /// left without a badge.
 pub fn slurls_scene() -> bool {
-    std::env::var_os("AURORA_DEMO_SLURLS").is_some()
+    std::env::var_os("DEEPLY_DEMO_SLURLS").is_some()
 }
 
 /// How late the demo server answers a region lookup in `slurls_scene`, so
@@ -2171,21 +2171,21 @@ pub fn slurls_text() -> String {
     .join(" · ")
 }
 
-/// AURORA_DEMO_APPLINKS: a message with a `secondlife:///app/...` link of
+/// DEEPLY_DEMO_APPLINKS: a message with a `secondlife:///app/...` link of
 /// each kind (`slapp.rs`), in a conversation with Nova and in the bubbles.
 pub fn applinks_scene() -> bool {
-    std::env::var_os("AURORA_DEMO_APPLINKS").is_some()
+    std::env::var_os("DEEPLY_DEMO_APPLINKS").is_some()
 }
 
 pub fn applinks_actions_scene() -> bool {
-    std::env::var("AURORA_DEMO_APPLINKS").is_ok_and(|mode| mode == "actions")
+    std::env::var("DEEPLY_DEMO_APPLINKS").is_ok_and(|mode| mode == "actions")
 }
 
-/// `AURORA_DEMO_APPLINKS=preview`: a short message with an avatar, a group
+/// `DEEPLY_DEMO_APPLINKS=preview`: a short message with an avatar, a group
 /// and a place link, whose previews (the Conversations column, the
 /// message's card) must show the names, not the addresses (#947).
 pub fn applinks_preview_scene() -> bool {
-    std::env::var("AURORA_DEMO_APPLINKS").is_ok_and(|mode| mode == "preview")
+    std::env::var("DEEPLY_DEMO_APPLINKS").is_ok_and(|mode| mode == "preview")
 }
 
 /// The text of `applinks_scene`; `item` is an item of the demo inventory
@@ -2234,7 +2234,7 @@ pub fn applinks_text(item: Option<(Uuid, String)>) -> String {
     }
     let classified = Uuid::from_u128(0x5EA2_C1A5_0000_0000_0000_0000_0000_0001);
     // the region's treasure hunt (its name only) and the experience of
-    // AURORA_DEMO_EXPERIENCE (its profile)
+    // DEEPLY_DEMO_EXPERIENCE (its profile)
     let experience = Uuid::from_u128(0xE7E0_0000_0000_0000_0000_0000_0000_0007);
     let profiled = experience::EXPERIENCE;
     let mut links = vec![
@@ -2268,12 +2268,12 @@ pub fn applinks_text(item: Option<(Uuid, String)>) -> String {
     links.join(" · ")
 }
 
-/// `AURORA_DEMO_APPLINKS=<command>` (group, parcel, objectim, inventory,
+/// `DEEPLY_DEMO_APPLINKS=<command>` (group, parcel, objectim, inventory,
 /// experience, classified, event, worldmap, chat, search, agent,
 /// wear_folder, frobnicate): the first link of that command in `text` is
 /// clicked once the scene is set.
 pub fn applinks_click(text: &str) -> Option<crate::slapp::AppLink> {
-    let kind = std::env::var("AURORA_DEMO_APPLINKS").ok()?;
+    let kind = std::env::var("DEEPLY_DEMO_APPLINKS").ok()?;
     let kind = kind.split(':').next()?;
     let needle = format!("secondlife:///app/{}/", kind.trim());
     let at = text.find(&needle)?;
@@ -2285,7 +2285,7 @@ pub fn applinks_click(text: &str) -> Option<crate::slapp::AppLink> {
 pub fn applinks_action(text: &str) -> Option<crate::ui::context::CtxAction> {
     use crate::slapp::{AgentVerb, AppLink};
     use crate::ui::context::CtxAction;
-    let mode = std::env::var("AURORA_DEMO_APPLINKS").ok()?;
+    let mode = std::env::var("DEEPLY_DEMO_APPLINKS").ok()?;
     Some(match mode.split(':').next()? {
         "profile" => CtxAction::Profile(DEMO_LOUP),
         "pay" => CtxAction::AppLink(AppLink::Agent {
@@ -2439,11 +2439,11 @@ fn long_name_events(agent: Uuid) -> Vec<NetEvent> {
     ]
 }
 
-/// AURORA_DEMO_RADAR=tp: the region we are supposed to have teleported
+/// DEEPLY_DEMO_RADAR=tp: the region we are supposed to have teleported
 /// from, forty regions east, whose simulator still tells us who is there.
 pub const RADAR_LEFT_REGION: u64 = ((256000u64 + 40 * 256) << 32) | 256000;
 
-/// AURORA_DEMO_RADAR: residents around us for the radar of the People
+/// DEEPLY_DEMO_RADAR: residents around us for the radar of the People
 /// window, at every kind of range (chat, shout, farther, unknown altitude);
 /// with `left_behind`, three more in `RADAR_LEFT_REGION`.
 pub fn radar_events(left_behind: bool) -> Vec<NetEvent> {
@@ -2477,12 +2477,12 @@ fn radar_residents() -> Vec<(Uuid, Vec3)> {
     ]
 }
 
-/// Seconds of one visit of the AURORA_DEMO_RADAR=walk resident.
+/// Seconds of one visit of the DEEPLY_DEMO_RADAR=walk resident.
 const RADAR_WALK_CYCLE: f64 = 30.0;
-/// The AURORA_DEMO_RADAR=walk resident (`u(105)`).
+/// The DEEPLY_DEMO_RADAR=walk resident (`u(105)`).
 pub const RADAR_WALKER: Uuid = Uuid::from_u128(0xD0D0_0000_0000_0000_0000_0000_0000_0069);
 
-/// AURORA_DEMO_RADAR=walk: the residents of `radar_events`, and one more who
+/// DEEPLY_DEMO_RADAR=walk: the residents of `radar_events`, and one more who
 /// arrives in the region every thirty seconds 60 m from `me`, walks up to
 /// 6 m and back, then leaves: every alert of the radar in turn (region,
 /// draw distance, chat range, in and out), with its sound and its messages
@@ -2499,7 +2499,7 @@ pub fn radar_walk(me: Vec3, t: f64) -> NetEvent {
     NetEvent::CoarseLocations { handle: HANDLE, positions }
 }
 
-/// AgentProfile reply of the demo residents (AURORA_DEMO_PROFILE).
+/// AgentProfile reply of the demo residents (DEEPLY_DEMO_PROFILE).
 fn demo_profile(id: Uuid) -> aurora_net::AvatarProfile {
     use aurora_net::profile::{days_from_civil, flags};
     let date = |y, m, d| Some((days_from_civil(y, m, d) * 86_400) as f64);
@@ -2587,16 +2587,16 @@ fn demo_profile(id: Uuid) -> aurora_net::AvatarProfile {
         p.fl_image = DEMO_FIRST_LIFE;
         p.fl_about = aurora_i18n::tr!("demo-nova-first-life").into();
     }
-    // AURORA_DEMO_PAY: the payee's card shows her picture (issue #1195)
-    if p.sl_image.is_nil() && id == DEMO_NOVA && std::env::var_os("AURORA_DEMO_PAY").is_some() {
+    // DEEPLY_DEMO_PAY: the payee's card shows her picture (issue #1195)
+    if p.sl_image.is_nil() && id == DEMO_NOVA && std::env::var_os("DEEPLY_DEMO_PAY").is_some() {
         p.sl_image = tags::picture_texture(2);
     }
-    // AURORA_DEMO_PROFILE: the residents of the scenarios have a picture
+    // DEEPLY_DEMO_PROFILE: the residents of the scenarios have a picture
     // (and so a banner in the Aurora window)
-    if p.sl_image.is_nil() && std::env::var_os("AURORA_DEMO_PROFILE").is_some() {
+    if p.sl_image.is_nil() && std::env::var_os("DEEPLY_DEMO_PROFILE").is_some() {
         p.sl_image = tags::scenario_picture(id);
     }
-    // AURORA_DEMO_CHATLOG: the conversation's resident and we have one, for
+    // DEEPLY_DEMO_CHATLOG: the conversation's resident and we have one, for
     // the pictures of the history lines
     if p.sl_image.is_nil() && chatlog::mode().is_some() {
         if id == chatlog::PEER {
@@ -2605,7 +2605,7 @@ fn demo_profile(id: Uuid) -> aurora_net::AvatarProfile {
             p.sl_image = tags::picture_texture(0);
         }
     }
-    // AURORA_DEMO_PEOPLE: what the rows and the sheet show of them
+    // DEEPLY_DEMO_PEOPLE: what the rows and the sheet show of them
     people::profile(&mut p);
     p
 }
@@ -2683,7 +2683,7 @@ fn pick_snapshot(id: &Uuid) -> Option<(Vec<u8>, u32, u32)> {
     Some((px, w, h))
 }
 
-/// AURORA_DEMO_CONTACTS: two contact sets (one with a non-friend), an alias
+/// DEEPLY_DEMO_CONTACTS: two contact sets (one with a non-friend), an alias
 /// and a removed display name, written to the demo account's file once.
 pub fn seed_contact_sets(world: &mut crate::world::World) {
     if !world.contact_sets.set_names().is_empty() {
@@ -2709,7 +2709,7 @@ pub const DEMO_OFFER: Uuid = Uuid::from_u128(0x0FFE_0000_0000_0000_0000_0000_000
 /// (Violet Wolf in the offers, Orion Example in the demo's names).
 pub const DEMO_GIVER: Uuid = Uuid::from_u128(2);
 
-/// AURORA_DEMO_INVENTORY=offer-card[-legacy][-keep|-reject|-show]: the
+/// DEEPLY_DEMO_INVENTORY=offer-card[-legacy][-keep|-reject|-show]: the
 /// sample offer's card in Violet Wolf's conversation, opened in sight (no
 /// toast), with the bubbles or the legacy lines; `-keep` keeps it from the
 /// card at frame 700, `-reject` rejects it from its notification, `-show`
@@ -2722,7 +2722,7 @@ pub struct OfferCardScene {
 }
 
 pub fn offer_card_scene() -> Option<OfferCardScene> {
-    let mode = std::env::var("AURORA_DEMO_INVENTORY").ok()?;
+    let mode = std::env::var("DEEPLY_DEMO_INVENTORY").ok()?;
     let rest = mode.strip_prefix("offer-card")?;
     let (legacy, rest) = match rest.strip_prefix("-legacy") {
         Some(rest) => (true, rest),
@@ -2738,21 +2738,21 @@ pub fn offer_card_scene() -> Option<OfferCardScene> {
     }
 }
 
-/// AURORA_DEMO_INVENTORY=offer-object-show: an object's offer (its
+/// DEEPLY_DEMO_INVENTORY=offer-object-show: an object's offer (its
 /// transaction) and what accepting it delivers.
 pub const DEMO_TASK_OFFER: Uuid = Uuid::from_u128(0x0FFE_0000_0000_0000_0000_0000_0000_0002);
 pub const DEMO_TASK_GIFT: Uuid = Uuid::from_u128(0x0FFE_0000_0000_0000_0000_0000_0000_0003);
 
-/// "Show accepted items in the inventory" demos (`AURORA_DEMO_INVENTORY=
+/// "Show accepted items in the inventory" demos (`DEEPLY_DEMO_INVENTORY=
 /// offer-show|offer-card-show|offer-object-show`): the inventory closed and
 /// the option on, the offer kept at frame 700.
 pub fn show_accepted_scene() -> bool {
-    std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|mode| mode.starts_with("offer") && mode.ends_with("-show"))
+    std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|mode| mode.starts_with("offer") && mode.ends_with("-show"))
 }
 
 /// Accept the synthetic resident/object offer on arrival, without a click.
 pub fn auto_accept_inventory_scene() -> bool {
-    std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|mode| {
+    std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|mode| {
         matches!(
             mode.as_str(),
             "offer-auto" | "offer-auto-show" | "offer-object-auto" | "offer-object-auto-show"
@@ -2864,7 +2864,7 @@ fn demo_folder(f: Uuid, owner: Uuid) -> aurora_net::inventory::FolderContents {
 
 pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
     if let aurora_net::NetCommand::FetchInventoryOrphans { request } = cmd {
-        let contents = if std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|mode| mode == "lost") {
+        let contents = if std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|mode| mode == "lost") {
             crate::world::inventory::demo::lost_reply(DEMO_AGENT)
         } else {
             Default::default()
@@ -2875,7 +2875,7 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
             result: Ok(contents),
         }];
     }
-    // what scripts would hear of a click (AURORA_DEMO_WORLD_CLICKS)
+    // what scripts would hear of a click (DEEPLY_DEMO_WORLD_CLICKS)
     use aurora_net::control::{LBUTTON_DOWN, LBUTTON_UP, ML_LBUTTON_DOWN, ML_LBUTTON_UP};
     match cmd {
         aurora_net::NetCommand::OneShotControl(f) if f & (LBUTTON_DOWN | LBUTTON_UP | ML_LBUTTON_DOWN | ML_LBUTTON_UP) != 0 => {
@@ -2911,7 +2911,7 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
             if *anim == SEAT_ANIM
                 || (*anim == CROWD_DANCE_ANIM
                     && matches!(
-                        std::env::var("AURORA_DEMO_WORN").as_deref(),
+                        std::env::var("DEEPLY_DEMO_WORN").as_deref(),
                         Ok("temporary-detach" | "temporary-drop")
                     )) =>
         {
@@ -3001,10 +3001,10 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
             }]
         }
         // display name change, never sent for real in demo mode: accepted
-        // (locked for a week), or refused with AURORA_DEMO_DISPLAYNAME_ERROR
+        // (locked for a week), or refused with DEEPLY_DEMO_DISPLAYNAME_ERROR
         // as error_tag
         aurora_net::NetCommand::SetDisplayName { old, new } => {
-            if let Ok(tag) = std::env::var("AURORA_DEMO_DISPLAYNAME_ERROR") {
+            if let Ok(tag) = std::env::var("DEEPLY_DEMO_DISPLAYNAME_ERROR") {
                 let mut content = Llsd::new_map();
                 content.insert("error_tag", tag);
                 return vec![NetEvent::SetDisplayNameReply {
@@ -3074,7 +3074,7 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
         }
         // block list: Violet Wolf, an object, a name and the chat of group 2
         aurora_net::NetCommand::RequestMuteList { .. } => {
-            // AURORA_DEMO_PEOPLE's tabs: their own block list
+            // DEEPLY_DEMO_PEOPLE's tabs: their own block list
             if people::server_empty_mute_list() {
                 return vec![NetEvent::MuteList(aurora_net::MuteListSource::ServerEmpty)];
             }
@@ -3090,15 +3090,15 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
                 value4 = format!("{}", DEMO_GROUP2)
             );
             // The animesh fixture needs its wearer visible in full, and
-            // AURORA_DEMO_PEOPLE the wolf as a friend. The attachment-click,
+            // DEEPLY_DEMO_PEOPLE the wolf as a friend. The attachment-click,
             // derender, reload and seat-kill fixtures need the same
             // visible, unblocked wearer.
-            let text = if std::env::var_os("AURORA_DEMO_ANIMESH").is_some()
-                || std::env::var_os("AURORA_DEMO_DERENDER").is_some()
-                || std::env::var_os("AURORA_DEMO_RELOAD_AVATAR").is_some()
-                || std::env::var_os("AURORA_DEMO_FRIENDS_ONLY").is_some()
+            let text = if std::env::var_os("DEEPLY_DEMO_ANIMESH").is_some()
+                || std::env::var_os("DEEPLY_DEMO_DERENDER").is_some()
+                || std::env::var_os("DEEPLY_DEMO_RELOAD_AVATAR").is_some()
+                || std::env::var_os("DEEPLY_DEMO_FRIENDS_ONLY").is_some()
                 || seat_kill::on()
-                || std::env::var("AURORA_DEMO_WORLD_CLICKS").is_ok_and(|m| m.starts_with("worn-"))
+                || std::env::var("DEEPLY_DEMO_WORLD_CLICKS").is_ok_and(|m| m.starts_with("worn-"))
                 || people::mode().is_some()
                 || social_menu::step().is_some()
             {
@@ -3120,7 +3120,7 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
         // two groups, and someone starts a chat in the first one
         aurora_net::NetCommand::RequestGroups => {
             // GP_SESSION_JOIN: the group chat can be opened from Contacts
-            // AURORA_DEMO_LAND=…:officer adds the land powers of the parcel's group
+            // DEEPLY_DEMO_LAND=…:officer adds the land powers of the parcel's group
             let g = |id: Uuid, name: &str, notices: bool| aurora_net::GroupMembership {
                 id,
                 name: name.into(),
@@ -3149,9 +3149,9 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
                     ..g(DEMO_GROUP3, aurora_i18n::tr!("common-plaza-market"), true)
                 },
             ];
-            // AURORA_DEMO_GROUPS=many: exercise the Conversations group
+            // DEEPLY_DEMO_GROUPS=many: exercise the Conversations group
             // picker with more entries than fit in its submenu.
-            if std::env::var("AURORA_DEMO_GROUPS").is_ok_and(|mode| mode == "many") {
+            if std::env::var("DEEPLY_DEMO_GROUPS").is_ok_and(|mode| mode == "many") {
                 groups.extend((0..64).map(|i| {
                     let id = Uuid::from_u128(0x6E00_0000_0000_0000_0000_0000_0000_1000 + i);
                     g(id, &format!("Demo group {:02}", i + 1), true)
@@ -3160,7 +3160,7 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
             if !group::adjust_groups(&mut groups) {
                 return vec![NetEvent::Groups(groups)];
             }
-            let active_group = if std::env::var("AURORA_DEMO_ACTIVE_GROUP").is_ok_and(|v| v == "none") {
+            let active_group = if std::env::var("DEEPLY_DEMO_ACTIVE_GROUP").is_ok_and(|v| v == "none") {
                 NetEvent::ActiveGroup {
                     id: Uuid::nil(),
                     name: String::new(),
@@ -3297,15 +3297,15 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
                 aurora_net::SessionMethod::DeclineInvitation => Vec::new(),
             }
         }
-        // voice calls: the simulated ChatSessionRequest (AURORA_DEMO_CALL)
+        // voice calls: the simulated ChatSessionRequest (DEEPLY_DEMO_CALL)
         aurora_net::NetCommand::Call { method, session, .. } => calls::reply(method.clone(), *session),
         // the request made once after login: what the grid kept while we
-        // were away (AURORA_DEMO_CHATLOG=offline), else nothing
+        // were away (DEEPLY_DEMO_CHATLOG=offline), else nothing
         aurora_net::NetCommand::RequestOfflineMessages => match chatlog::mode() {
             Some(chatlog::Mode::Offline) => chatlog::offline_messages(DEMO_AGENT),
             _ => Vec::new(),
         },
-        // a conference started by message (AURORA_DEMO_CALL=conference-legacy)
+        // a conference started by message (DEEPLY_DEMO_CALL=conference-legacy)
         aurora_net::NetCommand::SendImDialog {
             dialog: 16, id, bucket, ..
         } => calls::legacy_conference(*id, bucket),
@@ -3460,7 +3460,7 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
         // the two online friends who let us map them: one in our region, one
         // in the Boreal Lagoon
         aurora_net::NetCommand::FindAgent(prey) if [u(100), u(102)].contains(prey) => {
-            let remote = std::env::var_os("AURORA_DEMO_FRIEND_LOCATION").is_some();
+            let remote = std::env::var_os("DEEPLY_DEMO_FRIEND_LOCATION").is_some();
             let (x, y) = if *prey == u(100) && !remote {
                 (256_020.0, 256_240.0)
             } else {
@@ -3542,7 +3542,7 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
                 ..Default::default()
             }])]
         }
-        // the other objects' names for the hover tips (AURORA_DEMO_HOVER_TIPS)
+        // the other objects' names for the hover tips (DEEPLY_DEMO_HOVER_TIPS)
         aurora_net::NetCommand::RequestObjectProperties { object, .. } if hover_tips::scenario().is_some() => {
             vec![NetEvent::ObjectProperties(vec![hover_tips::object_props(*object)])]
         }
@@ -3562,9 +3562,9 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
         aurora_net::NetCommand::SendAbuseReport(_) => vec![NetEvent::AbuseReportSent(Ok(()))],
         aurora_net::NetCommand::RequestPayPrice { object, .. }
             if *object == action_id(972)
-                || (*object == action_id(974) && std::env::var("AURORA_DEMO_ACTIONS").is_ok_and(|m| m.starts_with("pay-linked-menu"))) =>
+                || (*object == action_id(974) && std::env::var("DEEPLY_DEMO_ACTIONS").is_ok_and(|m| m.starts_with("pay-linked-menu"))) =>
         {
-            let (default, buttons) = match std::env::var("AURORA_DEMO_ACTIONS").unwrap_or_default().as_str() {
+            let (default, buttons) = match std::env::var("DEEPLY_DEMO_ACTIONS").unwrap_or_default().as_str() {
                 "pay-layout" => (1956, vec![1956, 3913, 5870, 7826]),
                 "pay-hidden" => (-1, vec![1956, -1, 5870, -1]),
                 "pay-large" => (i32::MAX, vec![i32::MAX, 3913, 5870, 7826]),
@@ -3580,7 +3580,7 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
         }
         aurora_net::NetCommand::RequestTaskInventory { object, .. } if *object == action_id(971) => {
             use aurora_net::build::{TaskItem, perm};
-            let empty = std::env::var("AURORA_DEMO_ACTIONS").is_ok_and(|m| m == "buy-empty");
+            let empty = std::env::var("DEEPLY_DEMO_ACTIONS").is_ok_and(|m| m == "buy-empty");
             let items = [
                 (7, aurora_i18n::tr!("demo-game-rules-french"), perm::COPY | perm::TRANSFER),
                 (6, aurora_i18n::tr!("demo-card-game"), perm::TRANSFER),
@@ -3660,10 +3660,10 @@ pub fn demo_reply(cmd: &aurora_net::NetCommand) -> Vec<NetEvent> {
                 },
             ]
         }
-        // AURORA_DEMO_ACTIONS=tp-door: the touched object answers like a
+        // DEEPLY_DEMO_ACTIONS=tp-door: the touched object answers like a
         // club's teleport door scripted with llMapDestination (issue #283)
         aurora_net::NetCommand::ObjectGrab { local_id: 975, .. }
-            if std::env::var("AURORA_DEMO_ACTIONS").is_ok_and(|m| m.starts_with("tp-door")) =>
+            if std::env::var("DEEPLY_DEMO_ACTIONS").is_ok_and(|m| m.starts_with("tp-door")) =>
         {
             vec![NetEvent::ScriptTeleportRequest {
                 object_name: "Club door".into(),
@@ -3748,14 +3748,14 @@ pub fn stand_from_prim(seat: Vec3, size: Vec3) -> Vec<NetEvent> {
     }]
 }
 
-/// The sale type of an AURORA_DEMO_ACTIONS cube (the for-sale cube only),
+/// The sale type of an DEEPLY_DEMO_ACTIONS cube (the for-sale cube only),
 /// the same in the hover / purchase reply and in the selection's
 /// properties (`build/demo_sim.rs`), which the right-click menu reads.
 pub fn action_sale_type(object: Uuid) -> u8 {
     if object != action_id(971) {
         return 0;
     }
-    match std::env::var("AURORA_DEMO_ACTIONS").unwrap_or_default().as_str() {
+    match std::env::var("DEEPLY_DEMO_ACTIONS").unwrap_or_default().as_str() {
         "buy-original" => 1,
         "buy-contents" | "buy-empty" => 3,
         _ => 2,
@@ -3908,7 +3908,7 @@ pub fn click_probe(mode: &str, pos: Vec3) -> NetEvent {
 /// All click actions, plus an inherited Buy on a child. Named modes isolate
 /// a target and App::demo_action_steps exercises the real picking / input.
 pub fn action_events() -> Vec<NetEvent> {
-    let mode = std::env::var("AURORA_DEMO_ACTIONS").unwrap_or_default();
+    let mode = std::env::var("DEEPLY_DEMO_ACTIONS").unwrap_or_default();
     if mode.starts_with("blend-") || mode.starts_with("mask-") {
         let behind = action_object(971, 2, 138.0, 126.0, [0.35, 0.65, 0.8, 1.0], "");
         return vec![
@@ -4124,7 +4124,7 @@ pub fn face_selection_events(invisible: bool) -> Vec<NetEvent> {
 }
 
 pub const FACE_SELECTION_MESH: Uuid = Uuid::from_u128(0xa0e0_fa00_0000_0000_0000_0000_0000_0001);
-/// AURORA_DEMO_WORLD_CLICKS=worn-other-mesh: a worn cube mesh, no skin.
+/// DEEPLY_DEMO_WORLD_CLICKS=worn-other-mesh: a worn cube mesh, no skin.
 pub const WORN_UNRIGGED_MESH: Uuid = Uuid::from_u128(0xa0e0_fa00_0000_0000_0000_0000_0000_0002);
 
 /// Closed curved face, three disconnected islands of one mesh TE, and a
@@ -4160,7 +4160,7 @@ pub fn complex_face_selection_events() -> Vec<NetEvent> {
     events
 }
 
-/// AURORA_DEMO_BAN: the south-east lot (x >= 192 m, y < 64 m) is banned.
+/// DEEPLY_DEMO_BAN: the south-east lot (x >= 192 m, y < 64 m) is banned.
 pub fn ban_collision() -> NetEvent {
     let mut bitmap = vec![0u8; 64 * 64 / 8];
     for j in 0..16usize {
@@ -4207,29 +4207,29 @@ fn map_block(x: u16, y: u16, name: &str, access: u8) -> aurora_net::MapBlock {
     }
 }
 
-/// AURORA_DEMO_TP_NO_ARRIVAL=1: the region never confirms a demo teleport.
+/// DEEPLY_DEMO_TP_NO_ARRIVAL=1: the region never confirms a demo teleport.
 pub fn tp_no_arrival() -> bool {
-    std::env::var_os("AURORA_DEMO_TP_NO_ARRIVAL").is_some()
+    std::env::var_os("DEEPLY_DEMO_TP_NO_ARRIVAL").is_some()
 }
 
-/// AURORA_DEMO_TP_CANCEL=locked: the demo teleport's TeleportStart carries
+/// DEEPLY_DEMO_TP_CANCEL=locked: the demo teleport's TeleportStart carries
 /// TELEPORT_FLAGS_DISABLE_CANCEL (no Cancel on the teleport screen).
 pub fn tp_cancel_flags() -> u32 {
-    if std::env::var("AURORA_DEMO_TP_CANCEL").is_ok_and(|v| v == "locked") {
+    if std::env::var("DEEPLY_DEMO_TP_CANCEL").is_ok_and(|v| v == "locked") {
         crate::world::teleport_cancel::TELEPORT_FLAGS_DISABLE_CANCEL
     } else {
         0
     }
 }
 
-/// AURORA_DEMO_TP_CANCEL=1: the teleport screen's Cancel is pressed 1.5 s
+/// DEEPLY_DEMO_TP_CANCEL=1: the teleport screen's Cancel is pressed 1.5 s
 /// into the demo teleport.
 pub fn tp_cancel_pressed() -> bool {
-    std::env::var("AURORA_DEMO_TP_CANCEL").is_ok_and(|v| v == "1")
+    std::env::var("DEEPLY_DEMO_TP_CANCEL").is_ok_and(|v| v == "1")
 }
 
 pub fn friend_join_scenario() -> bool {
-    std::env::var("AURORA_DEMO_FRIEND_LOCATION").is_ok_and(|m| {
+    std::env::var("DEEPLY_DEMO_FRIEND_LOCATION").is_ok_and(|m| {
         matches!(
             m.as_str(),
             "join-map" | "join-contact" | "join-fly" | "join-fly-blocked" | "join-fly-late" | "join-fly-custom"
@@ -4238,16 +4238,16 @@ pub fn friend_join_scenario() -> bool {
 }
 
 pub fn friend_join_flight_scenario() -> bool {
-    std::env::var("AURORA_DEMO_FRIEND_LOCATION")
+    std::env::var("DEEPLY_DEMO_FRIEND_LOCATION")
         .is_ok_and(|m| matches!(m.as_str(), "join-fly" | "join-fly-blocked" | "join-fly-late" | "join-fly-custom"))
 }
 
 pub fn friend_join_late_flight_scenario() -> bool {
-    std::env::var("AURORA_DEMO_FRIEND_LOCATION").as_deref() == Ok("join-fly-late")
+    std::env::var("DEEPLY_DEMO_FRIEND_LOCATION").as_deref() == Ok("join-fly-late")
 }
 
 pub fn friend_join_custom_flight_scenario() -> bool {
-    std::env::var("AURORA_DEMO_FRIEND_LOCATION").as_deref() == Ok("join-fly-custom")
+    std::env::var("DEEPLY_DEMO_FRIEND_LOCATION").as_deref() == Ok("join-fly-custom")
 }
 
 pub fn friend_join_parcel(position: Vec3, allow_fly: bool) -> aurora_net::ParcelInfo {
@@ -4264,7 +4264,7 @@ pub fn friend_join_parcel(position: Vec3, allow_fly: bool) -> aurora_net::Parcel
 /// Make the conversation's friend remote without keeping a nearby object
 /// or coarse position. Combine with existing contacts/profile/map scenarios.
 pub fn friend_location(world: &mut crate::world::World) {
-    let Ok(mode) = std::env::var("AURORA_DEMO_FRIEND_LOCATION") else {
+    let Ok(mode) = std::env::var("DEEPLY_DEMO_FRIEND_LOCATION") else {
         return;
     };
     if !matches!(
@@ -4354,8 +4354,8 @@ pub fn events() -> Vec<NetEvent> {
             size_x: 256,
             size_y: 256,
             is_main: true,
-            // AURORA_DEMO_REGION: the avatar may own the estate or manage it;
-            // AURORA_DEMO_ENV_EDITOR=region: the avatar manages the estate
+            // DEEPLY_DEMO_REGION: the avatar may own the estate or manage it;
+            // DEEPLY_DEMO_ENV_EDITOR=region: the avatar manages the estate
             owner: region::estate_owner(),
             is_estate_manager: region::is_manager() || env::estate_manager() || sim_extras::estate_manager(),
             product_name: "Estate / Full Region".into(),
@@ -4514,9 +4514,9 @@ pub fn events() -> Vec<NetEvent> {
     // alpha modes / legacy materials test panels (procedural textures)
     // Keep the manual click-action targets unobstructed. Reserve the same
     // ids so other demo objects and replies retain their identities.
-    // AURORA_DEMO_TEXANIM puts its own panels there.
-    let texanim = std::env::var_os("AURORA_DEMO_TEXANIM").is_some();
-    if !std::env::var("AURORA_DEMO_ACTIONS").is_ok_and(|m| m == "1") && std::env::var_os("AURORA_DEMO_WORLD_CLICKS").is_none() && !texanim {
+    // DEEPLY_DEMO_TEXANIM puts its own panels there.
+    let texanim = std::env::var_os("DEEPLY_DEMO_TEXANIM").is_some();
+    if !std::env::var("DEEPLY_DEMO_ACTIONS").is_ok_and(|m| m == "1") && std::env::var_os("DEEPLY_DEMO_WORLD_CLICKS").is_none() && !texanim {
         let yaw = 0.4f32.atan2(0.8);
         let across = Vec3::new(-yaw.sin(), yaw.cos(), 0.0);
         let center = Vec3::new(138.5, 125.5, 0.0);
@@ -4544,16 +4544,16 @@ pub fn events() -> Vec<NetEvent> {
     } else {
         id += alpha_panels().len() as u32;
     }
-    // AURORA_DEMO_FOLIAGE=1: the same cut-out foliage panel (2.5 m, alpha a
+    // DEEPLY_DEMO_FOLIAGE=1: the same cut-out foliage panel (2.5 m, alpha a
     // mask) at 5, 10, 20, 35 and 60 m along the start view, one side then
-    // the other, to see it thin out (or not, AURORA_ALPHA_COVERAGE) with the
-    // distance; from the start position, or AURORA_DEMO_POS="x,y" (an open
+    // the other, to see it thin out (or not, DEEPLY_ALPHA_COVERAGE) with the
+    // distance; from the start position, or DEEPLY_DEMO_POS="x,y" (an open
     // place: "80,100")
-    if std::env::var_os("AURORA_DEMO_FOLIAGE").is_some() {
+    if std::env::var_os("DEEPLY_DEMO_FOLIAGE").is_some() {
         let look = Vec3::new(0.8, 0.4, 0.0).normalize();
         let across = Vec3::new(-look.y, look.x, 0.0);
         let yaw = look.y.atan2(look.x);
-        let eye = std::env::var("AURORA_DEMO_POS")
+        let eye = std::env::var("DEEPLY_DEMO_POS")
             .ok()
             .map(|v| v.split(',').filter_map(|s| s.trim().parse::<f32>().ok()).collect::<Vec<_>>())
             .filter(|p| p.len() >= 2)
@@ -4579,12 +4579,12 @@ pub fn events() -> Vec<NetEvent> {
             id += 1;
         }
     }
-    // AURORA_DEMO_GLOW_LAYERS=1: a faintly glowing layer over a faintly
+    // DEEPLY_DEMO_GLOW_LAYERS=1: a faintly glowing layer over a faintly
     // glowing skin, as mesh bodies wear them (fixed ids: the other demo
     // objects keep theirs). Left panel: skin with glow 0.02; right panel:
     // skin without glow. Over the lower half of both, 1 cm in front, a pink
     // layer (alpha 0 to 1 from left to right) with glow 0.02.
-    if let Ok(mode) = std::env::var("AURORA_DEMO_GLOW_LAYERS") {
+    if let Ok(mode) = std::env::var("DEEPLY_DEMO_GLOW_LAYERS") {
         let shell = mode == "shell";
         let floor = height(cx, cy) + 0.35;
         let skin = [0.93, 0.84, 0.80, 1.0];
@@ -4621,13 +4621,13 @@ pub fn events() -> Vec<NetEvent> {
             ));
         }
     }
-    // AURORA_DEMO_PROJECTOR=1|point: a projector (a light with a light
+    // DEEPLY_DEMO_PROJECTOR=1|point: a projector (a light with a light
     // texture) 4.5 m from a wall, turned to it, another one above the
     // ground turned down, with ambiance, a pool light under a slab and an
     // ordinary point light (fixed ids). The first lights the wall through
     // its image; the ground stays dark outside the frustums. `point`: the
     // projectors without their texture, as plain point lights, to compare.
-    if let Ok(mode) = std::env::var("AURORA_DEMO_PROJECTOR") {
+    if let Ok(mode) = std::env::var("DEEPLY_DEMO_PROJECTOR") {
         let floor = height(cx, cy) + 0.35;
         let wall = [0.82, 0.82, 0.82, 1.0];
         add(prim(
@@ -4832,13 +4832,13 @@ pub fn events() -> Vec<NetEvent> {
             id += 1;
         }
     }
-    // AURORA_DEMO_OCCLUSION=edge: occlusion at the right and bottom edges of
+    // DEEPLY_DEMO_OCCLUSION=edge: occlusion at the right and bottom edges of
     // the screen (#2459). A tall wall just ahead covers the left half of the
     // start view, and cubes stand in the open right half, behind the wall's
     // depth: every cube is in plain view and none may be culled. From
-    // AURORA_DEMO_POS="x,y" (default an open place, 80,100) along the start
+    // DEEPLY_DEMO_POS="x,y" (default an open place, 80,100) along the start
     // view, or `edge,<x>,<y>,<heading in degrees>` for another camera.
-    let occlusion_mode = std::env::var("AURORA_DEMO_OCCLUSION").ok();
+    let occlusion_mode = std::env::var("DEEPLY_DEMO_OCCLUSION").ok();
     let edge = occlusion_mode.as_deref().and_then(|m| {
         let mut parts = m.split(',');
         (parts.next()? == "edge").then(|| parts.filter_map(|s| s.trim().parse::<f32>().ok()).collect::<Vec<_>>())
@@ -4848,7 +4848,7 @@ pub fn events() -> Vec<NetEvent> {
             let h = heading.to_radians();
             (Vec3::new(x, y, 0.0), Vec3::new(h.cos(), h.sin(), 0.0))
         } else {
-            let eye = std::env::var("AURORA_DEMO_POS")
+            let eye = std::env::var("DEEPLY_DEMO_POS")
                 .ok()
                 .map(|v| v.split(',').filter_map(|s| s.trim().parse::<f32>().ok()).collect::<Vec<_>>())
                 .filter(|p| p.len() >= 2)
@@ -4888,7 +4888,7 @@ pub fn events() -> Vec<NetEvent> {
             }
         }
     }
-    // AURORA_DEMO_OCCLUSION=1: occlusion test, a long wall in front of the
+    // DEEPLY_DEMO_OCCLUSION=1: occlusion test, a long wall in front of the
     // start position with 360 detailed objects behind it (a few towers rise
     // above it, so some must stay visible)
     if occlusion_mode.is_some() && edge.is_none() {
@@ -4934,13 +4934,13 @@ pub fn events() -> Vec<NetEvent> {
             }
         }
     }
-    // AURORA_DEMO_OVERDRAW=<n>: overdraw test, n rows of opaque walls (12
+    // DEEPLY_DEMO_OVERDRAW=<n>: overdraw test, n rows of opaque walls (12
     // if the value is not a number) one behind another east of the plaza,
     // each taller than the one in front, sent from the farthest to the
     // nearest. Every wall shows above the next one, so the occlusion
     // culling keeps them all, and a scene pass that starts from an empty
     // depth shades each of them in full before the nearer ones cover it
-    if let Ok(v) = std::env::var("AURORA_DEMO_OVERDRAW") {
+    if let Ok(v) = std::env::var("DEEPLY_DEMO_OVERDRAW") {
         let n = v.trim().parse::<u32>().unwrap_or(12).clamp(1, 40);
         let base = g(160.0, 128.0);
         for k in (0..n).rev() {
@@ -4959,12 +4959,12 @@ pub fn events() -> Vec<NetEvent> {
             id += 1;
         }
     }
-    // AURORA_DEMO_PLANAR=1: planar texgen test, floor slabs of different
+    // DEEPLY_DEMO_PLANAR=1: planar texgen test, floor slabs of different
     // sizes ahead of the start position. The planar ones (two tile repeats
     // per metre, centers 0.5 m apart) must line up across slabs; the strip at
     // the back uses default mapping (one repeat stretched over 5 m); the cube
     // checks the side faces.
-    if std::env::var_os("AURORA_DEMO_PLANAR").is_some() {
+    if std::env::var_os("DEEPLY_DEMO_PLANAR").is_some() {
         let floor = height(cx, cy) + 0.35;
         let slabs: [(Vec3, Vec3, bool); 5] = [
             (Vec3::new(135.0, 127.0, 0.0), Vec3::new(2.0, 2.0, 0.1), true),
@@ -4996,12 +4996,12 @@ pub fn events() -> Vec<NetEvent> {
             id += 1;
         }
     }
-    // AURORA_DEMO_PBR_OVERRIDE=1: two slabs with the same PBR material (one
+    // DEEPLY_DEMO_PBR_OVERRIDE=1: two slabs with the same PBR material (one
     // tile over the whole face); the second one gets a GLTF material override
     // (4 × 4 repeats on every map, a tint), sent as the simulator's notation
     // payload so that the network parser is exercised too
     let mut overrides = Vec::new();
-    if std::env::var_os("AURORA_DEMO_PBR_OVERRIDE").is_some() {
+    if std::env::var_os("DEEPLY_DEMO_PBR_OVERRIDE").is_some() {
         let floor = height(cx, cy) + 0.35;
         for (k, (x, y)) in [(137.5f32, 129.0f32), (135.0, 127.5)].into_iter().enumerate() {
             let mut t = TextureEntry::default();
@@ -5037,12 +5037,12 @@ pub fn events() -> Vec<NetEvent> {
             add(o);
             id += 1;
         }
-        // AURORA_DEMO_PBR_OVERRIDE=alpha: three upright panels of the same
+        // DEEPLY_DEMO_PBR_OVERRIDE=alpha: three upright panels of the same
         // opaque material, facing the start position, whose override zeroes
         // the base color alpha, as seen on a worn mesh attachment. Like the
         // Legacy Viewer, the opaque one stays drawn; the masked one is cut
         // by the shader, the blended one is not drawn.
-        if std::env::var("AURORA_DEMO_PBR_OVERRIDE").is_ok_and(|v| v == "alpha") {
+        if std::env::var("DEEPLY_DEMO_PBR_OVERRIDE").is_ok_and(|v| v == "alpha") {
             let modes = [
                 ("", aurora_i18n::tr!("demo-override-alpha-zero-opaque")),
                 (",'am':i2", aurora_i18n::tr!("demo-override-alpha-zero-mask")),
@@ -5082,12 +5082,12 @@ pub fn events() -> Vec<NetEvent> {
             }
         }
     }
-    // AURORA_DEMO_PBR_METAL=1: white metal (PBR, metallic 1) ahead of the
+    // DEEPLY_DEMO_PBR_METAL=1: white metal (PBR, metallic 1) ahead of the
     // start position, three spheres from polished to rough and a slab: a
     // silver that reflects the place, not a tint of its own; then a polished
     // metal cube whose occlusion map is black but for a disc, which only
-    // reflects in that disc (AURORA_PBR_OCCLUSION)
-    if std::env::var_os("AURORA_DEMO_PBR_METAL").is_some() {
+    // reflects in that disc (DEEPLY_PBR_OCCLUSION)
+    if std::env::var_os("DEEPLY_DEMO_PBR_METAL").is_some() {
         let floor = height(cx, cy) + 0.35;
         let metal = |id: u32, pos: Vec3, scale: Vec3, path: _, mat: Uuid| {
             let mut t = TextureEntry::default();
@@ -5132,7 +5132,7 @@ pub fn events() -> Vec<NetEvent> {
         id += 1;
         // left of the cube, an inside corner of the half-polished metal
         // (floor, back and side): its reflections fade into the corner with
-        // GTAO's specular occlusion (AURORA_GTAO_SPECULAR)
+        // GTAO's specular occlusion (DEEPLY_GTAO_SPECULAR)
         for (pos, scale) in [
             (Vec3::new(135.3, 133.6, floor + 0.05), Vec3::new(1.4, 1.4, 0.1)),
             (Vec3::new(136.0, 133.6, floor + 0.6), Vec3::new(0.1, 1.4, 1.2)),
@@ -5142,11 +5142,11 @@ pub fn events() -> Vec<NetEvent> {
             id += 1;
         }
     }
-    // AURORA_DEMO_PBR_EMISSIVE=1: three dark spheres ahead of the start
+    // DEEPLY_DEMO_PBR_EMISSIVE=1: three dark spheres ahead of the start
     // position with the same orange emissive, opaque, alpha-masked and
-    // blended: without HDR and Emissive (AURORA_HDR=0) the first two lose
+    // blended: without HDR and Emissive (DEEPLY_HDR=0) the first two lose
     // their light, the blended one keeps it (HAS_EMISSIVE)
-    if std::env::var("AURORA_DEMO_PBR_EMISSIVE").is_ok_and(|mode| mode == "sided") {
+    if std::env::var("DEEPLY_DEMO_PBR_EMISSIVE").is_ok_and(|mode| mode == "sided") {
         // Only one face of each box exists visually: compare its front/back
         // without the opposite wall of a closed solid hiding the defect (#1727).
         let mesh = aurora_prim::generate_volume(&boxp, 2.0);
@@ -5174,7 +5174,7 @@ pub fn events() -> Vec<NetEvent> {
                 id += 1;
             }
         }
-    } else if std::env::var_os("AURORA_DEMO_PBR_EMISSIVE").is_some() {
+    } else if std::env::var_os("DEEPLY_DEMO_PBR_EMISSIVE").is_some() {
         let floor = height(cx, cy) + 0.35;
         for (k, mat) in MAT_PBR_EMISSIVE.into_iter().enumerate() {
             let mut t = TextureEntry::default();
@@ -5198,12 +5198,12 @@ pub fn events() -> Vec<NetEvent> {
             id += 1;
         }
     }
-    // AURORA_DEMO_SHIMMER=1: a long glossy plate ahead of the start position,
+    // DEEPLY_DEMO_SHIMMER=1: a long glossy plate ahead of the start position,
     // its fine normal map repeated many times, seen at a grazing angle: far
     // away its relief is smaller than a pixel and its highlights shimmer as
     // the camera moves, unless the specular anti-aliasing widens them
-    // (AURORA_SPECULAR_AA)
-    if std::env::var_os("AURORA_DEMO_SHIMMER").is_some() {
+    // (DEEPLY_SPECULAR_AA)
+    if std::env::var_os("DEEPLY_DEMO_SHIMMER").is_some() {
         let floor = height(cx, cy) + 0.35;
         let mut t = TextureEntry::default();
         for f in t.faces.iter_mut() {
@@ -5223,11 +5223,11 @@ pub fn events() -> Vec<NetEvent> {
         ));
         id += 1;
     }
-    // AURORA_DEMO_BOUNCE=1: a white floor between a red wall and a green
+    // DEEPLY_DEMO_BOUNCE=1: a white floor between a red wall and a green
     // one, with a white box against them, left of the start position: with
     // GTAO's indirect light the floor and the box take the walls' colours
-    // near them (AURORA_SSIL)
-    if std::env::var_os("AURORA_DEMO_BOUNCE").is_some() {
+    // near them (DEEPLY_SSIL)
+    if std::env::var_os("DEEPLY_DEMO_BOUNCE").is_some() {
         let floor = height(cx, cy) + 0.35;
         let plain = |id: u32, pos: Vec3, scale: Vec3, color: [f32; 4]| {
             let mut t = TextureEntry::default();
@@ -5256,7 +5256,7 @@ pub fn events() -> Vec<NetEvent> {
             id += 1;
         }
     }
-    // AURORA_DEMO_TEXANIM=1: texture animations (llSetTextureAnim) on a row
+    // DEEPLY_DEMO_TEXANIM=1: texture animations (llSetTextureAnim) on a row
     // of panels facing the start position, in place of the alpha panels
     if texanim {
         use aurora_net::objects::TextureAnim as Ta;
@@ -5360,7 +5360,7 @@ pub fn events() -> Vec<NetEvent> {
         }
     }
     // Scripted wind / smoke in front of a dark panel for a visible comparison.
-    let particles_mode = std::env::var("AURORA_DEMO_PARTICLES").unwrap_or_default();
+    let particles_mode = std::env::var("DEEPLY_DEMO_PARTICLES").unwrap_or_default();
     if !particles_mode.is_empty() && particles_mode != "load" {
         let mode = particles_mode.as_str();
         let ground = floor_at(136.0, 127.0);
@@ -5458,14 +5458,14 @@ pub fn events() -> Vec<NetEvent> {
             "",
         );
         o.particles = aurora_net::objects::ParticleUpdate::Set(fountain_particles());
-        // AURORA_DEMO_SOCIAL_MENU: the wolf's, for "Block particles"
+        // DEEPLY_DEMO_SOCIAL_MENU: the wolf's, for "Block particles"
         if social_menu::step().is_some() {
             o.owner_id = social_menu::RESIDENT;
         }
         add(o);
         id += 1;
     }
-    // AURORA_DEMO_PARTICLES=load: a ring of 32 more fountains around the
+    // DEEPLY_DEMO_PARTICLES=load: a ring of 32 more fountains around the
     // plaza, about 4 000 particles alive (the particle steps of the profile)
     if particles_mode == "load" {
         for i in 0..32 {
@@ -5524,10 +5524,10 @@ pub fn events() -> Vec<NetEvent> {
         ));
         id += 1;
     }
-    // AURORA_DEMO_PROBES=1: two manual reflection probes on the plaza, as
+    // DEEPLY_DEMO_PROBES=1: two manual reflection probes on the plaza, as
     // invisible prims: a box turned on itself, which the crowd's camera
-    // (AURORA_DEMO_POS="135,134") stands in, and a sphere east of it
-    if std::env::var_os("AURORA_DEMO_PROBES").is_some() {
+    // (DEEPLY_DEMO_POS="135,134") stands in, and a sphere east of it
+    if std::env::var_os("DEEPLY_DEMO_PROBES").is_some() {
         for (offset, rot, scale, flags, ambiance) in [
             (
                 Vec3::new(-2.0, 4.0, 3.0),
@@ -5559,10 +5559,10 @@ pub fn events() -> Vec<NetEvent> {
             id += 1;
         }
     }
-    // AURORA_DEMO_PROBE_ROOM=<ambiance>[,box]: a closed room with a lamp and a
-    // manual probe of that ambiance, at AURORA_DEMO_POS="100,100" (#2217): a
+    // DEEPLY_DEMO_PROBE_ROOM=<ambiance>[,box]: a closed room with a lamp and a
+    // manual probe of that ambiance, at DEEPLY_DEMO_POS="100,100" (#2217): a
     // sphere that crosses the floor, or a box that fills the room
-    if let Ok(room) = std::env::var("AURORA_DEMO_PROBE_ROOM") {
+    if let Ok(room) = std::env::var("DEEPLY_DEMO_PROBE_ROOM") {
         let mut values = room.split(',');
         let ambiance = values.next().and_then(|v| v.trim().parse::<f32>().ok()).unwrap_or(1.0);
         let filled = values.next().is_some_and(|v| v.trim() == "box");
@@ -5646,7 +5646,7 @@ pub fn events() -> Vec<NetEvent> {
     ));
     id += 1;
     if wet_layer::enabled() {
-        let (sx, sy) = std::env::var("AURORA_DEMO_POS")
+        let (sx, sy) = std::env::var("DEEPLY_DEMO_POS")
             .ok()
             .and_then(|v| {
                 let p: Vec<f32> = v.split(',').filter_map(|s| s.trim().parse().ok()).collect();
@@ -5658,11 +5658,11 @@ pub fn events() -> Vec<NetEvent> {
         }
         id += wet_layer::COUNT;
     }
-    // AURORA_DEMO_HALO: a wide translucent pane 3 m ahead of the start
+    // DEEPLY_DEMO_HALO: a wide translucent pane 3 m ahead of the start
     // position, facing the camera, so that the avatar stands between the
     // camera and the pane (issue #556: no halo around the avatar on it)
-    if std::env::var_os("AURORA_DEMO_HALO").is_some() {
-        let (sx, sy) = std::env::var("AURORA_DEMO_POS")
+    if std::env::var_os("DEEPLY_DEMO_HALO").is_some() {
+        let (sx, sy) = std::env::var("DEEPLY_DEMO_POS")
             .ok()
             .and_then(|v| {
                 let p: Vec<f32> = v.split(',').filter_map(|s| s.trim().parse().ok()).collect();
@@ -5684,13 +5684,13 @@ pub fn events() -> Vec<NetEvent> {
         ));
         id += 1;
     }
-    // AURORA_DEMO_BLEND_AO: a face ahead of the start position, its left
+    // DEEPLY_DEMO_BLEND_AO: a face ahead of the start position, its left
     // and right halves alike but one blended (alpha 0.99, opaque to the
     // eye), with a nose across the middle, under a wide hat brim and
     // between two curtains of hair that occlude it (issue #882: the blended
     // half took no ambient occlusion, a line down the middle of the head)
-    if std::env::var_os("AURORA_DEMO_BLEND_AO").is_some() {
-        let (sx, sy) = std::env::var("AURORA_DEMO_POS")
+    if std::env::var_os("DEEPLY_DEMO_BLEND_AO").is_some() {
+        let (sx, sy) = std::env::var("DEEPLY_DEMO_POS")
             .ok()
             .and_then(|v| {
                 let p: Vec<f32> = v.split(',').filter_map(|s| s.trim().parse().ok()).collect();
@@ -5733,7 +5733,7 @@ pub fn events() -> Vec<NetEvent> {
         }
     }
     let _ = id;
-    if let Ok(spec) = std::env::var("AURORA_DEMO_FLEXIBLE") {
+    if let Ok(spec) = std::env::var("DEEPLY_DEMO_FLEXIBLE") {
         objs.clear();
         overrides.clear();
         let edit = spec == "edit";
@@ -5821,7 +5821,7 @@ pub fn events() -> Vec<NetEvent> {
         });
     }
     // A large existing platform exercises opening Edit without a size change.
-    if std::env::var("AURORA_DEMO_BUILD").is_ok_and(|spec| spec.starts_with("megaprim,"))
+    if std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|spec| spec.starts_with("megaprim,"))
         && let Some(object) = objs.iter_mut().find(|object| object.local_id == 118)
     {
         object.scale = Vec3::new(128.125, 96.25, 0.5);
@@ -5852,7 +5852,7 @@ pub fn events() -> Vec<NetEvent> {
         });
     }
 
-    if std::env::var_os("AURORA_DEMO_REPLACE_PRIM").is_some() {
+    if std::env::var_os("DEEPLY_DEMO_REPLACE_PRIM").is_some() {
         ev.extend(crate::build::replace::demo::events(HANDLE, height(135.0, 125.0)));
     }
     // our avatar + a second one
@@ -5910,8 +5910,8 @@ pub fn events() -> Vec<NetEvent> {
         avatars.push(o);
     }
     let start = Vec3::new(132.0, 126.0, height(140.0, 130.0) + 0.35 + 0.84);
-    // AURORA_DEMO_POS="x,y" moves the start position (captures)
-    let start = match std::env::var("AURORA_DEMO_POS")
+    // DEEPLY_DEMO_POS="x,y" moves the start position (captures)
+    let start = match std::env::var("DEEPLY_DEMO_POS")
         .ok()
         .map(|v| v.split(',').filter_map(|s| s.trim().parse::<f32>().ok()).collect::<Vec<_>>())
     {
@@ -5930,15 +5930,15 @@ pub fn events() -> Vec<NetEvent> {
     // the parcel the demo avatar stands on (About Land)
     {
         use aurora_net::parcel_flags as pf;
-        // AURORA_DEMO_RESTRICTED: a parcel that forbids everything (red icons
+        // DEEPLY_DEMO_RESTRICTED: a parcel that forbids everything (red icons
         // in the navigation bar), with damage on and 72 % health
-        let restricted = std::env::var("AURORA_DEMO_RESTRICTED").is_ok_and(|v| v == "1");
+        let restricted = std::env::var("DEEPLY_DEMO_RESTRICTED").is_ok_and(|v| v == "1");
         let flags = if restricted {
             pf::ALLOW_DAMAGE | pf::RESTRICT_PUSHOBJECT
         } else {
             pf::ALLOW_FLY | pf::CREATE_OBJECTS | pf::ALLOW_OTHER_SCRIPTS | pf::ALLOW_VOICE_CHAT | pf::RESTRICT_PUSHOBJECT
         };
-        // AURORA_DEMO_VOICE_MODERATION: the estate's voice channel
+        // DEEPLY_DEMO_VOICE_MODERATION: the estate's voice channel
         let flags = if sim_extras::estate_voice() {
             flags | pf::USE_ESTATE_VOICE_CHAN
         } else {
@@ -5947,8 +5947,8 @@ pub fn events() -> Vec<NetEvent> {
         if restricted {
             ev.push(NetEvent::Health(72.0));
         }
-        // AURORA_DEMO_MUSIC=<url>|1: parcel music, started by the radio toggle
-        let music_url = match std::env::var("AURORA_DEMO_MUSIC").unwrap_or_default().trim() {
+        // DEEPLY_DEMO_MUSIC=<url>|1: parcel music, started by the radio toggle
+        let music_url = match std::env::var("DEEPLY_DEMO_MUSIC").unwrap_or_default().trim() {
             "" | "0" => String::new(),
             "1" => land::MUSIC_URL.into(),
             url => url.to_owned(),
@@ -5996,7 +5996,7 @@ pub fn events() -> Vec<NetEvent> {
         sec_per_day: 14400,
         usec_since_start: 0,
     }));
-    // AURORA_DEMO_SKY=<gamma>[,<haze distance>[,<ambient>]]: a classic EEP sky (no
+    // DEEPLY_DEMO_SKY=<gamma>[,<haze distance>[,<ambient>]]: a classic EEP sky (no
     // reflection probe ambiance) with the given sky gamma and a sunlight color
     // above 1, as most Second Life skies carry: shows the legacy gamma and
     // the normalized object light (Firestorm mSunDiffuse) without a grid.
@@ -6006,9 +6006,9 @@ pub fn events() -> Vec<NetEvent> {
     // light shows: the ambient occlusion. With a reflection probe ambiance
     // (4th value, above 0) the sky is no longer classic: it is tone mapped.
     // The ambient is a grey level, or a colour as r:g:b (a warm 0.9:0.6:0.5).
-    // AURORA_DEMO_SKY=midday: the library Midday's values instead (World ›
+    // DEEPLY_DEMO_SKY=midday: the library Midday's values instead (World ›
     // Environment), a non-classic sky with dense haze and half the sky clouded
-    let sky = std::env::var("AURORA_DEMO_SKY").ok().and_then(|v| {
+    let sky = std::env::var("DEEPLY_DEMO_SKY").ok().and_then(|v| {
         if v.trim().eq_ignore_ascii_case("midday") {
             return Some(demo_day(midday_sky()));
         }
@@ -6058,9 +6058,9 @@ pub fn events() -> Vec<NetEvent> {
         position: Vec3::ZERO,
         message: aurora_i18n::tr!("demo-welcome-to-the-aurora-viewer-demo").into(),
     }));
-    // AURORA_DEMO_LSL_BRIDGE=1: a worn Firestorm bridge talking to the viewer
+    // DEEPLY_DEMO_LSL_BRIDGE=1: a worn Firestorm bridge talking to the viewer
     // (all hidden from chat) between two ordinary llOwnerSay lines (shown)
-    if std::env::var_os("AURORA_DEMO_LSL_BRIDGE").is_some() {
+    if std::env::var_os("DEEPLY_DEMO_LSL_BRIDGE").is_some() {
         let bridge = Uuid::from_u128(0xB81D_6E00_0000_0000_0000_0000_0000_0001);
         let (hud, bridge_name) = (aurora_i18n::tr!("common-demo-hud"), "#Firestorm LSL Bridge v2.32");
         for (from, name, text) in [
@@ -6084,14 +6084,14 @@ pub fn events() -> Vec<NetEvent> {
             }));
         }
     }
-    let dialog = std::env::var("AURORA_DEMO_DIALOG").ok().filter(|mode| !mode.is_empty());
-    let inventory_offer = std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|mode| {
+    let dialog = std::env::var("DEEPLY_DEMO_DIALOG").ok().filter(|mode| !mode.is_empty());
+    let inventory_offer = std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|mode| {
         matches!(
             mode.as_str(),
             "offer" | "offer-reject" | "offer-show" | "offer-auto" | "offer-auto-show"
         )
     }) || offer_card_scene().is_some();
-    if std::env::var("AURORA_DEMO_INVENTORY")
+    if std::env::var("DEEPLY_DEMO_INVENTORY")
         .is_ok_and(|mode| matches!(mode.as_str(), "offer-object-show" | "offer-object-auto" | "offer-object-auto-show"))
     {
         ev.push(NetEvent::InstantMessage(aurora_net::InstantMessage {
@@ -6108,7 +6108,7 @@ pub fn events() -> Vec<NetEvent> {
         }));
     }
     ev.extend(notification_samples(
-        std::env::var_os("AURORA_DEMO_NOTIF").is_some(),
+        std::env::var_os("DEEPLY_DEMO_NOTIF").is_some(),
         inventory_offer,
         dialog.as_deref(),
     ));
@@ -6147,22 +6147,22 @@ pub fn events() -> Vec<NetEvent> {
     ev
 }
 
-/// AURORA_DEMO_LAND_BESIDE=1: a 4 m square frame lying on the bare ground
+/// DEEPLY_DEMO_LAND_BESIDE=1: a 4 m square frame lying on the bare ground
 /// 5 m along the start view (a box prim hollowed at 85 %), with
-/// AURORA_DEMO_POS="80,100" (open land: the plaza's floor is a prim). Its
+/// DEEPLY_DEMO_POS="80,100" (open land: the plaza's floor is a prim). Its
 /// box spans the ground in its middle, its surface does not: a right click
 /// there is the land's (the land menu, Edit terrain), as beside a mesh whose
 /// box covers the ground around it.
 fn land_beside_events() -> Vec<NetEvent> {
-    if !std::env::var("AURORA_DEMO_LAND_BESIDE").is_ok_and(|v| v.trim() == "1") {
+    if !std::env::var("DEEPLY_DEMO_LAND_BESIDE").is_ok_and(|v| v.trim() == "1") {
         return Vec::new();
     }
-    let eye = std::env::var("AURORA_DEMO_POS")
+    let eye = std::env::var("DEEPLY_DEMO_POS")
         .ok()
         .map(|v| v.split(',').filter_map(|s| s.trim().parse::<f32>().ok()).collect::<Vec<_>>())
         .filter(|p| p.len() >= 2)
         .map_or(glam::Vec2::new(80.0, 100.0), |p| glam::Vec2::new(p[0], p[1]));
-    // the start view (AURORA_DEMO_FOLIAGE's `look`)
+    // the start view (DEEPLY_DEMO_FOLIAGE's `look`)
     let at = eye + glam::Vec2::new(0.8, 0.4).normalize() * 5.0;
     let (x, y) = (at.x, at.y);
     let frame = prim(
@@ -6464,7 +6464,7 @@ pub fn chime() -> (Uuid, aurora_audio::SoundClip) {
     (u(0x50_0001), aurora_audio::SoundClip::from_pcm(&pcm, 1, rate))
 }
 
-/// AURORA_DEMO_SOUND: an interface sound for the offline demo. A development
+/// DEEPLY_DEMO_SOUND: an interface sound for the offline demo. A development
 /// build reads it (never writes it) from the sound cache of grid sessions
 /// when one already loaded it (`source`); otherwise a short tick whose pitch
 /// depends on the asset (so that different sounds can be told apart).
@@ -6494,13 +6494,13 @@ pub fn ui_sound(id: Uuid) -> aurora_audio::SoundClip {
     aurora_audio::SoundClip::from_pcm(&pcm, 1, rate)
 }
 
-/// Default page of AURORA_DEMO_MEDIA: animated (frame updates), a button
+/// Default page of DEEPLY_DEMO_MEDIA: animated (frame updates), a button
 /// (clicks) and a text field (keyboard).
 pub fn demo_media_page() -> &'static str {
     aurora_i18n::tr!("demo-media-page")
 }
 
-/// AURORA_DEMO_MEDIA: a 4 × 2.25 m screen ahead-left of the start position whose
+/// DEEPLY_DEMO_MEDIA: a 4 × 2.25 m screen ahead-left of the start position whose
 /// west face (towards the avatar) carries media. Returns the update, the
 /// object id and the face index.
 pub fn media_screen() -> (NetEvent, Uuid, u8) {
@@ -6551,7 +6551,7 @@ pub fn media_screen() -> (NetEvent, Uuid, u8) {
     )
 }
 
-/// AURORA_DEMO_PARCEL_MEDIA: placeholder texture of the parcel media (the
+/// DEEPLY_DEMO_PARCEL_MEDIA: placeholder texture of the parcel media (the
 /// first alpha test panel's texture).
 pub fn parcel_media_texture() -> Uuid {
     alpha_panels()[0].0
@@ -6641,10 +6641,10 @@ pub fn idle_animation() -> aurora_assets::Animation {
     }
 }
 
-/// `AURORA_DEMO_TYPING=1`: we type in the nearby chat from our arrival on,
+/// `DEEPLY_DEMO_TYPING=1`: we type in the nearby chat from our arrival on,
 /// without a key (our typing animation and our plate's dots).
 pub fn typing_scenario() -> bool {
-    std::env::var_os("AURORA_DEMO_TYPING").is_some()
+    std::env::var_os("DEEPLY_DEMO_TYPING").is_some()
 }
 
 /// The typing animation (ANIM_AGENT_TYPE), a grid asset the demo has no
@@ -6695,46 +6695,46 @@ pub fn typing_animation() -> aurora_assets::Animation {
 }
 
 pub const IDLE_ANIM: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000_0001);
-/// AURORA_DEMO_ANIMATION_EXPLORER: a worn object's motion, stopped since.
+/// DEEPLY_DEMO_ANIMATION_EXPLORER: a worn object's motion, stopped since.
 pub const EXPLORER_WAVE_ANIM: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000_0130);
 
 pub const ANIMESH_MESH: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000_0100);
 pub const ANIMESH_TEXTURE: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000_0101);
 pub const ANIMESH_ANIM: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000_0102);
 pub const ANIMESH_UNRIGGED_MESH: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000_0103);
-/// AURORA_DEMO_ANIMESH=points: a bar rigged to an attachment point alone,
+/// DEEPLY_DEMO_ANIMESH=points: a bar rigged to an attachment point alone,
 /// which the animesh's animation turns (#1492).
 pub const ANIMESH_POINT_MESH: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000_0104);
 pub const ANIMESH_POINT: &str = "Groin";
 /// The bar's prim, a child of the worn animesh 9203.
 pub const ANIMESH_POINT_PRIM: u32 = 9207;
-/// AURORA_DEMO_ANIMESH=points: a stem rigged between "Avatar Center" (on
+/// DEEPLY_DEMO_ANIMESH=points: a stem rigged between "Avatar Center" (on
 /// the root) and mPelvis, which the animation moves by position: its root
 /// end stays, its pelvis end follows, as a seat's flower stem (#1492).
 pub const ANIMESH_STEM_MESH: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000_0105);
 pub const ANIMESH_STEM_PRIM: u32 = 9208;
 
 pub fn animesh_points() -> bool {
-    std::env::var("AURORA_DEMO_ANIMESH").is_ok_and(|v| v == "points")
+    std::env::var("DEEPLY_DEMO_ANIMESH").is_ok_and(|v| v == "points")
 }
 
-/// AURORA_DEMO_ANIMESH=far: the ground animesh's animation carries its
+/// DEEPLY_DEMO_ANIMESH=far: the ground animesh's animation carries its
 /// pelvis 8 m forward (drawn 3 m from its object, draw_limits.rs), and the
 /// worn animesh sits 5 m from its attachment point (drawn at 3.5 m).
 pub fn animesh_far() -> bool {
-    std::env::var("AURORA_DEMO_ANIMESH").is_ok_and(|v| v == "far")
+    std::env::var("DEEPLY_DEMO_ANIMESH").is_ok_and(|v| v == "far")
 }
 
-/// AURORA_DEMO_ANIMESH=far: the animation the ground animesh plays too.
+/// DEEPLY_DEMO_ANIMESH=far: the animation the ground animesh plays too.
 pub const ANIMESH_FAR_ANIM: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000_0106);
 
-/// The worn animesh's offset from its point with AURORA_DEMO_ANIMESH=far.
+/// The worn animesh's offset from its point with DEEPLY_DEMO_ANIMESH=far.
 pub const ANIMESH_FAR_WORN: Vec3 = Vec3::new(4.0, 3.0, 0.0);
 
-/// AURORA_DEMO_ANIMESH=churn: the ground animesh changes its mesh asset every
+/// DEEPLY_DEMO_ANIMESH=churn: the ground animesh changes its mesh asset every
 /// `ANIMESH_CHURN_FRAMES` frames, as rigged meshes come and go on a grid.
 pub fn animesh_churn() -> bool {
-    std::env::var("AURORA_DEMO_ANIMESH").is_ok_and(|v| v == "churn")
+    std::env::var("DEEPLY_DEMO_ANIMESH").is_ok_and(|v| v == "churn")
 }
 
 pub const ANIMESH_CHURN_FRAMES: u64 = 240;
@@ -6754,7 +6754,7 @@ pub fn animesh_churn_events(generation: u32) -> Vec<NetEvent> {
 /// Root mesh, linked mesh driven by a child's signal, and a worn root mesh.
 pub fn animesh_events() -> Vec<NetEvent> {
     let mut objects = animesh_objects(ANIMESH_MESH);
-    if std::env::var("AURORA_DEMO_ANIMESH").is_ok_and(|v| matches!(v.as_str(), "alpha" | "alpha-cycle")) {
+    if std::env::var("DEEPLY_DEMO_ANIMESH").is_ok_and(|v| matches!(v.as_str(), "alpha" | "alpha-cycle")) {
         make_animesh_invisible(&mut objects);
     }
     let mut events: Vec<_> = objects
@@ -6778,7 +6778,7 @@ pub fn animesh_events() -> Vec<NetEvent> {
 /// Enable after the normal zero-record path has loaded, then exercise
 /// cleanup, the non-rigged filter and reactivation without a scene reload.
 pub fn animesh_alpha_step(frame: u64) -> Option<Option<bool>> {
-    if !std::env::var("AURORA_DEMO_ANIMESH").is_ok_and(|v| v == "alpha-cycle") {
+    if !std::env::var("DEEPLY_DEMO_ANIMESH").is_ok_and(|v| v == "alpha-cycle") {
         return None;
     }
     match frame {
@@ -6896,9 +6896,9 @@ pub(crate) fn animesh_objects(ground_mesh: Uuid) -> Vec<ObjectUpdate> {
     objects
 }
 
-/// AURORA_DEMO_CLICKS=...,rigged: the rigged demo mesh worn on the chest of
+/// DEEPLY_DEMO_CLICKS=...,rigged: the rigged demo mesh worn on the chest of
 /// the avatar `wearer` (ours), so every kind of rigged target is in the scene
-/// with AURORA_DEMO_ANIMESH: an animesh on the ground (9200, 9202), one
+/// with DEEPLY_DEMO_ANIMESH: an animesh on the ground (9200, 9202), one
 /// worn by another avatar (9203), a rigged mesh worn by another avatar (the
 /// crowd's) and this one.
 pub const OWN_RIGGED: u32 = 9210;
@@ -6936,7 +6936,7 @@ pub fn own_rigged_events(wearer: u32) -> Vec<NetEvent> {
     }]
 }
 
-/// Bakes of AURORA_DEMO_CLASSIC: a skin whose alpha is partly soft and cut
+/// Bakes of DEEPLY_DEMO_CLASSIC: a skin whose alpha is partly soft and cut
 /// by holes (an alpha layer), and hair in strands that fade out.
 pub const TEX_BAKE_SKIN: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0030);
 pub const TEX_BAKE_HAIR: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0031);
@@ -6977,7 +6977,7 @@ fn bake_texture(id: &Uuid) -> Option<(Vec<u8>, u32, u32)> {
     Some((px, N, N))
 }
 
-/// AURORA_DEMO_CLASSIC: the two avatars of the plaza as classic avatars, the
+/// DEEPLY_DEMO_CLASSIC: the two avatars of the plaza as classic avatars, the
 /// system body with bakes whose alpha is not only 0 or 1 and two shapes far
 /// from the default one: ours male with long hair at the back, the wolf
 /// heavy with big hair and pigtails. Their bodies must be solid (never
@@ -7021,11 +7021,11 @@ pub fn classic_events(shapes: &crate::scene::shape::ShapeParams) -> Vec<NetEvent
         .collect()
 }
 
-/// Mesh worn in AURORA_DEMO_CLOUD=self: an asset the asset server does not
+/// Mesh worn in DEEPLY_DEMO_CLOUD=self: an asset the asset server does not
 /// have (`MeshStreamer::insert_demo_unavailable`).
 pub const CLOUD_MESH: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000_0110);
 
-/// AURORA_DEMO_CLOUD=self (issue #121): the demo agent dressed like the
+/// DEEPLY_DEMO_CLOUD=self (issue #121): the demo agent dressed like the
 /// residents who stayed a cloud for the whole 60 s limit. Its appearance has
 /// a head bake hidden by an alpha layer (IMG_INVISIBLE) with textured upper
 /// and lower bakes, and it wears a mesh that cannot be downloaded next to a
@@ -7097,18 +7097,18 @@ pub fn cloud_self_events(shapes: &crate::scene::shape::ShapeParams) -> Vec<NetEv
     ]
 }
 
-/// AURORA_DEMO_TEXTURES=<n>: texture stress test, `n` small cubes (9000 for
+/// DEEPLY_DEMO_TEXTURES=<n>: texture stress test, `n` small cubes (9000 for
 /// any value that is not a number, as many textures as a busy region), each
 /// with its own texture. Returns the cube count.
-/// AURORA_DEMO_HOVER=1: the cursor swept over the window from frame 300,
+/// DEEPLY_DEMO_HOVER=1: the cursor swept over the window from frame 300,
 /// then left still, in turns of 240 frames (hover search and kept answers,
 /// scene/hover.rs). The cursor position at `frame` in a window of `size`.
-/// AURORA_DEMO_HOVER="x,y": the cursor left on that pixel instead (on an
+/// DEEPLY_DEMO_HOVER="x,y": the cursor left on that pixel instead (on an
 /// avatar of the crowd, on the ground beside it).
 pub fn hover_sweep(frame: u64, (w, h): (u32, u32)) -> Option<(f32, f32)> {
     static ON: std::sync::OnceLock<Option<Option<(f32, f32)>>> = std::sync::OnceLock::new();
     let fixed = (*ON.get_or_init(|| {
-        let v = std::env::var("AURORA_DEMO_HOVER").ok()?;
+        let v = std::env::var("DEEPLY_DEMO_HOVER").ok()?;
         Some(
             v.split_once(',')
                 .and_then(|(x, y)| Some((x.trim().parse().ok()?, y.trim().parse().ok()?))),
@@ -7130,7 +7130,7 @@ pub fn hover_sweep(frame: u64, (w, h): (u32, u32)) -> Option<(f32, f32)> {
 }
 
 pub fn texture_stress_count() -> Option<u32> {
-    let v = std::env::var("AURORA_DEMO_TEXTURES").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_TEXTURES").ok()?;
     Some(v.trim().parse().unwrap_or(9000).min(20_000))
 }
 
@@ -7177,13 +7177,13 @@ pub fn stress_texture_mips(i: u32, discard: u32) -> Vec<(u32, u32, Vec<u8>)> {
     out
 }
 
-/// The cubes of AURORA_DEMO_TEXTURES: a square field east of the plaza,
+/// The cubes of DEEPLY_DEMO_TEXTURES: a square field east of the plaza,
 /// facing the start position, 0.5 m cubes every 0.8 m.
 pub fn texture_stress_events(n: u32) -> Vec<NetEvent> {
     stress_cubes(n, |_| true, 0)
 }
 
-/// AURORA_DEMO_TP_AWAY=1: the arrival in a region out of reach at frame 760,
+/// DEEPLY_DEMO_TP_AWAY=1: the arrival in a region out of reach at frame 760,
 /// then back in the demo region at frame 960, before its simulator would
 /// have closed it: the objects of the demo region are parked, then come
 /// back as they were (world/parked.rs). The demo region's simulator still
@@ -7194,7 +7194,7 @@ pub fn away_teleport(frame: u64, world: &crate::world::World, kept: &mut Vec<(Uu
     let handle = match frame {
         760 => HANDLE + ((100 * 256u64) << 32),
         800 => {
-            std::env::var_os("AURORA_DEMO_TP_AWAY")?;
+            std::env::var_os("DEEPLY_DEMO_TP_AWAY")?;
             return Some(vec![NetEvent::CoarseLocations {
                 handle: HANDLE,
                 positions: std::mem::take(kept),
@@ -7203,7 +7203,7 @@ pub fn away_teleport(frame: u64, world: &crate::world::World, kept: &mut Vec<(Uu
         960 => HANDLE,
         _ => return None,
     };
-    std::env::var_os("AURORA_DEMO_TP_AWAY")?;
+    std::env::var_os("DEEPLY_DEMO_TP_AWAY")?;
     if frame == 760 {
         *kept = world.coarse.get(&HANDLE).cloned().unwrap_or_default();
     }
@@ -7215,14 +7215,14 @@ pub fn away_teleport(frame: u64, world: &crate::world::World, kept: &mut Vec<(Uu
     ])
 }
 
-/// AURORA_DEMO_TEXTURES_CHURN=1: streaming churn on top of the stress test,
+/// DEEPLY_DEMO_TEXTURES_CHURN=1: streaming churn on top of the stress test,
 /// as in a busy region where objects come and go. The cubes of
 /// `stress_churned` are removed at frame 300 (their textures are evicted a
 /// few seconds later, which frees layers and compacts pages), then put back
 /// at frame 700 with new textures (placeholders in the freed slots, then
 /// low and full resolution).
 pub fn texture_churn() -> bool {
-    std::env::var_os("AURORA_DEMO_TEXTURES_CHURN").is_some()
+    std::env::var_os("DEEPLY_DEMO_TEXTURES_CHURN").is_some()
 }
 
 pub fn stress_churned(i: u32) -> bool {
@@ -7268,17 +7268,17 @@ fn stress_cubes(n: u32, keep: impl Fn(u32) -> bool, texture_offset: u32) -> Vec<
     vec![NetEvent::ObjectUpdates { handle: HANDLE, objects }]
 }
 
-/// AURORA_DEMO_CROWD=<n>: `n` extra avatars (40 for any value that is not a
+/// DEEPLY_DEMO_CROWD=<n>: `n` extra avatars (40 for any value that is not a
 /// number), as in a busy shop or club. Returns the avatar count.
 pub fn crowd_count() -> Option<u32> {
-    let v = std::env::var("AURORA_DEMO_CROWD").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_CROWD").ok()?;
     Some(v.split(',').next().unwrap_or("").trim().parse().unwrap_or(40).min(400))
 }
 
-/// AURORA_DEMO_CROWD=<n>,busy: the crowd with what a busy place adds to
+/// DEEPLY_DEMO_CROWD=<n>,busy: the crowd with what a busy place adds to
 /// the scene sync ([`crowd_busy_events`]).
 pub fn crowd_busy() -> bool {
-    std::env::var("AURORA_DEMO_CROWD").is_ok_and(|v| v.split(',').skip(1).any(|p| p.trim() == "busy"))
+    std::env::var("DEEPLY_DEMO_CROWD").is_ok_and(|v| v.split(',').skip(1).any(|p| p.trim() == "busy"))
 }
 
 /// Prims of the HUD our avatar wears in the busy crowd (its root included).
@@ -7290,7 +7290,7 @@ pub const BUSY_SPINNERS: u32 = 60;
 /// What a busy place has besides worn prims and meshes, for `n` crowd
 /// avatars: on each of them a flexible ribbon and a spinning ornament with
 /// two prims linked below it (the ribbon left to the sync, the ornament
-/// placed by the GPU from a mover, `AURORA_MOVING_ANCHORS`);
+/// placed by the GPU from a mover, `DEEPLY_MOVING_ANCHORS`);
 /// on our avatar a HUD of [`BUSY_HUD_PRIMS`] prims; and
 /// [`BUSY_SPINNERS`] spinning objects on the ground.
 pub fn crowd_busy_events(n: u32) -> Vec<NetEvent> {
@@ -7413,22 +7413,22 @@ pub fn crowd_busy_events(n: u32) -> Vec<NetEvent> {
     vec![NetEvent::ObjectUpdates { handle: HANDLE, objects }]
 }
 
-/// AURORA_DEMO_ANIMESH_TRIS=<n>: triangles added to the demo's rigged mesh
+/// DEEPLY_DEMO_ANIMESH_TRIS=<n>: triangles added to the demo's rigged mesh
 /// (0 without the variable), in opaque faces of 45 000.
 pub fn animesh_dense_triangles() -> usize {
-    std::env::var("AURORA_DEMO_ANIMESH_TRIS")
+    std::env::var("DEEPLY_DEMO_ANIMESH_TRIS")
         .ok()
         .and_then(|v| v.trim().parse().ok())
         .unwrap_or(0)
 }
 
-/// AURORA_DEMO_CROWD=<n>,<worn>[,<triangles>]: the crowd of a club. Each
+/// DEEPLY_DEMO_CROWD=<n>,<worn>[,<triangles>]: the crowd of a club. Each
 /// avatar dances and wears `worn` more rigged meshes (300 at most), one in
 /// a hundred of them scripted, see-through and of `triangles` triangles
 /// (20,000 unless given): what the hover search meets among dressed
-/// avatars. Needs AURORA_DEMO_ANIMESH. Returns (worn, triangles).
+/// avatars. Needs DEEPLY_DEMO_ANIMESH. Returns (worn, triangles).
 pub fn crowd_worn() -> Option<(u32, u32)> {
-    let v = std::env::var("AURORA_DEMO_CROWD").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_CROWD").ok()?;
     let mut fields = v.split(',').skip(1).map(|f| f.trim().parse::<u32>().ok());
     let worn = fields.next()??.min(300);
     let triangles = fields.next().flatten().unwrap_or(20_000).clamp(12, 200_000);
@@ -7438,7 +7438,7 @@ pub fn crowd_worn() -> Option<(u32, u32)> {
 pub const CROWD_DENSE_MESH: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000_0110);
 pub const CROWD_DANCE_ANIM: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000_0111);
 
-/// The dance of AURORA_DEMO_CROWD=<n>,<worn>: the whole body sways half a
+/// The dance of DEEPLY_DEMO_CROWD=<n>,<worn>: the whole body sways half a
 /// meter and turns, arms swinging, so everything worn moves at each frame.
 pub fn crowd_dance_animation() -> aurora_assets::Animation {
     use aurora_assets::anim::{JointMotion, PosKey, RotKey};
@@ -7484,13 +7484,13 @@ pub fn crowd_dance_animation() -> aurora_assets::Animation {
     a
 }
 
-/// AURORA_DEMO_MATERIAL_ARRIVALS=<seconds>: the crowd's worn prims and
+/// DEEPLY_DEMO_MATERIAL_ARRIVALS=<seconds>: the crowd's worn prims and
 /// meshes use a legacy material, and a material nobody uses arrives every
 /// `seconds` (2 if not a number), as the materials of the avatars coming in
-/// do in a busy place; `AURORA_MATERIAL_REBUILD=alt` compares the sync that
+/// do in a busy place; `DEEPLY_MATERIAL_REBUILD=alt` compares the sync that
 /// rebuilt every material user at each arrival (mat_changes.rs).
 pub fn material_arrivals() -> Option<f32> {
-    let v = std::env::var("AURORA_DEMO_MATERIAL_ARRIVALS").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_MATERIAL_ARRIVALS").ok()?;
     Some(v.trim().parse::<f32>().ok().filter(|s| *s > 0.0).unwrap_or(2.0))
 }
 
@@ -7516,13 +7516,13 @@ pub fn material_arrival_due() -> Option<(Uuid, crate::scene::legacy_mat::LegacyM
     Some(arriving_material(*n))
 }
 
-/// AURORA_DEMO_IMPOSTOR_FLIP=<seconds>: the avatar limit alternates between
+/// DEEPLY_DEMO_IMPOSTOR_FLIP=<seconds>: the avatar limit alternates between
 /// its setting and one every `seconds` (2 if not a number), so that the
 /// crowd's avatars go from impostor to drawn in full and back.
 pub fn impostor_flip(limit: usize) -> usize {
     static START: std::sync::OnceLock<Option<(std::time::Instant, f32)>> = std::sync::OnceLock::new();
     let start = START.get_or_init(|| {
-        let v = std::env::var("AURORA_DEMO_IMPOSTOR_FLIP").ok()?;
+        let v = std::env::var("DEEPLY_DEMO_IMPOSTOR_FLIP").ok()?;
         Some((
             std::time::Instant::now(),
             v.trim().parse().ok().filter(|&s: &f32| s > 0.0).unwrap_or(2.0),
@@ -7550,7 +7550,7 @@ fn crowd_te(color: [f32; 4], shiny: u8) -> Arc<TextureEntry> {
 /// The crowd: avatars on a grid north-east of the start, each playing the
 /// demo idle animation and wearing eight attachment linksets (a root and six
 /// child prims) on bones all over the body, so every worn prim follows its
-/// animated bone each frame. With `rigged` (AURORA_DEMO_ANIMESH, whose mesh
+/// animated bone each frame. With `rigged` (DEEPLY_DEMO_ANIMESH, whose mesh
 /// and skin are installed), each also wears the rigged demo mesh.
 pub fn crowd_events(n: u32, rigged: bool) -> Vec<NetEvent> {
     let boxp = shape(LL_PCODE_PATH_LINE, LL_PCODE_PROFILE_SQUARE, 100, 0, 0);
@@ -7662,7 +7662,7 @@ pub fn crowd_events(n: u32, rigged: bool) -> Vec<NetEvent> {
             };
             let mut t = (*te([0.85, 0.85, 0.9, 1.0], 0, false, 0.0)).clone();
             // the fur on the mesh's own face; the faces of
-            // AURORA_DEMO_ANIMESH_TRIS stay opaque
+            // DEEPLY_DEMO_ANIMESH_TRIS stay opaque
             let fur = if animesh_dense_triangles() > 0 { 1 } else { t.faces.len() };
             for f in t.faces.iter_mut().take(fur) {
                 f.texture = ANIMESH_TEXTURE;
@@ -7693,12 +7693,12 @@ pub fn crowd_events(n: u32, rigged: bool) -> Vec<NetEvent> {
     events
 }
 
-/// AURORA_DEMO_LIGHTS=<n>: `n` small local lights (64 for any value that is
+/// DEEPLY_DEMO_LIGHTS=<n>: `n` small local lights (64 for any value that is
 /// not a number) over the crowd's place and around it, 1.6 m apart at head
 /// height, as the face lights avatars wear and the lamps of a club. The
 /// renderer takes 64, those that reach the view first (#1032).
 pub fn lights_count() -> Option<u32> {
-    let v = std::env::var("AURORA_DEMO_LIGHTS").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_LIGHTS").ok()?;
     Some(v.trim().parse().unwrap_or(64).min(256))
 }
 
@@ -7739,30 +7739,30 @@ pub fn lights_events(n: u32) -> Vec<NetEvent> {
     vec![NetEvent::ObjectUpdates { handle: HANDLE, objects }]
 }
 
-/// AURORA_DEMO_HAIR=<layers>[,<segments>[,<empty %>[,<period>]]]: the load
+/// DEEPLY_DEMO_HAIR=<layers>[,<segments>[,<empty %>[,<period>]]]: the load
 /// of the blended pass around avatars. Our avatar and each one of the crowd
-/// (AURORA_DEMO_CROWD) wear `layers` nested rigged shells around the head
+/// (DEEPLY_DEMO_CROWD) wear `layers` nested rigged shells around the head
 /// and the torso, as the stacked cards of mesh hair and layered clothes:
 /// `segments` quads along each side of a shell (its triangle count), a
 /// texture of strands `period` texels apart of which `empty` percent of the
-/// texels are fully transparent. AURORA_DEMO_LASHES=1: our avatar also
+/// texels are fully transparent. DEEPLY_DEMO_LASHES=1: our avatar also
 /// wears a small red ball inside the head shell, blended, on the side the
-/// camera sees (eyelashes behind a fringe). AURORA_DEMO_HAIR_CARDS=<n>
-/// (with or without AURORA_DEMO_HAIR): our avatar also wears one rigged
+/// camera sees (eyelashes behind a fringe). DEEPLY_DEMO_HAIR_CARDS=<n>
+/// (with or without DEEPLY_DEMO_HAIR): our avatar also wears one rigged
 /// mesh whose single face holds `n` strand cards hanging around the back of
 /// the head, overlapping in a shuffled order, their strands fading softly
 /// (#935: the triangles of one face, not drawn back to front).
-/// AURORA_DEMO_HAIR_CARDS=<n>,layered: the cards of a hair as it is made:
+/// DEEPLY_DEMO_HAIR_CARDS=<n>,layered: the cards of a hair as it is made:
 /// listed from the head outwards, the inner ones dark, the outer ones light,
 /// strands mostly opaque with a short soft edge and nothing between them,
 /// drawn in the Legacy Viewer's triangle order like a mesh asset (#935);
 /// `<n>,layered,outer`: listed from the outside in instead.
-/// AURORA_DEMO_SHEER=1 (with or without the others): our avatar also wears
+/// DEEPLY_DEMO_SHEER=1 (with or without the others): our avatar also wears
 /// a sheer white dress around the torso, its alpha wavering from texel to
 /// texel between 0.25 and 0.75 (a knit), and under it a red layer (a body
 /// add-on), attached first on the same point so that it is drawn after the
 /// dress (#1300).
-/// AURORA_DEMO_SOFT_MASK=1: a skin-tone disc on the groin whose texture is
+/// DEEPLY_DEMO_SOFT_MASK=1: a skin-tone disc on the groin whose texture is
 /// classified as Mask (mostly binary alpha, short soft fringe). Without the
 /// rigged auto-Mask skip it would be punched out; with it, the soft fringe
 /// stays visible (Physics Cock Max / #1492 class of attachments).
@@ -7781,15 +7781,15 @@ pub struct HairDemo {
 }
 
 pub fn hair_demo() -> Option<HairDemo> {
-    let cards_var = std::env::var("AURORA_DEMO_HAIR_CARDS").unwrap_or_default();
+    let cards_var = std::env::var("DEEPLY_DEMO_HAIR_CARDS").unwrap_or_default();
     let mut cards_args = cards_var.split(',').map(str::trim);
     let cards = cards_args.next().and_then(|v| v.parse::<u32>().ok()).map_or(0, |n| n.clamp(1, 400));
     let cards_args: Vec<&str> = cards_args.collect();
     let layered = cards > 0 && cards_args.contains(&"layered");
     let outer_first = layered && cards_args.contains(&"outer");
-    let sheer = std::env::var("AURORA_DEMO_SHEER").is_ok_and(|v| v.trim() == "1");
-    let soft_mask = std::env::var("AURORA_DEMO_SOFT_MASK").is_ok_and(|v| v.trim() == "1");
-    let demo = match std::env::var("AURORA_DEMO_HAIR").ok() {
+    let sheer = std::env::var("DEEPLY_DEMO_SHEER").is_ok_and(|v| v.trim() == "1");
+    let soft_mask = std::env::var("DEEPLY_DEMO_SOFT_MASK").is_ok_and(|v| v.trim() == "1");
+    let demo = match std::env::var("DEEPLY_DEMO_HAIR").ok() {
         Some(v) => hair_demo_from(&v),
         None if cards > 0 || sheer || soft_mask => HairDemo {
             layers: 0,
@@ -7798,7 +7798,7 @@ pub fn hair_demo() -> Option<HairDemo> {
         None => return None,
     };
     Some(HairDemo {
-        lashes: std::env::var("AURORA_DEMO_LASHES").is_ok_and(|v| v.trim() == "1"),
+        lashes: std::env::var("DEEPLY_DEMO_LASHES").is_ok_and(|v| v.trim() == "1"),
         cards,
         layered,
         outer_first,
@@ -7827,32 +7827,32 @@ fn hair_demo_from(v: &str) -> HairDemo {
     }
 }
 
-/// Knit texture of the dress of AURORA_DEMO_SHEER.
+/// Knit texture of the dress of DEEPLY_DEMO_SHEER.
 pub const TEX_SHEER: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0023);
 
-/// Soft-fringe Mask texture of AURORA_DEMO_SOFT_MASK (skin tone disc).
+/// Soft-fringe Mask texture of DEEPLY_DEMO_SOFT_MASK (skin tone disc).
 pub const TEX_SOFT_MASK: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0024);
 
-/// Mesh assets of AURORA_DEMO_SHEER: the dress, and the layer under it.
+/// Mesh assets of DEEPLY_DEMO_SHEER: the dress, and the layer under it.
 pub const SHEER_DRESS_MESH: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0002_0000_0300);
 pub const SHEER_LAYER_MESH: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0002_0000_0301);
 
-/// Mesh asset of AURORA_DEMO_SOFT_MASK (pelvis shell).
+/// Mesh asset of DEEPLY_DEMO_SOFT_MASK (pelvis shell).
 pub const SOFT_MASK_MESH: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0002_0000_0302);
 
 /// Strand texture of the hair demo.
 pub const TEX_HAIR: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0020);
 
-/// Strand texture of the cards of AURORA_DEMO_HAIR_CARDS.
+/// Strand texture of the cards of DEEPLY_DEMO_HAIR_CARDS.
 pub const TEX_HAIR_CARD: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0021);
 
-/// Strand texture of `AURORA_DEMO_HAIR_CARDS=<n>,layered`.
+/// Strand texture of `DEEPLY_DEMO_HAIR_CARDS=<n>,layered`.
 pub const TEX_HAIR_CARD_LAYERED: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0022);
 
-/// Mesh asset of AURORA_DEMO_HAIR_CARDS (one face of strand cards).
+/// Mesh asset of DEEPLY_DEMO_HAIR_CARDS (one face of strand cards).
 pub const HAIR_CARDS_MESH: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0002_0000_0200);
 
-/// Mesh asset of the ball of AURORA_DEMO_LASHES.
+/// Mesh asset of the ball of DEEPLY_DEMO_LASHES.
 pub const LASHES_MESH: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0002_0000_0100);
 
 /// Mesh asset of one layer of the hair demo (a head shell and a torso shell).
@@ -8032,31 +8032,31 @@ pub fn hair_events(demo: HairDemo, crowd: u32) -> Vec<NetEvent> {
     vec![NetEvent::ObjectUpdates { handle: HANDLE, objects }]
 }
 
-/// AURORA_DEMO_FEET=opaque|blend: our avatar and each one of the crowd
-/// (AURORA_DEMO_CROWD) wear a shoe on each foot, a box on the foot's
+/// DEEPLY_DEMO_FEET=opaque|blend: our avatar and each one of the crowd
+/// (DEEPLY_DEMO_CROWD) wear a shoe on each foot, a box on the foot's
 /// attachment point, opaque or blended (its color's alpha 0.95, as the
 /// many mesh bodies and shoes whose faces are blended though they look
 /// opaque): what the contact shadows see of what touches the ground. Two
 /// blocks also stand on the ground in front of the start position of
-/// AURORA_DEMO_POS="129,134", left of the view: an opaque one and, further
+/// DEEPLY_DEMO_POS="129,134", left of the view: an opaque one and, further
 /// left, a blended one; nearer, a hoof on the ground and a shoe hovering
 /// 2 cm above it (the thick casters of issue 988).
 pub fn feet_demo() -> Option<bool> {
-    match std::env::var("AURORA_DEMO_FEET").ok()?.trim() {
+    match std::env::var("DEEPLY_DEMO_FEET").ok()?.trim() {
         "blend" => Some(true),
         "opaque" => Some(false),
         _ => None,
     }
 }
 
-/// AURORA_DEMO_SUN=<azimuth>,<elevation> (degrees, azimuth 0 east, 90
+/// DEEPLY_DEMO_SUN=<azimuth>,<elevation> (degrees, azimuth 0 east, 90
 /// north): the direction towards the sun for the lighting and the shadows,
 /// the sky keeping its own. The demo camera looks east, so `0,10` puts a low
 /// sun in front of it, the light that shows the contact shadows' outlines
 /// under thick casters (issue 988).
 pub fn sun_override() -> Option<Vec3> {
     static SUN: std::sync::OnceLock<Option<Vec3>> = std::sync::OnceLock::new();
-    *SUN.get_or_init(|| parse_sun(&std::env::var("AURORA_DEMO_SUN").ok()?))
+    *SUN.get_or_init(|| parse_sun(&std::env::var("DEEPLY_DEMO_SUN").ok()?))
 }
 
 fn parse_sun(v: &str) -> Option<Vec3> {
@@ -8254,7 +8254,7 @@ pub fn projector_bench_done() -> bool {
     static START: std::sync::OnceLock<Option<std::time::Instant>> = std::sync::OnceLock::new();
     START
         .get_or_init(|| {
-            (std::env::var("AURORA_DEMO_PROJECTOR").as_deref() == Ok("cluster-bench")).then(|| {
+            (std::env::var("DEEPLY_DEMO_PROJECTOR").as_deref() == Ok("cluster-bench")).then(|| {
                 log::info!("projector benchmark begin");
                 std::time::Instant::now()
             })
@@ -8264,7 +8264,7 @@ pub fn projector_bench_done() -> bool {
 
 /// Fixed framing of the #1494 offline fixture, or a repeatable camera sweep.
 pub fn projector_camera(frame: u64) -> Option<(Vec3, Vec3)> {
-    let mode = std::env::var("AURORA_DEMO_PROJECTOR").ok()?;
+    let mode = std::env::var("DEEPLY_DEMO_PROJECTOR").ok()?;
     if !mode.starts_with("cluster") {
         return None;
     }
@@ -8356,7 +8356,7 @@ mod hair_tests {
         assert!(solid > soft && soft > 0, "{solid} solid, {soft} soft fringe");
     }
 
-    /// The strands of `AURORA_DEMO_HAIR_CARDS=<n>,layered` are a blended
+    /// The strands of `DEEPLY_DEMO_HAIR_CARDS=<n>,layered` are a blended
     /// texture, most of each strand at least half covered (drawn first,
     /// `RiggedBlendDepth::Split`) and a soft edge under it.
     #[test]
@@ -8418,7 +8418,7 @@ pub fn animesh_animation() -> aurora_assets::Animation {
     a
 }
 
-/// AURORA_DEMO_ANIMESH=points: the attachment point the bar is rigged to,
+/// DEEPLY_DEMO_ANIMESH=points: the attachment point the bar is rigged to,
 /// swung up and down, and the pelvis moved forward and down by position,
 /// as a sit (#1492).
 pub fn point_animation() -> aurora_assets::Animation {
@@ -8450,7 +8450,7 @@ pub fn point_animation() -> aurora_assets::Animation {
     a
 }
 
-/// AURORA_DEMO_ANIMESH=far: the pelvis held 8 m forward, as an animation
+/// DEEPLY_DEMO_ANIMESH=far: the pelvis held 8 m forward, as an animation
 /// with a large root motion.
 pub fn far_animation() -> aurora_assets::Animation {
     use aurora_assets::anim::{JointMotion, PosKey};
@@ -8519,7 +8519,7 @@ pub fn loop_animation() -> aurora_assets::Animation {
     anim
 }
 
-/// `AURORA_DEMO_PELVIS_CONSTRAINT`: the loop below, with a pelvis constraint
+/// `DEEPLY_DEMO_PELVIS_CONSTRAINT`: the loop below, with a pelvis constraint
 /// that carries the body out of sight for the last 4 s of every 8 s.
 pub fn pelvis_constraint_animation() -> (aurora_assets::Animation, Vec<aurora_assets::anim::Constraint>) {
     let mut anim = loop_animation();
@@ -8545,15 +8545,15 @@ pub const SYNC_LEADER_ANIM: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_00
 pub const SYNC_DELAYED_ANIM: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000_0022);
 
 pub fn animation_sync_demo() -> bool {
-    std::env::var("AURORA_DEMO_ANIM_LOOP").is_ok_and(|v| matches!(v.as_str(), "sync" | "sync-edit"))
+    std::env::var("DEEPLY_DEMO_ANIM_LOOP").is_ok_and(|v| matches!(v.as_str(), "sync" | "sync-edit"))
 }
 
 pub fn animation_edit_demo() -> bool {
-    std::env::var("AURORA_DEMO_ANIM_LOOP").is_ok_and(|v| v == "sync-edit")
+    std::env::var("DEEPLY_DEMO_ANIM_LOOP").is_ok_and(|v| v == "sync-edit")
 }
 
 pub fn animation_resync_demo() -> bool {
-    std::env::var("AURORA_DEMO_ANIM_LOOP").is_ok_and(|v| v == "resync")
+    std::env::var("DEEPLY_DEMO_ANIM_LOOP").is_ok_and(|v| v == "resync")
 }
 
 /// Sequence changes every 120 frames; a real stop/restart every 1200.
@@ -8591,7 +8591,7 @@ pub fn loop_animation_events(frame: u64) -> Vec<NetEvent> {
 }
 
 /// Offline voice: the other avatar talks in bursts; our own outline follows
-/// the transmitted microphone. AURORA_DEMO_VOICE exercises both tags without
+/// the transmitted microphone. DEEPLY_DEMO_VOICE exercises both tags without
 /// microphone input: speaking / loud / listening / off / cycle (4 s / 3 s / 2 s).
 /// `sweep` keeps the real microphone here and makes a plate of the name
 /// plates scene go from a whisper to a shout (`demo::tags::voice`).
@@ -8720,25 +8720,25 @@ pub const TEX_GRADIENT: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0
 pub const ACTION_MEDIA_TEX: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0011);
 pub const TEX_HOLES: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0002);
 pub const TEX_BUMPS: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0003);
-/// Floor tiles of AURORA_DEMO_PLANAR: 2 × 2 tiles with grout lines, the
+/// Floor tiles of DEEPLY_DEMO_PLANAR: 2 × 2 tiles with grout lines, the
 /// top-left tile marked so the orientation shows.
 pub const TEX_TILES: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0004);
-/// Frames of AURORA_DEMO_TEXANIM: a 4 × 4 grid, one hue per frame (frame 0
+/// Frames of DEEPLY_DEMO_TEXANIM: a 4 × 4 grid, one hue per frame (frame 0
 /// top left, red, then along the rows), each cell framed in dark.
 pub const TEX_FRAMES: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0005);
-/// Parcel snapshot of AURORA_DEMO_PLACE: a night landscape (sky with an
+/// Parcel snapshot of DEEPLY_DEMO_PLACE: a night landscape (sky with an
 /// aurora, hills, water), top row first.
 pub const TEX_SNAPSHOT: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0006);
-/// Image of the demo projectors (AURORA_DEMO_PROJECTOR): four colored
+/// Image of the demo projectors (DEEPLY_DEMO_PROJECTOR): four colored
 /// quarters, red at the top left, around a white disc.
 pub const TEX_PROJECTED: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0007);
-/// Packed occlusion-roughness-metal map of AURORA_DEMO_PBR_METAL: occlusion
+/// Packed occlusion-roughness-metal map of DEEPLY_DEMO_PBR_METAL: occlusion
 /// (red) 0 but for a centred disc, roughness 0.1, metallic 1.
 pub const TEX_ORM_DISC: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0008);
-/// Foliage of AURORA_DEMO_FOLIAGE (256 × 256, alpha a mask): thin blades
+/// Foliage of DEEPLY_DEMO_FOLIAGE (256 × 256, alpha a mask): thin blades
 /// and small leaves, about a sixth of the texels drawn.
 pub const TEX_FOLIAGE: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0009);
-/// Chain of the demo leash (AURORA_DEMO_PARTICLES=leash): a horizontal band
+/// Chain of the demo leash (DEEPLY_DEMO_PARTICLES=leash): a horizontal band
 /// of two links, transparent above and below, as leash textures are drawn.
 const TEX_LEASH_CHAIN: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_000A);
 
@@ -8822,21 +8822,21 @@ pub(crate) const MAT_MASK: Uuid = Uuid::from_u128(0xDE40_3A70_0000_0000_0000_000
 const MAT_EMISSIVE: Uuid = Uuid::from_u128(0xDE40_3A70_0000_0000_0000_0000_0000_0003);
 const MAT_BUMPY: Uuid = Uuid::from_u128(0xDE40_3A70_0000_0000_0000_0000_0000_0004);
 const MAT_BLEND: Uuid = Uuid::from_u128(0xDE40_3A70_0000_0000_0000_0000_0000_0005);
-/// Mask with a cutoff of 0 (AURORA_DEMO_MASK_ZERO): every texel drawn.
+/// Mask with a cutoff of 0 (DEEPLY_DEMO_MASK_ZERO): every texel drawn.
 const MAT_MASK_ZERO: Uuid = Uuid::from_u128(0xDE40_3A70_0000_0000_0000_0000_0000_0006);
 const MAT_MASK_255: Uuid = Uuid::from_u128(0xDE40_3A70_0000_0000_0000_0000_0000_0007);
-/// Glossy plate of AURORA_DEMO_SHIMMER: the bumps repeated many times.
+/// Glossy plate of DEEPLY_DEMO_SHIMMER: the bumps repeated many times.
 const MAT_SHIMMER: Uuid = Uuid::from_u128(0xDE40_3A70_0000_0000_0000_0000_0000_0020);
 pub(crate) const TEX_PICK_ZERO: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0012);
 const TEX_PICK_FAINT: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0013);
 const TEX_PICK_HALF: Uuid = Uuid::from_u128(0xDE40_7E10_0000_0000_0000_0000_0000_0014);
 
-/// Size of a test panel; AURORA_DEMO_BUMP=tall or wide stretches the
+/// Size of a test panel; DEEPLY_DEMO_BUMP=tall or wide stretches the
 /// normal-mapped one 4:1, its texture four times denser across or along
-/// it (the tangent frame of `perturb_normal`, AURORA_TANGENTS).
+/// it (the tangent frame of `perturb_normal`, DEEPLY_TANGENTS).
 fn panel_scale(k: usize, label: &str) -> Vec3 {
     let bumpy = k == 5 && label == aurora_i18n::tr!("demo-normal-specular");
-    match std::env::var("AURORA_DEMO_BUMP").as_deref() {
+    match std::env::var("DEEPLY_DEMO_BUMP").as_deref() {
         Ok("tall") if bumpy => Vec3::new(0.06, 0.45, 1.8),
         Ok("wide") if bumpy => Vec3::new(0.06, 1.8, 0.45),
         _ => Vec3::new(0.06, 1.8, 1.8),
@@ -8844,10 +8844,10 @@ fn panel_scale(k: usize, label: &str) -> Vec3 {
 }
 
 /// (texture, legacy material, hover text) of the test panels;
-/// AURORA_DEMO_MASK_ZERO=1 gives the holed one a Mask material with a
+/// DEEPLY_DEMO_MASK_ZERO=1 gives the holed one a Mask material with a
 /// cutoff of 0, drawn whole like the Legacy Viewer.
 fn alpha_panels() -> [(Uuid, Option<Uuid>, &'static str); 6] {
-    let holes = if std::env::var_os("AURORA_DEMO_MASK_ZERO").is_some() {
+    let holes = if std::env::var_os("DEEPLY_DEMO_MASK_ZERO").is_some() {
         (TEX_HOLES, Some(MAT_MASK_ZERO), aurora_i18n::tr!("demo-mask-zero-cutoff"))
     } else {
         (TEX_HOLES, None, aurora_i18n::tr!("demo-auto-mask"))
@@ -9044,21 +9044,21 @@ pub fn local_texture(id: &Uuid) -> Option<(Vec<u8>, u32, u32)> {
     Some((px, N, N))
 }
 
-/// PBR material of AURORA_DEMO_PBR_OVERRIDE: the floor tiles with the
+/// PBR material of DEEPLY_DEMO_PBR_OVERRIDE: the floor tiles with the
 /// bumps as normal map.
 const MAT_PBR_TILES: Uuid = Uuid::from_u128(0xDE40_3A70_0000_0000_0000_0000_0000_0010);
 
-/// White metals of AURORA_DEMO_PBR_METAL, polished to rough.
+/// White metals of DEEPLY_DEMO_PBR_METAL, polished to rough.
 const MAT_PBR_METAL: [Uuid; 3] = [
     Uuid::from_u128(0xDE40_3A70_0000_0000_0000_0000_0000_0011),
     Uuid::from_u128(0xDE40_3A70_0000_0000_0000_0000_0000_0012),
     Uuid::from_u128(0xDE40_3A70_0000_0000_0000_0000_0000_0013),
 ];
 
-/// Polished metal cube of AURORA_DEMO_PBR_METAL, occluded but for a disc.
+/// Polished metal cube of DEEPLY_DEMO_PBR_METAL, occluded but for a disc.
 const MAT_PBR_ORM_DISC: Uuid = Uuid::from_u128(0xDE40_3A70_0000_0000_0000_0000_0000_0014);
 
-/// Orange emissive spheres of AURORA_DEMO_PBR_EMISSIVE: opaque, alpha-masked,
+/// Orange emissive spheres of DEEPLY_DEMO_PBR_EMISSIVE: opaque, alpha-masked,
 /// blended.
 const MAT_PBR_EMISSIVE: [Uuid; 3] = [
     Uuid::from_u128(0xDE40_3A70_0000_0000_0000_0000_0000_0030),
@@ -9254,7 +9254,7 @@ pub fn legacy_materials() -> Vec<(Uuid, crate::scene::legacy_mat::LegacyMaterial
     list
 }
 
-/// AURORA_DEMO_CAMERA="sit": a seat with a sit camera (llSetCameraEyeOffset
+/// DEEPLY_DEMO_CAMERA="sit": a seat with a sit camera (llSetCameraEyeOffset
 /// / llSetCameraAtOffset); it appears at frame 250, we sit on it at 300, it
 /// turns like a vehicle from 400 and we stand up at 700.
 pub fn sit_events(frame: u64) -> Vec<NetEvent> {
@@ -9327,7 +9327,7 @@ pub const SEAT_ANIM: Uuid = Uuid::from_u128(0xD0D0_A111_0000_0000_0000_0000_0000
 
 /// A seat's scripted animation (legs bent, pelvis position explicitly reset).
 /// The simulator leaves it signaled at frame 700 until the viewer requests a
-/// stop, so AURORA_DEMO_CAMERA=sit exercises the complete source/stop path.
+/// stop, so DEEPLY_DEMO_CAMERA=sit exercises the complete source/stop path.
 pub fn seat_animation() -> aurora_assets::Animation {
     use aurora_assets::anim::{JointMotion, PosKey, RotKey};
     let mut a = idle_animation();
@@ -9357,8 +9357,8 @@ pub fn seat_animation() -> aurora_assets::Animation {
     a
 }
 
-/// Day cycle with a single classic sky frame (see AURORA_DEMO_SKY).
-/// The ambient of AURORA_DEMO_SKY: a grey level (`0.25`) or a colour
+/// Day cycle with a single classic sky frame (see DEEPLY_DEMO_SKY).
+/// The ambient of DEEPLY_DEMO_SKY: a grey level (`0.25`) or a colour
 /// (`0.9:0.6:0.5`).
 fn demo_ambient(s: &str) -> Option<[f64; 3]> {
     let parts: Vec<f64> = s.split(':').map(|c| c.trim().parse().ok()).collect::<Option<_>>()?;
@@ -9395,7 +9395,7 @@ fn demo_sky(sun: Vec3, gamma: f64, haze_distance: Option<f64>, ambient: Option<[
     demo_day(sky)
 }
 
-/// The library Midday sky (AURORA_DEMO_SKY=midday): what the World ›
+/// The library Midday sky (DEEPLY_DEMO_SKY=midday): what the World ›
 /// Environment menu applies, a non-classic sky (probe ambiance 1) without
 /// ambient, with a strong haze, half the sky in clouds and a bluish sun.
 fn midday_sky() -> Llsd {
@@ -9430,13 +9430,13 @@ fn midday_sky() -> Llsd {
 }
 
 /// Day cycle with a single sky frame (and the default water, or the one
-/// `AURORA_DEMO_WATER_EEP` asks for).
+/// `DEEPLY_DEMO_WATER_EEP` asks for).
 fn demo_day(sky: Llsd) -> Llsd {
     use aurora_llsd::llsd_map;
     let mut frames = aurora_llsd::Map::new();
     frames.insert("sky".into(), sky);
     // a valid day needs a water track too (Firestorm recordEnvironment)
-    let water = std::env::var("AURORA_DEMO_WATER_EEP")
+    let water = std::env::var("DEEPLY_DEMO_WATER_EEP")
         .ok()
         .map(|v| demo_water_eep(&v))
         .unwrap_or_else(|| llsd_map! { "type" => "water" });
@@ -9446,9 +9446,9 @@ fn demo_day(sky: Llsd) -> Llsd {
         "frames" => Llsd::Map(frames),
         "tracks" => Llsd::Array(vec![key("water"), key("sky")]),
     };
-    // AURORA_DEMO_SKY_FLAGS: the day's settings flags (0 as a viewer saves
+    // DEEPLY_DEMO_SKY_FLAGS: the day's settings flags (0 as a viewer saves
     // them by default; `none` leaves the key out, which reads as 0)
-    match std::env::var("AURORA_DEMO_SKY_FLAGS").ok().as_deref().map(str::trim) {
+    match std::env::var("DEEPLY_DEMO_SKY_FLAGS").ok().as_deref().map(str::trim) {
         Some("none") => {}
         flags => {
             let flags = flags.and_then(|f| f.parse::<i32>().ok()).unwrap_or(0);
@@ -9462,9 +9462,9 @@ fn demo_day(sky: Llsd) -> Llsd {
     }
 }
 
-/// AURORA_DEMO_WATER_EEP=<fresnel offset>,<fresnel scale>,<blur>,<normal
+/// DEEPLY_DEMO_WATER_EEP=<fresnel offset>,<fresnel scale>,<blur>,<normal
 /// scale>[,<fog r>,<fog g>,<fog b>]: the water of the demo's EEP day (with
-/// AURORA_DEMO_SKY), as a region's asset carries it, out-of-range values
+/// DEEPLY_DEMO_SKY), as a region's asset carries it, out-of-range values
 /// included; a missing or unreadable value keeps the default.
 fn demo_water_eep(v: &str) -> Llsd {
     use aurora_llsd::llsd_map;
@@ -9576,11 +9576,11 @@ mod particle_tests {
     }
 }
 
-/// AURORA_DEMO_TERRAIN_CROSSING=1: retain the viewpoint while changing
+/// DEEPLY_DEMO_TERRAIN_CROSSING=1: retain the viewpoint while changing
 /// the render origin twice, so terrain continuity can be compared directly.
 pub fn terrain_crossing_step(world: &mut crate::world::World, frame: u64) {
     static ENABLED: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    if !*ENABLED.get_or_init(|| std::env::var_os("AURORA_DEMO_TERRAIN_CROSSING").is_some()) {
+    if !*ENABLED.get_or_init(|| std::env::var_os("DEEPLY_DEMO_TERRAIN_CROSSING").is_some()) {
         return;
     }
     let neighbour = HANDLE + (256_u64 << 32);

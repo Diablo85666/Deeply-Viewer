@@ -115,7 +115,7 @@ pub struct DestinationsUi {
     pub guide: DestinationGuide,
     /// Aurora's window was shown last frame: an opening takes the saved view.
     was_open: bool,
-    /// The view of a demo run (AURORA_DEMO_DESTINATIONS=compact|wide), in
+    /// The view of a demo run (DEEPLY_DEMO_DESTINATIONS=compact|wide), in
     /// place of the saved one, which it leaves as it is.
     pub demo_wide: Option<bool>,
 }

@@ -1,4 +1,4 @@
-//! Directory of the demo (`AURORA_DEMO_SEARCH`): the answers of a simulator
+//! Directory of the demo (`DEEPLY_DEMO_SEARCH`): the answers of a simulator
 //! to the queries of the search window, so each tab can be tried offline.
 //! People, groups, places, land for sale, events and classifieds are a few
 //! rows around the demo's residents, groups and parcels; a text containing
@@ -59,7 +59,7 @@ fn groups() -> Vec<(Uuid, String, i32)> {
         (DEMO_GROUP2, aurora_i18n::tr!("demo-northern-wolves").to_owned(), 86),
         (id(GROUP, 3), "Nordheim Sailing Club".to_owned(), 412),
         (id(GROUP, 4), "Boreal Photographers".to_owned(), 2731),
-        (id(GROUP, 5), "Aurora Viewer Testers".to_owned(), 19),
+        (id(GROUP, 5), "Deeply Viewer Testers".to_owned(), 19),
         (id(GROUP, 6), "Pixel Boutique VIP".to_owned(), 5560),
     ]
 }

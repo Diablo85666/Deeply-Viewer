@@ -84,7 +84,7 @@ pub struct WorldMapUi {
     pub wanted_images: HashSet<Uuid>,
     pub wanted_pics: HashSet<Uuid>,
     pub want_folders: HashSet<Uuid>,
-    /// AURORA_DEMO_MAP=legacy: the side panel without touching the setting.
+    /// DEEPLY_DEMO_MAP=legacy: the side panel without touching the setting.
     pub demo_style: Option<WorldMapStyle>,
 }
 
@@ -141,7 +141,7 @@ struct MapInput {
 }
 
 impl WorldMapUi {
-    /// AURORA_DEMO_MAP=search:<text>: the region search, as if typed.
+    /// DEEPLY_DEMO_MAP=search:<text>: the region search, as if typed.
     pub fn demo_search(&mut self, world: &mut World, text: &str) {
         self.search = text.to_owned();
         self.selected = None;
@@ -149,7 +149,7 @@ impl WorldMapUi {
         self.ov.demo_search(text);
     }
 
-    /// AURORA_DEMO_MAP=drawer:<landmarks|history|friends>: the drawer open
+    /// DEEPLY_DEMO_MAP=drawer:<landmarks|history|friends>: the drawer open
     /// on that tab.
     pub fn demo_drawer(&mut self, tab: &str) {
         self.ov.demo_drawer(tab);

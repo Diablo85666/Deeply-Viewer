@@ -20,7 +20,7 @@ const WORN_CHILD: u32 = 988;
 
 fn mode() -> Option<&'static str> {
     static MODE: std::sync::OnceLock<Option<String>> = std::sync::OnceLock::new();
-    MODE.get_or_init(|| std::env::var("AURORA_DEMO_WORLD_CLICKS").ok()).as_deref()
+    MODE.get_or_init(|| std::env::var("DEEPLY_DEMO_WORLD_CLICKS").ok()).as_deref()
 }
 
 impl App {

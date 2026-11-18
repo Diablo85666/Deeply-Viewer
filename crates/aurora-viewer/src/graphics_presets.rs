@@ -69,7 +69,7 @@ impl Preset {
         }
     }
 
-    /// The name accepted by `AURORA_GRAPHICS_PRESET`.
+    /// The name accepted by `DEEPLY_GRAPHICS_PRESET`.
     pub fn from_name(name: &str) -> Option<Preset> {
         Some(match name.trim().to_ascii_lowercase().as_str() {
             "potato" => Preset::Potato,

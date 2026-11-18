@@ -876,12 +876,12 @@ pub fn teleport_destination(origin: (u32, u32), size: (f32, f32), point: Vec3, p
     (slot, Vec3::new((gx - slot.0 as f64) as f32, (gy - slot.1 as f64) as f32, p.z))
 }
 
-/// AURORA_DEMO_DOUBLECLICK=walk|run|tp: the double-click action of the
+/// DEEPLY_DEMO_DOUBLECLICK=walk|run|tp: the double-click action of the
 /// session, without saving it (`menu` keeps the saved one).
 pub fn demo_action() -> Option<DoubleClick> {
     static ACTION: std::sync::OnceLock<Option<DoubleClick>> = std::sync::OnceLock::new();
     *ACTION.get_or_init(|| {
-        let v = std::env::var("AURORA_DEMO_DOUBLECLICK").ok()?;
+        let v = std::env::var("DEEPLY_DEMO_DOUBLECLICK").ok()?;
         match v.split(',').next().unwrap_or("").trim() {
             "walk" => Some(DoubleClick::Walk),
             "run" => Some(DoubleClick::Run),

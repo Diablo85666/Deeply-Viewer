@@ -197,7 +197,7 @@ fn swatch(ui: &mut egui::Ui, p: &Palette, [r, g, b]: [u8; 3], chosen: bool) -> e
     resp.on_hover_text(crate::ui::widgets::color::format_hex([r, g, b, 255], false))
 }
 
-/// `AURORA_DEMO_INVENTORY=folder-colors|aurora-folder-colors`: colors on the
+/// `DEEPLY_DEMO_INVENTORY=folder-colors|aurora-folder-colors`: colors on the
 /// demo's folders, and the palette open on one of them.
 pub fn demo(st: &mut InventoryUi, prefs: &mut InventoryPreferences) {
     prefs.folder_colors_enabled = true;
@@ -218,7 +218,7 @@ pub fn demo(st: &mut InventoryUi, prefs: &mut InventoryPreferences) {
 ///   (780). Capture 750 (the palette names Clothing, its pink outlined) and 830
 ///   (no folder: "Select a folder", the palette greyed).
 pub fn demo_frame(ctx: &egui::Context, st: &mut InventoryUi, prefs: &InventoryPreferences, frame: u64) {
-    let Ok(mode) = std::env::var("AURORA_DEMO_INVENTORY") else { return };
+    let Ok(mode) = std::env::var("DEEPLY_DEMO_INVENTORY") else { return };
     if !mode.contains("folder-colors") {
         return;
     }

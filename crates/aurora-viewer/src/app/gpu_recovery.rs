@@ -40,20 +40,20 @@ impl App {
     /// caller has settled them.
     pub(super) fn open_renderer(&mut self, window: &Arc<Window>) -> Result<Renderer, aurora_render::RenderError> {
         let size = window.inner_size();
-        if std::env::var_os("AURORA_NOVSYNC").is_some() {
+        if std::env::var_os("DEEPLY_NOVSYNC").is_some() {
             self.settings.vsync = false;
         }
-        // the GPU of Preferences › Graphics; AURORA_GPU=<number|name|auto>
+        // the GPU of Preferences › Graphics; DEEPLY_GPU=<number|name|auto>
         // overrides it for this launch (adapter_choice.rs)
-        let gpu = std::env::var("AURORA_GPU").unwrap_or_else(|_| self.settings.gpu_adapter.clone());
+        let gpu = std::env::var("DEEPLY_GPU").unwrap_or_else(|_| self.settings.gpu_adapter.clone());
         // the pipelines the driver compiled at the earlier starts, kept in
         // the cache folder (aurora-render's pipeline_cache.rs)
         aurora_render::pipeline_cache::configure(crate::settings::cache_dir().join("pipelines"), aurora_version::version());
-        // AURORA_GPU_START_FAIL=1: as if no card could draw, to see the
+        // DEEPLY_GPU_START_FAIL=1: as if no card could draw, to see the
         // message the user gets then (graphics_start.rs); `lost` is read by
         // the renderer, which gets as far as a real device loss does
-        if std::env::var("AURORA_GPU_START_FAIL").is_ok_and(|mode| mode != "lost") {
-            return Err(aurora_render::RenderError::NoAdapter("AURORA_GPU_START_FAIL".into()));
+        if std::env::var("DEEPLY_GPU_START_FAIL").is_ok_and(|mode| mode != "lost") {
+            return Err(aurora_render::RenderError::NoAdapter("DEEPLY_GPU_START_FAIL".into()));
         }
         // the VR runtime only when VR is wanted from the start: `--vr` (the
         // restart the VR button offers) or Preferences › Camera › VR (#2309)
@@ -124,7 +124,7 @@ pub(super) fn loss_step(history: &mut std::collections::VecDeque<Instant>, now: 
 }
 
 /// Whether a device loss recovers instead of closing: Preferences › Graphics
-/// (`gpu_recovery`, on by default), unless `AURORA_GPU_RECOVERY` forces it
+/// (`gpu_recovery`, on by default), unless `DEEPLY_GPU_RECOVERY` forces it
 /// for the launch. Most losses of a card shared with another program are a
 /// driver reset of the whole card, which the other programs survive by
 /// making their device again (#2237).
@@ -139,11 +139,11 @@ pub(super) fn shadow_kept() -> bool {
     forced() != Some(false)
 }
 
-/// `AURORA_GPU_RECOVERY`: `1` on, `0` off, whatever the setting.
+/// `DEEPLY_GPU_RECOVERY`: `1` on, `0` off, whatever the setting.
 fn forced() -> Option<bool> {
     // read every frame: once per run
     static FORCED: std::sync::OnceLock<Option<bool>> = std::sync::OnceLock::new();
-    *FORCED.get_or_init(|| parse_forced(std::env::var("AURORA_GPU_RECOVERY").ok().as_deref()))
+    *FORCED.get_or_init(|| parse_forced(std::env::var("DEEPLY_GPU_RECOVERY").ok().as_deref()))
 }
 
 fn parse_forced(value: Option<&str>) -> Option<bool> {

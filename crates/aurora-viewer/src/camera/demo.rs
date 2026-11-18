@@ -1,4 +1,4 @@
-//! AURORA_DEMO_CAMERA scenarios (demo mode): scripted mouse and key input
+//! DEEPLY_DEMO_CAMERA scenarios (demo mode): scripted mouse and key input
 //! so the camera can be checked and captured without a grid. The camera is
 //! logged at the frames marked `Log`.
 //!
@@ -19,7 +19,7 @@
 //! - `zoom-resident`: the People list's Zoom on the nearest standing resident
 //!   at frame 600, who then walks south from 660 to 760 and west until 860:
 //!   the camera keeps facing them all along
-//! - `zoom-unloaded` (with `AURORA_DEMO_PEOPLE=rows`): the same Zoom at
+//! - `zoom-unloaded` (with `DEEPLY_DEMO_PEOPLE=rows`): the same Zoom at
 //!   frame 600 on a far resident only known by its coarse location: the
 //!   camera looks at that point; its avatar is drawn at 700 and the camera
 //!   follows it from then on (the log's `focus_object`)
@@ -97,7 +97,7 @@ pub enum Step {
     /// Slide the demo resident by (x, y) metres, as if it walked.
     MoveResident(f32, f32),
     /// The radar's double click on the first far resident of
-    /// AURORA_DEMO_PEOPLE, only a coarse location yet.
+    /// DEEPLY_DEMO_PEOPLE, only a coarse location yet.
     ZoomUnloadedResident,
     /// That resident's avatar arrives from the simulator.
     DrawUnloadedResident,

@@ -643,11 +643,11 @@ pub fn overdrive(raw: f32) -> f32 {
     }
 }
 
-/// AURORA_VOICE_LEVEL_LOG=1 (temporary): once a second, the loudest moment
+/// DEEPLY_VOICE_LEVEL_LOG=1 (temporary): once a second, the loudest moment
 /// of our own plate's voice in the log, to read a real voice's levels.
 pub fn level_log() -> bool {
     static SET: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    *SET.get_or_init(|| std::env::var_os("AURORA_VOICE_LEVEL_LOG").is_some())
+    *SET.get_or_init(|| std::env::var_os("DEEPLY_VOICE_LEVEL_LOG").is_some())
 }
 
 /// The loudest moment of one plate's voice over a second, for

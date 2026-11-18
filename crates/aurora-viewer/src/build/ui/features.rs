@@ -204,7 +204,7 @@ pub fn show(ui: &mut egui::Ui, p: &Palette, tool: &mut BuildTool, world: &mut Wo
         },
     );
     let physics = aurora_i18n::tr!("build-ui-features-physics-shape-type");
-    let demo_physics = env.demo && std::env::var("AURORA_DEMO_BUILD").is_ok_and(|v| v.starts_with("physics"));
+    let demo_physics = env.demo && std::env::var("DEEPLY_DEMO_BUILD").is_ok_and(|v| v.starts_with("physics"));
     feature_group(
         ui,
         p,
@@ -420,7 +420,7 @@ fn light_section(
         let demo_picker = egui::Id::unique("demo_light_texture_picker_opened");
         let demo_open = env.demo
             && on
-            && std::env::var("AURORA_DEMO_BUILD_TAB").is_ok_and(|v| v == "features:light-picker")
+            && std::env::var("DEEPLY_DEMO_BUILD_TAB").is_ok_and(|v| v == "features:light-picker")
             && !ui.ctx().data(|d| d.get_temp::<bool>(demo_picker).unwrap_or(false));
         if r.clicked() || demo_open {
             // LLPanelVolume's light texture control allows no texture:

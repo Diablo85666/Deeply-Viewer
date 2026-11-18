@@ -63,13 +63,13 @@ pub(crate) mod task_selection;
 pub mod thumbnail;
 pub(crate) mod tree;
 pub(crate) mod view;
-pub use aurora::{DEMO_FOLDER_WINDOW as AURORA_DEMO_FOLDER_WINDOW, demo_place as aurora_demo};
+pub use aurora::{DEMO_FOLDER_WINDOW as DEEPLY_DEMO_FOLDER_WINDOW, demo_place as aurora_demo};
 
 /// A demo scenario written for the Legacy Viewer's window (its tabs, its
-/// footer): every `AURORA_DEMO_INVENTORY` mode but Aurora's own.
+/// footer): every `DEEPLY_DEMO_INVENTORY` mode but Aurora's own.
 pub fn legacy_demo() -> bool {
     (delete::demo_enabled() && !aurora::demo_active())
-        || std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|mode| !mode.starts_with("aurora"))
+        || std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|mode| !mode.starts_with("aurora"))
 }
 
 /// Aurora's own demo scenarios show its window whatever the preference.
@@ -1093,7 +1093,7 @@ fn resolved_item_type_icon(ui: &mut egui::Ui, icons: &Icons, inv: &Inventory, it
 }
 
 /// The height of an item row in Aurora's lists, shared with Appearance.
-pub const AURORA_ROW_HEIGHT: f32 = aurora::rows::HEIGHT;
+pub const DEEPLY_ROW_HEIGHT: f32 = aurora::rows::HEIGHT;
 
 /// The tint of an item's type icon, the same in every window that lists
 /// items (inventory, Appearance, contents, properties): one colour per

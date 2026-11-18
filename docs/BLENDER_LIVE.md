@@ -743,7 +743,7 @@ The exporter tests use Blender itself without logging into a grid:
 python -m unittest discover -s blender/tests -p 'test_client.py' -v
 ```
 
-`AURORA_DEMO=1` plus `AURORA_DEMO_BLENDER_LIVE=1` opens the bridge window and
+`DEEPLY_DEMO=1` plus `DEEPLY_DEMO_BLENDER_LIVE=1` opens the bridge window and
 places a purple rigged shell on the demo avatar. It uses the production
 protocol and skinning pipeline. A Blender client can replace it live.
 

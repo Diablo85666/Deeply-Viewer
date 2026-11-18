@@ -569,7 +569,7 @@ mod tests {
             "https://casperlet.com/",
             "https://aurora-viewer.org",
             "https://www.aurora-viewer.org/downloads",
-            "https://github.com/Aurora-Viewer/Aurora-Viewer/pulls",
+            "https://github.com/Diablo85666/Deeply-Viewer/pulls",
             "https://gist.github.com/x",
             "https://secondlife.com./x",
             "https://www.youtube.com/watch?v=x",

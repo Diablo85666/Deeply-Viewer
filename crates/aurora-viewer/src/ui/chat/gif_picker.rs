@@ -155,9 +155,9 @@ pub struct GifPicker {
     active: bool,
     /// The tiles of the last pass and their GIFs' ids.
     drawn: Vec<(egui::Rect, String)>,
-    /// `AURORA_DEMO_GIFS=sent`: the first GIF is sent once its tile shows.
+    /// `DEEPLY_DEMO_GIFS=sent`: the first GIF is sent once its tile shows.
     demo_send: bool,
-    /// `AURORA_DEMO_GIFS=menu`: the button's right-click menu opens once.
+    /// `DEEPLY_DEMO_GIFS=menu`: the button's right-click menu opens once.
     demo_menu: bool,
     tx: mpsc::Sender<Answer>,
     rx: mpsc::Receiver<Answer>,
@@ -205,7 +205,7 @@ impl Default for GifPicker {
 }
 
 impl GifPicker {
-    /// `AURORA_DEMO_GIFS`: where the picker opens, what it does.
+    /// `DEEPLY_DEMO_GIFS`: where the picker opens, what it does.
     pub fn demo_scene(&mut self, mode: crate::demo::Gifs) {
         match mode {
             crate::demo::Gifs::Klipy => {
@@ -857,10 +857,10 @@ impl GifPicker {
     }
 }
 
-/// Where `AURORA_DEMO_GIFS=menu` finds the GIF button.
+/// Where `DEEPLY_DEMO_GIFS=menu` finds the GIF button.
 const DEMO_BUTTON: &str = "gif_button_demo";
 
-/// `AURORA_DEMO_GIFS=menu`: a right click on the GIF button at frame 700.
+/// `DEEPLY_DEMO_GIFS=menu`: a right click on the GIF button at frame 700.
 pub(super) fn demo_events(ctx: &egui::Context, frame: u64) -> Vec<egui::Event> {
     if !(700..=702).contains(&frame) {
         return Vec::new();

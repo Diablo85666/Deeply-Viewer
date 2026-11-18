@@ -7,7 +7,7 @@ use std::collections::VecDeque;
 use uuid::Uuid;
 
 impl App {
-    /// `AURORA_DEMO_INVENTORY=big,toggle=…,churn=…`: open and close the
+    /// `DEEPLY_DEMO_INVENTORY=big,toggle=…,churn=…`: open and close the
     /// window, and change one item now and then, once in the world.
     pub(super) fn demo_big_inventory(&mut self, big: &crate::world::inventory::demo::Big) {
         use std::sync::OnceLock;

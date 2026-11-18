@@ -400,7 +400,7 @@ pub(super) fn shortcuts(
 fn demo_mode() -> Option<&'static str> {
     static MODE: std::sync::OnceLock<Option<String>> = std::sync::OnceLock::new();
     MODE.get_or_init(|| {
-        std::env::var("AURORA_DEMO_INVENTORY").ok().filter(|mode| {
+        std::env::var("DEEPLY_DEMO_INVENTORY").ok().filter(|mode| {
             mode.starts_with("clipboard")
                 || mode.starts_with("aurora-clipboard")
                 || mode.starts_with("search-selection")

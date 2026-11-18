@@ -26,7 +26,7 @@ pub(crate) struct Backup {
 }
 
 fn paths(install: &Path) -> Result<(PathBuf, PathBuf)> {
-    if let Some(root) = std::env::var_os("AURORA_UPDATE_TEST_ROOT") {
+    if let Some(root) = std::env::var_os("DEEPLY_UPDATE_TEST_ROOT") {
         let root = PathBuf::from(root).canonicalize()?;
         ensure!(root.join("install") == install, "test data outside isolated installation");
         let marker: serde_json::Value = serde_json::from_slice(&fs::read(root.join("aurora-update-test.json"))?)?;

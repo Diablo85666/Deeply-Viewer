@@ -1,4 +1,4 @@
-//! AURORA_DEMO_TEXREFRESH=1|auto: "Refresh textures" without a grid. A
+//! DEEPLY_DEMO_TEXREFRESH=1|auto: "Refresh textures" without a grid. A
 //! panel stands in front of the avatar, wearing a texture whose file in the
 //! disk cache is stale: a grey picture crossed in red, written as its
 //! `.j2c` before the panel arrives, so that the streamer reads it from the
@@ -39,7 +39,7 @@ pub struct TexRefreshDemo {
 
 impl TexRefreshDemo {
     pub fn from_env() -> Option<Self> {
-        let value = std::env::var("AURORA_DEMO_TEXREFRESH").ok()?;
+        let value = std::env::var("DEEPLY_DEMO_TEXREFRESH").ok()?;
         Some(TexRefreshDemo {
             auto: value.trim() == "auto",
             armed: false,

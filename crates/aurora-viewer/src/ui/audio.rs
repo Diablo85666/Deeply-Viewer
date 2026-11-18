@@ -248,10 +248,10 @@ pub fn top_controls(
         slot_button(ui, p, icons, icon, active, enabled, slot).on_hover_text(tip)
     };
     let mut action = AudioAction::None;
-    // demo captures: AURORA_DEMO_VOLUME=open pins the panel open, `muted`
+    // demo captures: DEEPLY_DEMO_VOLUME=open pins the panel open, `muted`
     // also draws the speaker muted (display only, the settings stay)
     static DEMO: std::sync::OnceLock<Option<String>> = std::sync::OnceLock::new();
-    let demo = DEMO.get_or_init(|| std::env::var("AURORA_DEMO_VOLUME").ok()).as_deref();
+    let demo = DEMO.get_or_init(|| std::env::var("DEEPLY_DEMO_VOLUME").ok()).as_deref();
     let demo_muted = demo == Some("muted");
     // the three icons form one group: tight, even gaps inside it, the bar's
     // spacing around it

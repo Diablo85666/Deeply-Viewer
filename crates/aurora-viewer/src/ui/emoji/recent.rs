@@ -127,7 +127,7 @@ pub struct Recent {
     /// frame by the app: while off, no star, menu nor tab, and the row shows
     /// the recent emojis alone (the file stays for when they come back).
     pub favorites_enabled: bool,
-    /// `AURORA_DEMO_FAVORITE_EMOJIS`: on for the run, whatever the switch.
+    /// `DEEPLY_DEMO_FAVORITE_EMOJIS`: on for the run, whatever the switch.
     demo_favorites: bool,
     /// The row's place, given every frame by the app: above the chat
     /// fields, nearer the lines read (the human's choice, 2026-11-09);
@@ -193,14 +193,14 @@ impl Recent {
         let _ = thread.join();
     }
 
-    /// `AURORA_DEMO_RECENT_EMOJIS`: `text`'s emojis, for the run.
+    /// `DEEPLY_DEMO_RECENT_EMOJIS`: `text`'s emojis, for the run.
     pub fn demo(text: &str) -> Recent {
         let mut recent = Recent::default();
         remember(&mut recent.list, text);
         recent
     }
 
-    /// `AURORA_DEMO_FAVORITE_EMOJIS`: `text`'s emojis as the favourites.
+    /// `DEEPLY_DEMO_FAVORITE_EMOJIS`: `text`'s emojis as the favourites.
     pub fn demo_favorites(&mut self, text: &str) {
         remember(&mut self.favorites, text);
         self.demo_favorites = true;

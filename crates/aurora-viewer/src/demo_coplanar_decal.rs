@@ -1,4 +1,4 @@
-//! AURORA_DEMO_COPLANAR_DECAL=1|mask|blend: a blended face lying exactly on
+//! DEEPLY_DEMO_COPLANAR_DECAL=1|mask|blend: a blended face lying exactly on
 //! an opaque face of the same mesh (issue #3059).
 //!
 //! One static mesh, a 3 x 2.4 m panel standing 9 m along the camera's view
@@ -36,7 +36,7 @@ enum Mode {
 }
 
 fn mode() -> Option<Mode> {
-    match std::env::var("AURORA_DEMO_COPLANAR_DECAL").ok()?.trim() {
+    match std::env::var("DEEPLY_DEMO_COPLANAR_DECAL").ok()?.trim() {
         "mask" => Some(Mode::Mask),
         "blend" => Some(Mode::Blend),
         "" | "0" => None,

@@ -1524,7 +1524,7 @@ pub fn seed_demo(inv: &mut Inventory, agent: Uuid) {
     demo_replace(inv, agent, cof, &current);
 }
 
-/// `AURORA_DEMO_APPEARANCE=broken`: the third outfit and the current
+/// `DEEPLY_DEMO_APPEARANCE=broken`: the third outfit and the current
 /// outfit hold a link to a deleted original, answered missing as the grid
 /// would (issue #1441): both still wear, without it.
 pub fn seed_demo_broken(inv: &mut Inventory, agent: Uuid) {
@@ -1543,7 +1543,7 @@ pub fn seed_demo_broken(inv: &mut Inventory, agent: Uuid) {
     inv.items_missing(vec![gone.target]);
 }
 
-/// `AURORA_DEMO_APPEARANCE=layers…`: two more tattoos worn over the star
+/// `DEEPLY_DEMO_APPEARANCE=layers…`: two more tattoos worn over the star
 /// tattoo of `seed_demo`, for the layer order of the outfit editor.
 pub fn seed_demo_layers(inv: &mut Inventory, agent: Uuid) {
     let cof = Uuid::from_u128(701);
@@ -1576,7 +1576,7 @@ pub fn seed_demo_layers(inv: &mut Inventory, agent: Uuid) {
 }
 
 /// All wearable icons and ordering in Appearance, with three tattoo layers
-/// and attachments: `AURORA_DEMO_APPEARANCE=wearables[-outfits|-edit]`.
+/// and attachments: `DEEPLY_DEMO_APPEARANCE=wearables[-outfits|-edit]`.
 pub fn seed_demo_wearables(inv: &mut Inventory, agent: Uuid) {
     seed_demo_layers(inv, agent);
     let Some(cof) = cof(inv) else { return };
@@ -1612,16 +1612,16 @@ pub fn seed_demo_wearables(inv: &mut Inventory, agent: Uuid) {
     demo_replace(inv, agent, cof, &links);
 }
 
-/// `AURORA_DEMO_OUTFITS=<count>[,closed][,scroll][,locate]`: the number of generated
+/// `DEEPLY_DEMO_OUTFITS=<count>[,closed][,scroll][,locate]`: the number of generated
 /// outfits added to the Appearance demo (a large wardrobe), 0 without it.
 pub fn demo_outfit_count() -> usize {
-    std::env::var("AURORA_DEMO_OUTFITS")
+    std::env::var("DEEPLY_DEMO_OUTFITS")
         .ok()
         .and_then(|v| v.split(',').next().and_then(|n| n.trim().parse().ok()))
         .unwrap_or(0)
 }
 
-/// `AURORA_DEMO_APPEARANCE=take-off-folder` (#1849): an ordinary folder,
+/// `DEEPLY_DEMO_APPEARANCE=take-off-folder` (#1849): an ordinary folder,
 /// not a saved outfit, as a demo or a delivery worn from Recent. It holds
 /// the worn jacket and pants originals and, in a subfolder, a link to the
 /// worn mesh hair; frame 600 takes it off as the inventory's Remove from
@@ -1673,9 +1673,9 @@ pub fn seed_demo_take_off(inv: &mut Inventory, agent: Uuid) {
     demo_replace(inv, agent, sub, &hair);
 }
 
-/// A mode of `AURORA_DEMO_OUTFITS` (`closed`, `scroll`, `locate`).
+/// A mode of `DEEPLY_DEMO_OUTFITS` (`closed`, `scroll`, `locate`).
 pub fn demo_outfit_mode(mode: &str) -> bool {
-    std::env::var("AURORA_DEMO_OUTFITS").is_ok_and(|v| v.split(',').skip(1).any(|m| m.trim() == mode))
+    std::env::var("DEEPLY_DEMO_OUTFITS").is_ok_and(|v| v.split(',').skip(1).any(|m| m.trim() == mode))
 }
 
 /// A large wardrobe for the Appearance demo: `count` outfits with generated

@@ -1,4 +1,4 @@
-//! AURORA_DEMO_OBJECT_CHAT=aurora|compact|bubbles|legacy|lines[:on]: the
+//! DEEPLY_DEMO_OBJECT_CHAT=aurora|compact|bubbles|legacy|lines[:on]: the
 //! nearby chat at the arrival, residents talking among objects (#475): a
 //! greeter, a tip jar, a door's emote, a vendor's line said to us with a
 //! link, our HUD's owner-say and its script error (#1263; the tip jar's is
@@ -28,7 +28,7 @@ pub struct Scene {
 }
 
 pub fn scene() -> Option<Scene> {
-    parse(&std::env::var("AURORA_DEMO_OBJECT_CHAT").ok()?)
+    parse(&std::env::var("DEEPLY_DEMO_OBJECT_CHAT").ok()?)
 }
 
 fn parse(v: &str) -> Option<Scene> {

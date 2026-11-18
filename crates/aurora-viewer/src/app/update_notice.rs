@@ -39,14 +39,14 @@ impl App {
             .push(Kind::Info, title, body, Data::Update { ready: notice.ready });
     }
 
-    /// AURORA_DEMO_UPDATE_NOTICE=1|ready: the notice of a made-up version,
+    /// DEEPLY_DEMO_UPDATE_NOTICE=1|ready: the notice of a made-up version,
     /// once the world is shown (frame 700). Its buttons only close it: the
     /// demo checks for nothing.
     fn demo_update_notice(&self) -> Option<crate::updater::Notice> {
         if !self.demo || self.frame_count != 700 || !matches!(self.screen, Screen::World) {
             return None;
         }
-        let mode = std::env::var("AURORA_DEMO_UPDATE_NOTICE").ok()?;
+        let mode = std::env::var("DEEPLY_DEMO_UPDATE_NOTICE").ok()?;
         Some(crate::updater::Notice {
             version: "9.9.9".into(),
             ready: mode == "ready",

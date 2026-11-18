@@ -66,8 +66,8 @@ pub fn seed_cascade(inv: &mut Inventory, agent: Uuid, kind: i32) {
 pub fn inventory_drag_enabled() -> bool {
     static ENABLED: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
     *ENABLED.get_or_init(|| {
-        std::env::var("AURORA_DEMO").as_deref() == Ok("1")
-            && std::env::var("AURORA_DEMO_TEXTURE_LIBRARY")
+        std::env::var("DEEPLY_DEMO").as_deref() == Ok("1")
+            && std::env::var("DEEPLY_DEMO_TEXTURE_LIBRARY")
                 .is_ok_and(|mode| matches!(mode.as_str(), "preview" | "preview-drag" | "inventory-drag"))
     })
 }

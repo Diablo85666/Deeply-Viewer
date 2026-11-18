@@ -82,7 +82,7 @@ pub fn keyword_sound(s: &Settings, k: &KeywordSettings) -> Option<uuid::Uuid> {
 
 /// Whether the system is told now (GrowlManager::shouldNotify): turned on,
 /// never in do not disturb, and only while the window is not in front
-/// unless FSGrowlWhenActive. `forced`: turned on by AURORA_DEMO_ATTENTION.
+/// unless FSGrowlWhenActive. `forced`: turned on by DEEPLY_DEMO_ATTENTION.
 pub fn notifies(s: &Settings, forced: bool, in_front: bool, dnd: bool) -> bool {
     (s.system_notifications || forced) && !dnd && (s.system_notifications_when_active || !in_front)
 }
@@ -92,7 +92,7 @@ const MAX_TITLE_COUNT: usize = 99;
 /// LLStringUtil::truncate(window_title, 255), in characters here.
 const MAX_TITLE: usize = 255;
 
-/// The window title with the unread IMs before it, "(3) Aurora Viewer…"
+/// The window title with the unread IMs before it, "(3) Deeply Viewer…"
 /// (FSShowMessageCountInWindowTitle,
 /// LLIMWellChiclet::updateApplicationWindowTitle, llchiclet.cpp).
 pub fn titled(title: &str, unread: usize, on: bool) -> String {
@@ -150,7 +150,7 @@ impl App {
         }
     }
 
-    /// The keyword alerts in force: AURORA_DEMO_KEYWORDS's for the run
+    /// The keyword alerts in force: DEEPLY_DEMO_KEYWORDS's for the run
     /// (never saved), else the preferences'.
     pub(super) fn keyword_settings(&self) -> KeywordSettings {
         match crate::demo::keywords::settings() {
@@ -439,12 +439,12 @@ mod tests {
 
     #[test]
     fn the_title_counts_the_unread_ims_up_to_99_plus() {
-        let t = "Aurora Viewer 0.8 (Dev)";
+        let t = "Deeply Viewer 0.8 (Dev)";
         assert_eq!(titled(t, 3, false), t, "off by default");
         assert_eq!(titled(t, 0, true), t);
-        assert_eq!(titled(t, 3, true), "(3) Aurora Viewer 0.8 (Dev)");
-        assert_eq!(titled(t, 99, true), "(99) Aurora Viewer 0.8 (Dev)");
-        assert_eq!(titled(t, 100, true), "(99+) Aurora Viewer 0.8 (Dev)");
+        assert_eq!(titled(t, 3, true), "(3) Deeply Viewer 0.8 (Dev)");
+        assert_eq!(titled(t, 99, true), "(99) Deeply Viewer 0.8 (Dev)");
+        assert_eq!(titled(t, 100, true), "(99+) Deeply Viewer 0.8 (Dev)");
         assert_eq!(titled(&"é".repeat(300), 1, true).chars().count(), MAX_TITLE);
     }
 }

@@ -25,7 +25,7 @@ pub(super) struct Tracker {
     /// The machine, read once off the frame (sysinfo takes a moment).
     machine: Arc<OnceLock<Machine>>,
     machine_asked: bool,
-    /// `AURORA_DEMO_VIEWER_STATS`: the report was written to the log.
+    /// `DEEPLY_DEMO_VIEWER_STATS`: the report was written to the log.
     demo_logged: bool,
 }
 
@@ -219,7 +219,7 @@ impl App {
         }
     }
 
-    /// `AURORA_DEMO_VIEWER_STATS=1`: the report the session would post,
+    /// `DEEPLY_DEMO_VIEWER_STATS=1`: the report the session would post,
     /// written once to the log (with made-up network counters, and without
     /// the session id), once the machine has been read and the world shown.
     fn demo_log_viewer_stats(&mut self, side: &ViewerSide) {
@@ -227,7 +227,7 @@ impl App {
             || !self.in_world()
             || self.viewer_stats.machine.get().is_none()
             || side.render_time < 5.0
-            || std::env::var("AURORA_DEMO_VIEWER_STATS").is_err()
+            || std::env::var("DEEPLY_DEMO_VIEWER_STATS").is_err()
         {
             return;
         }

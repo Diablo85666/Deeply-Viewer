@@ -64,7 +64,7 @@ impl Tab {
         self.index().checked_sub(1)
     }
 
-    /// The names of `AURORA_DEMO_SEARCH`.
+    /// The names of `DEEPLY_DEMO_SEARCH`.
     pub fn from_name(name: &str) -> Option<Tab> {
         Some(match name.trim().to_lowercase().as_str() {
             "people" => Tab::People,

@@ -115,16 +115,16 @@ pub struct ChatUi {
     /// The text selected in the lines of a conversation (`select.rs`), and
     /// which conversation: another tab starts without one.
     selection: (Option<uuid::Uuid>, select::Selection),
-    /// `AURORA_DEMO_CONV_SELECT`: a selection to make once lines are shown
+    /// `DEEPLY_DEMO_CONV_SELECT`: a selection to make once lines are shown
     /// ("all", or "part" of three lines).
     pub demo_select: Option<String>,
-    /// `AURORA_DEMO_CONV_MENU=local|im|group|conference`: the conversation
+    /// `DEEPLY_DEMO_CONV_MENU=local|im|group|conference`: the conversation
     /// of the list whose right-click menu the demo opens.
     pub demo_menu: Option<String>,
     /// Explicit offline pointer fixture for conversation rearrangement
-    /// (`AURORA_DEMO_CONV_REORDER`).
+    /// (`DEEPLY_DEMO_CONV_REORDER`).
     pub demo_reorder: Option<ReorderDemo>,
-    /// `AURORA_DEMO_CONV_SCROLL`: this conversation goes to its top once it
+    /// `DEEPLY_DEMO_CONV_SCROLL`: this conversation goes to its top once it
     /// is shown with its lines laid out; `demo_scrolled` once it is there.
     pub demo_scroll: Option<uuid::Uuid>,
     pub demo_scrolled: bool,
@@ -162,22 +162,22 @@ pub struct ChatUi {
     /// A demo scenario's style, which the settings do not keep, until the
     /// preferences choose another.
     pub demo_style: Option<crate::settings::ChatStyle>,
-    /// `AURORA_DEMO_CONV=aurora:new`: open the menu of the column's "new
+    /// `DEEPLY_DEMO_CONV=aurora:new`: open the menu of the column's "new
     /// conversation" button once it is drawn.
     pub demo_new_menu: bool,
-    /// `AURORA_DEMO_CONV=aurora:local:volume`: open the menu of the nearby
+    /// `DEEPLY_DEMO_CONV=aurora:local:volume`: open the menu of the nearby
     /// chat's volume once it is drawn.
     pub demo_volume_menu: bool,
     /// The emojis used last, the row under the fields.
     pub recent_emojis: super::emoji::recent::Recent,
-    /// `AURORA_DEMO_CONV=aurora:local:channel`: the channel selector shown
+    /// `DEEPLY_DEMO_CONV=aurora:local:channel`: the channel selector shown
     /// without changing the preferences.
     pub demo_channel: bool,
     /// What the button in the column's head asked; `collapsed` is
     /// given every frame by the app, from the settings.
     pub column: workspace::ColumnChoice,
     /// Demo mode: the column's state of this session, which stands in for
-    /// the preferences (`AURORA_DEMO_CONV=aurora:collapsed` starts it
+    /// the preferences (`DEEPLY_DEMO_CONV=aurora:collapsed` starts it
     /// collapsed; the button changes it, never the settings file).
     pub demo_column: Option<bool>,
     /// The workspace's layout last frame (None before the first): a window
@@ -597,7 +597,7 @@ impl ChatUi {
         }
     }
 
-    /// `AURORA_DEMO_CONV_POPOUT`: `conversation` in its own window, at `pos`.
+    /// `DEEPLY_DEMO_CONV_POPOUT`: `conversation` in its own window, at `pos`.
     pub fn demo_pop_out(&mut self, ctx: &egui::Context, conversation: Option<uuid::Uuid>, pos: egui::Pos2, size: egui::Vec2) {
         self.popped.pop_out(conversation, self.members_open, self.stage_mini, false);
         demo_place_window(ctx, conversation, pos, size);
@@ -664,7 +664,7 @@ impl ChatUi {
         self.local_typing.update(now, std::mem::take(&mut self.local_field))
     }
 
-    /// `AURORA_DEMO_TYPING`: we type without a key, every frame; true when
+    /// `DEEPLY_DEMO_TYPING`: we type without a key, every frame; true when
     /// it starts.
     pub fn hold_local_typing(&mut self, now: std::time::Instant) -> bool {
         self.local_field = typing::LocalField::default();
@@ -2308,7 +2308,7 @@ fn select_lines(
     to_field
 }
 
-/// `AURORA_DEMO_CONV_SELECT`: "all" as Ctrl+A, "part" from the middle of the
+/// `DEEPLY_DEMO_CONV_SELECT`: "all" as Ctrl+A, "part" from the middle of the
 /// last line drawn but two to the middle of the last one.
 fn demo_selection(sel: &mut select::Selection, mode: &str, drawn: &[select::Row], ends: Option<(u64, u64)>) {
     if mode == "part" {
@@ -4086,10 +4086,10 @@ fn line_extras(
     }
 }
 
-/// `AURORA_DEMO_BARS=chatname`: a click on a resident's name in the pills
-/// at frame 700 (its profile opens); `AURORA_DEMO_CONV_MENU`'s right click
-/// on a conversation of the list (`conv_menu`); `AURORA_DEMO_CONV_GIVE`'s
-/// inventory carried to an IM (`workspace`); `AURORA_DEMO_GIFS=menu`'s
+/// `DEEPLY_DEMO_BARS=chatname`: a click on a resident's name in the pills
+/// at frame 700 (its profile opens); `DEEPLY_DEMO_CONV_MENU`'s right click
+/// on a conversation of the list (`conv_menu`); `DEEPLY_DEMO_CONV_GIVE`'s
+/// inventory carried to an IM (`workspace`); `DEEPLY_DEMO_GIFS=menu`'s
 /// right click on the GIF button (`gif_picker`).
 pub fn demo_events(ctx: &egui::Context, frame: u64) -> Vec<egui::Event> {
     let docking = docking::demo_events(ctx, frame);
@@ -4162,7 +4162,7 @@ fn sender_link(world: &World, line: &crate::world::ChatLine) -> Option<SenderLin
 /// nothing else changes (the human's choice).
 fn bubble_sender_link(ctx: &egui::Context, p: &Palette, world: &World, k: usize, rect: egui::Rect, line: &crate::world::ChatLine) {
     let Some(target) = sender_link(world, line) else { return };
-    // AURORA_DEMO_BARS=chatname: the newest resident's name is clicked
+    // DEEPLY_DEMO_BARS=chatname: the newest resident's name is clicked
     if matches!(target, SenderLink::Resident(_)) && super::bars::demo::get().click_name {
         ctx.data_mut(|d| d.insert_temp(egui::Id::unique("chat_toast_demo_name"), rect));
     }

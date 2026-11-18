@@ -33,7 +33,7 @@ pub enum Target {
 }
 
 impl Target {
-    /// In the order of `AURORA_DEMO_TOOLBOX`'s target numbers (0 to 3).
+    /// In the order of `DEEPLY_DEMO_TOOLBOX`'s target numbers (0 to 3).
     pub const ALL: [Target; 4] = [Target::Nearest, Target::Selection, Target::UnderCursor, Target::MyAvatar];
     /// The target bar's order: the two avatars, then the objects.
     pub const BAR: [Target; 4] = [Target::Nearest, Target::MyAvatar, Target::Selection, Target::UnderCursor];

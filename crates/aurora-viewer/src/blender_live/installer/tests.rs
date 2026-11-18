@@ -242,12 +242,12 @@ fn blender_live_removal_runs_only_where_aurora_is_installed_and_keeps_backups() 
 }
 
 /// Runs the actual compiled viewer packaging/process path in disposable profiles.
-/// Example: AURORA_TEST_BLENDER=<absolute blender.exe>; cargo test --workspace
+/// Example: DEEPLY_TEST_BLENDER=<absolute blender.exe>; cargo test --workspace
 /// blender_live_installer_native -- --ignored --nocapture
 #[test]
-#[ignore = "requires AURORA_TEST_BLENDER; launches Blender in an isolated profile"]
+#[ignore = "requires DEEPLY_TEST_BLENDER; launches Blender in an isolated profile"]
 fn blender_live_installer_native_probe_install_and_reinstall_preserve_previous_files() {
-    let executable = PathBuf::from(std::env::var_os("AURORA_TEST_BLENDER").expect("AURORA_TEST_BLENDER"));
+    let executable = PathBuf::from(std::env::var_os("DEEPLY_TEST_BLENDER").expect("DEEPLY_TEST_BLENDER"));
     let profile = Temporary::new().expect("isolated profile");
     let config = profile.0.join("profile/config");
     for directory in [&config, &profile.0.join("profile/scripts"), &profile.0.join("profile/extensions")] {

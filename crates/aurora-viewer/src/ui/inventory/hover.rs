@@ -132,7 +132,7 @@ fn asset(inv: &Inventory, id: Uuid) -> Option<Uuid> {
 fn mode() -> Option<&'static str> {
     static MODE: std::sync::OnceLock<Option<String>> = std::sync::OnceLock::new();
     MODE.get_or_init(|| {
-        std::env::var("AURORA_DEMO_INVENTORY")
+        std::env::var("DEEPLY_DEMO_INVENTORY")
             .ok()
             .filter(|mode| mode.contains("hover-photo"))
     })

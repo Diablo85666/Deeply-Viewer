@@ -1,4 +1,4 @@
-//! AURORA_DEMO_EXPERIENCE=1|auto|profile|blocked|walk|arrive: experiences
+//! DEEPLY_DEMO_EXPERIENCE=1|auto|profile|blocked|walk|arrive: experiences
 //! asking for permissions without a grid. In SL, llRequestExperiencePermissions
 //! can follow any event of the script: a click (touch_start), walking into
 //! an object or a phantom volume (collision_start, volume_detect), arriving
@@ -121,7 +121,7 @@ pub enum Reply {
 
 impl ExperienceDemo {
     pub fn from_env() -> Option<Self> {
-        let value = std::env::var("AURORA_DEMO_EXPERIENCE").ok()?;
+        let value = std::env::var("DEEPLY_DEMO_EXPERIENCE").ok()?;
         let value = value.trim();
         let mode = match value {
             "auto" => Mode::Auto,

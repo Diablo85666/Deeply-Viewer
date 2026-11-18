@@ -784,7 +784,7 @@ impl Controller {
         self.synchronized = synchronized;
     }
 
-    /// Motions playing (`avatar summary`, AURORA_PROFILE).
+    /// Motions playing (`avatar summary`, DEEPLY_PROFILE).
     pub fn motion_count(&self) -> usize {
         self.motions.len()
     }

@@ -1,7 +1,7 @@
-﻿# Aurora Tools: what the development environment needs, what is missing or
+# Aurora Tools: what the development environment needs, what is missing or
 # out of date, and how to fix it (dot-sourced by aurora-tools.ps1).
 
-$RepoUrl = 'https://github.com/Aurora-Viewer/Aurora-Viewer'
+$RepoUrl = 'https://github.com/Diablo85666/Deeply-Viewer'
 $FirestormUrl = 'https://github.com/FirestormViewer/phoenix-firestorm'
 
 function Get-Paths([string]$Root) {
@@ -120,7 +120,7 @@ function Get-Checks($P, [switch]$Offline) {
     & $add (New-Check identity 'Git identity' $email $(if ($email) { 'ok' } else { 'todo' }) $(if ($email) { 'nothing to do' } else { 'your GitHub username + noreply address' }))
 
     # the --release viewer of RELEASE\ (menu "Release viewer"): information only
-    $version = Join-Path $P.Release 'Aurora-Viewer\version.txt'
+    $version = Join-Path $P.Release 'Deeply-Viewer\version.txt'
     if ($hasRepo -and (Test-Path $version)) {
         # the line after the reported version: "main: <short sha> <subject> (<date>)",
         # or "PR #42: …" (files written before the switch to English: "main : …")
@@ -175,7 +175,7 @@ function Invoke-Repair($P) {
     }
     Write-Color '  Git, GitHub CLI, C++ tools and Rust: OK.' success
 
-    Write-Title 'Aurora Viewer repository'
+    Write-Title 'Deeply Viewer repository'
     New-Item -ItemType Directory -Force -Path $P.Root -ErrorAction Stop | Out-Null
     if (Test-Path (Join-Path $P.Repo '.git')) {
         $branch = (git -C $P.Repo rev-parse --abbrev-ref HEAD).Trim()

@@ -95,7 +95,7 @@ impl Pack {
         format!("media-plugins-{}", self.version)
     }
     fn folder(&self) -> String {
-        format!("Aurora-Media-Plugins-{}-{SYSTEM}", self.version)
+        format!("Deeply-Media-Plugins-{}-{SYSTEM}", self.version)
     }
     fn complete(&self, dir: &Path) -> bool {
         fs::read(dir.join(MANIFEST))

@@ -440,7 +440,7 @@ fn ghost(ctx: &egui::Context, p: &Palette, button: &ToolButton, pointer: egui::P
         });
 }
 
-/// The settings of a demo run (`AURORA_DEMO_TOOLBAR`): `custom` is the
+/// The settings of a demo run (`DEEPLY_DEMO_TOOLBAR`): `custom` is the
 /// mockup's "custom" state (Environments, Radar and Teleport history in the
 /// left bar, Performance out of the dock); `side` the same bars without the
 /// window (`sidemenu`: Radar's right click at frame 650); `right` them in
@@ -492,7 +492,7 @@ pub fn demo_settings(settings: &mut ToolbarSettings, layout: &Layout) {
 
 fn demo_mode() -> Option<&'static str> {
     static MODE: std::sync::OnceLock<Option<String>> = std::sync::OnceLock::new();
-    MODE.get_or_init(|| std::env::var("AURORA_DEMO_TOOLBAR").ok()).as_deref()
+    MODE.get_or_init(|| std::env::var("DEEPLY_DEMO_TOOLBAR").ok()).as_deref()
 }
 
 /// Offline scenarios use the real widgets and pointer events, as the human does.

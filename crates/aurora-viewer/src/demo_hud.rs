@@ -149,7 +149,7 @@ pub fn no_modify_events() -> Vec<NetEvent> {
     events
 }
 
-/// AURORA_DEMO_SOUND=hud: a linked HUD prim loops at the listener,
+/// DEEPLY_DEMO_SOUND=hud: a linked HUD prim loops at the listener,
 /// independently of camera distance, as LLAudioSourceVO::update does.
 pub fn sound_events(sound: Uuid) -> Vec<NetEvent> {
     let mut events = events();

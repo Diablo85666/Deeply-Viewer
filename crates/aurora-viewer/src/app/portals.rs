@@ -161,14 +161,14 @@ impl App {
             return;
         }
         if self.demo
-            && let Ok(mode) = std::env::var("AURORA_DEMO_PORTALS")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_PORTALS")
             && mode.starts_with("slice-")
         {
             self.portal_slice_demo(&mode);
         }
         if self.demo
             && !self.portal_ui.demo_seeded
-            && let Ok(mode) = std::env::var("AURORA_DEMO_PORTALS")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_PORTALS")
         {
             self.portal_ui.demo_seeded = true;
             self.portal_ui.open = true;
@@ -309,14 +309,14 @@ impl App {
         self.cross_portal(ask.owner, ask.portal, Instant::now());
     }
 
-    /// The setting, or the one an `AURORA_DEMO_PORTALS` scenario tests (never
+    /// The setting, or the one an `DEEPLY_DEMO_PORTALS` scenario tests (never
     /// saved). The earlier scenarios show a non-friend's portal.
     pub(super) fn portal_sources(&self) -> crate::world::portals::Sources {
         use crate::world::portals::Sources;
         if !self.demo {
             return self.settings.portal_sources;
         }
-        match std::env::var("AURORA_DEMO_PORTALS").as_deref() {
+        match std::env::var("DEEPLY_DEMO_PORTALS").as_deref() {
             Ok("stranger") => Sources::Everyone,
             Ok("stranger-groups") => Sources::FriendsAndGroups,
             Ok("stranger-hidden") => Sources::Friends,

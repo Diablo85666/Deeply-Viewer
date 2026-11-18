@@ -1,25 +1,29 @@
-# Notices — Aurora Deeply Viewer
+# Notices — Deeply Viewer
 
-Copyright © 2026 the Aurora Deeply Viewer contributors (the authors in this
-community build and the upstream project's
-Git history).
+Copyright © 2026 Deeply Viewer contributors and Aurora Viewer authors — GPL-3.0-or-later
 
-Aurora Deeply Viewer is free software: you can redistribute it and/or modify it under
+Deeply Viewer is free software: you can redistribute it and/or modify it under
 the terms of the **GNU General Public License, version 3 or (at your option) any
 later version** (see [LICENSE](LICENSE)). A modified version must keep these
 notices, including where the viewer shows them in its About window, and say
 that it was modified (sections 4 and 5 of the licence).
 
-This is an independent community modification of Aurora Viewer. Aurora Deeply
-Viewer is not an official Aurora Viewer release and is not provided, endorsed
-or supported by the Aurora Viewer project or Linden Research, Inc. The licence
+This is an independent community modification of Aurora Viewer. Deeply Viewer is not an official Aurora Viewer release and is not provided, endorsed or supported by the Aurora Viewer project or Linden Research, Inc. The licence
 covers the code and the assets; it grants no right to upstream names or logos
 as trademarks. What this modified version may do with them is in
 [TRADEMARKS.md](TRADEMARKS.md).
 
-Aurora Deeply Viewer is not provided, endorsed or supported by Linden Research, Inc.
+Deeply Viewer is not provided, endorsed or supported by Linden Research, Inc.
 ("Linden Lab") or The Phoenix Firestorm Project, Inc. Second Life® is a
 trademark of Linden Research, Inc.
+
+The optional bundled offline translation model is distributed for this
+open-source, non-commercial project under the model author's
+CC BY-NC 4.0 terms. It is not relicensed as GPL:
+NLLB-200 distilled 600M CTranslate2 int8 conversion by JustFrederik,
+<https://huggingface.co/JustFrederik/nllb-200-distilled-600M-ct2-int8>.
+The model's upstream README and license terms are retained in
+`models/nllb-200-600M-int8/`.
 
 ## Code derived from the Second Life viewer and Firestorm
 
@@ -61,15 +65,16 @@ GPL-3.0-or-later as described above.
 
 | Asset | Location | License |
 |---|---|---|
-| Tabler Icons — Copyright © 2020-2026 Paweł Kuna | `assets/tabler-icons/`, `crates/aurora-viewer/assets/icons/tabler/` | MIT ([LICENSE](assets/tabler-icons/LICENSE)) |
-| Inter typeface, Regular and SemiBold, version 4.001 | `crates/aurora-viewer/assets/fonts/` | SIL Open Font License 1.1 ([LICENSE-Inter.txt](crates/aurora-viewer/assets/fonts/LICENSE-Inter.txt)) |
-| Noto Sans, Regular and SemiBold, version 2.015 (notofonts/latin-greek-cyrillic, hinted) | `crates/aurora-viewer/assets/fonts/` | SIL Open Font License 1.1 ([LICENSE-NotoSans.txt](crates/aurora-viewer/assets/fonts/LICENSE-NotoSans.txt)) |
-| Roboto, Regular and Medium, version 3.011 (googlefonts/roboto-3-classic, hinted) | `crates/aurora-viewer/assets/fonts/` | SIL Open Font License 1.1 ([LICENSE-Roboto.txt](crates/aurora-viewer/assets/fonts/LICENSE-Roboto.txt)) |
-| OpenDyslexic, Regular and Bold, version 0.910.12 — Copyright 2012-2019 Abbie Gonzalez, Reserved Font Name OpenDyslexic (antijingoist/opendyslexic, release `v0.91.12`, unmodified) | `crates/aurora-viewer/assets/fonts/` | SIL Open Font License 1.1 ([LICENSE-OpenDyslexic.txt](crates/aurora-viewer/assets/fonts/LICENSE-OpenDyslexic.txt)) |
-| Noto Color Emoji font, version 2.057 — Copyright 2022 Google Inc. (googlefonts/noto-emoji, tag `v2026-09-24-unicode18_0`, built into the executable) | `assets/emoji/` | SIL Open Font License 1.1 ([LICENSE-OFL.txt](assets/emoji/LICENSE-OFL.txt)) |
+| Tabler Icons — Copyright © 2020-2026 Paweł Kuna | `assets/tabler-icons/`, `crates/aurora-viewer/assets/icons/tabler/` | MIT ([LICENSE](licenses/assets-tabler-icons-LICENSE)) |
+| Inter typeface, Regular and SemiBold, version 4.001 | `crates/aurora-viewer/assets/fonts/` | SIL Open Font License 1.1 ([LICENSE-Inter.txt](licenses/crates-aurora-viewer-assets-fonts-LICENSE-Inter.txt)) |
+| Noto Sans, Regular and SemiBold, version 2.015 (notofonts/latin-greek-cyrillic, hinted) | `crates/aurora-viewer/assets/fonts/` | SIL Open Font License 1.1 ([LICENSE-NotoSans.txt](licenses/crates-aurora-viewer-assets-fonts-LICENSE-NotoSans.txt)) |
+| Roboto, Regular and Medium, version 3.011 (googlefonts/roboto-3-classic, hinted) | `crates/aurora-viewer/assets/fonts/` | SIL Open Font License 1.1 ([LICENSE-Roboto.txt](licenses/crates-aurora-viewer-assets-fonts-LICENSE-Roboto.txt)) |
+| OpenDyslexic, Regular and Bold, version 0.910.12 — Copyright 2012-2019 Abbie Gonzalez, Reserved Font Name OpenDyslexic (antijingoist/opendyslexic, release `v0.91.12`, unmodified) | `crates/aurora-viewer/assets/fonts/` | SIL Open Font License 1.1 ([LICENSE-OpenDyslexic.txt](licenses/crates-aurora-viewer-assets-fonts-LICENSE-OpenDyslexic.txt)) |
+| Noto Color Emoji font, version 2.057 — Copyright 2022 Google Inc. (googlefonts/noto-emoji, tag `v2026-09-24-unicode18_0`, built into the executable) | `assets/emoji/` | SIL Open Font License 1.1 ([LICENSE-OFL.txt](licenses/assets-emoji-LICENSE-OFL.txt)) |
+| NLLB-200 distilled 600M, CTranslate2 int8 conversion by JustFrederik | `models/nllb-200-600M-int8/` | CC BY-NC 4.0; upstream attribution and terms retained in the model directory |
 | MIT KEMAR HRTF measurements, diffuse-field equalized set — Copyright 1994 MIT Media Laboratory, by Bill Gardner and Keith Martin (https://sound.media.mit.edu/resources/KEMAR.html: "provided free with no restrictions on use, provided the authors are cited"); turned into minimum-phase filters by `scripts/generate-hrtf.py` (built into the executable; origin, citation and changes in [README.md](assets/hrtf/README.md)) | `assets/hrtf/kemar.bin` | Free use with credit to the authors (their terms, quoted in the README) |
-| Tycho-2 Catalogue — Høg E. et al. 2000 (A&A 355, L27; https://archive.eso.org/ASTROM/TYC-2/data/, CDS I/259); the naked-eye stars and a map of the fainter ones, made by `scripts/generate-star-catalog.py`, with V and B-V for its 50 brightest or colourless stars from the Hipparcos Catalogue (ESA 1997, ESA SP-1200) (built into the executable; origin and changes in [README.md](assets/stars/README.md)) | `assets/stars/stars.bin`, `assets/stars/milky_way.bin` | BSD-2-Clause, agreed by its lead author in 2015 ([LICENSE-TYCHO2.md](assets/stars/LICENSE-TYCHO2.md)) |
-| Aurora wolf logo and silhouette | `assets/branding/` | Part of Aurora Viewer, GPL-3.0-or-later |
+| Tycho-2 Catalogue — Høg E. et al. 2000 (A&A 355, L27; https://archive.eso.org/ASTROM/TYC-2/data/, CDS I/259); the naked-eye stars and a map of the fainter ones, made by `scripts/generate-star-catalog.py`, with V and B-V for its 50 brightest or colourless stars from the Hipparcos Catalogue (ESA 1997, ESA SP-1200) (built into the executable; origin and changes in [README.md](assets/stars/README.md)) | `assets/stars/stars.bin`, `assets/stars/milky_way.bin` | BSD-2-Clause, agreed by its lead author in 2015 ([LICENSE-TYCHO2.md](licenses/assets-stars-LICENSE-TYCHO2.md)) |
+| Aurora wolf logo and silhouette | `assets/branding/` | Part of Deeply Viewer, GPL-3.0-or-later |
 | Four modern native walk/run animations, Copyright Linden Research, Inc., unmodified from the Legacy Viewer's `indra/newview/app_settings/static_assets/` at revision `f9401764e4e98aa3800749044a152cb4dcf75437` (provenance in the directory's README) | `crates/aurora-viewer/assets/animations/locomotion/` (built into the executable) | Originally LGPL 2.1, distributed here under GPL-3.0-or-later as described above |
 | Photo filters of the Second Life viewer `indra/newview/app_settings/filters` (the 30 XML files unchanged, from the Legacy Viewer's sources at commit `8ffe7065`), made by Linden Lab | `crates/aurora-render/src/looks/legacy/` (built into the executable) | Originally LGPL 2.1, distributed here under GPL-3.0-or-later as described above |
 | Photo LUTs by Czar Fenris (20 looks made in Adobe Premiere Pro and DaVinci Resolve), packed by `scripts/generate-photo-luts.py` (built into the executable; origin and changes in [README.md](assets/photo-luts/README.md)) | `assets/photo-luts/czar-fenris.bin` | Shared with the viewer and its users by their creator, Czar Fenris, who remains their author (agreed on 2026-11-10) |
@@ -78,11 +83,11 @@ GPL-3.0-or-later as described above.
 | Windlight presets of Firestorm `indra/newview/app_settings/windlight` (`days`, `skies`, `water`; XML files unchanged, commit `c33bfee2`), made by Linden Lab and by Second Life residents for the Phoenix / Firestorm viewers (their names and tags are in the preset names); the files carry no notice of their own and are distributed in the Firestorm sources under its LGPL 2.1 (`LICENSE`, `doc/LICENSE-source.txt`) | `crates/aurora-viewer/assets/windlight/windlight.zip` (built into the executable) | Originally LGPL 2.1, distributed here under GPL-3.0-or-later as described above |
 | Hunspell spelling dictionaries of ten languages (wooorm/dictionaries, commit `8cfea406`, unchanged; built into the executable, the list and the origin of each in [README.md](crates/aurora-viewer/assets/dictionaries/README.md)) | `crates/aurora-viewer/assets/dictionaries/` | Their own licences, each next to its dictionary (`LICENSE.txt`) and shipped in `assets/dictionaries/`: MIT AND BSD (English), MPL-2.0 (French), GPL-2.0 OR GPL-3.0 (German), GPL-3.0 OR LGPL-3.0 OR MPL-1.1 (Spanish), GPL-3.0 OR LGPL-3.0 OR MPL-2.0 (Polish), LGPL-3.0 OR MPL-2.0 (Portuguese), BSD-3-Clause (Russian), GPL-2.0 OR LGPL-2.1 OR MPL-1.1 (Danish) |
 | Second Life glossary of the Legacy Viewer's dictionaries (`sl.dic`) and its auto-replace lists (`indra/newview/app_settings/autoreplace.xml`, unchanged) | `crates/aurora-viewer/assets/dictionaries/sl/`, `crates/aurora-viewer/assets/autoreplace.xml` | Originally LGPL 2.1, distributed here under GPL-3.0-or-later as described above |
-| LSL preprocessor rules from Modular Systems / Firestorm `indra/newview/fslslpreproc.cpp` | `crates/aurora-viewer/src/ui/scripts/preprocessor/` | BSD-3-Clause ([notice](crates/aurora-viewer/assets/lsl/PREPROCESSOR-LICENSE.txt)), retained alongside this GPL-3.0-or-later adaptation |
+| LSL preprocessor rules from Modular Systems / Firestorm `indra/newview/fslslpreproc.cpp` | `crates/aurora-viewer/src/ui/scripts/preprocessor/` | BSD-3-Clause ([notice](licenses/crates-aurora-viewer-assets-lsl-PREPROCESSOR-LICENSE.txt)), retained alongside this GPL-3.0-or-later adaptation |
 | Colour and dithering code of egui-wgpu's `egui.wgsl` — Copyright © Emil Ernerfeldt and the egui contributors | `crates/aurora-render/src/shaders/labels.wgsl` | MIT OR Apache-2.0, retained alongside this GPL-3.0-or-later adaptation |
 | Screen space shadows of Bend Studio (`bend_sss_gpu.h`, `bend_sss_cpu.h`, as shipped in Days Gone) — Copyright © 2023 Sony Interactive Entertainment, ported to WGSL and Rust | `crates/aurora-render/src/shaders/contact_shadows.wgsl`, `crates/aurora-render/src/contact_shadows.rs` | Apache-2.0, notice retained at the top of `contact_shadows.wgsl` |
 | Ground-truth ambient occlusion of Intel's XeGTAO (`XeGTAO.hlsli`, `vaGTAO.hlsl`, GameTechDev/XeGTAO), with its bent normals — Copyright © 2016-2021 Intel Corporation, ported to WGSL | `crates/aurora-render/src/shaders/gtao.wgsl`, `crates/aurora-render/src/gtao.rs` | MIT, notice retained at the top of `gtao.wgsl` |
-| AMD FidelityFX Super Resolution 3.1, the upscaler (FidelityFX SDK 1.1.4, `sdk/include/FidelityFX/gpu/fsr3upscaler/` and the RCAS of `gpu/fsr1/ffx_fsr1.h`) — Copyright © 2024 Advanced Micro Devices, Inc., ported to WGSL and Rust | `crates/aurora-render/src/shaders/fsr/`, `crates/aurora-render/src/fsr.rs` | MIT ([LICENSE-FidelityFX.txt](crates/aurora-render/src/shaders/fsr/LICENSE-FidelityFX.txt)), retained alongside this GPL-3.0-or-later adaptation |
+| AMD FidelityFX Super Resolution 3.1, the upscaler (FidelityFX SDK 1.1.4, `sdk/include/FidelityFX/gpu/fsr3upscaler/` and the RCAS of `gpu/fsr1/ffx_fsr1.h`) — Copyright © 2024 Advanced Micro Devices, Inc., ported to WGSL and Rust | `crates/aurora-render/src/shaders/fsr/`, `crates/aurora-render/src/fsr.rs` | MIT ([LICENSE-FidelityFX.txt](licenses/crates-aurora-render-src-shaders-fsr-LICENSE-FidelityFX.txt)), retained alongside this GPL-3.0-or-later adaptation |
 | Spherical caps' intersection and cone specular occlusion of Google's Filament (`sphericalCapsIntersection`, `specularAO_Cones`, google/filament) — Copyright © 2018 The Android Open Source Project, rewritten in WGSL | `crates/aurora-render/src/shaders/common.wgsl` (`spherical_caps_intersection`, `cone_specular_occlusion`) | Apache-2.0, retained alongside this GPL-3.0-or-later adaptation |
 
 Fonts keep their own license (the OFL allows bundling them with software under
@@ -107,7 +112,7 @@ the pack does not include.
 
 ## Rust dependencies
 
-The crates used by Aurora Viewer (see `Cargo.lock`) are under licenses
+The crates used by Deeply Viewer (see `Cargo.lock`) are under licenses
 compatible with the GPL version 3 (mostly MIT and/or Apache-2.0).
 
 ## HIDAPI
@@ -149,7 +154,7 @@ POSSIBILITY OF SUCH DAMAGE.
 The unmodified V-HACD 4.1 header in `crates/aurora-assets/native/vhacd/`
 is distributed under BSD-3-Clause. Its source revision and checksum are
 recorded alongside it. The following notice also applies to its compiled
-code included in Aurora Viewer:
+code included in Deeply Viewer:
 
 BSD 3-Clause License
 

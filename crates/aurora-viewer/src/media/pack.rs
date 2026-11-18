@@ -62,7 +62,7 @@ pub struct PluginPack {
     consent: Consent,
     /// No plugins were found at the last `poll`.
     wanted: bool,
-    /// `AURORA_DEMO_MEDIA_PACK=consent`: the card, whatever was answered.
+    /// `DEEPLY_DEMO_MEDIA_PACK=consent`: the card, whatever was answered.
     demo_card: bool,
 }
 
@@ -120,18 +120,18 @@ impl PluginPack {
             wanted: false,
             demo_card: false,
         };
-        // AURORA_MEDIA_PACK_FEED: a pack served by a test server of this PC
+        // DEEPLY_MEDIA_PACK_FEED: a pack served by a test server of this PC
         // (loopback only), to try it before it is published. Its size and
         // SHA-256 are still those this viewer was built for.
-        if let Ok(feed) = std::env::var("AURORA_MEDIA_PACK_FEED") {
+        if let Ok(feed) = std::env::var("DEEPLY_MEDIA_PACK_FEED") {
             match Source::local(&feed) {
                 Ok(source) => this.source = source,
-                Err(e) => log::warn!("media: AURORA_MEDIA_PACK_FEED ignored: {e:#}"),
+                Err(e) => log::warn!("media: DEEPLY_MEDIA_PACK_FEED ignored: {e:#}"),
             }
         }
-        // AURORA_DEMO_MEDIA_PACK: a fixed state for the screenshots
-        if std::env::var_os("AURORA_DEMO").is_some()
-            && let Ok(mode) = std::env::var("AURORA_DEMO_MEDIA_PACK")
+        // DEEPLY_DEMO_MEDIA_PACK: a fixed state for the screenshots
+        if std::env::var_os("DEEPLY_DEMO").is_some()
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_MEDIA_PACK")
         {
             this.automatic = false;
             this.dir = None;

@@ -34,7 +34,7 @@ pub(super) enum Page {
 impl Page {
     pub(super) const ALL: [Page; 3] = [Page::Overview, Page::Manage, Page::People];
 
-    /// Name of the page for AURORA_DEMO_LAND, whatever the language.
+    /// Name of the page for DEEPLY_DEMO_LAND, whatever the language.
     pub(super) fn key(self) -> &'static str {
         match self {
             Page::Overview => "overview",

@@ -458,12 +458,12 @@ pub(super) fn drops(
     }
 }
 
-/// `AURORA_DEMO_CONV_GIVE=away|over|many|drop|give` (with `AURORA_DEMO_CONV=aurora`).
+/// `DEEPLY_DEMO_CONV_GIVE=away|over|many|drop|give` (with `DEEPLY_DEMO_CONV=aurora`).
 fn give_demo() -> Option<&'static str> {
     static MODE: std::sync::OnceLock<Option<String>> = std::sync::OnceLock::new();
     MODE.get_or_init(|| {
-        (std::env::var("AURORA_DEMO").as_deref() == Ok("1"))
-            .then(|| std::env::var("AURORA_DEMO_CONV_GIVE").ok())
+        (std::env::var("DEEPLY_DEMO").as_deref() == Ok("1"))
+            .then(|| std::env::var("DEEPLY_DEMO_CONV_GIVE").ok())
             .flatten()
             .filter(|mode| matches!(mode.as_str(), "away" | "over" | "many" | "drop" | "give"))
     })
@@ -474,7 +474,7 @@ fn give_demo_id() -> egui::Id {
     egui::Id::unique("conversation_give_demo")
 }
 
-/// The entries `drop` gives: seven of `AURORA_DEMO_INVENTORY`'s, its no-copy
+/// The entries `drop` gives: seven of `DEEPLY_DEMO_INVENTORY`'s, its no-copy
 /// and no-transfer objects among them (world/inventory/demo.rs).
 const GIVE_DEMO_ITEMS: [u128; 7] = [8100, 8103, 8109, 8110, 8111, 8104, 8105];
 

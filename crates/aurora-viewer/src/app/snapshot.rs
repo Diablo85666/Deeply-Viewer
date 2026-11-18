@@ -314,9 +314,9 @@ const FIT_SETTLE: Duration = Duration::from_secs(2);
 /// change.
 const FIT_RAISE_AFTER: Duration = Duration::from_secs(5);
 
-/// AURORA_DEMO_SNAPSHOT=quality-tight: the driver's budget as the photo
+/// DEEPLY_DEMO_SNAPSHOT=quality-tight: the driver's budget as the photo
 /// quality reads it, `room` MB above what the viewer held when it came on,
-/// `later` MB from AURORA_DEMO_SNAPSHOT_FRAME (the budget shrinking or
+/// `later` MB from DEEPLY_DEMO_SNAPSHOT_FRAME (the budget shrinking or
 /// growing while the window stays open).
 struct DemoTight {
     room: u64,
@@ -331,44 +331,44 @@ struct DemoPhoto {
     full_frame: bool,
     aspect: Option<snapshot::Aspect>,
     inventory: Option<DemoInventory>,
-    /// AURORA_DEMO_SNAPSHOT=profile | profile-fail: posted to the demo's
+    /// DEEPLY_DEMO_SNAPSHOT=profile | profile-fail: posted to the demo's
     /// web profile (which refuses it with -fail).
     profile: bool,
-    /// AURORA_DEMO_SNAPSHOT=postcard | postcard-fail: sent by e-mail, the
+    /// DEEPLY_DEMO_SNAPSHOT=postcard | postcard-fail: sent by e-mail, the
     /// demo answering itself (too big with -fail).
     postcard: bool,
-    /// AURORA_DEMO_SNAPSHOT=dof | full-dof: the window's depth of field on,
+    /// DEEPLY_DEMO_SNAPSHOT=dof | full-dof: the window's depth of field on,
     /// f/1.4, focused by hand on the own avatar (3.3 m).
     dof: bool,
-    /// AURORA_DEMO_SNAPSHOT=prefs-dof (or the viewfinder's prefsdof): the
+    /// DEEPLY_DEMO_SNAPSHOT=prefs-dof (or the viewfinder's prefsdof): the
     /// Preferences' depth of field on; prefs-dof leaves the window's at
     /// All sharp.
     prefs_dof: bool,
-    /// AURORA_DEMO_SNAPSHOT=quality: the window with its photo quality on.
+    /// DEEPLY_DEMO_SNAPSHOT=quality: the window with its photo quality on.
     quality: bool,
-    /// AURORA_DEMO_SNAPSHOT=quality-tight[:<MB>[:<MB later>]]: the same
+    /// DEEPLY_DEMO_SNAPSHOT=quality-tight[:<MB>[:<MB later>]]: the same
     /// on a card short of memory.
     tight: Option<DemoTight>,
     /// The photo mode's look for the run (classic, panel, full…,
     /// viewfinder…), the setting itself left alone.
     style: Option<crate::settings::PhotoWindowStyle>,
-    /// AURORA_DEMO_SNAPSHOT=viewfinder[-essential|-hidden][-menu|-help|
+    /// DEEPLY_DEMO_SNAPSHOT=viewfinder[-essential|-hidden][-menu|-help|
     /// -drawer][-mf|-afc][-point][-frozen][-focus|-shoot|-group]: the
     /// viewfinder, its display, a panel open, its focus mode, and the own
     /// avatar focused (then the photo taken, or the others in view added)
-    /// at AURORA_DEMO_SNAPSHOT_FRAME.
+    /// at DEEPLY_DEMO_SNAPSHOT_FRAME.
     viewfinder: Option<DemoViewfinder>,
-    /// AURORA_DEMO_SNAPSHOT=light: sunset, a brighter exposure, the clouds
+    /// DEEPLY_DEMO_SNAPSHOT=light: sunset, a brighter exposure, the clouds
     /// still and the worn lights off.
     light: bool,
-    /// AURORA_DEMO_SNAPSHOT=windlight[-keep]: the library's "Coastal
+    /// DEEPLY_DEMO_SNAPSHOT=windlight[-keep]: the library's "Coastal
     /// Sunset" sky and "Murky Water" with the sun turned low in the east,
     /// in the viewfinder with its light panel open; `-keep` keeps that
     /// light (frame 900) and leaves the photo mode (960).
     windlight: Option<bool>,
 }
 
-/// What AURORA_DEMO_SNAPSHOT=viewfinder… shows.
+/// What DEEPLY_DEMO_SNAPSHOT=viewfinder… shows.
 struct DemoViewfinder {
     display: crate::snapshot::viewfinder::Display,
     menu: bool,
@@ -402,7 +402,7 @@ struct DemoViewfinder {
     quality_warning: bool,
 }
 
-/// AURORA_DEMO_SNAPSHOT=inventory…: the photo sent to the inventory.
+/// DEEPLY_DEMO_SNAPSHOT=inventory…: the photo sent to the inventory.
 struct DemoInventory {
     size: inventory::TextureSize,
     /// The price is confirmed 60 frames after it is asked.
@@ -866,7 +866,7 @@ impl App {
         let user_agent = crate::media::user_agent();
         if self.demo {
             if self.snapshots.demo_profile.is_none() {
-                let fail = std::env::var("AURORA_DEMO_SNAPSHOT").is_ok_and(|m| m == "profile-fail");
+                let fail = std::env::var("DEEPLY_DEMO_SNAPSHOT").is_ok_and(|m| m == "profile-fail");
                 match profile::demo::start(fail) {
                     Ok(server) => self.snapshots.demo_profile = Some(server),
                     Err(e) => log::warn!("photo: demo web profile not started: {e}"),
@@ -1025,7 +1025,7 @@ impl App {
     }
 
     /// Encode the JPEG and send the postcard, off the main thread; the
-    /// demo has no simulator and answers itself (AURORA_DEMO_SNAPSHOT=
+    /// demo has no simulator and answers itself (DEEPLY_DEMO_SNAPSHOT=
     /// postcard-fail: refused).
     pub(super) fn photo_postcard(&mut self, size: (u32, u32), rgba: Vec<u8>, cutout: bool) {
         let url = self.world.main().and_then(|r| r.caps.get("SendPostcard").cloned());
@@ -1036,7 +1036,7 @@ impl App {
         self.snapshots.reel.start(size, &rgba, cutout, &self.world.agent_id);
         let postcard = self.photo_postcard_fields();
         let quality = self.settings.snapshot.jpeg_quality;
-        let demo_fail = self.demo && std::env::var("AURORA_DEMO_SNAPSHOT").is_ok_and(|m| m == "postcard-fail");
+        let demo_fail = self.demo && std::env::var("DEEPLY_DEMO_SNAPSHOT").is_ok_and(|m| m == "postcard-fail");
         let http = self.net.caps_http();
         let (tx, rx) = crossbeam_channel::unbounded();
         self.net.runtime().spawn(async move {
@@ -1257,11 +1257,11 @@ impl App {
     }
 
     /// The largest side drawn in one pass: the card's, or in demo
-    /// AURORA_DEMO_SNAPSHOT_TILE (to see the tiles and their seams).
+    /// DEEPLY_DEMO_SNAPSHOT_TILE (to see the tiles and their seams).
     fn photo_max_side(&self, renderer: &Renderer) -> u32 {
         let forced = self
             .demo
-            .then(|| std::env::var("AURORA_DEMO_SNAPSHOT_TILE").ok()?.parse::<u32>().ok())
+            .then(|| std::env::var("DEEPLY_DEMO_SNAPSHOT_TILE").ok()?.parse::<u32>().ok())
             .flatten();
         forced.unwrap_or_else(|| renderer.max_texture_dimension())
     }
@@ -1987,9 +1987,9 @@ impl App {
         }
     }
 
-    /// AURORA_DEMO_PHOTO_LOOK=<look>[+<look>…][:<percent>][:compare][:panel]
+    /// DEEPLY_DEMO_PHOTO_LOOK=<look>[+<look>…][:<percent>][:compare][:panel]
     /// [:tab=legacy|aurora|luts][:search=<text>][:set=<n>,<v>,…], with
-    /// AURORA_DEMO_SNAPSHOT: the looks stacked in that order (`Sepia`,
+    /// DEEPLY_DEMO_SNAPSHOT: the looks stacked in that order (`Sepia`,
     /// `aurora:vhs`, `lut:<file>`, `lut:demo` for a warm table written
     /// into the library, or `pack:<pack>/<table>` for a creator's table
     /// built in), the last one chosen, at that strength (100 by
@@ -1999,7 +1999,7 @@ impl App {
     /// window's settings scrolled to the filters). Without it, the
     /// scenarios start with no look.
     fn photo_look_demo(&mut self) {
-        let value = std::env::var("AURORA_DEMO_PHOTO_LOOK").unwrap_or_default();
+        let value = std::env::var("DEEPLY_DEMO_PHOTO_LOOK").unwrap_or_default();
         let mut parts: Vec<&str> = value.split('+').collect();
         let last = parts.pop().unwrap_or_default();
         let mut tokens = last.split(':');
@@ -2140,7 +2140,7 @@ LUT_3D_SIZE {n}
     }
 
     /// The photo mode's look: Preferences', or the demo's for the run
-    /// (AURORA_DEMO_SNAPSHOT=classic the Legacy floater, viewfinder… the
+    /// (DEEPLY_DEMO_SNAPSHOT=classic the Legacy floater, viewfinder… the
     /// viewfinder, any other scenario the panel).
     pub(super) fn photo_style(&self) -> crate::settings::PhotoWindowStyle {
         // the outfit's photo mode is the viewfinder's square, whatever the
@@ -2690,11 +2690,11 @@ LUT_3D_SIZE {n}
     /// The last session crashed or was stopped with "Photo quality" on: the
     /// switch goes off (the graphics settings themselves were never saved
     /// raised), and the login screen says so with a way to turn it back on.
-    /// The Legacy Viewer has no such boost. `AURORA_DEMO_PHOTO_QUALITY_CRASH=1`
+    /// The Legacy Viewer has no such boost. `DEEPLY_DEMO_PHOTO_QUALITY_CRASH=1`
     /// shows the card in demo.
     pub(super) fn photo_quality_at_start(&mut self) {
         let crashed = crate::crash::take_photo_quality_crash();
-        let demo = std::env::var_os("AURORA_DEMO").is_some() && std::env::var_os("AURORA_DEMO_PHOTO_QUALITY_CRASH").is_some();
+        let demo = std::env::var_os("DEEPLY_DEMO").is_some() && std::env::var_os("DEEPLY_DEMO_PHOTO_QUALITY_CRASH").is_some();
         if demo || (crashed && self.settings.snapshot.quality && self.settings.snapshot.quality_off_after_crash) {
             log::warn!("the last session ended badly with the photo quality on: switched off");
             self.settings.snapshot.quality = false;
@@ -2835,20 +2835,20 @@ LUT_3D_SIZE {n}
         );
     }
 
-    /// AURORA_DEMO_SNAPSHOT=open | full[-<W>x<H> proportions, e.g. full-4x5] |
+    /// DEEPLY_DEMO_SNAPSHOT=open | full[-<W>x<H> proportions, e.g. full-4x5] |
     /// save:<W>x<H>[:png|jpg|bmp][:<folder>] | inventory… | profile[-fail] |
     /// dof | full-dof | prefs-dof | classic | viewfinder[-<words>]
-    /// (AURORA_DEMO_SNAPSHOT_FRAME, 700 by default): the window at frame
+    /// (DEEPLY_DEMO_SNAPSHOT_FRAME, 700 by default): the window at frame
     /// 600, the photo saved, sent or posted at that frame.
     fn photo_demo(&mut self, renderer: &Renderer) {
         if !self.demo {
             return;
         }
         if self.snapshots.demo.is_none() {
-            let Ok(mode) = std::env::var("AURORA_DEMO_SNAPSHOT") else {
+            let Ok(mode) = std::env::var("DEEPLY_DEMO_SNAPSHOT") else {
                 return;
             };
-            let frame = std::env::var("AURORA_DEMO_SNAPSHOT_FRAME")
+            let frame = std::env::var("DEEPLY_DEMO_SNAPSHOT_FRAME")
                 .ok()
                 .and_then(|v| v.parse().ok())
                 .unwrap_or(700);
@@ -2889,7 +2889,7 @@ LUT_3D_SIZE {n}
             // inventory[:<side>|window], inventory-ask (the price left on
             // screen), inventory-poor (a balance below it)
             let inventory = kind.starts_with("inventory").then(|| {
-                let side = std::env::var("AURORA_DEMO_SNAPSHOT").ok().and_then(|m| {
+                let side = std::env::var("DEEPLY_DEMO_SNAPSHOT").ok().and_then(|m| {
                     let v = m.split(':').nth(1)?.to_owned();
                     inventory::TextureSize::ALL
                         .into_iter()

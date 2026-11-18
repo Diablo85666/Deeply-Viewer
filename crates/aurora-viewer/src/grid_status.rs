@@ -24,7 +24,7 @@ pub const SECOND_LIFE_FEED: &str = "https://status.secondlifegrid.net/history.at
 pub const SECOND_LIFE_PAGE: &str = "https://status.secondlifegrid.net/";
 /// GridStatusUpdateDelay (settings.xml).
 pub const UPDATE_DELAY: Duration = Duration::from_secs(60);
-/// The `id` of the demo's feed (`AURORA_DEMO_GRID_STATUS`): read from
+/// The `id` of the demo's feed (`DEEPLY_DEMO_GRID_STATUS`): read from
 /// memory, never fetched.
 pub const DEMO_FEED: &str = "demo:grid-status";
 

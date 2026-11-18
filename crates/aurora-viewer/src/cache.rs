@@ -61,7 +61,7 @@ fn publish(path: &Path, file: &[u8]) -> std::io::Result<()> {
 
 /// Whether a file not in the store format reads as it is. Only in the
 /// unit tests, which write their files by hand, and in the demo: its
-/// sources are plain files (`AURORA_DEMO_STREAM`'s `j2k=` folder, what its
+/// sources are plain files (`DEEPLY_DEMO_STREAM`'s `j2k=` folder, what its
 /// local asset server serves, the maps its scenarios write), and it never
 /// meets a grid. Anywhere else such a file is a cache miss: the asset is
 /// fetched again.
@@ -70,7 +70,7 @@ fn plain_files_read() -> bool {
 }
 
 fn demo() -> bool {
-    static DEMO: std::sync::LazyLock<bool> = std::sync::LazyLock::new(|| std::env::var_os("AURORA_DEMO").is_some());
+    static DEMO: std::sync::LazyLock<bool> = std::sync::LazyLock::new(|| std::env::var_os("DEEPLY_DEMO").is_some());
     *DEMO
 }
 

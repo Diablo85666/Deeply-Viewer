@@ -1,4 +1,4 @@
-//! About Land in the offline demo (`AURORA_DEMO_LAND=<tab>[:role][:classic]`):
+//! About Land in the offline demo (`DEEPLY_DEMO_LAND=<tab>[:role][:classic]`):
 //! the simulator's answers to the floater's requests, for the plaza
 //! parcel (north-east quarter of the demo region). The role says who the
 //! avatar is to the parcel: without one it belongs to a group the avatar
@@ -7,10 +7,10 @@
 //! of sale, deed and terraforming, `visitor` gives the parcel to another
 //! resident and a group the avatar is not in. `classic` shows Firestorm's
 //! nine tabs for the session, whatever Preferences › Aurora says.
-//! `AURORA_DEMO_LAND_PRIMS=<used>[,<step>]` sets the objects on the owner's
+//! `DEEPLY_DEMO_LAND_PRIMS=<used>[,<step>]` sets the objects on the owner's
 //! land and makes them grow at each answer (the floater's refresh).
-//! `AURORA_DEMO_BUY_LAND` puts the parcel up for sale, and a ParcelBuy
-//! hands it to the avatar. `AURORA_DEMO_BUY_PASS` gives it to Loup, with or
+//! `DEEPLY_DEMO_BUY_LAND` puts the parcel up for sale, and a ParcelBuy
+//! hands it to the avatar. `DEEPLY_DEMO_BUY_PASS` gives it to Loup, with or
 //! without passes, or to the avatar.
 
 use super::{DEMO_AGENT, DEMO_GROUP1, DEMO_LOUP, DEMO_NOVA, DEMO_TESS, TEX_GRADIENT};
@@ -32,7 +32,7 @@ const XP_INTERACT: Uuid = Uuid::from_u128(0xE7E0_0000_0000_0000_0000_0000_0000_0
 const XP_BEACH: Uuid = Uuid::from_u128(0xE7E0_0000_0000_0000_0000_0000_0000_0004);
 const XP_CLUB: Uuid = Uuid::from_u128(0xE7E0_0000_0000_0000_0000_0000_0000_0005);
 const XP_GRID: Uuid = Uuid::from_u128(0xE7E0_0000_0000_0000_0000_0000_0000_0006);
-/// Placeholder parcel music (also `AURORA_DEMO_MUSIC=1`).
+/// Placeholder parcel music (also `DEEPLY_DEMO_MUSIC=1`).
 pub const MUSIC_URL: &str = "http://flux.exemple.org:8000/";
 
 /// The demo parcel as the "simulator" keeps it (updates are applied).
@@ -53,7 +53,7 @@ pub enum Role {
     Visitor,
 }
 
-/// What AURORA_DEMO_LAND asks for.
+/// What DEEPLY_DEMO_LAND asks for.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Scenario {
     pub tab: String,
@@ -84,9 +84,9 @@ fn parse(v: &str) -> Scenario {
 }
 
 pub fn scenario() -> Option<Scenario> {
-    match std::env::var("AURORA_DEMO_LAND") {
+    match std::env::var("DEEPLY_DEMO_LAND") {
         Ok(v) => Some(parse(&v)),
-        // AURORA_DEMO_ENV_EDITOR=custom: About Land's environment, as the
+        // DEEPLY_DEMO_ENV_EDITOR=custom: About Land's environment, as the
         // plaza's owner
         Err(_) => super::env::editor()
             .filter(|s| s.starts_with("custom"))
@@ -127,19 +127,19 @@ pub fn group_powers(group: Uuid) -> u64 {
     }
 }
 
-/// AURORA_DEMO_BUY_LAND=<mode>[:confirm]: the plaza parcel for sale by
+/// DEEPLY_DEMO_BUY_LAND=<mode>[:confirm]: the plaza parcel for sale by
 /// a demo resident (rich, short, upgrade, other, error; see docs/TESTING.md).
 pub fn buy_scenario() -> Option<String> {
-    let v = std::env::var("AURORA_DEMO_BUY_LAND").ok()?.trim().to_lowercase();
+    let v = std::env::var("DEEPLY_DEMO_BUY_LAND").ok()?.trim().to_lowercase();
     Some(v.split(':').next().unwrap_or_default().to_owned())
 }
 
-/// AURORA_DEMO_BUY_LAND=<mode>:confirm: the confirmation opens by itself.
+/// DEEPLY_DEMO_BUY_LAND=<mode>:confirm: the confirmation opens by itself.
 pub fn buy_confirms() -> bool {
-    std::env::var("AURORA_DEMO_BUY_LAND").is_ok_and(|v| v.trim().to_lowercase().ends_with(":confirm"))
+    std::env::var("DEEPLY_DEMO_BUY_LAND").is_ok_and(|v| v.trim().to_lowercase().ends_with(":confirm"))
 }
 
-/// Price of the plaza parcel in AURORA_DEMO_BUY_LAND.
+/// Price of the plaza parcel in DEEPLY_DEMO_BUY_LAND.
 const SALE_PRICE: i32 = 4500;
 
 fn now() -> i32 {
@@ -229,10 +229,10 @@ fn for_sale(mut p: ParcelInfo, mode: &str) -> ParcelInfo {
     p
 }
 
-/// AURORA_DEMO_BUY_PASS=<mode>: the plaza parcel as the ground menu's
+/// DEEPLY_DEMO_BUY_PASS=<mode>: the plaza parcel as the ground menu's
 /// "Buy access" finds it (sell, none, own; see docs/TESTING.md).
 pub fn pass_scenario() -> Option<String> {
-    std::env::var("AURORA_DEMO_BUY_PASS").ok().map(|v| v.trim().to_lowercase())
+    std::env::var("DEEPLY_DEMO_BUY_PASS").ok().map(|v| v.trim().to_lowercase())
 }
 
 /// Loup's parcel selling passes of an hour for L$ 88 to whoever is not on
@@ -264,10 +264,10 @@ pub(super) fn parcel() -> ParcelInfo {
     .clone()
 }
 
-/// AURORA_DEMO_LAND_PRIMS=<used>[,<step>]: objects on the owner's land in
+/// DEEPLY_DEMO_LAND_PRIMS=<used>[,<step>]: objects on the owner's land in
 /// the region, and how many more each answer finds.
 fn prims_scenario() -> Option<(i32, i32)> {
-    let v = std::env::var("AURORA_DEMO_LAND_PRIMS").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_LAND_PRIMS").ok()?;
     let (used, step) = v.split_once(',').unwrap_or((v.as_str(), "0"));
     Some((used.trim().parse().ok()?, step.trim().parse().unwrap_or(0)))
 }
@@ -304,7 +304,7 @@ struct DemoDay {
 
 static DAY: Mutex<Option<DemoDay>> = Mutex::new(None);
 
-/// `AURORA_DEMO_ENV_EDITOR=custom`: the parcel starts with the user's day
+/// `DEEPLY_DEMO_ENV_EDITOR=custom`: the parcel starts with the user's day
 /// cycle applied, for "Custom" to edit (once: a reset then leaves it).
 fn custom_day_once() {
     static ONCE: std::sync::Once = std::sync::Once::new();
@@ -636,7 +636,7 @@ pub fn reply(c: &LandCommand) -> Vec<NetEvent> {
             day_offset,
             ..
         } => {
-            // AURORA_DEMO_ENV_EDITOR=…-refused: the simulator refuses it
+            // DEEPLY_DEMO_ENV_EDITOR=…-refused: the simulator refuses it
             if super::env::editor().is_some_and(|s| s.ends_with("-refused")) {
                 return vec![ev(LandEvent::Environment {
                     local_id: *local_id,

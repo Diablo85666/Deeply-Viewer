@@ -2,13 +2,13 @@
 //! button is shown disabled and nothing is fetched. The README header carries
 //! the same Discord and website links: change them there too.
 
-/// Aurora Deeply Viewer community repository.
+/// Deeply Viewer community repository.
 pub const GITHUB: &str = "https://github.com/Diablo85666/Deeply-Viewer";
 /// Issue template chooser, opened in the browser by "Report a bug" (login
 /// screen, top bar, Help menu) and by the crash window.
 pub const NEW_ISSUE: &str = "https://github.com/Diablo85666/Deeply-Viewer/issues/new";
 /// The project's wiki, generated from the guides of `docs/`
-/// (`scripts/build-wiki.ps1`): Help › Aurora Viewer wiki.
+/// (`scripts/build-wiki.ps1`): Help › Deeply Viewer wiki.
 pub const WIKI: &str = "https://github.com/Diablo85666/Deeply-Viewer?tab=readme-ov-file";
 /// Community Discord invite.
 pub const DISCORD: &str = "https://discord.gg/VgkrhRZka";

@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Builds the latest main of GitHub (or a PR) in --release, next to the
     repository: ..\RELEASE\Deeply-Viewer\deeply-viewer.exe, ready to launch.
@@ -93,12 +93,12 @@ $sw = [Diagnostics.Stopwatch]::StartNew()
 Push-Location $src
 # A shell inherited from a release job must not stamp another commit with
 # its tag. The local build resolves the version from this checkout's Git.
-$previousVersionTag = [Environment]::GetEnvironmentVariable('AURORA_VERSION_TAG', 'Process')
+$previousVersionTag = [Environment]::GetEnvironmentVariable('DEEPLY_VERSION_TAG', 'Process')
 try {
-    [Environment]::SetEnvironmentVariable('AURORA_VERSION_TAG', $null, 'Process')
+    [Environment]::SetEnvironmentVariable('DEEPLY_VERSION_TAG', $null, 'Process')
     Invoke-Checked 'cargo build' { cargo build --release --locked -p aurora-viewer --bin deeply-viewer }
 } finally {
-    [Environment]::SetEnvironmentVariable('AURORA_VERSION_TAG', $previousVersionTag, 'Process')
+    [Environment]::SetEnvironmentVariable('DEEPLY_VERSION_TAG', $previousVersionTag, 'Process')
     Pop-Location
 }
 
@@ -110,7 +110,7 @@ $reportedVersion = $null
 $verifyVersion = Join-Path $src 'scripts\verify-version.ps1'
 if (Test-Path -LiteralPath $verifyVersion) {
     $reportedVersion = (& $builtExe --version | Out-String).Trim()
-    if ($LASTEXITCODE -ne 0 -or $reportedVersion -notmatch '^Aurora Viewer (\S+)$') {
+    if ($LASTEXITCODE -ne 0 -or $reportedVersion -notmatch '^Deeply Viewer (\S+)$') {
         throw "The built viewer did not report a valid version: '$reportedVersion'."
     }
     $exactTag = git -C $src describe --tags --match 'v[0-9]*.[0-9]*.[0-9]*' --exact-match 2>$null

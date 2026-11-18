@@ -845,7 +845,7 @@ mod tests {
         assert!(t.loaded && !t.first_show && !t.timed_out);
     }
 
-    /// The demo region with our avatar dressed by AURORA_DEMO_CLOUD=self.
+    /// The demo region with our avatar dressed by DEEPLY_DEMO_CLOUD=self.
     fn cloud_self() -> (World, Scene, usize, usize) {
         let lib = Arc::new(AvatarLibrary::load());
         let mut world = World::new(lib.clone());

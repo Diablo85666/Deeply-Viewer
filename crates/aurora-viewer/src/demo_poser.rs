@@ -10,7 +10,7 @@ pub fn peer() -> ObjectUpdate {
     object
 }
 
-/// AURORA_DEMO_POSER=compact-crowd: five more residents around you, each
+/// DEEPLY_DEMO_POSER=compact-crowd: five more residents around you, each
 /// with a display name and an account (short to long), who all accept.
 pub const CROWD: [(&str, &str, &str); 5] = [
     ("Lumi", "lumi.starling", "Starling"),

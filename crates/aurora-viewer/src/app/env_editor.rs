@@ -358,7 +358,7 @@ impl App {
         }
     }
 
-    /// `AURORA_DEMO_ENV_EDITOR=item-save`: brightness raised and saved over
+    /// `DEEPLY_DEMO_ENV_EDITOR=item-save`: brightness raised and saved over
     /// the item (frame 900), then saved as a new item (frame 1100).
     pub(super) fn demo_env_editor_step(&mut self, frame: u64) {
         match frame {
@@ -377,7 +377,7 @@ impl App {
         }
     }
 
-    /// `AURORA_DEMO_ENV_EDITOR`.
+    /// `DEEPLY_DEMO_ENV_EDITOR`.
     pub(super) fn demo_env_editor(&mut self, scenario: &str) {
         log::info!("demo environment editor: {scenario}");
         match scenario {

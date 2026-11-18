@@ -1,4 +1,4 @@
-//! People › Near you in Aurora's look (AURORA_DEMO_PEOPLE=rows|crowd|sheet|
+//! People › Near you in Aurora's look (DEEPLY_DEMO_PEOPLE=rows|crowd|sheet|
 //! legacy, docs/TESTING.md): the residents of the People mock-up around the
 //! start position, at its ranges and in its states. `rows`: the rich rows
 //! grouped by range; `sheet`: the same with the sheet of a friend open (the
@@ -50,7 +50,7 @@ pub enum Mode {
 pub fn mode() -> Option<Mode> {
     static MODE: std::sync::OnceLock<Option<Mode>> = std::sync::OnceLock::new();
     *MODE.get_or_init(|| {
-        let value = std::env::var("AURORA_DEMO_PEOPLE").ok()?;
+        let value = std::env::var("DEEPLY_DEMO_PEOPLE").ok()?;
         match value.split(':').next()?.trim() {
             "hover" => Some(Mode::Hover),
             "crowd" | "foule" => Some(Mode::Crowd),
@@ -69,7 +69,7 @@ pub fn mode() -> Option<Mode> {
 
 /// An explicit list width for offline responsive-layout checks.
 fn width_override() -> Option<f32> {
-    let value = std::env::var("AURORA_DEMO_PEOPLE").ok()?;
+    let value = std::env::var("DEEPLY_DEMO_PEOPLE").ok()?;
     let width: f32 = value.split_once(':')?.1.trim().parse().ok()?;
     (width.is_finite() && width >= 220.0).then_some(width)
 }
@@ -140,13 +140,13 @@ pub fn hides_buddy(id: &Uuid) -> bool {
     contacts_mode() && *id == ORION_EXAMPLE
 }
 
-/// AURORA_DEMO_PEOPLE=blocked-empty: the Blocked tab, the server answering
+/// DEEPLY_DEMO_PEOPLE=blocked-empty: the Blocked tab, the server answering
 /// the request with "emptymutelist" (a resident who blocks nobody).
 pub fn server_empty_mute_list() -> bool {
-    std::env::var("AURORA_DEMO_PEOPLE").is_ok_and(|value| value.split(':').next().is_some_and(|mode| mode.trim() == "blocked-empty"))
+    std::env::var("DEEPLY_DEMO_PEOPLE").is_ok_and(|value| value.split(':').next().is_some_and(|mode| mode.trim() == "blocked-empty"))
 }
 
-/// AURORA_DEMO_PEOPLE=blocked|groups: the block list (a set flag means "not
+/// DEEPLY_DEMO_PEOPLE=blocked|groups: the block list (a set flag means "not
 /// blocked", LLMute flags); `groups`: the market's chat only.
 pub fn mute_list() -> Option<String> {
     use crate::world::mutes::flag;
@@ -238,9 +238,9 @@ pub fn seed(world: &mut crate::world::World) {
             },
         );
         sets.move_priority(shop, true);
-        sets.set_stack_icons(std::env::var("AURORA_DEMO_PEOPLE").is_ok_and(|v| v == "visuals-stack"));
+        sets.set_stack_icons(std::env::var("DEEPLY_DEMO_PEOPLE").is_ok_and(|v| v == "visuals-stack"));
     }
-    if std::env::var("AURORA_DEMO_PEOPLE").is_ok_and(|v| v.split(':').next() == Some("sets-import")) {
+    if std::env::var("DEEPLY_DEMO_PEOPLE").is_ok_and(|v| v.split(':').next() == Some("sets-import")) {
         // Synthetic complete account export: an existing set and a new one,
         // including a resident outside the buddy list. Use the real parser
         // and merger, retaining the demo's in-memory-only storage.
@@ -285,7 +285,7 @@ pub fn seed(world: &mut crate::world::World) {
 
 pub fn visuals() -> bool {
     static MODE: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    *MODE.get_or_init(|| std::env::var("AURORA_DEMO_PEOPLE").is_ok_and(|v| v.starts_with("visuals") || v.starts_with("friends-symbols")))
+    *MODE.get_or_init(|| std::env::var("DEEPLY_DEMO_PEOPLE").is_ok_and(|v| v.starts_with("visuals") || v.starts_with("friends-symbols")))
 }
 
 /// The crowd's density: `crowd` and `crowd-hover`.
@@ -681,7 +681,7 @@ fn avatar(k: usize, r: &Resident, pos: Vec3) -> aurora_net::objects::ObjectUpdat
 
 /// The first far resident (coarse location only, with a height), and the
 /// update that draws it where its coarse location put it, as when the
-/// simulator finally sends a far avatar (AURORA_DEMO_CAMERA=zoom-unloaded).
+/// simulator finally sends a far avatar (DEEPLY_DEMO_CAMERA=zoom-unloaded).
 pub fn drawn_late() -> Option<(Uuid, Vec<NetEvent>)> {
     let (k, r) = residents().iter().enumerate().find(|(_, r)| !r.drawn && r.range.is_some())?;
     let pos = place(k, r.range?);

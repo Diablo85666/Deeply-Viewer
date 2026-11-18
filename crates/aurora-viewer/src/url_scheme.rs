@@ -165,7 +165,7 @@ mod win {
         write(&class, None, "URL:Virtual World")?;
         write(&class, Some("URL Protocol"), "")?;
         write(&format!(r"{class}\DefaultIcon"), None, &format!("\"{exe}\",0"))?;
-        write(&format!(r"{class}\shell\open"), Some("FriendlyAppName"), "Aurora Deeply Viewer")?;
+        write(&format!(r"{class}\shell\open"), Some("FriendlyAppName"), "Deeply Viewer")?;
         write(&format!(r"{class}\shell\open\command"), None, &format!("\"{exe}\" -url \"%1\""))?;
         log::info!("{scheme} links: registered for this user");
         Ok(())
@@ -223,7 +223,7 @@ mod win {
             let Some(exe) = read(HKEY_CURRENT_USER, &format!(r"{class}\shell\open\command"), None).and_then(|c| command_exe(&c)) else {
                 continue;
             };
-            let aurora = exe.file_name().is_some_and(|n| n.eq_ignore_ascii_case("aurora-viewer.exe"));
+            let aurora = exe.file_name().is_some_and(|n| n.eq_ignore_ascii_case("deeply-viewer.exe"));
             if aurora && !exe.exists() {
                 log::info!("{scheme} links: the registered viewer moved");
                 if let Err(e) = register_scheme(scheme) {
@@ -417,7 +417,7 @@ mod xdg {
     pub(super) fn desktop_entry(exe: &str) -> String {
         let mimes: String = SCHEMES.iter().map(|s| format!("x-scheme-handler/{s};")).collect();
         format!(
-            "[Desktop Entry]\nType=Application\nName=Aurora Deeply Viewer\nComment=Opens Second Life and Hypergrid links\n\
+            "[Desktop Entry]\nType=Application\nName=Deeply Viewer\nComment=Opens Second Life and Hypergrid links\n\
              Exec={}\nIcon=aurora-viewer\nTerminal=false\nNoDisplay=true\nMimeType={mimes}\n",
             exec_line(exe)
         )
@@ -716,7 +716,7 @@ pub fn refresh() {
 /// At start, published builds outside demo mode only: a registration left
 /// on a moved Aurora is pointed at this one (test builds never take it).
 pub fn repair_at_start() {
-    if env!("AURORA_BUILD_PROFILE") == "release" && std::env::var_os("AURORA_DEMO").is_none() {
+    if env!("DEEPLY_BUILD_PROFILE") == "release" && std::env::var_os("DEEPLY_DEMO").is_none() {
         #[cfg(windows)]
         win::repair();
         #[cfg(target_os = "linux")]
@@ -729,8 +729,8 @@ mod tests {
     #[test]
     fn command_program() {
         assert_eq!(
-            super::win::command_exe(r#""C:\Viewers\Aurora\aurora-viewer.exe" -url "%1""#),
-            Some(std::path::PathBuf::from(r"C:\Viewers\Aurora\aurora-viewer.exe"))
+            super::win::command_exe(r#""C:\Viewers\Aurora\deeply-viewer.exe" -url "%1""#),
+            Some(std::path::PathBuf::from(r"C:\Viewers\Aurora\deeply-viewer.exe"))
         );
         assert_eq!(
             super::win::command_exe(r#"C:\Viewer\viewer.exe -url "%1""#),

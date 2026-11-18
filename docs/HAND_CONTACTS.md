@@ -89,6 +89,6 @@ describes event discovery, nonce/revision validation and the limits of detecting
 a silent stopped script without polling. There is one supported wire protocol,
 `auroraIK/5`.
 
-Offline checks use `AURORA_DEMO_HAND_IK=1|moving|release|observer|observer-release`.
+Offline checks use `DEEPLY_DEMO_HAND_IK=1|moving|release|observer|observer-release`.
 Real LSL compilation and two-viewer motorcycle behaviour require human
 validation; agents never connect to a grid.

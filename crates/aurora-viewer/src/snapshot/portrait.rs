@@ -115,7 +115,7 @@ pub const SHOT_SIDE: u32 = 1024;
 /// new picture sends to the Trash (one picture an outfit, as
 /// LLAppearanceMgr::removeOutfitPhoto removed the previous photo link).
 /// Data, never shown as interface text.
-pub const HD_PICTURE_DESC: &str = "Outfit HD picture (Aurora Viewer)";
+pub const HD_PICTURE_DESC: &str = "Outfit HD picture (Deeply Viewer)";
 
 /// Whether the HD picture can be bought now.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]

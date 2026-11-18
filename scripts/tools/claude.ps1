@@ -1,4 +1,4 @@
-﻿# Aurora Tools: Claude Code permissions for the agents' PR and issue workflow
+# Aurora Tools: Claude Code permissions for the agents' PR and issue workflow
 # (dot-sourced by aurora-tools.ps1).
 #
 # AGENTS.md has the agent post its review on its own PR, merge it with
@@ -41,13 +41,13 @@ $ClaudeAllowRules = @(
 # piped into a PowerShell loop does not match the allow rule). One rule per
 # subject: a settings file that already has the first ones only gains the new.
 $ClaudeAutoModeRules = @(
-    'In the Aurora-Viewer repository, posting the review comment on the user''s own pull request and merging it with scripts/merge-pr.ps1 is allowed once the human has validated the change and CI is green (AGENTS.md workflow).'
-    'In the Aurora-Viewer repository, posting a comment on an issue of that repository with gh issue comment is allowed: answering the issues is part of the agents'' work (AGENTS.md, section 15).'
-    'In the Aurora-Viewer repository, listing and reading the issues of that repository with gh issue list or gh issue view, including formatting their JSON output in PowerShell, is allowed: these commands only read, and following the issues is part of the agents'' work (AGENTS.md, sections 8 and 15).'
-    'In the Aurora-Viewer repository, reading the state of its pull requests and CI runs with gh pr view, gh pr list, gh pr checks, gh run view, gh run list or gh run watch, including formatting their JSON output in PowerShell, is allowed: these commands only read (AGENTS.md, sections 8 and 11).'
-    'In the Aurora-Viewer repository, labelling, editing, assigning to the human''s own account (--add-assignee / --remove-assignee @me), closing and reopening an issue of that repository with gh issue edit, gh issue close or gh issue reopen is allowed: triaging the issues is part of the agents'' work (AGENTS.md, section 15).'
-    'In the Aurora-Viewer repository, publishing the demo captures of a pull request with scripts/pr-captures.ps1 is allowed: the script only pushes image files to the dedicated captures branch, never to main (AGENTS.md, section 12).'
-    'In the Aurora-Viewer repository, reading the team''s project board and moving the Status of an issue of that repository on it (adding the issue to the board if needed) with scripts/issue-board.ps1 is allowed: tracking the issues on the board is part of the agents'' work, and the script never changes the Priority or the milestone (AGENTS.md, section 15).'
+    'In the Deeply-Viewer repository, posting the review comment on the user''s own pull request and merging it with scripts/merge-pr.ps1 is allowed once the human has validated the change and CI is green (AGENTS.md workflow).'
+    'In the Deeply-Viewer repository, posting a comment on an issue of that repository with gh issue comment is allowed: answering the issues is part of the agents'' work (AGENTS.md, section 15).'
+    'In the Deeply-Viewer repository, listing and reading the issues of that repository with gh issue list or gh issue view, including formatting their JSON output in PowerShell, is allowed: these commands only read, and following the issues is part of the agents'' work (AGENTS.md, sections 8 and 15).'
+    'In the Deeply-Viewer repository, reading the state of its pull requests and CI runs with gh pr view, gh pr list, gh pr checks, gh run view, gh run list or gh run watch, including formatting their JSON output in PowerShell, is allowed: these commands only read (AGENTS.md, sections 8 and 11).'
+    'In the Deeply-Viewer repository, labelling, editing, assigning to the human''s own account (--add-assignee / --remove-assignee @me), closing and reopening an issue of that repository with gh issue edit, gh issue close or gh issue reopen is allowed: triaging the issues is part of the agents'' work (AGENTS.md, section 15).'
+    'In the Deeply-Viewer repository, publishing the demo captures of a pull request with scripts/pr-captures.ps1 is allowed: the script only pushes image files to the dedicated captures branch, never to main (AGENTS.md, section 12).'
+    'In the Deeply-Viewer repository, reading the team''s project board and moving the Status of an issue of that repository on it (adding the issue to the board if needed) with scripts/issue-board.ps1 is allowed: tracking the issues on the board is part of the agents'' work, and the script never changes the Priority or the milestone (AGENTS.md, section 15).'
 )
 
 function Get-ClaudeSettingsFile {

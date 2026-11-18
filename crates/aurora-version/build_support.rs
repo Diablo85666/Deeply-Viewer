@@ -57,7 +57,7 @@ pub fn resolve(
         describe_version(description)?
     } else {
         // A source archive without Git must never pretend to be Cargo's old
-        // package version. Official archives can supply AURORA_VERSION_TAG.
+        // package version. Official archives can supply DEEPLY_VERSION_TAG.
         (Version::new(0, 0, 0), commit_count, commit.unwrap_or("unknown"))
     };
     let custom_release = release_tag.map(|tag| tag.strip_prefix('v').unwrap_or(tag)).filter(|tag| {

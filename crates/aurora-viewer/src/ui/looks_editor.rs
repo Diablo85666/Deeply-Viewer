@@ -29,7 +29,7 @@ pub struct LooksUi {
     /// photo's width left as it is.
     pub compare: Option<f32>,
     /// The photo window's settings scroll to the filters once
-    /// (AURORA_DEMO_PHOTO_LOOK).
+    /// (DEEPLY_DEMO_PHOTO_LOOK).
     pub reveal: bool,
 }
 

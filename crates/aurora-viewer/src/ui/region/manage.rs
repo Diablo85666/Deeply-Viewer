@@ -86,12 +86,12 @@ pub(super) struct ManageState {
     pub debug: Draft<RegionDebug>,
     /// The terrain texture the texture picker is choosing.
     pub picking: Option<usize>,
-    /// AURORA_DEMO_REGION's section, changes and question, set up once the
+    /// DEEPLY_DEMO_REGION's section, changes and question, set up once the
     /// simulator answered.
     pub demo: Option<ManageDemo>,
 }
 
-/// AURORA_DEMO_REGION on Manage: scroll to the section, make the mockup's
+/// DEEPLY_DEMO_REGION on Manage: scroll to the section, make the mockup's
 /// changes there and ask the question, once the demo simulator answered.
 pub(super) fn demo(s: &mut RegionUi, v: &View, world: &World) {
     let Some(d) = s.manage.demo else {

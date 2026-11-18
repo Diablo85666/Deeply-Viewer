@@ -6,15 +6,15 @@ use crate::settings::PlateClick;
 use crate::ui::context::{CtxAction, Target};
 use uuid::Uuid;
 
-/// Frame at which `AURORA_DEMO_PLATE_HOVER=x,y,click` clicks the plate.
+/// Frame at which `DEEPLY_DEMO_PLATE_HOVER=x,y,click` clicks the plate.
 const DEMO_CLICK_FRAME: u64 = 700;
 
-/// `AURORA_DEMO_PLATE_HOVER=x,y[,click]`: the pointer held at x, y (points)
+/// `DEEPLY_DEMO_PLATE_HOVER=x,y[,click]`: the pointer held at x, y (points)
 /// for the plates, and a click there at frame 700.
 fn demo_pointer() -> Option<(egui::Pos2, bool)> {
     static POINTER: std::sync::OnceLock<Option<(egui::Pos2, bool)>> = std::sync::OnceLock::new();
     *POINTER.get_or_init(|| {
-        let value = std::env::var("AURORA_DEMO_PLATE_HOVER").ok()?;
+        let value = std::env::var("DEEPLY_DEMO_PLATE_HOVER").ok()?;
         let mut parts = value.split(',').map(str::trim);
         let x = parts.next()?.parse().ok()?;
         let y = parts.next()?.parse().ok()?;
@@ -22,31 +22,31 @@ fn demo_pointer() -> Option<(egui::Pos2, bool)> {
     })
 }
 
-/// `AURORA_DEMO_PLATE_JIGGLE=1`: jiggly plates for this run (not saved),
-/// the pointer of `AURORA_DEMO_PLATE_HOVER` going in and out of its plate
+/// `DEEPLY_DEMO_PLATE_JIGGLE=1`: jiggly plates for this run (not saved),
+/// the pointer of `DEEPLY_DEMO_PLATE_HOVER` going in and out of its plate
 /// every `DEMO_JIGGLE_FRAMES` frames from frame 600 to 700.
 fn demo_jiggle() -> bool {
     static ON: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    *ON.get_or_init(|| std::env::var("AURORA_DEMO_PLATE_JIGGLE").is_ok_and(|v| v.trim() == "1"))
+    *ON.get_or_init(|| std::env::var("DEEPLY_DEMO_PLATE_JIGGLE").is_ok_and(|v| v.trim() == "1"))
 }
 const DEMO_JIGGLE_FRAMES: u64 = 8;
 
-/// `AURORA_DEMO_PLATE_COMBO=<clicks>`: the click combo for this run (not
+/// `DEEPLY_DEMO_PLATE_COMBO=<clicks>`: the click combo for this run (not
 /// saved), and that many clicks on the plate under the pointer of
-/// `AURORA_DEMO_PLATE_HOVER`, one every `DEMO_COMBO_FRAMES` frames, the
+/// `DEEPLY_DEMO_PLATE_HOVER`, one every `DEMO_COMBO_FRAMES` frames, the
 /// last at frame 700.
 fn demo_combo() -> Option<u64> {
     static CLICKS: std::sync::OnceLock<Option<u64>> = std::sync::OnceLock::new();
-    *CLICKS.get_or_init(|| std::env::var("AURORA_DEMO_PLATE_COMBO").ok()?.trim().parse().ok())
+    *CLICKS.get_or_init(|| std::env::var("DEEPLY_DEMO_PLATE_COMBO").ok()?.trim().parse().ok())
 }
 const DEMO_COMBO_FRAMES: u64 = 4;
 
-/// `AURORA_DEMO_PLATE_CLICK=profile|im|tp|menu`: the action for this run,
+/// `DEEPLY_DEMO_PLATE_CLICK=profile|im|tp|menu`: the action for this run,
 /// without saving it.
 fn demo_action() -> Option<PlateClick> {
     static ACTION: std::sync::OnceLock<Option<PlateClick>> = std::sync::OnceLock::new();
     *ACTION.get_or_init(|| {
-        Some(match std::env::var("AURORA_DEMO_PLATE_CLICK").ok()?.trim() {
+        Some(match std::env::var("DEEPLY_DEMO_PLATE_CLICK").ok()?.trim() {
             "profile" => PlateClick::Profile,
             "im" => PlateClick::InstantMessage,
             "tp" => PlateClick::OfferTeleport,

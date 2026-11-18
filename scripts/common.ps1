@@ -1,4 +1,4 @@
-﻿# Shared helpers for the scripts (dot-sourced: . "$PSScriptRoot\common.ps1").
+# Shared helpers for the scripts (dot-sourced: . "$PSScriptRoot\common.ps1").
 
 # Native tools (cargo, git, gh) write progress to stderr: Windows PowerShell 5.1
 # turns it into errors when the output is redirected. They are judged on their
@@ -11,7 +11,7 @@ $ErrorActionPreference = 'Continue'
 # folder, so a script works whatever the current folder (double-click…).
 function Get-AuroraPaths {
     $common = (git -C $PSScriptRoot rev-parse --path-format=absolute --git-common-dir).Trim()
-    if ($LASTEXITCODE -ne 0 -or -not $common) { throw "Not in an Aurora Viewer git repository." }
+    if ($LASTEXITCODE -ne 0 -or -not $common) { throw "Not in an Deeply Viewer git repository." }
     $main = Split-Path $common -Parent
     $root = Split-Path $main -Parent
     [pscustomobject]@{ Main = $main; Root = $root; Work = (Join-Path $root 'work') }
@@ -29,7 +29,7 @@ function Get-TaskSlug([string]$Name) {
 function Test-InUse([string]$Dir) {
     $full = [IO.Path]::GetFullPath($Dir).TrimEnd('\') + '\'
     $procs = Get-CimInstance Win32_Process -ErrorAction SilentlyContinue -Filter (
-        "Name='cargo.exe' OR Name='rustc.exe' OR Name='clippy-driver.exe' OR Name='aurora-viewer.exe'")
+        "Name='cargo.exe' OR Name='rustc.exe' OR Name='clippy-driver.exe' OR Name='deeply-viewer.exe'")
     [bool]($procs | Where-Object {
         ($_.ExecutablePath -and $_.ExecutablePath.StartsWith($full, [StringComparison]::OrdinalIgnoreCase)) -or
         ($_.CommandLine -and $_.CommandLine.IndexOf($full, [StringComparison]::OrdinalIgnoreCase) -ge 0)
@@ -56,7 +56,7 @@ function Get-IncrementalDirs([string]$Target) {
 # demo, tests). The scripts write that file while sccache is there and delete
 # it once it is gone: without sccache, Cargo builds as before.
 
-$BuildCacheMarker = '# Written by the Aurora Viewer scripts (Sync-BuildCache).'
+$BuildCacheMarker = '# Written by the Deeply Viewer scripts (Sync-BuildCache).'
 
 function Find-Sccache {
     $cmd = Get-Command sccache -CommandType Application -ErrorAction SilentlyContinue | Select-Object -First 1
@@ -68,7 +68,7 @@ function Find-Sccache {
 
 # Writes or deletes <root>\.cargo\config.toml to match the installed sccache.
 # A file there that these scripts did not write is left alone. Size of the
-# cache: AURORA_BUILD_CACHE_SIZE (sccache format, 10G by default).
+# cache: DEEPLY_BUILD_CACHE_SIZE (sccache format, 10G by default).
 function Sync-BuildCache([string]$Root) {
     if (-not $Root) { $Root = (Get-AuroraPaths).Root }
     $file = Join-Path $Root '.cargo\config.toml'
@@ -78,7 +78,7 @@ function Sync-BuildCache([string]$Root) {
         if (Test-Path -LiteralPath $file) { Remove-Item -LiteralPath $file -Force -ErrorAction SilentlyContinue }
         return
     }
-    $size = if ($env:AURORA_BUILD_CACHE_SIZE) { $env:AURORA_BUILD_CACHE_SIZE } else { '10G' }
+    $size = if ($env:DEEPLY_BUILD_CACHE_SIZE) { $env:DEEPLY_BUILD_CACHE_SIZE } else { '10G' }
     # TOML literal strings ('…'): the backslashes of the paths stay as they are
     $text = @(
         $BuildCacheMarker,
@@ -101,7 +101,7 @@ function Sync-BuildCache([string]$Root) {
 # --- One heavy build at a time --------------------------------------------------
 # Several agents running check.ps1 at once each take every core, and all of
 # them end up slower than one after the other. A heavy build takes one of
-# AURORA_BUILD_SLOTS slots (2 by default) and waits for a free one. A slot is
+# DEEPLY_BUILD_SLOTS slots (2 by default) and waits for a free one. A slot is
 # a named mutex: the OS frees it if the script dies.
 #
 # Windows waits on every slot at once. PowerShell 7 on Linux and macOS cannot:
@@ -110,7 +110,7 @@ function Sync-BuildCache([string]$Root) {
 
 function Enter-BuildSlot {
     $count = 2
-    if ($env:AURORA_BUILD_SLOTS -match '^\d+$' -and [int]$env:AURORA_BUILD_SLOTS -ge 1) { $count = [int]$env:AURORA_BUILD_SLOTS }
+    if ($env:DEEPLY_BUILD_SLOTS -match '^\d+$' -and [int]$env:DEEPLY_BUILD_SLOTS -ge 1) { $count = [int]$env:DEEPLY_BUILD_SLOTS }
     $slots = [Threading.Mutex[]](1..$count | ForEach-Object { New-Object Threading.Mutex($false, "Local\AuroraViewerBuildSlot$_") })
     # $IsWindows is unset on Windows PowerShell 5.1; that edition is Windows.
     $waitAny = ($PSVersionTable.PSEdition -eq 'Desktop') -or $IsWindows
@@ -147,7 +147,7 @@ function Enter-BuildSlot {
             $taken = $e.MutexIndex
         }
         if ($taken -lt 0 -and $timeout -eq 0) {
-            Write-Host "Waiting for a build slot: $count heavy build(s) already running on this PC (AURORA_BUILD_SLOTS)…" -ForegroundColor Yellow
+            Write-Host "Waiting for a build slot: $count heavy build(s) already running on this PC (DEEPLY_BUILD_SLOTS)…" -ForegroundColor Yellow
             $timeout = 1000
         }
     }

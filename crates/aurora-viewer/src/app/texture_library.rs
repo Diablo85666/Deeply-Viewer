@@ -133,7 +133,7 @@ impl App {
     }
 
     pub(super) fn texture_library_demo_input(&self, raw: &mut egui::RawInput) {
-        let Ok(mode) = std::env::var("AURORA_DEMO_TEXTURE_LIBRARY") else {
+        let Ok(mode) = std::env::var("DEEPLY_DEMO_TEXTURE_LIBRARY") else {
             return;
         };
         let button = |pos, pressed| egui::Event::PointerButton {
@@ -383,7 +383,7 @@ impl App {
             && !self.library_demo_seeded
             && self.frame_count >= 600
             && !self.world.inventory.root.is_nil()
-            && let Ok(mode) = std::env::var("AURORA_DEMO_TEXTURE_LIBRARY")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_TEXTURE_LIBRARY")
         {
             crate::demo::texture_library::seed(&mut self.world.inventory, &mut self.scene, self.world.agent_id, mode == "empty");
             let objects: Vec<_> = self
@@ -413,7 +413,7 @@ impl App {
             self.panels.perf = false;
             self.panels.minimap = false;
             self.panels.ao = false;
-            if matches!(mode.as_str(), "objects-drop" | "objects-nocopy-drop") && std::env::var_os("AURORA_DEMO_CAM").is_none() {
+            if matches!(mode.as_str(), "objects-drop" | "objects-nocopy-drop") && std::env::var_os("DEEPLY_DEMO_CAM").is_none() {
                 self.camera.demo_orbit(0.0, 0.6, Some(9.0), &self.settings.camera);
             }
             let inventory_drag = crate::demo::texture_library::inventory_drag_enabled();
@@ -475,7 +475,7 @@ impl App {
         }
         if self.demo
             && self.library_demo_seeded
-            && let Ok(mode) = std::env::var("AURORA_DEMO_TEXTURE_LIBRARY")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_TEXTURE_LIBRARY")
             && mode.starts_with("cascade")
             && (620..=720).contains(&self.frame_count)
             && (self.frame_count - 620).is_multiple_of(20)
@@ -493,7 +493,7 @@ impl App {
         }
         if self.demo
             && self.library_demo_seeded
-            && std::env::var("AURORA_DEMO_TEXTURE_LIBRARY").is_ok_and(|mode| mode.starts_with("multi-preview"))
+            && std::env::var("DEEPLY_DEMO_TEXTURE_LIBRARY").is_ok_and(|mode| mode.starts_with("multi-preview"))
         {
             let items = crate::demo::texture_library::preview_items();
             for (index, item) in items.into_iter().enumerate() {
@@ -512,11 +512,11 @@ impl App {
             if self.frame_count == 720 {
                 self.texture_library.open_preview(ctx, &self.world, items[0]);
             }
-            if self.frame_count >= 760 && std::env::var("AURORA_DEMO_TEXTURE_LIBRARY").as_deref() == Ok("multi-preview-closed") {
+            if self.frame_count >= 760 && std::env::var("DEEPLY_DEMO_TEXTURE_LIBRARY").as_deref() == Ok("multi-preview-closed") {
                 self.panels.texture_library = false;
             }
         }
-        if self.demo && self.library_demo_seeded && std::env::var("AURORA_DEMO_TEXTURE_LIBRARY").as_deref() == Ok("preview-sizes") {
+        if self.demo && self.library_demo_seeded && std::env::var("DEEPLY_DEMO_TEXTURE_LIBRARY").as_deref() == Ok("preview-sizes") {
             let items = crate::demo::texture_library::preview_items();
             for (item, frame) in items.into_iter().zip([620, 670, 690, 740]) {
                 if self.frame_count == frame {
@@ -540,7 +540,7 @@ impl App {
         }
         if self.demo
             && self.library_demo_seeded
-            && let Ok(mode) = std::env::var("AURORA_DEMO_TEXTURE_LIBRARY")
+            && let Ok(mode) = std::env::var("DEEPLY_DEMO_TEXTURE_LIBRARY")
             && mode.starts_with("preview-controls")
             && matches!(self.frame_count, 620 | 700)
         {
@@ -564,7 +564,7 @@ impl App {
                 self.texture_library.demo_preview_controls(&mode, &mut self.world);
             }
         }
-        if self.demo && std::env::var("AURORA_DEMO_TEXTURE_LIBRARY").as_deref() == Ok("preview-controls-local-apply") {
+        if self.demo && std::env::var("DEEPLY_DEMO_TEXTURE_LIBRARY").as_deref() == Ok("preview-controls-local-apply") {
             let [texture, _, item, _] = crate::demo::texture_library::preview_items();
             if self.frame_count == 740
                 && let Some(material) = self.texture_library.demo_material_draft(item)

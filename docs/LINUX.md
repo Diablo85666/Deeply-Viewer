@@ -1,6 +1,6 @@
-# Installing Aurora Viewer on Linux
+# Installing Deeply Viewer on Linux
 
-Every release of Aurora Viewer comes with a Linux build: an archive to
+Every release of Deeply Viewer comes with a Linux build: an archive to
 extract and run, with nothing to install as root. It is tested on Arch Linux
 and CachyOS; other recent distributions work the same way.
 
@@ -43,23 +43,23 @@ Plus the Vulkan driver of your graphics card if it is not there yet:
 
 ## 2. Download and extract
 
-From the [latest release](https://github.com/Aurora-Viewer/Aurora-Viewer/releases/latest),
-download `Aurora-Viewer-vX.Y.Z-linux-x64.tar.gz` and its `.sha256` file into
+From the [latest release](https://github.com/Diablo85666/Deeply-Viewer/releases/latest),
+download `Deeply-Viewer-vX.Y.Z-linux-x64.tar.gz` and its `.sha256` file into
 the same folder, then:
 
 ```bash
-sha256sum -c Aurora-Viewer-vX.Y.Z-linux-x64.tar.gz.sha256
-tar -xzf Aurora-Viewer-vX.Y.Z-linux-x64.tar.gz
+sha256sum -c Deeply-Viewer-vX.Y.Z-linux-x64.tar.gz.sha256
+tar -xzf Deeply-Viewer-vX.Y.Z-linux-x64.tar.gz
 ```
 
-The archive holds one folder, `Aurora-Viewer-vX.Y.Z-linux-x64`, with the
+The archive holds one folder, `Deeply-Viewer-vX.Y.Z-linux-x64`, with the
 viewer (`aurora-viewer`), its desktop entry and icon, its licences and the
 README. Move it where you like, for example `~/.local/opt/aurora-viewer`.
 
 ## 3. Start the viewer
 
 ```bash
-cd Aurora-Viewer-vX.Y.Z-linux-x64
+cd Deeply-Viewer-vX.Y.Z-linux-x64
 ./aurora-viewer
 ```
 
@@ -154,7 +154,7 @@ your desktop (GNOME, KDE and other GLib desktops read such paths).
 ```bash
 sudo pacman -S --needed git base-devel rustup cmake clang pkgconf alsa-lib libxkbcommon wayland libx11 libxcursor libxrandr libxi vulkan-icd-loader
 rustup default stable
-git clone https://github.com/Aurora-Viewer/Aurora-Viewer aurora-viewer
+git clone https://github.com/Diablo85666/Deeply-Viewer aurora-viewer
 cd aurora-viewer
 cargo build --release -p aurora-viewer
 ./target/release/aurora-viewer

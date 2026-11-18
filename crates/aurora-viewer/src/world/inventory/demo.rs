@@ -213,7 +213,7 @@ pub fn seed(inv: &mut Inventory, agent: Uuid) {
         .collect(),
     );
     let original = Uuid::from_u128(8100);
-    if std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|mode| mode.contains("hover-photo"))
+    if std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|mode| mode.contains("hover-photo"))
         && let Some(object) = inv.items.get_mut(&original)
     {
         object.thumbnail = crate::demo::TEX_SNAPSHOT;
@@ -247,7 +247,7 @@ pub fn seed(inv: &mut Inventory, agent: Uuid) {
         owner_mask: actions::MOVE | actions::TRANSFER,
         ..Default::default()
     }]);
-    if std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|mode| matches!(mode.as_str(), "link-icons" | "aurora-link-icons")) {
+    if std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|mode| matches!(mode.as_str(), "link-icons" | "aurora-link-icons")) {
         for (kind, &name) in super::super::appearance::wearables().iter().enumerate() {
             inv.add_items(vec![InvItem {
                 id: Uuid::from_u128(82_000 + kind as u128),
@@ -432,7 +432,7 @@ pub fn seed_received_sort(inv: &mut Inventory, agent: Uuid) {
     }
 }
 
-/// `AURORA_DEMO_INVENTORY=received-big`: a long-time buyer's Received Items,
+/// `DEEPLY_DEMO_INVENTORY=received-big`: a long-time buyer's Received Items,
 /// `folders` purchases of `items` items each, to measure the tab's cost.
 pub fn seed_received_big(inv: &mut Inventory, agent: Uuid, folders: u128, items: u128) {
     seed_received(inv, agent);
@@ -632,13 +632,13 @@ pub fn seed_clipboard_tree(inv: &mut Inventory) {
 }
 
 pub fn note_asset(embedded: bool) -> Vec<u8> {
-    let markdown = std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|mode| {
+    let markdown = std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|mode| {
         matches!(
             mode.as_str(),
             "note-markdown" | "note-source" | "note-classic" | "note-format" | "note-remember" | "note-lsl" | "note-lsl-markdown"
         )
     });
-    let lsl = std::env::var("AURORA_DEMO_INVENTORY").is_ok_and(|mode| matches!(mode.as_str(), "note-lsl" | "note-lsl-markdown"));
+    let lsl = std::env::var("DEEPLY_DEMO_INVENTORY").is_ok_and(|mode| matches!(mode.as_str(), "note-lsl" | "note-lsl-markdown"));
     let text = if lsl {
         aurora_i18n::tr!("notecard-lsl-demo")
     } else if markdown {
@@ -845,7 +845,7 @@ pub fn seed_long_names(inv: &mut Inventory) {
     inv.sort_all();
 }
 
-/// `AURORA_DEMO_INVENTORY=big[:<items>][,recent][,search=<text>][,toggle=<s>][,churn=<ms>][,replace]`:
+/// `DEEPLY_DEMO_INVENTORY=big[:<items>][,recent][,search=<text>][,toggle=<s>][,churn=<ms>][,replace]`:
 /// a big inventory (`seed_big`) to measure what the Inventory window costs.
 /// `recent` opens the Recent tab, `search` filters the list, `toggle` opens
 /// and closes the window every `s` seconds (closed and open alternate in one
@@ -889,7 +889,7 @@ pub fn parse_big(mode: &str) -> Option<Big> {
             Some(("search", text)) => big.search = text.into(),
             Some(("toggle", s)) => big.toggle = s.parse().unwrap_or(0.0),
             Some(("churn", ms)) => big.churn_ms = ms.parse().unwrap_or(0),
-            _ => log::warn!("AURORA_DEMO_INVENTORY: unknown option {part}"),
+            _ => log::warn!("DEEPLY_DEMO_INVENTORY: unknown option {part}"),
         }
     }
     Some(big)
@@ -897,11 +897,11 @@ pub fn parse_big(mode: &str) -> Option<Big> {
 
 pub fn big() -> Option<&'static Big> {
     static BIG: std::sync::OnceLock<Option<Big>> = std::sync::OnceLock::new();
-    BIG.get_or_init(|| std::env::var("AURORA_DEMO_INVENTORY").ok().and_then(|mode| parse_big(&mode)))
+    BIG.get_or_init(|| std::env::var("DEEPLY_DEMO_INVENTORY").ok().and_then(|mode| parse_big(&mode)))
         .as_ref()
 }
 
-/// `AURORA_DEMO_INVENTORY=big[:<items>]`: the inventory of a long-time
+/// `DEEPLY_DEMO_INVENTORY=big[:<items>]`: the inventory of a long-time
 /// resident, `items` items (30,000 by default) in about a tenth as many
 /// folders, up to five levels deep: store brands, their products, extras and
 /// fit packs, and one flat folder of 2,000 loose objects. Mixed types,

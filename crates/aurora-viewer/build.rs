@@ -20,7 +20,7 @@ fn main() {
         .and_then(|i| i.checked_sub(1))
         .map(|i| parts[i].clone())
         .unwrap_or_default();
-    println!("cargo:rustc-env=AURORA_BUILD_PROFILE={dir}");
+    println!("cargo:rustc-env=DEEPLY_BUILD_PROFILE={dir}");
     dictionaries();
 
     if std::env::var("CARGO_CFG_TARGET_OS").as_deref() == Ok("windows") {
@@ -91,7 +91,10 @@ fn windows_resources() {
         .set("ProductName", "Deeply Viewer")
         .set("FileDescription", "Deeply Viewer")
         .set("OriginalFilename", "deeply-viewer.exe")
-        .set("LegalCopyright", "Copyright © Deeply Viewer")
+        .set(
+            "LegalCopyright",
+            "Copyright © 2026 Deeply Viewer contributors and Aurora Viewer authors — GPL-3.0-or-later",
+        )
         .set("ProductVersion", &display)
         .set("FileVersion", &display)
         .set_version_info(winresource::VersionInfo::PRODUCTVERSION, packed)

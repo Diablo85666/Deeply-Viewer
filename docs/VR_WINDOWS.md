@@ -60,12 +60,12 @@ Windows path. Headset tests use a local dev build.
 2. Run the offline viewer first:
 
    ```powershell
-   $env:AURORA_DEMO = "1"
+   $env:DEEPLY_DEMO = "1"
    cargo run -p aurora-viewer -- --title "Test vr-scene-view Windows"
    ```
 
    With a downloaded binary, set the same environment variable and run
-   `./aurora-viewer.exe --title "Test vr-scene-view Windows"` instead.
+   `./deeply-viewer.exe --title "Test vr-scene-view Windows"` instead.
 3. Place/pitch the desktop camera downward. Click the headset button in the
    bottom toolbar. Confirm horizon-level entry, correct stereo/head tracking,
    scene materials/lighting/transparency and no interface/HUD/nameplate overlays.
@@ -77,7 +77,7 @@ Windows path. Headset tests use a local dev build.
    with no loader/runtime/headset: normal desktop operation should remain
    available; VR is unavailable. Disconnect/runtime restart are separate tests,
    not supported recovery promises.
-6. Only after offline tests pass, the human may clear `AURORA_DEMO`, launch
+6. Only after offline tests pass, the human may clear `DEEPLY_DEMO`, launch
    normally and perform login/live-grid validation. Agents do not log in or
    operate on a grid. Record runtime/headset/GPU/driver versions, results and
    frame-time/memory observations without credentials or personal location data.

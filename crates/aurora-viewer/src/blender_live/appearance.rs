@@ -6,7 +6,7 @@ use serde::Deserialize;
 use sha2::{Digest, Sha256};
 use std::{collections::HashMap, sync::Arc};
 use uuid::Uuid;
-pub const STAGING_BUSY: &str = "AURORA_BLENDER_STAGING_BUSY";
+pub const STAGING_BUSY: &str = "DEEPLY_BLENDER_STAGING_BUSY";
 
 #[derive(Clone, Deserialize)]
 #[serde(deny_unknown_fields)]

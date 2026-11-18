@@ -10,13 +10,13 @@ use crossbeam_channel::{Receiver, Sender};
 use serde_json::Value;
 use std::time::{Duration, Instant};
 
-const API: &str = "https://api.github.com/repos/Diablo85666/Aurora-Deeply-Viewer/issues";
-pub const ISSUES: &str = "https://github.com/Diablo85666/Aurora-Deeply-Viewer/issues";
+const API: &str = "https://api.github.com/repos/Diablo85666/Deeply-Viewer/issues";
+pub const ISSUES: &str = "https://github.com/Diablo85666/Deeply-Viewer/issues";
 pub const VERIFY: &str = "https://github.com/login/device";
 const TOKEN: &str = "https://github.com/login/oauth/access_token";
 // Public identifier of the project's GitHub App (Device Flow enabled).
 const CLIENT_ID: &str = "Iv23liT7PLWClMLztI1W";
-const SERVICE: &str = "Aurora Deeply Viewer GitHub";
+const SERVICE: &str = "Deeply Viewer GitHub";
 const ACCOUNT: &str = "crash-reports";
 /// The credential store's entry of the authorization (service, account),
 /// for the removal from this computer (`uninstall.rs`).
@@ -305,10 +305,10 @@ impl Drop for Session {
     }
 }
 
-/// `AURORA_DEMO_CRASH_SEND=…,fail`: the simulated issue creation fails.
+/// `DEEPLY_DEMO_CRASH_SEND=…,fail`: the simulated issue creation fails.
 fn demo_send() -> Reply {
     std::thread::sleep(Duration::from_millis(800));
-    if std::env::var("AURORA_DEMO_CRASH_SEND").is_ok_and(|v| v.split(',').any(|p| p == "fail")) {
+    if std::env::var("DEEPLY_DEMO_CRASH_SEND").is_ok_and(|v| v.split(',').any(|p| p == "fail")) {
         Reply::Failed(Failure::Network)
     } else {
         Reply::Created(4242)

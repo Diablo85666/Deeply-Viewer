@@ -444,7 +444,7 @@ impl ProfileUi {
         self.windows.iter().any(|w| w.id == me && w.open && w.tab == TAB_PICKS)
     }
 
-    /// Demo captures of the Aurora window (AURORA_DEMO_PROFILE): `edit` puts
+    /// Demo captures of the Aurora window (DEEPLY_DEMO_PROFILE): `edit` puts
     /// our profile in edit mode, `compact` gives the window the width of
     /// the compact layout, a number shows that tab.
     pub fn demo(&mut self, ctx: &egui::Context, id: Uuid, option: &str) {
@@ -478,7 +478,7 @@ impl ProfileUi {
     }
 
     /// Where the first open profile window stands, either style
-    /// (`AURORA_DEMO_GIVE=profile`).
+    /// (`DEEPLY_DEMO_GIVE=profile`).
     pub fn demo_window_rect(&self, ctx: &egui::Context) -> Option<egui::Rect> {
         let w = self.windows.iter().find(|w| w.open)?;
         [aurora::window_id(w.id), format!("profile-{}", w.id)]

@@ -1,4 +1,4 @@
-//! AURORA_DEMO_SLIDESHOW=1[,<seconds>][,net=<ms>][,mbps=<m>][,side=<px>][,count=<n>][,crowd=<n>][,preload]:
+//! DEEPLY_DEMO_SLIDESHOW=1[,<seconds>][,net=<ms>][,mbps=<m>][,side=<px>][,count=<n>][,crowd=<n>][,preload]:
 //! a scripted slideshow without a grid. A panel stands 4 m ahead of the camera,
 //! and every `seconds` (3 by default) its texture entry changes to the next
 //! of `count` pictures (6), as a script calling llSetTexture makes the
@@ -109,7 +109,7 @@ pub struct SlideshowDemo {
 
 impl SlideshowDemo {
     pub fn from_env() -> Option<Self> {
-        let value = std::env::var("AURORA_DEMO_SLIDESHOW").ok()?;
+        let value = std::env::var("DEEPLY_DEMO_SLIDESHOW").ok()?;
         Some(SlideshowDemo {
             options: Options::parse(&value),
             ready: None,

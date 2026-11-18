@@ -83,12 +83,12 @@ pub fn widen(ctx: &egui::Context, id: &str) {
     widgets::size_floater(ctx, id, egui::vec2(WIDE_SIZE, height.max(DEFAULT_SIZE.y)));
 }
 
-/// `AURORA_DEMO_INVENTORY=aurora|aurora-medium|aurora-wide|aurora-rights`,
+/// `DEEPLY_DEMO_INVENTORY=aurora|aurora-medium|aurora-wide|aurora-rights`,
 /// each width also with `-no-details`.
 fn demo_mode() -> Option<&'static str> {
     static MODE: std::sync::OnceLock<Option<String>> = std::sync::OnceLock::new();
     MODE.get_or_init(|| {
-        std::env::var("AURORA_DEMO_INVENTORY")
+        std::env::var("DEEPLY_DEMO_INVENTORY")
             .ok()
             .filter(|mode| mode.starts_with("aurora"))
     })

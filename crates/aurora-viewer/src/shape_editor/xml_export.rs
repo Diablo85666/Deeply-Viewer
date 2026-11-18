@@ -99,7 +99,7 @@ impl Export {
         self.start_parts(ctx, &draft.item.name, draft.edited.kind, &draft.edited.params, allowed, lad, None)
     }
 
-    /// Write to `path` without the dialog (`AURORA_DEMO_SHAPE_XML_EXPORT`),
+    /// Write to `path` without the dialog (`DEEPLY_DEMO_SHAPE_XML_EXPORT`),
     /// under the same permission rule.
     pub fn start_file(
         &mut self,
@@ -208,7 +208,7 @@ impl Export {
 #[derive(Default)]
 pub struct MenuExport {
     pub loading: Option<(uuid::Uuid, uuid::Uuid)>,
-    /// Where to save without the dialog (`AURORA_DEMO_SHAPE_XML_MENU`).
+    /// Where to save without the dialog (`DEEPLY_DEMO_SHAPE_XML_MENU`).
     pub path: Option<PathBuf>,
     pub job: Export,
 }

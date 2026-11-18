@@ -1,6 +1,6 @@
-//! The files demo scenarios take from a folder: AURORA_DEMO_ARRIVAL's
-//! `<folder>`, AURORA_DEMO_STREAM's `j2k=`, and the interface sounds of
-//! AURORA_DEMO_SOUND. Plain asset files are read as they are in every build.
+//! The files demo scenarios take from a folder: DEEPLY_DEMO_ARRIVAL's
+//! `<folder>`, DEEPLY_DEMO_STREAM's `j2k=`, and the interface sounds of
+//! DEEPLY_DEMO_SOUND. Plain asset files are read as they are in every build.
 //! Files of the disk cache's format (cache.rs, sealed with this
 //! installation's key) are read through `crate::cache` by development
 //! builds only; a build of the published profile (`release`) leaves them
@@ -11,7 +11,7 @@ use std::path::Path;
 
 /// Whether this build reads files of the cache's format for the scenarios.
 pub fn reads_cache_files() -> bool {
-    reads_cache_files_in(env!("AURORA_BUILD_PROFILE"))
+    reads_cache_files_in(env!("DEEPLY_BUILD_PROFILE"))
 }
 
 /// Every profile but the published one (`dev`, `ci`, `debugging`).

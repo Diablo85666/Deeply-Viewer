@@ -1,5 +1,5 @@
 //! Region / Estate in the offline demo
-//! (`AURORA_DEMO_REGION=overview[:owner|:manager|:resident][:preview][:compact]`): the window
+//! (`DEEPLY_DEMO_REGION=overview[:owner|:manager|:resident][:preview][:compact]`): the window
 //! opens on the demo region, and the "simulator" answers its requests with
 //! the mockup's figures. The role says who the avatar is to the estate:
 //! its owner (the default), one of its managers (RegionHandshake
@@ -64,7 +64,7 @@ pub enum Role {
     Resident,
 }
 
-/// What AURORA_DEMO_REGION asks for.
+/// What DEEPLY_DEMO_REGION asks for.
 #[derive(Debug, Clone, PartialEq)]
 pub struct Scenario {
     pub page: Page,
@@ -261,7 +261,7 @@ fn parse(v: &str) -> Scenario {
 }
 
 pub fn scenario() -> Option<Scenario> {
-    std::env::var("AURORA_DEMO_REGION").ok().map(|v| parse(&v))
+    std::env::var("DEEPLY_DEMO_REGION").ok().map(|v| parse(&v))
 }
 
 pub fn terrain_ids() -> Option<[Uuid; 4]> {
@@ -622,7 +622,7 @@ pub fn covenant_text(asset: Uuid) -> Option<&'static str> {
     })
 }
 
-/// AURORA_DEMO_REGION: two notecards in the inventory, for the covenant.
+/// DEEPLY_DEMO_REGION: two notecards in the inventory, for the covenant.
 pub fn seed_notecards(inv: &mut Inventory, agent: Uuid) {
     if inv.items.contains_key(&Uuid::from_u128(NOTECARDS[0].0)) {
         return;

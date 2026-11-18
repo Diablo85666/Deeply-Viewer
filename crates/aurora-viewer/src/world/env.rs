@@ -103,12 +103,12 @@ fn sky_tmp_ambient(sky: &SkyFrame) -> Vec3 {
 }
 
 /// Whether the colored sky ambient is on, the setting being `on`.
-/// AURORA_COLORED_AMBIENT forces it for a launch: `0` off, `1` on, `alt` one
+/// DEEPLY_COLORED_AMBIENT forces it for a launch: `0` off, `1` on, `alt` one
 /// second each, for an A/B on a still scene.
 pub fn colored_ambient_now(on: bool) -> bool {
     static MODE: std::sync::OnceLock<Option<String>> = std::sync::OnceLock::new();
     static START: std::sync::OnceLock<Instant> = std::sync::OnceLock::new();
-    let mode = MODE.get_or_init(|| std::env::var("AURORA_COLORED_AMBIENT").ok().map(|v| v.trim().to_owned()));
+    let mode = MODE.get_or_init(|| std::env::var("DEEPLY_COLORED_AMBIENT").ok().map(|v| v.trim().to_owned()));
     let secs = START.get_or_init(Instant::now).elapsed().as_secs();
     colored_ambient(mode.as_deref(), on, secs)
 }

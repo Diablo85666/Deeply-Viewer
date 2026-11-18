@@ -123,8 +123,8 @@ tests.
 To compare the languages without changing the preferences:
 
 ```powershell
-$env:AURORA_DEMO = '1'
-$env:AURORA_DEMO_OPTIONS = '1'
+$env:DEEPLY_DEMO = '1'
+$env:DEEPLY_DEMO_OPTIONS = '1'
 cargo run -p aurora-viewer -- --language en --title "Test langue-viewer"
 cargo run -p aurora-viewer -- --language fr --title "Test langue-viewer"
 cargo run -p aurora-viewer -- --language ja --title "Test langue-viewer"

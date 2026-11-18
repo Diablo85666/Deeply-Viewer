@@ -1,4 +1,4 @@
-//! Voice calls in the demo (AURORA_DEMO_CALL): the ChatSessionRequest
+//! Voice calls in the demo (DEEPLY_DEMO_CALL): the ChatSessionRequest
 //! answers and a stand-in for the voice server, which the offline demo does
 //! not have. Every call made from the interface works with it; the variable
 //! starts one, or makes someone call:
@@ -39,7 +39,7 @@ pub enum Mode {
 }
 
 pub fn mode() -> Option<Mode> {
-    // the calls of AURORA_DEMO_CONV=aurora:call…
+    // the calls of DEEPLY_DEMO_CONV=aurora:call…
     if let Some(call) = super::aurora_scenario().and_then(|s| s.call) {
         use super::AuroraCall;
         return Some(match call {
@@ -50,7 +50,7 @@ pub fn mode() -> Option<Mode> {
             AuroraCall::Conference => Mode::Conference,
         });
     }
-    match std::env::var("AURORA_DEMO_CALL").ok()?.as_str() {
+    match std::env::var("DEEPLY_DEMO_CALL").ok()?.as_str() {
         "p2p" => Some(Mode::P2p),
         "hangup" => Some(Mode::Hangup),
         "group" => Some(Mode::Group),
@@ -202,7 +202,7 @@ fn invite(group: bool) -> VoiceInvite {
 }
 
 impl CallDemo {
-    /// Starts the scenario of AURORA_DEMO_CALL once in world: a call made
+    /// Starts the scenario of DEEPLY_DEMO_CALL once in world: a call made
     /// in `world`, or invitation events to apply.
     pub fn scenario(&mut self, world: &mut World, in_world: bool) -> Vec<NetEvent> {
         // `conference-invite`: Orion added once the conference is connected

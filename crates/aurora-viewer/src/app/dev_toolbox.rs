@@ -52,7 +52,7 @@ pub(super) struct Toolbox {
     /// something it shows changed.
     generation: u64,
     preview_key: Option<(&'static str, u64, bool, bool, bool)>,
-    /// AURORA_DEMO_TOOLBOX="target:tool": the tool pressed once the world shows.
+    /// DEEPLY_DEMO_TOOLBOX="target:tool": the tool pressed once the world shows.
     pub(super) demo_press: Option<&'static str>,
 }
 
@@ -130,7 +130,7 @@ impl App {
             && let Some(id) = self.toolbox.demo_press.take()
         {
             self.press_tool(id, renderer);
-            // AURORA_DEMO_TOOLBOX=0:J9: its text in the log, for the demo check
+            // DEEPLY_DEMO_TOOLBOX=0:J9: its text in the log, for the demo check
             if id == "J9"
                 && let Some(text) = self.toolbox.results.get(id)
             {
@@ -686,7 +686,7 @@ impl App {
             "Aurora {} (commit {}, {} build)",
             aurora_version::version(),
             aurora_version::commit(),
-            env!("AURORA_BUILD_PROFILE")
+            env!("DEEPLY_BUILD_PROFILE")
         );
         let _ = writeln!(out, "{machine}");
         let _ = writeln!(

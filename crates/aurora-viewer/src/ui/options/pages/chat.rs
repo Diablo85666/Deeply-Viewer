@@ -29,13 +29,17 @@ pub fn page(cx: &mut Cx, tab: usize) {
                         (crate::settings::TranslationLanguage::Es, "es"),
                         (crate::settings::TranslationLanguage::De, "de"),
                         (crate::settings::TranslationLanguage::Fr, "fr"),
+                        (crate::settings::TranslationLanguage::Pt, "pt"),
+                        (crate::settings::TranslationLanguage::Ru, "ru"),
+                        (crate::settings::TranslationLanguage::Ja, "ja"),
+                        (crate::settings::TranslationLanguage::Zh, "zh"),
                     ],
                 );
                 cx.row_with(
-                    tr!("ui-options-translation-endpoint"),
-                    tr!("ui-options-translation-endpoint-hint"),
-                    &field!(translation_endpoint),
-                    |ui, settings, _, _| ui.text_edit_singleline(&mut settings.translation_endpoint).changed(),
+                    tr!("ui-options-translation-model"),
+                    tr!("ui-options-translation-model-hint"),
+                    &field!(translation_model_path),
+                    |ui, settings, _, _| ui.text_edit_singleline(&mut settings.translation_model_path).changed(),
                 );
                 // ChatFontSize (Chat › Visuals, Medium): the nearby chat's
                 // and the conversations' text on its own, apart from

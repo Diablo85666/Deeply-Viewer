@@ -1,7 +1,7 @@
 //! The app's side of the removal from this computer (`uninstall.rs`,
 //! `ui/uninstall.rs`): the plan when Preferences asks for it, the removal
 //! on a thread of its own (it may start each Blender found, for minutes),
-//! then the result window. `AURORA_DEMO_UNINSTALL` shows each step, as a dry
+//! then the result window. `DEEPLY_DEMO_UNINSTALL` shows each step, as a dry
 //! run.
 
 use super::App;
@@ -109,7 +109,7 @@ impl App {
         }
     }
 
-    /// `AURORA_DEMO_UNINSTALL=confirm|running|result|left`: the preferences
+    /// `DEEPLY_DEMO_UNINSTALL=confirm|running|result|left`: the preferences
     /// on the action, then its confirmation, the result window while it
     /// runs, or once the dry run finished (`left`: scrolled to the folders).
     pub(super) fn uninstall_demo(&mut self, mode: &str) {

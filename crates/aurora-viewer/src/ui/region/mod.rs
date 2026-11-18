@@ -158,7 +158,7 @@ pub struct RegionUi {
     top: top_objects::TopState,
     /// The rules' and terrain's Advanced folds.
     advanced: advanced::AdvancedState,
-    /// The classic window's tab, and AURORA_DEMO_REGION's `classic`.
+    /// The classic window's tab, and DEEPLY_DEMO_REGION's `classic`.
     classic_tab: classic::Tab,
     force_classic: bool,
     /// Environment, Experiences and Covenant: their pickers and dialogs.
@@ -174,7 +174,7 @@ pub struct RegionUi {
     check_texture_heights: bool,
 }
 
-/// What AURORA_DEMO_REGION opens on Manage (`demo_region.rs`).
+/// What DEEPLY_DEMO_REGION opens on Manage (`demo_region.rs`).
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub struct ManageDemo {
     /// The section scrolled to: access, rules or terrain.
@@ -232,7 +232,7 @@ impl RegionUi {
         self.surface.prepare(ctx, scene, &mut self.wanted_images);
     }
 
-    /// AURORA_DEMO_REGION: the page and "View as" of a capture, and on
+    /// DEEPLY_DEMO_REGION: the page and "View as" of a capture, and on
     /// Manage its section, changes and question.
     pub fn demo(&mut self, page: Page, as_resident: bool, manage: ManageDemo) {
         self.page = page;
@@ -240,30 +240,30 @@ impl RegionUi {
         self.manage.demo = Some(manage);
     }
 
-    /// AURORA_DEMO_REGION on Manage › Interventions: the dialog shown.
+    /// DEEPLY_DEMO_REGION on Manage › Interventions: the dialog shown.
     pub fn demo_intervention(&mut self, d: InterventionDialog) {
         self.interventions.demo = Some(d);
     }
 
-    /// AURORA_DEMO_REGION on Manage › Scripts and physics: the Top window
+    /// DEEPLY_DEMO_REGION on Manage › Scripts and physics: the Top window
     /// opened on that report.
     pub fn demo_top(&mut self, report: u32) {
         self.top.demo = Some(report);
     }
 
-    /// AURORA_DEMO_REGION on Manage › Environment, Experiences or
+    /// DEEPLY_DEMO_REGION on Manage › Environment, Experiences or
     /// Covenant: the picker or question shown.
     pub fn demo_estate_wide(&mut self, d: EstateWideDialog) {
         self.estate_wide.demo = Some(d);
     }
 
-    /// AURORA_DEMO_REGION's `classic`: the Legacy Viewer's tabs, on that one.
+    /// DEEPLY_DEMO_REGION's `classic`: the Legacy Viewer's tabs, on that one.
     pub fn demo_classic(&mut self, tab: ClassicTab) {
         self.force_classic = true;
         self.classic_tab = tab;
     }
 
-    /// AURORA_DEMO_REGION on People: a row ticked, a dialog or the picker.
+    /// DEEPLY_DEMO_REGION on People: a row ticked, a dialog or the picker.
     pub fn demo_people(&mut self, people: PeopleDemo) {
         self.people.demo = Some(people);
     }

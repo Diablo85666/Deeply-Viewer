@@ -1,4 +1,4 @@
-//! AURORA_DEMO_CHATLOG: the conversation transcripts without a grid. The
+//! DEEPLY_DEMO_CHATLOG: the conversation transcripts without a grid. The
 //! demo is its own "grid" (`chat_log::grid_name`), so its files live in the
 //! demo account's own folder, under the demo settings; this scenario writes
 //! there the transcripts it shows, the same at every run.
@@ -61,7 +61,7 @@ pub enum ImportStage {
 }
 
 pub fn mode() -> Option<Mode> {
-    let v = std::env::var("AURORA_DEMO_CHATLOG").ok()?;
+    let v = std::env::var("DEEPLY_DEMO_CHATLOG").ok()?;
     let (mode, arg) = v.split_once(':').unwrap_or((v.as_str(), ""));
     Some(match mode {
         "find" => Mode::Find,
@@ -90,7 +90,7 @@ pub fn mode() -> Option<Mode> {
 static DELAYED_MUTES: std::sync::Mutex<Option<NetEvent>> = std::sync::Mutex::new(None);
 
 fn slow_restore() -> bool {
-    std::env::var("AURORA_DEMO_CHATLOG").is_ok_and(|value| value == "restore:slow")
+    std::env::var("DEEPLY_DEMO_CHATLOG").is_ok_and(|value| value == "restore:slow")
 }
 
 pub fn mute_list_reply(text: String) -> Vec<NetEvent> {
@@ -142,7 +142,7 @@ pub fn needle() -> &'static str {
 /// `find:<flag>…` (`none`, `legacy`, `narrow`): the find scenario with no
 /// match, in the Legacy style, or in a window narrow enough for the rail.
 pub fn find_flag(flag: &str) -> bool {
-    std::env::var("AURORA_DEMO_CHATLOG").is_ok_and(|v| {
+    std::env::var("DEEPLY_DEMO_CHATLOG").is_ok_and(|v| {
         let mut parts = v.split(':');
         parts.next() == Some("find") && parts.any(|f| f == flag)
     })

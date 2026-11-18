@@ -324,7 +324,7 @@ fn crosshair(cx: &mut Cx) {
                 ],
             );
             cx.wide().row(tr!("ui-options-crosshair-preview"), "", &Nothing, |ui, s| {
-                // AURORA_DEMO_CROSSHAIR's shape in the demo's captures too
+                // DEEPLY_DEMO_CROSSHAIR's shape in the demo's captures too
                 let shown = crosshair::demo(&s.crosshair);
                 crosshair::preview(ui, &p, shown.as_ref().unwrap_or(&s.crosshair));
                 false

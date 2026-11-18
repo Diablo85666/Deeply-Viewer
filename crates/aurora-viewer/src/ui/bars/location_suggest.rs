@@ -177,7 +177,7 @@ pub fn compare_dict(a: &str, b: &str) -> Ordering {
     (ca as i64 + tie).cmp(&(cb as i64))
 }
 
-/// What `AURORA_DEMO_BARS=locations` types: the start of the demo's
+/// What `DEEPLY_DEMO_BARS=locations` types: the start of the demo's
 /// "Aurora …" landmarks in every language, and of some places of its
 /// history (matched as typed).
 pub const DEMO_TYPED: &str = "Aur";

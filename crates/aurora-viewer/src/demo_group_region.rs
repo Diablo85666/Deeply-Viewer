@@ -1,4 +1,4 @@
-//! AURORA_DEMO_GROUP_REGION: the Group titles window and the title worn by
+//! DEEPLY_DEMO_GROUP_REGION: the Group titles window and the title worn by
 //! region (`world/region_titles.rs`). The account has three rules: the demo
 //! region wears "Aurora Builders" › Builder (already worn at the start:
 //! nothing is sent), "Boreal Lagoon" wears "Northern Wolves" › Officer, and
@@ -29,14 +29,14 @@ const MARKET_OFFICERS: Uuid = Uuid::from_u128(0x6E42_0000_0000_0000_0000_0000_00
 const BUILDERS: Uuid = Uuid::from_u128(0x6E40_0000_0000_0000_0000_0000_0000_0003);
 
 /// The region the scripted teleport reaches, out of reach of the demo
-/// region like AURORA_DEMO_TP_AWAY's.
+/// region like DEEPLY_DEMO_TP_AWAY's.
 const LAGOON: u64 = HANDLE + ((100 * 256u64) << 32);
 
 /// The title chosen in each group (GroupTitleUpdate), the demo's own.
 static SELECTED: Mutex<Option<HashMap<Uuid, Uuid>>> = Mutex::new(None);
 
 fn mode() -> Option<String> {
-    std::env::var("AURORA_DEMO_GROUP_REGION").ok()
+    std::env::var("DEEPLY_DEMO_GROUP_REGION").ok()
 }
 
 pub fn on() -> bool {

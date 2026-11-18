@@ -88,7 +88,7 @@ impl Tab {
         }
     }
 
-    /// Name of the tab for AURORA_DEMO_LAND, whatever the interface language.
+    /// Name of the tab for DEEPLY_DEMO_LAND, whatever the interface language.
     fn key(self) -> &'static str {
         match self {
             Tab::General => "general",

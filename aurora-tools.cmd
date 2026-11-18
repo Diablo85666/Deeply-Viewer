@@ -9,7 +9,7 @@ title Aurora Tools
 cd /d "%~dp0"
 if exist "%~dp0scripts\tools\aurora-tools.ps1" goto repo
 if exist "%~dp0aurora-viewer\scripts\tools\aurora-tools.ps1" goto project
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$f = Join-Path $env:TEMP 'aurora-setup.ps1'; irm https://raw.githubusercontent.com/Aurora-Viewer/Aurora-Viewer/main/scripts/setup.ps1 -OutFile $f; & $f"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$f = Join-Path $env:TEMP 'aurora-setup.ps1'; irm https://raw.githubusercontent.com/Diablo85666/Deeply-Viewer/main/scripts/setup.ps1 -OutFile $f; & $f"
 set "AuroraToolsExitCode=%errorlevel%"
 pause
 exit /b %AuroraToolsExitCode%

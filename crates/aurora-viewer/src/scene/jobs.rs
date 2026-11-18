@@ -213,7 +213,7 @@ pub enum JobResult {
 /// Background jobs give way to the frame: while decodes keep every core
 /// busy (arrival in a region), the main thread, the workers that help it
 /// (frame_par.rs) and the encoder threads would otherwise wait for a core
-/// behind them (frames of 2.4 ms stretched to 5–8 ms in AURORA_DEMO_STREAM).
+/// behind them (frames of 2.4 ms stretched to 5–8 ms in DEEPLY_DEMO_STREAM).
 /// Idle cores still go to the jobs, so loading is not slower.
 fn below_normal_priority() {
     #[cfg(windows)]
@@ -231,7 +231,7 @@ fn below_normal_priority() {
     // (a step of nice is ~1.25× less weight). +10 over the nice the thread
     // was created with leaves it about a tenth of a frame thread's weight
     // (110 / 1024), near Windows' "frame first" without starving the
-    // decodes (the AURORA_DEMO_STREAM arrival loads in the same time).
+    // decodes (the DEEPLY_DEMO_STREAM arrival loads in the same time).
     // Lowering needs no privilege, unlike the frame's raise, which Linux
     // leaves out (frame_priority.rs). With the default autogroups the nice
     // value only weighs threads of the same session: the jobs give way to
@@ -538,11 +538,11 @@ pub fn volume_to_faces(mesh: &aurora_prim::VolumeMesh) -> (Vec<FaceData>, Vec3, 
 }
 
 /// Mesh faces draw their triangles in the Legacy Viewer's order
-/// (`aurora_assets::legacy_triangle_order`); `AURORA_MESH_ORDER=asset` keeps
+/// (`aurora_assets::legacy_triangle_order`); `DEEPLY_MESH_ORDER=asset` keeps
 /// the order of the asset, as before (#935). Read once.
 pub fn legacy_triangle_order() -> bool {
     static LEGACY: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
-    *LEGACY.get_or_init(|| std::env::var("AURORA_MESH_ORDER").map_or(true, |v| v.trim() != "asset"))
+    *LEGACY.get_or_init(|| std::env::var("DEEPLY_MESH_ORDER").map_or(true, |v| v.trim() != "asset"))
 }
 
 /// Convert decoded mesh faces, optionally applying a transform (bind shape)

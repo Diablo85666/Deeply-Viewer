@@ -163,16 +163,16 @@ pub fn extract(path: &Path, root: &Path, tag: &str, cancel: &Cancel) -> Result<P
     unpack(
         path,
         root,
-        &format!("Aurora-Deeply-Viewer-{}-windows-x64", tag.trim_start_matches('v')),
+        &format!("Deeply-Viewer-{}-windows-x64", tag.trim_start_matches('v')),
         cancel,
     )?;
-    let manifest: InstallManifest = serde_json::from_slice(&fs::read(root.join("aurora-install.json"))?)?;
+    let manifest: InstallManifest = serde_json::from_slice(&fs::read(root.join("deeply-install.json"))?)?;
     ensure!(
         manifest.schema == 1 && manifest.version == tag.trim_start_matches('v'),
         "package version mismatch"
     );
     ensure!(
-        root.join("aurora-viewer.exe").is_file() && root.join("assets").is_dir() && root.join("LICENSE").is_file(),
+        root.join("deeply-viewer.exe").is_file() && root.join("assets").is_dir() && root.join("LICENSE").is_file(),
         "incomplete viewer package"
     );
     Ok(root.to_path_buf())

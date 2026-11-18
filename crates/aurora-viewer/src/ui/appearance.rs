@@ -357,7 +357,7 @@ impl AppearanceUi {
         self.outfit_selection.click(outfits[1], &outfits, egui::Modifiers::CTRL, false);
     }
 
-    /// `AURORA_DEMO_APPEARANCE=multi-items|multi-worn`: two items of the
+    /// `DEEPLY_DEMO_APPEARANCE=multi-items|multi-worn`: two items of the
     /// second outfit, or two worn items, selected together.
     pub fn demo_item_selection(&mut self, inv: &crate::world::inventory::Inventory, worn: bool) {
         let scope = if worn { WORN_SCOPE } else { Uuid::from_u128(704) };
@@ -691,7 +691,7 @@ fn sensed_row(
     sense: egui::Sense,
     hint: Option<&str>,
 ) -> egui::Response {
-    let (rect, response) = ui.allocate_exact_size(Vec2::new(ui.available_width(), super::inventory::AURORA_ROW_HEIGHT), sense);
+    let (rect, response) = ui.allocate_exact_size(Vec2::new(ui.available_width(), super::inventory::DEEPLY_ROW_HEIGHT), sense);
     if selected || response.hovered() {
         ui.painter().rect_filled(
             rect,
@@ -752,7 +752,7 @@ fn sensed_row(
 /// `row` (the dummy items of LLCOFWearables::addClothingTypesDummies).
 fn not_worn_row(ui: &mut egui::Ui, p: &Palette, icon_name: &str, text: &str) {
     let (rect, _) = ui.allocate_exact_size(
-        Vec2::new(ui.available_width(), super::inventory::AURORA_ROW_HEIGHT),
+        Vec2::new(ui.available_width(), super::inventory::DEEPLY_ROW_HEIGHT),
         egui::Sense::hover(),
     );
     if let Some(t) = icons::global(icon_name) {
@@ -1142,7 +1142,7 @@ fn outfit_list(
                 // The headers take the inventory's row height; their body keeps the
                 // window's own sizes (buttons, labels).
                 let interact = ui.spacing().interact_size.y;
-                ui.spacing_mut().interact_size.y = super::inventory::AURORA_ROW_HEIGHT;
+                ui.spacing_mut().interact_size.y = super::inventory::DEEPLY_ROW_HEIGHT;
                 let response = widgets::collapsing_forced(ui, p, ("outfit", id), galley.clone(), default_open, forced, |ui| {
                     ui.spacing_mut().interact_size.y = interact;
                     // The header selects, like the Legacy Viewer's accordion tab
@@ -2175,7 +2175,7 @@ fn save_in(ui: &mut egui::Ui, inv: &crate::world::inventory::Inventory, st: &mut
     });
 }
 
-/// `AURORA_DEMO_OUTFITS=<count>,scroll`: from frame 700 the wheel scrolls
+/// `DEEPLY_DEMO_OUTFITS=<count>,scroll`: from frame 700 the wheel scrolls
 /// the outfit list or gallery of the default window, down then up every 300
 /// frames, to measure the frames of a scrolled wardrobe.
 pub fn demo_events(frame: u64) -> Vec<egui::Event> {
@@ -2195,7 +2195,7 @@ pub fn demo_events(frame: u64) -> Vec<egui::Event> {
     ]
 }
 
-/// The synthetic drag of `AURORA_DEMO_APPEARANCE=layers-drag|layers-hold`.
+/// The synthetic drag of `DEEPLY_DEMO_APPEARANCE=layers-drag|layers-hold`.
 pub fn layer_demo_events(ctx: &egui::Context, frame: u64) -> Vec<egui::Event> {
     layers::demo_events(ctx, frame)
 }
@@ -2232,7 +2232,7 @@ pub fn demo_previews(ctx: &egui::Context, inv: &mut crate::world::inventory::Inv
     }
 }
 
-/// `AURORA_DEMO_APPEARANCE=showcase`: two favorites, and the Cop outfit
+/// `DEEPLY_DEMO_APPEARANCE=showcase`: two favorites, and the Cop outfit
 /// picked for the preview.
 pub fn demo_showcase(inv: &mut crate::world::inventory::Inventory, st: &mut AppearanceUi) {
     for id in [703, 744] {

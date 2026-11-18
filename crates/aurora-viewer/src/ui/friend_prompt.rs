@@ -78,7 +78,7 @@ impl FriendPromptUi {
         first
     }
 
-    /// "Later" on the offer shown (AURORA_DEMO_FRIEND_PROMPT=later).
+    /// "Later" on the offer shown (DEEPLY_DEMO_FRIEND_PROMPT=later).
     pub fn put_off(&mut self) {
         if let Some((id, _)) = self.shown.take() {
             self.later.insert(id);
