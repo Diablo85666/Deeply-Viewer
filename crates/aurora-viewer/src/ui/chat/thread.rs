@@ -622,7 +622,13 @@ fn new_separator(ui: &mut egui::Ui, p: &Palette) {
 
 /// Actions for the menu's retained message, even after its row leaves the
 /// viewport or its line is evicted: copy, quote, then its author's menu.
-pub(super) fn message_menu(ui: &mut egui::Ui, env: &LineEnv, th: &mut Thread, target: &super::line_menu::Target) {
+pub(super) fn message_menu(
+    ui: &mut egui::Ui,
+    env: &mut LineEnv,
+    th: &mut Thread,
+    target: &super::line_menu::Target,
+    translation: &mut super::translation::State,
+) {
     let line = &target.line;
     let p = env.p;
     let name = sender_name(env.world, env.own_name, line);
@@ -642,6 +648,7 @@ pub(super) fn message_menu(ui: &mut egui::Ui, env: &LineEnv, th: &mut Thread, ta
         let one_line = text.split_whitespace().collect::<Vec<_>>().join(" ");
         th.out.push(ThreadAction::Quote(format!("> {one_line} ")));
     }
+    super::translation::menu(ui, p, &line.text, translation);
     if !who.avatar.is_nil() {
         crate::ui::menu::separator(ui, p);
         crate::ui::context::chat_sender_menu(ui, p, env.world, who.avatar, line);

@@ -16938,6 +16938,11 @@ impl App {
                 let mut open = self.panels.chat;
                 let mut contact_actions = Vec::new();
                 self.chat_ui.set_style(self.settings.chat_style);
+                self.chat_ui.translation.configure(
+                    &self.settings.translation_endpoint,
+                    self.settings.translation_language,
+                    self.settings.translation_automatic,
+                );
                 self.chat_ui.voice_on = self.settings.audio.voice_enabled;
                 self.chat_ui.conversation_voice_indicator = self.settings.audio.conversation_voice_indicator;
                 self.chat_ui.mic = (!self.settings.audio.mic_hold).then_some(self.mic_on);

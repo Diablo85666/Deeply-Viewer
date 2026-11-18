@@ -14,6 +14,29 @@ pub fn page(cx: &mut Cx, tab: usize) {
     match tab {
         0 => {
             cx.group(tr!("common-nearby-chat"), |cx| {
+                cx.toggle(
+                    tr!("ui-options-translation-automatic"),
+                    tr!("ui-options-translation-automatic-hint"),
+                    &field!(translation_automatic),
+                );
+                cx.combo(
+                    tr!("ui-options-translation-language"),
+                    tr!("ui-options-translation-language-hint"),
+                    &field!(translation_language),
+                    &[
+                        (crate::settings::TranslationLanguage::It, "it"),
+                        (crate::settings::TranslationLanguage::En, "en"),
+                        (crate::settings::TranslationLanguage::Es, "es"),
+                        (crate::settings::TranslationLanguage::De, "de"),
+                        (crate::settings::TranslationLanguage::Fr, "fr"),
+                    ],
+                );
+                cx.row_with(
+                    tr!("ui-options-translation-endpoint"),
+                    tr!("ui-options-translation-endpoint-hint"),
+                    &field!(translation_endpoint),
+                    |ui, settings, _, _| ui.text_edit_singleline(&mut settings.translation_endpoint).changed(),
+                );
                 // ChatFontSize (Chat › Visuals, Medium): the nearby chat's
                 // and the conversations' text on its own, apart from
                 // Appearance › Text size

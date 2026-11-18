@@ -10,6 +10,7 @@ use super::widgets::{self, ActionKind};
 use crate::settings::{GridChoice, Settings};
 use crate::theme::Palette;
 use egui::{Color32, Frame, Margin, RichText, Sense, Stroke, TextEdit, Vec2};
+use std::sync::OnceLock;
 mod camera_limits_notice;
 mod carousel;
 mod chrome;
@@ -191,9 +192,40 @@ pub fn draw_background(ui: &egui::Ui, p: &Palette) {
     let rect = ctx.content_rect();
     let painter = ctx.layer_painter(egui::LayerId::background());
     let t = ctx.input(|i| i.time) as f32;
+    if let Some(texture) = splash_texture(ctx) {
+        let image_size = texture.size_vec2();
+        let scale = (rect.width() / image_size.x).max(rect.height() / image_size.y) * (1.03 + 0.012 * (t * 0.18).sin());
+        let size = image_size * scale;
+        let drift = Vec2::new((t * 0.11).sin() * 10.0, (t * 0.08).cos() * 7.0);
+        let image_rect = egui::Rect::from_center_size(rect.center() + drift, size);
+        painter.with_clip_rect(rect).image(
+            texture.id(),
+            image_rect,
+            egui::Rect::from_min_max(egui::pos2(0.0, 0.0), egui::pos2(1.0, 1.0)),
+            Color32::from_rgba_unmultiplied(255, 255, 255, 190),
+        );
+    }
     super::aurora_bg::paint(&painter, p, rect, t, 1.0);
     // slow animation: ~30 images/s are plenty
     ctx.request_repaint_after(std::time::Duration::from_millis(33));
+}
+
+const SPLASH_PNG: &[u8] = include_bytes!("../../../../assets/deeply/deeply-splash.png");
+static SPLASH_IMAGE: OnceLock<egui::ColorImage> = OnceLock::new();
+
+fn splash_texture(ctx: &egui::Context) -> Option<egui::TextureHandle> {
+    let image = SPLASH_IMAGE.get_or_init(|| {
+        image::load_from_memory(SPLASH_PNG)
+            .map(|image| {
+                let image = image.resize(1920, 1080, image::imageops::FilterType::Triangle).to_rgba8();
+                egui::ColorImage::from_rgba_unmultiplied([image.width() as usize, image.height() as usize], image.as_raw())
+            })
+            .unwrap_or_else(|error| {
+                log::warn!("Deeply splash decode failed: {error}");
+                egui::ColorImage::filled([1, 1], Color32::TRANSPARENT)
+            })
+    });
+    Some(ctx.load_texture("deeply-splash", image.clone(), egui::TextureOptions::LINEAR))
 }
 
 fn img(ui: &egui::Ui, icons: &Icons, name: &str, rect: egui::Rect, tint: Color32) {
