@@ -40,6 +40,7 @@ mod stage;
 pub mod suggest;
 mod thread;
 pub mod thumbnails;
+mod translation;
 mod typing;
 mod view;
 mod workspace;
@@ -281,6 +282,7 @@ pub struct ChatUi {
     /// The pictures and videos under links (`previews.rs`), their settings
     /// given every frame by the app.
     pub previews: previews::Previews,
+    pub translation: translation::State,
     /// The duration asked before a group chat's snooze (`snooze.rs`).
     snooze: Option<snooze::Prompt>,
     /// The conversations in their own windows (`popout.rs`).
@@ -2541,9 +2543,12 @@ fn conversation_lines(ui: &mut egui::Ui, p: &Palette, l: Lines, st: &mut ChatUi,
         if let Some(avatar) = target.sender {
             super::context::chat_sender_menu(ui, p, w, avatar, &target.line);
         } else if let Rows::Thread(th) = &mut rows {
-            thread::message_menu(ui, &env, th, target);
+            thread::message_menu(ui, &mut env, th, target, &mut st.translation);
+        } else {
+            translation::menu(ui, p, &target.line.text, &mut st.translation);
         }
     });
+    st.translation.show(ui.ctx());
     to_field
 }
 

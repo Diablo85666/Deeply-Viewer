@@ -36,6 +36,29 @@ pub enum ChatStyle {
     Legacy,
 }
 
+#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize, PartialEq, Eq)]
+#[serde(rename_all = "lowercase")]
+pub enum TranslationLanguage {
+    #[default]
+    It,
+    En,
+    Es,
+    De,
+    Fr,
+}
+
+impl TranslationLanguage {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::It => "it",
+            Self::En => "en",
+            Self::Es => "es",
+            Self::De => "de",
+            Self::Fr => "fr",
+        }
+    }
+}
+
 impl ChatStyle {
     /// Deeply's workspace (column, head, members, call stage): the two
     /// first styles. The others keep the window of tabs.
@@ -1253,6 +1276,9 @@ pub struct Settings {
     /// The lines of the Conversations window (`ui/chat/bubbles.rs` or the
     /// legacy lines).
     pub chat_style: ChatStyle,
+    pub translation_endpoint: String,
+    pub translation_language: TranslationLanguage,
+    pub translation_automatic: bool,
     /// The column of the conversations' workspace stays a rail at any
     /// window width (its button; off, the column follows the window).
     pub chat_column_collapsed: bool,
@@ -2296,6 +2322,9 @@ impl Default for Settings {
             plate_shift_click: PlateClick::Nothing,
             plate_ctrl_click: PlateClick::Nothing,
             chat_style: ChatStyle::Deeply,
+            translation_endpoint: "https://libretranslate.com/translate".into(),
+            translation_language: TranslationLanguage::It,
+            translation_automatic: false,
             chat_column_collapsed: false,
             link_previews: Default::default(),
             gifs: Default::default(),
