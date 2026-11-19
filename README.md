@@ -16,9 +16,9 @@
   <a href="https://github.com/Diablo85666">Author profile</a>
 </p>
 
-Deeply Viewer is an independent community fork derived from Deeply Viewer.
-It is not affiliated with or endorsed by Linden Lab or any other viewer
-project.
+Deeply Viewer is an independent community fork derived from Deeply Viewer
+and Firestorm. It is not affiliated with or endorsed by Linden Lab or any
+other viewer project.
 
 ## Novità
 
