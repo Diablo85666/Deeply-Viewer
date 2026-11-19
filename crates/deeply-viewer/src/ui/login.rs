@@ -187,7 +187,7 @@ pub(crate) fn terms_link(ui: &mut egui::Ui, p: &Palette, url: &str) {
 
 /// Animated deeply background (also behind the loading screens without a
 /// last view).
-pub fn draw_background(ui: &egui::Ui, p: &Palette) {
+pub fn draw_background(ui: &egui::Ui, _p: &Palette) {
     let ctx = ui.ctx();
     let rect = ctx.content_rect();
     let painter = ctx.layer_painter(egui::LayerId::background());
@@ -205,7 +205,6 @@ pub fn draw_background(ui: &egui::Ui, p: &Palette) {
             Color32::from_rgba_unmultiplied(255, 255, 255, 190),
         );
     }
-    super::deeply_bg::paint(&painter, p, rect, t, 1.0);
     // slow animation: ~30 images/s are plenty
     ctx.request_repaint_after(std::time::Duration::from_millis(33));
 }

@@ -1,4 +1,0 @@
-[build]
-rustflags = [
-    "--remap-path-prefix=C:\\Users\\Administrator\\Documents\\Deeply-Viewer-v0.9.8-it.2-work=C:\\Users\\Administrator\\Documents\\Deeply-Viewer-work",
-]
